@@ -13,7 +13,7 @@
     <!-- 1. ВЫБОР КЛАССОВ (L2 INTERLUDE) -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Balance: Mobs x3 / Adena x2 / Regen):</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude Classic 1-20 lvl):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
@@ -390,7 +390,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.36 • Full Market & Mobs x3 Restored
+        Eternity Online v0.37 • Consumables Consumption Fix
     </footer>
 
     <script>
@@ -511,7 +511,7 @@
         };
 
         function loadSavedPlayer() {
-            let data = localStorage.getItem('eternity_player_save_v36');
+            let data = localStorage.getItem('eternity_player_save_v37');
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             return null;
         }
@@ -576,7 +576,7 @@
         }
 
         function saveGame() {
-            if (player) localStorage.setItem('eternity_player_save_v36', JSON.stringify(player));
+            if (player) localStorage.setItem('eternity_player_save_v37', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -714,7 +714,38 @@
             if (player.hp <= 0) { alert('Вы погибли!'); player.hp = Math.floor(player.maxHp * 0.5); saveGame(); updateUI(); return; }
 
             lastCombatTime = Date.now();
-            const dmgToMob = Math.max(5, player.atk);
+            let finalAtk = player.atk;
+
+            // Расход расходников в зависимости от класса
+            if (player.archetype === 'mage') {
+                if (player.bssCount && player.bssCount > 0) {
+                    player.bssCount--;
+                    finalAtk *= 1.5; // Усиление магии от BSS
+                } else {
+                    addLog(`⚠️ У вас закончились Blessed Soulshots (BSS)!`);
+                }
+            } else {
+                // Воины и лучники
+                if (player.ssCount && player.ssCount > 0) {
+                    player.ssCount--;
+                    finalAtk *= 1.35; // Усиление атаки от SS
+                } else {
+                    addLog(`⚠️ У вас закончились Soulshots (SS)!`);
+                }
+
+                // Если лучник — тратим стрелы
+                if (player.archetype === 'archer') {
+                    if (player.arrowCount && player.arrowCount > 0) {
+                        player.arrowCount--;
+                    } else {
+                        alert('У вас закончились стрелы! Купите их на рынке.');
+                        addLog(`❌ Невозможно атаковать: закончились стрелы!`);
+                        return;
+                    }
+                }
+            }
+
+            const dmgToMob = Math.max(5, Math.floor(finalAtk));
             currentTarget.hp = Math.max(0, currentTarget.hp - dmgToMob);
 
             let actualDmg = Math.max(6, currentTarget.atk - Math.floor(player.def * 0.4));
