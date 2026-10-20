@@ -10,39 +10,84 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-3 flex flex-col justify-between select-none">
 
-    <!-- 1. ВЫБОР КЛАССОВ И РАС -->
+    <!-- 1. ВЫБОР КЛАССОВ И РАС (ПОЛНЫЙ СПИСОК L2 INTERLUDE) -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude):</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Lineage 2 Interlude):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
+            
+            <!-- ЛУЧНИКИ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
             <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'human', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Hawkeye (Хавк) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Высокий запас HP, дальнобойный урон.</p>
+                <p class="text-[9px] text-slate-400">Высокий запас HP, сбалансированная точность и дальность.</p>
+            </div>
+            <div onclick="selectClass('sr', 'Silver Ranger (Сыр)', 'elf', 'archer', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-emerald-400 text-xs">Silver Ranger (Сыр) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Максимальная скорость стрельбы и уклонение.</p>
             </div>
             <div onclick="selectClass('fr', 'Phantom Ranger (ФР)', 'dark_elf', 'archer', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Phantom Ranger (ФР) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">Максимальный крит. урон и сила выстрела.</p>
+                <p class="text-[9px] text-slate-400">Максимальный критический урон и сила выстрела.</p>
             </div>
 
+            <!-- КИНЖАЛЬЩИКИ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
             <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Живучий кинжальщик с высоким HP.</p>
+                <p class="text-[9px] text-slate-400">Живучий кинжальщик с самым высоким запасом HP.</p>
+            </div>
+            <div onclick="selectClass('pw', 'Plains Walker (ПВ)', 'elf', 'warrior', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-emerald-400 text-xs">Plains Walker (ПВ) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Частый шанс абилок, уклонение и самолечение.</p>
+            </div>
+            <div onclick="selectClass('aw', 'Abyss Walker (АВ)', 'dark_elf', 'warrior', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Abyss Walker (АВ) — Темный Эльф</h3>
+                <p class="text-[9px] text-slate-400">Сокрушительный смертельный урон из тени.</p>
             </div>
 
+            <!-- МАГИ И НЕКРОМАНТЫ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
+            <div onclick="selectClass('sps', 'Spellsinger (Сорки/СпС)', 'elf', 'mage', 21, 24, 37, 23, 23, 40)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-cyan-400 text-xs">Spellsinger (СпС) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Самая высокая скорость каста и заморозка.</p>
+            </div>
+            <div onclick="selectClass('sph', 'Spellhowler (Сх)', 'dark_elf', 'mage', 23, 23, 44, 24, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Spellhowler (СХ) — Темный Эльф</h3>
+                <p class="text-[9px] text-slate-400">Самая высокая магическая атака в игре (INT 44).</p>
+            </div>
             <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-purple-400 text-xs">Necromancer (Некромант)</h3>
+                <h3 class="font-bold text-indigo-400 text-xs">Necromancer (Некромант) — Человек</h3>
                 <p class="text-[9px] text-slate-400">Темная магия, проклятия и призыв слуг.</p>
             </div>
 
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Танки и Воины</p>
+            <!-- ВОИНЫ И ТАНКИ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Воины, Танки и Орки</p>
             <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 45, 23, 18, 50, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк</h3>
-                <p class="text-[9px] text-slate-400">Френзи, лимиты и гигантский урон по боссам.</p>
+                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Зеленый Орк</h3>
+                <p class="text-[9px] text-slate-400">Френзи, лимиты и гигантский урон д двуручником.</p>
             </div>
+            <div onclick="selectClass('tyrant', 'Tyrant (Тир)', 'orc', 'warrior', 43, 28, 18, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-600 text-xs">Tyrant (Тирант) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Удары кастетами, тотемы волка и бизона.</p>
+            </div>
+            <div onclick="selectClass('paladin', 'Paladin (Паладин)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-yellow-400 text-xs">Paladin (Паладин) — Человек</h3>
+                <p class="text-[9px] text-slate-400">Непробиваемый танк со щитом и иконой.</p>
+            </div>
+
+            <!-- ГНОМЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔨 Гномы (Dwarves)</p>
+            <div onclick="selectClass('spoil', 'Bounty Hunter (Спойлер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-yellow-600 text-xs">Bounty Hunter (Спойл) — Гном</h3>
+                <p class="text-[9px] text-slate-400">Добыча редких ресурсов и фарм с синим свечением.</p>
+            </div>
+            <div onclick="selectClass('craft', 'Warsmith (Крафтер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-yellow-500 text-xs">Warsmith (Крафт) — Гном</h3>
+                <p class="text-[9px] text-slate-400">Создание оружия, предметов и призыв големов.</p>
+            </div>
+
         </div>
     </div>
 
@@ -296,7 +341,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.20.1 • Permanent Progress Saved
+        Eternity Online v0.21 • Full Interlude Class Selection
     </footer>
 
     <script>
@@ -397,7 +442,6 @@
             dragon_valley: { name: 'Долина Драконов', minLevel: 50, expMult: 9.0, goldMult: 8.0, dropChance: 0.55 }
         };
 
-        // АВТОМАТИЧЕСКАЯ СИСТЕМА ВОССТАНОВЛЕНИЯ И ЗАЩИТЫ СОХРАНЕНИЙ
         function loadSavedPlayer() {
             const MAIN_SAVE_KEY = 'eternity_player_save';
             const PREV_KEYS = ['eternity_player_v20', 'eternity_player_v19', 'eternity_player_v18_1', 'eternity_player_v18', 'eternity_player_v17', 'eternity_player_v1'];
@@ -406,13 +450,12 @@
             if (data) {
                 try { return JSON.parse(data); } catch(e) {}
             }
-            // Поиск в предыдущих версиях
             for (let key of PREV_KEYS) {
                 let prevData = localStorage.getItem(key);
                 if (prevData) {
                     try {
                         let parsed = JSON.parse(prevData);
-                        localStorage.setItem(MAIN_SAVE_KEY, prevData); // Миграция
+                        localStorage.setItem(MAIN_SAVE_KEY, prevData);
                         return parsed;
                     } catch(e) {}
                 }
@@ -721,7 +764,7 @@
         }
 
         // ==========================================
-        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.20.1)
+        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.21)
         // ==========================================
         let scene, camera, renderer, characterGroup;
         let isDragging = false, previousMousePosition = { x: 0, y: 0 };
@@ -781,6 +824,8 @@
                 skinColor = 0xfbcfe8; bodyColor = 0x10b981; bodyScaleX = 0.85; bodyScaleY = 1.1;
             } else if (race === 'dark_elf') {
                 skinColor = 0xa855f7; bodyColor = 0x6d28d9; bodyScaleX = 0.9; bodyScaleY = 1.15;
+            } else if (race === 'dwarf') {
+                skinColor = 0xfde047; bodyColor = 0xd97706; bodyScaleX = 1.1; bodyScaleY = 0.75; headScale = 1.1;
             }
 
             const skinMat = new THREE.MeshStandardMaterial({ color: skinColor, roughness: 0.5 });
