@@ -17,7 +17,6 @@
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
             
-            <!-- ЛУЧНИКИ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
             <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'human', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Hawkeye (Хавк) — Человек</h3>
@@ -32,7 +31,6 @@
                 <p class="text-[9px] text-slate-400">Самая высокая скорость стрельбы и уклонение.</p>
             </div>
 
-            <!-- ДАГГЕРЫ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
             <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
@@ -47,7 +45,6 @@
                 <p class="text-[9px] text-slate-400">Молниеносный, высокий шанс крита и уклонение.</p>
             </div>
 
-            <!-- МАГИ И НЕКР -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
             <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Necromancer (Некромант)</h3>
@@ -66,7 +63,6 @@
                 <p class="text-[9px] text-slate-400">Маг огня с балансом силы и скорости заклинаний.</p>
             </div>
 
-            <!-- САППОРТЫ И ХИЛЕРЫ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">✨ Саппорты & Хилеры</p>
             <div onclick="selectClass('bishop', 'Bishop (Бишоп)', 'human', 'mage', 28, 21, 39, 31, 20, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-yellow-300 text-xs">Bishop (Бишоп)</h3>
@@ -101,7 +97,6 @@
                 <p class="text-[9px] text-slate-400">Баффы клана и массовые дебаффы врагов.</p>
             </div>
 
-            <!-- ТАНКИ И ВАРРИОРЫ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Танки и Воины</p>
             <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 45, 23, 18, 50, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк</h3>
@@ -120,7 +115,6 @@
                 <p class="text-[9px] text-slate-400">Темный рыцарь с вызовом Пантеры.</p>
             </div>
 
-            <!-- ГНОМЫ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">⚒️ Гномы (Dwarves)</p>
             <div onclick="selectClass('spoil', 'Bounty Hunter (Спойлер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-amber-600 text-xs">Bounty Hunter (Спойлер)</h3>
@@ -165,13 +159,14 @@
             </div>
         </div>
 
-        <!-- Переключение вкладок -->
-        <div class="grid grid-cols-5 gap-1 border-b border-slate-800 pb-2">
-            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[10px] transition-all">⚔️ Охота</button>
-            <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">👤 Кукла</button>
-            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">📊 Статы</button>
-            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">🛒 Рынок</button>
-            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">👹 Босс</button>
+        <!-- Переключение вкладок (6 ВКЛАДОК: Охота, Кукла, Сумка, Статы, Рынок, Босс) -->
+        <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-2">
+            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[9px] transition-all">⚔️ Охота</button>
+            <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">👤 Кукла</button>
+            <button id="tab-bag-btn" onclick="switchTab('bag')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">🎒 Сумка</button>
+            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">📊 Статы</button>
+            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">🛒 Рынок</button>
+            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">👹 Босс</button>
         </div>
 
         <!-- ВКЛАДКА 1: ФАРМ -->
@@ -226,10 +221,10 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: КУКЛА ПЕРСОНАЖА C УВЕЛИЧЕННОЙ 3D МОДЕЛЬЮ И СЛОТОМ ПОД ЩИТ -->
+        <!-- ВКЛАДКА 2: КУКЛА ПЕРСОНАЖА -->
         <div id="tab-hero" class="hidden space-y-2">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ПОЛНАЯ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
                 
                 <div class="grid grid-cols-3 gap-1.5 items-center justify-items-center">
                     <div class="flex flex-col space-y-1.5">
@@ -241,7 +236,6 @@
                         <div id="slot-boots" onclick="unequip('boots')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">👢</span><span class="text-[7px] text-slate-500">Сапоги</span></div>
                     </div>
 
-                    <!-- ЦЕНТР: БОЛЬШАЯ 3D-МОДЕЛЬ + ОРУЖИЕ + ЩИТ -->
                     <div class="flex flex-col items-center space-y-1.5">
                         <div class="flex space-x-1">
                             <div id="slot-weapon" onclick="unequip('weapon')" class="w-9 h-9 bg-slate-950 border-2 border-amber-600/60 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
@@ -251,7 +245,6 @@
                                 <span class="text-[10px]">🛡️</span><span class="text-[6px] text-slate-500">Щит</span>
                             </div>
                         </div>
-                        <!-- Увеличенный Canvas для 3D -->
                         <div id="canvas-container" class="w-32 h-48 bg-slate-950/85 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative cursor-grab">
                             <span class="text-[8px] text-amber-400/70 absolute bottom-1 pointer-events-none">🔄 Вращайте 3D</span>
                         </div>
@@ -270,7 +263,30 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: СТАТЫ -->
+        <!-- ВКЛАДКА 3: СУМКА (ИНВЕНТАРЬ РАСХОДНИКОВ) -->
+        <div id="tab-bag" class="hidden space-y-3">
+            <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ (СУМКА)</h3>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-amber-400 font-bold block">✨ Свитки заточки</span>
+                            <span class="text-[9px] text-slate-500">Для оружия</span>
+                        </div>
+                        <span id="bag-scrolls" class="text-sm font-black text-amber-400 bg-amber-950/60 px-2 py-1 rounded border border-amber-600/30">2</span>
+                    </div>
+                    <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-red-400 font-bold block">🧪 Зелья HP</span>
+                            <span class="text-[9px] text-slate-500">+50 здоровья</span>
+                        </div>
+                        <span id="bag-potions" class="text-sm font-black text-red-400 bg-red-950/60 px-2 py-1 rounded border border-red-900/30">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА 4: СТАТЫ -->
         <div id="tab-stats" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -306,28 +322,48 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 4: РЫНОК -->
+        <!-- ВКЛАДКА 5: ПОЛНЫЙ РЫНОК (БРОНЯ, БИЖУТЕРИЯ, СВИТКИ И ЩИТЫ) -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН БРОНИ И ЩИТОВ</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН ЭКИПИРОВКИ И РАСХОДНИКОВ</h3>
                 <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="text-xs font-bold text-blue-400">🪖 Шлем Дракона (+10 Защиты)</span><span class="text-[10px] text-amber-500 block">150 Адены</span></div>
                         <button onclick="buyEquipment('helm', 'Шлем Дракона', 150)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div><span class="text-xs font-bold text-blue-400">🛡️ Наплечники (+8 Защиты)</span><span class="text-[10px] text-amber-500 block">120 Адены</span></div>
+                        <button onclick="buyEquipment('shoulder', 'Наплечники', 120)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="text-xs font-bold text-blue-400">👕 Нагрудник Дракона (+25 Защиты)</span><span class="text-[10px] text-amber-500 block">300 Адены</span></div>
                         <button onclick="buyEquipment('chest', 'Нагрудник', 300)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div><span class="text-xs font-bold text-blue-400">👖 Штаны Дракона (+15 Защиты)</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
+                        <button onclick="buyEquipment('legs', 'Штаны Дракона', 200)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div><span class="text-xs font-bold text-blue-400">🧤 Перчатки (+6 Защиты)</span><span class="text-[10px] text-amber-500 block">100 Адены</span></div>
+                        <button onclick="buyEquipment('gloves', 'Перчатки', 100)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div><span class="text-xs font-bold text-blue-400">👢 Сапоги (+8 Защиты)</span><span class="text-[10px] text-amber-500 block">110 Адены</span></div>
+                        <button onclick="buyEquipment('boots', 'Сапоги', 110)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="text-xs font-bold text-cyan-400">🛡️ Тяжелый Щит (+15 Защиты)</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
                         <button onclick="buyEquipment('shield', 'Тяжелый Щит', 200)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
                     </div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div><span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
+                        <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА 5: БОСС -->
+        <!-- ВКЛАДКА 6: БОСС -->
         <div id="tab-boss" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
                 <div class="text-4xl animate-pulse">👹</div>
@@ -354,7 +390,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.15 • Race Proportions & Visible Gear
+        Eternity Online v0.16 • Inventory Bag & Full Market Restored
     </footer>
 
     <script>
@@ -373,8 +409,8 @@
         };
 
         try {
-            if (localStorage.getItem('eternity_player_v15')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v15'));
+            if (localStorage.getItem('eternity_player_v16')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v16'));
             }
         } catch(e) { player = null; }
 
@@ -393,8 +429,8 @@
             player = {
                 classKey: key,
                 title: title,
-                race: race,         // human, elf, dark_elf, orc, dwarf
-                archetype: archetype, // warrior, archer, mage
+                race: race,
+                archetype: archetype,
                 level: 1, exp: 0, maxExp: 100, gold: 1500, statPoints: 5,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
                 potions: 3, weaponEnchant: 0, scrolls: 2,
@@ -424,7 +460,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v15', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v16', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -435,15 +471,17 @@
         function switchTab(tab) {
             document.getElementById('tab-farm').classList.add('hidden');
             document.getElementById('tab-hero').classList.add('hidden');
+            document.getElementById('tab-bag').classList.add('hidden');
             document.getElementById('tab-stats').classList.add('hidden');
             document.getElementById('tab-market').classList.add('hidden');
             document.getElementById('tab-boss').classList.add('hidden');
 
-            const defaultBtn = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all";
-            const activeBtn = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[10px] transition-all";
+            const defaultBtn = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all";
+            const activeBtn = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[9px] transition-all";
 
             document.getElementById('tab-farm-btn').className = defaultBtn;
             document.getElementById('tab-hero-btn').className = defaultBtn;
+            document.getElementById('tab-bag-btn').className = defaultBtn;
             document.getElementById('tab-stats-btn').className = defaultBtn;
             document.getElementById('tab-market-btn').className = defaultBtn;
             document.getElementById('tab-boss-btn').className = defaultBtn;
@@ -455,6 +493,9 @@
                 document.getElementById('tab-hero').classList.remove('hidden');
                 document.getElementById('tab-hero-btn').className = activeBtn;
                 setTimeout(resize3D, 100);
+            } else if (tab === 'bag') {
+                document.getElementById('tab-bag').classList.remove('hidden');
+                document.getElementById('tab-bag-btn').className = activeBtn;
             } else if (tab === 'stats') {
                 document.getElementById('tab-stats').classList.remove('hidden');
                 document.getElementById('tab-stats-btn').className = activeBtn;
@@ -463,7 +504,7 @@
                 document.getElementById('tab-market-btn').className = activeBtn;
             } else {
                 document.getElementById('tab-boss').classList.remove('hidden');
-                document.getElementById('tab-boss-btn').className = "bg-red-600 text-white font-bold py-1.5 rounded-lg text-[10px] transition-all";
+                document.getElementById('tab-boss-btn').className = "bg-red-600 text-white font-bold py-1.5 rounded-lg text-[9px] transition-all";
             }
         }
 
@@ -472,7 +513,8 @@
             if (!player.equipment) player.equipment = { weapon: true };
             let eq = player.equipment;
             let bonusAtk = (eq.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (eq.neck ? 15 : 0);
-            let bonusDef = (eq.helm ? 10 : 0) + (eq.chest ? 25 : 0) + (eq.shield ? 15 : 0);
+            let bonusDef = (eq.helm ? 10 : 0) + (eq.shoulder ? 8 : 0) + (eq.chest ? 25 : 0) + 
+                           (eq.legs ? 15 : 0) + (eq.gloves ? 6 : 0) + (eq.boots ? 8 : 0) + (eq.shield ? 15 : 0);
             player.atk = (player.str * 2) + (player.int * 2.2) + bonusAtk;
             player.def = (player.con * 1) + bonusDef;
             player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.7));
@@ -487,8 +529,19 @@
             recalcStats();
             saveGame();
             updateUI();
-            createCharacterMesh(); // Обновляем 3D модель (доспехи/щит появятся на персонаже)
+            createCharacterMesh();
             addLog(`🛡️ Надет ${name}!`);
+        }
+
+        function buyItem(item) {
+            if (item === 'scroll') {
+                if (player.gold < 200) { alert('Недостаточно Адены!'); return; }
+                player.gold -= 200;
+                player.scrolls += 1;
+                addLog(`🛒 Куплен Свиток Заточки.`);
+            }
+            saveGame();
+            updateUI();
         }
 
         function unequip(slot) {
@@ -505,9 +558,17 @@
             const loc = locations[player.currentLocation || 'talking_island'];
             const expGained = Math.floor((Math.random() * 25 + 15) * loc.expMult);
             const goldGained = Math.floor((Math.random() * 12 + 5) * loc.goldMult);
+            let scrollDrop = Math.random() < loc.dropChance;
+            let potionDrop = Math.random() < 0.25;
+
             player.exp += expGained;
             player.gold += goldGained;
-            addLog(`⚔️ [${loc.name}] Моб повержен! +${expGained} EXP, +${goldGained} Адена.`);
+
+            let logText = `⚔️ [${loc.name}] Моб повержен! +${expGained} EXP, +${goldGained} Адена.`;
+            if (scrollDrop) { player.scrolls += 1; logText += ` ✨ **Выпал Свиток!**`; }
+            if (potionDrop) { player.potions += 1; logText += ` 🧪 **Зелье HP!**`; }
+            addLog(logText);
+
             if (player.exp >= player.maxExp) {
                 player.level += 1;
                 player.exp -= player.maxExp;
@@ -522,25 +583,27 @@
         }
 
         function usePotion() {
-            if (player.potions <= 0) return;
+            if (player.potions <= 0) { alert('Нет зелий!'); return; }
+            if (player.hp >= player.maxHp) { alert('Здоровье полно!'); return; }
             player.potions -= 1;
             player.hp = Math.min(player.maxHp, player.hp + 50);
+            addLog(`🧪 Вы выпили зелье HP.`);
             saveGame(); updateUI();
         }
 
         function enchantWeapon() {
-            if (player.scrolls <= 0) return;
+            if (player.scrolls <= 0) { alert('Нет свитков заточки в сумке!'); return; }
             player.scrolls -= 1;
             if (Math.random() <= 0.6) { 
                 player.weaponEnchant += 1; 
                 addLog(`🔥 **УСПЕХ!** Оружие +${player.weaponEnchant}!`); 
             } else { 
-                addLog(`💥 **НЕУДАЧА!**`); 
+                addLog(`💥 **НЕУДАЧА!** Заточка сорвалась.`); 
             }
             recalcStats(); 
             saveGame(); 
             updateUI();
-            createCharacterMesh(); // Обновляем свечение оружия
+            createCharacterMesh();
         }
 
         function attackBoss() {
@@ -559,6 +622,10 @@
             document.getElementById('atk').innerText = Math.floor(player.atk);
             document.getElementById('def').innerText = Math.floor(player.def);
             document.getElementById('crit').innerText = `${player.crit}%`;
+            document.getElementById('potions').innerText = player.potions;
+            document.getElementById('bag-potions').innerText = player.potions;
+            document.getElementById('bag-scrolls').innerText = player.scrolls;
+
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
             document.getElementById('stat-dex').innerText = player.dex;
@@ -566,6 +633,7 @@
             document.getElementById('stat-con').innerText = player.con;
             document.getElementById('stat-wit').innerText = player.wit;
             document.getElementById('stat-men').innerText = player.men;
+
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
             document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
@@ -573,7 +641,6 @@
             document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
             document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
 
-            // Подсветка слота щита
             const shieldSlot = document.getElementById('slot-shield');
             if (player.equipment.shield) {
                 shieldSlot.className = "w-9 h-9 bg-slate-900 border-2 border-cyan-400 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95";
@@ -582,9 +649,9 @@
             }
         }
 
-        // =========================================================
-        // THREE.JS: РАСОВЫЕ ПРОПОРЦИИ И ВИДИМАЯ ЭКИПИРОВКА (V0.15)
-        // =========================================================
+        // ==========================================
+        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.16)
+        // ==========================================
         let scene, camera, renderer, characterGroup;
         let isDragging = false, previousMousePosition = { x: 0, y: 0 };
 
@@ -601,9 +668,7 @@
             renderer.setPixelRatio(window.devicePixelRatio);
             container.appendChild(renderer.domElement);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambientLight);
-
+            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
             const dirLight = new THREE.DirectionalLight(0xf59e0b, 1.5);
             dirLight.position.set(2, 5, 3);
             scene.add(dirLight);
@@ -622,9 +687,7 @@
 
             function animate() {
                 requestAnimationFrame(animate);
-                if (characterGroup && !isDragging) {
-                    characterGroup.rotation.y += 0.005;
-                }
+                if (characterGroup && !isDragging) characterGroup.rotation.y += 0.005;
                 renderer.render(scene, camera);
             }
             animate();
@@ -639,115 +702,64 @@
             const arch = player ? player.archetype : 'warrior';
             const eq = player ? player.equipment : {};
 
-            // Настройка расовых цветов и пропорций
-            let skinColor = 0xfde047; // Человек
-            let bodyColor = 0x3b82f6;
+            let skinColor = 0xfde047, bodyColor = 0x3b82f6;
             let bodyScaleX = 1, bodyScaleY = 1, headScale = 1;
 
             if (race === 'orc') {
-                skinColor = 0x22c55e; // Зеленокожий орк
-                bodyColor = 0xef4444; // Красные доспехи
-                bodyScaleX = 1.4;     // Широкий торс
-                bodyScaleY = 0.9;     // Немного приземистый
-                headScale = 1.2;      // Массивная голова
+                skinColor = 0x22c55e; bodyColor = 0xef4444; bodyScaleX = 1.4; bodyScaleY = 0.9; headScale = 1.2;
             } else if (race === 'elf') {
-                skinColor = 0xfbcfe8;
-                bodyColor = 0x10b981; // Светлый эльф
-                bodyScaleX = 0.85;    // Стройный
-                bodyScaleY = 1.1;     // Высокий
+                skinColor = 0xfbcfe8; bodyColor = 0x10b981; bodyScaleX = 0.85; bodyScaleY = 1.1;
             } else if (race === 'dark_elf') {
-                skinColor = 0xa855f7;
-                bodyColor = 0x6d28d9; // Темный эльф
-                bodyScaleX = 0.9;
-                bodyScaleY = 1.15;
+                skinColor = 0xa855f7; bodyColor = 0x6d28d9; bodyScaleX = 0.9; bodyScaleY = 1.15;
             } else if (race === 'dwarf') {
-                skinColor = 0xfcd34d;
-                bodyColor = 0xd97706; // Гном
-                bodyScaleX = 1.2;
-                bodyScaleY = 0.75;    // Низкорослый
+                skinColor = 0xfcd34d; bodyColor = 0xd97706; bodyScaleX = 1.2; bodyScaleY = 0.75;
             }
 
             const skinMat = new THREE.MeshStandardMaterial({ color: skinColor, roughness: 0.5 });
-            let armorMat = new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.3, metalness: 0.4 });
+            let armorMat = eq.chest ? 
+                new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.1, metalness: 0.9 }) : 
+                new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.3, metalness: 0.4 });
 
-            // Если куплен нагрудник, делаем броню металлической
-            if (eq.chest) {
-                armorMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.1, metalness: 0.9 });
-            }
-
-            // 1. Голова
-            const headGeo = new THREE.SphereGeometry(0.18 * headScale, 16, 16);
-            const head = new THREE.Mesh(headGeo, skinMat);
+            const head = new THREE.Mesh(new THREE.SphereGeometry(0.18 * headScale, 16, 16), skinMat);
             head.position.y = 1.55;
             characterGroup.add(head);
 
-            // 1.1. Шлем (если надет)
             if (eq.helm) {
-                const helmMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.8, roughness: 0.2 });
-                const helmGeo = new THREE.SphereGeometry(0.2 * headScale, 16, 16, 0, Math.PI * 2, 0, Math.PI * 0.6);
-                const helm = new THREE.Mesh(helmGeo, helmMat);
+                const helm = new THREE.Mesh(new THREE.SphereGeometry(0.2 * headScale, 16, 16, 0, Math.PI * 2, 0, Math.PI * 0.6), new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.8 }));
                 helm.position.y = 1.6;
                 characterGroup.add(helm);
             }
 
-            // 2. Тело
-            const bodyGeo = new THREE.CylinderGeometry(0.25 * bodyScaleX, 0.18 * bodyScaleX, 0.7 * bodyScaleY, 12);
-            const body = new THREE.Mesh(bodyGeo, armorMat);
+            const body = new THREE.Mesh(new THREE.CylinderGeometry(0.25 * bodyScaleX, 0.18 * bodyScaleX, 0.7 * bodyScaleY, 12), armorMat);
             body.position.y = 1.05;
             characterGroup.add(body);
 
-            // 3. Плечи / Доспехи
-            const shoulderGeo = new THREE.BoxGeometry(0.65 * bodyScaleX, 0.15, 0.3);
-            const shoulder = new THREE.Mesh(shoulderGeo, armorMat);
+            const shoulder = new THREE.Mesh(new THREE.BoxGeometry(0.65 * bodyScaleX, 0.15, 0.3), armorMat);
             shoulder.position.y = 1.32;
             characterGroup.add(shoulder);
 
-            // 4. Оружие с учетом заточки (Свечение при +1 и выше)
-            let weaponColor = 0xd97706;
-            if (player.weaponEnchant > 0) weaponColor = 0x38bdf8; // Светится синим при заточке
-            if (player.weaponEnchant >= 3) weaponColor = 0xec4899; // Розовое свечение при +3
-
-            const weaponMat = new THREE.MeshStandardMaterial({ 
-                color: weaponColor, 
-                metalness: 0.9, 
-                roughness: 0.1,
-                emissive: player.weaponEnchant > 0 ? weaponColor : 0x000000,
-                emissiveIntensity: 0.6
-            });
+            let weaponColor = player.weaponEnchant > 0 ? (player.weaponEnchant >= 3 ? 0xec4899 : 0x38bdf8) : 0xd97706;
+            const weaponMat = new THREE.MeshStandardMaterial({ color: weaponColor, metalness: 0.9, roughness: 0.1, emissive: weaponColor, emissiveIntensity: player.weaponEnchant > 0 ? 0.6 : 0 });
 
             if (arch === 'warrior') {
-                const swordGeo = new THREE.BoxGeometry(0.06, 0.85, 0.02);
-                const sword = new THREE.Mesh(swordGeo, weaponMat);
-                sword.position.set(0.38, 1.0, 0.2);
-                sword.rotation.x = 0.3;
+                const sword = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.85, 0.02), weaponMat);
+                sword.position.set(0.38, 1.0, 0.2); sword.rotation.x = 0.3;
                 characterGroup.add(sword);
             } else if (arch === 'archer') {
-                const bowGeo = new THREE.TorusGeometry(0.35, 0.03, 8, 24, Math.PI);
-                const bow = new THREE.Mesh(bowGeo, weaponMat);
-                bow.position.set(0.35, 1.1, 0);
-                bow.rotation.y = Math.PI / 2;
+                const bow = new THREE.Mesh(new THREE.TorusGeometry(0.35, 0.03, 8, 24, Math.PI), weaponMat);
+                bow.position.set(0.35, 1.1, 0); bow.rotation.y = Math.PI / 2;
                 characterGroup.add(bow);
             } else {
-                const staffGeo = new THREE.CylinderGeometry(0.02, 0.02, 1.1, 8);
-                const staff = new THREE.Mesh(staffGeo, weaponMat);
+                const staff = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 1.1, 8), weaponMat);
                 staff.position.set(0.35, 1.0, 0.1);
-                
-                const orbGeo = new THREE.SphereGeometry(0.08, 12, 12);
-                const orbMat = new THREE.MeshBasicMaterial({ color: 0x06b6d4 });
-                const orb = new THREE.Mesh(orbGeo, orbMat);
+                const orb = new THREE.Mesh(new THREE.SphereGeometry(0.08, 12, 12), new THREE.MeshBasicMaterial({ color: 0x06b6d4 }));
                 orb.position.set(0.35, 1.58, 0.1);
-
-                characterGroup.add(staff);
-                characterGroup.add(orb);
+                characterGroup.add(staff); characterGroup.add(orb);
             }
 
-            // 5. Щит в левой руке (если надет)
             if (eq.shield) {
-                const shieldMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.3 });
-                const shieldGeo = new THREE.BoxGeometry(0.35, 0.45, 0.05);
-                const shield = new THREE.Mesh(shieldGeo, shieldMat);
-                shield.position.set(-0.35, 1.0, 0.15);
-                shield.rotation.y = -0.3;
+                const shield = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.45, 0.05), new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7 }));
+                shield.position.set(-0.35, 1.0, 0.15); shield.rotation.y = -0.3;
                 characterGroup.add(shield);
             }
 
@@ -759,7 +771,6 @@
             if (renderer && container) {
                 renderer.setSize(container.clientWidth, container.clientHeight);
                 camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateParser = true;
                 camera.updateProjectionMatrix();
             }
         }
