@@ -307,6 +307,13 @@
                     <span class="text-xs font-bold text-slate-300">Свободные очки:</span>
                     <span id="stat-points" class="text-sm font-black text-amber-400 bg-amber-950/60 border border-amber-600/40 px-2 py-0.5 rounded-lg">0</span>
                 </div>
+
+                <!-- БЛОК ОБЩИХ СТАТОВ (В ТОМ ЧИСЛЕ P.DEF) -->
+                <div class="bg-slate-950/80 border border-amber-600/30 p-2 rounded-lg flex justify-between items-center text-xs">
+                    <span class="font-bold text-slate-400">🛡️ Физическая Защита (P.Def):</span>
+                    <span id="stat-pdef-display" class="font-black text-amber-400">12</span>
+                </div>
+
                 <div class="space-y-1.5 pt-1 text-xs">
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="font-bold text-amber-500">STR (Сила)</span><span class="text-[9px] text-slate-500 block">+Физ. атака</span></div>
@@ -377,7 +384,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.30 • Mobs x3 / Adena x2 / Natural Regen
+        Eternity Online v0.31 • P.Def Stat & Balance
     </footer>
 
     <script>
@@ -387,7 +394,7 @@
         let player = null;
         let boss = { hp: 100000, maxHp: 100000 };
         let currentTarget = null;
-        let lastCombatTime = 0; // Для отслеживания времени вне боя (реген)
+        let lastCombatTime = 0;
 
         const marketData = {
             weapon: [
@@ -466,7 +473,6 @@
 
         let activeMarketSub = 'weapon';
 
-        // МОБЫ Х3, АДЕНА Х2
         const locations = {
             gremlin_valley: {
                 name: 'Gremlin Valley (1-6 ур.)', minLevel: 1,
@@ -527,7 +533,7 @@
 
         function loadSavedPlayer() {
             const MAIN_SAVE_KEY = 'eternity_player_save';
-            const PREV_KEYS = ['eternity_player_v29', 'eternity_player_v28'];
+            const PREV_KEYS = ['eternity_player_v30', 'eternity_player_v29'];
             let data = localStorage.getItem(MAIN_SAVE_KEY);
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             for (let key of PREV_KEYS) {
@@ -580,14 +586,12 @@
             renderMarketItems();
             renderLocationMobs();
             init3DModel();
-            setInterval(naturalRegenTick, 1000); // Запуск регена каждую секунду
+            setInterval(naturalRegenTick, 1000);
         }
 
-        // ЕСТЕСТВЕННЫЙ РЕГЕН (HP, MP, CP) ВНЕ БОЯ КАК В L2
         function naturalRegenTick() {
             if (!player) return;
             let now = Date.now();
-            // Если прошло больше 2 секунд после последнего удара — включается реген
             if (now - lastCombatTime > 2000) {
                 let changed = false;
                 if (player.hp < player.maxHp) {
@@ -704,7 +708,7 @@
                 saveGame(); updateUI(); return; 
             }
 
-            lastCombatTime = Date.now(); // Фиксируем бой, реген останавливается
+            lastCombatTime = Date.now();
 
             const dmgToMob = Math.max(5, player.atk);
             currentTarget.hp = Math.max(0, currentTarget.hp - dmgToMob);
@@ -735,6 +739,16 @@
             saveGame();
             updateUI();
             updateTargetUI();
+        }
+
+        function addStat(statName) {
+            if (player.statPoints <= 0) { alert('Нет свободных очков статов!'); return; }
+            player.statPoints -= 1;
+            player[statName] += 1;
+            recalcStats();
+            saveGame();
+            updateUI();
+            addLog(`📈 Распределено очко в **${statName.toUpperCase()}**.`);
         }
 
         function switchTab(tab) {
@@ -898,6 +912,7 @@
             document.getElementById('gold').innerText = Math.floor(player.gold);
             document.getElementById('atk').innerText = Math.floor(player.atk);
             document.getElementById('def').innerText = Math.floor(player.def);
+            document.getElementById('stat-pdef-display').innerText = Math.floor(player.def);
             document.getElementById('crit').innerText = `${player.crit}%`;
             document.getElementById('potions').innerText = `${player.potions} / ${player.mpPotions || 0}`;
             document.getElementById('bag-potions').innerText = player.potions;
@@ -917,7 +932,7 @@
 
             // Шкалы CP, HP, MP
             document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
-            document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
+            document.getElementById('cp-bar'].style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
 
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
