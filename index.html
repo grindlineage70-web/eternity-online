@@ -13,7 +13,7 @@
     <!-- 1. ВЫБОР КЛАССОВ (L2 INTERLUDE) -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude Classic 1-20 lvl):</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Balance: Mobs x3 / Adena x2 / Regen):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-[9px] text-slate-400 block">ЛОКАЦИЯ:</span>
+                        <span class="text-[9px] text-slate-400 block">ЛОКАЦИЯ (Mobs x3 / Adena x2):</span>
                         <select id="location-select" onchange="changeLocation()" class="bg-slate-950 border border-amber-600/50 text-amber-400 text-[10px] font-bold rounded-lg px-2 py-1 outline-none">
                             <option value="gremlin_valley">🌱 Gremlin Valley (1-6 ур.)</option>
                             <option value="talking_north">🏰 Talking Island North (6-12 ур.)</option>
@@ -216,7 +216,7 @@
 
             <!-- СПИСОК МОБОВ -->
             <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 space-y-2">
-                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 МОБЫ В ЛОКАЦИИ (Квестовые цели):</h3>
+                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 МОБЫ В ЛОКАЦИИ (Mobs x3 / Adena x2):</h3>
                 <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-32 overflow-y-auto pr-1"></div>
             </div>
 
@@ -302,6 +302,18 @@
                         <span class="text-blue-400 font-bold">💧 Зелья MP</span>
                         <span id="bag-mp-potions" class="font-black text-blue-400">0</span>
                     </div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <span class="text-yellow-500 font-bold">⚡ Соулшоты (SS)</span>
+                        <span id="bag-ss" class="font-black text-yellow-500">0</span>
+                    </div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <span class="text-cyan-400 font-bold">✨ Блесс Соулшоты (BSS)</span>
+                        <span id="bag-bss" class="font-black text-cyan-400">0</span>
+                    </div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center col-span-2">
+                        <span class="text-amber-200 font-bold">🏹 Стрелы</span>
+                        <span id="bag-arrows" class="font-black text-amber-200">100</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -378,7 +390,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.35 • Fixed Syntax Error
+        Eternity Online v0.36 • Full Market & Mobs x3 Restored
     </footer>
 
     <script>
@@ -406,12 +418,24 @@
                 { id: 'w_s', name: 'Angel Slayer / Draconic Bow (S-Grade)', atk: 260, reqLvl: 75, cost: 200000 }
             ],
             armor: [
-                { id: 'a_ng_h', name: '🛡️ Heavy: Wooden Set (No-Grade)', def: 12, reqLvl: 1, cost: 150 },
-                { id: 'a_d_h', name: '🛡️ Heavy: Brigandine Set (D-Grade)', def: 32, reqLvl: 20, cost: 1200 },
-                { id: 'a_c_h', name: '🛡️ Heavy: Full Plate Set (C-Grade)', def: 65, reqLvl: 40, cost: 6000 },
-                { id: 'a_b_h', name: '🛡️ Heavy: Avadon Heavy Set (B-Grade)', def: 115, reqLvl: 52, cost: 20000 },
-                { id: 'a_a_h', name: '🛡️ Heavy: Tallum Heavy Set (A-Grade)', def: 175, reqLvl: 61, cost: 60000 },
-                { id: 'a_s_h', name: '🛡️ Heavy: Imperial Crusader Set (S-Grade)', def: 250, reqLvl: 75, cost: 180000 }
+                { id: 'a_ng_h', name: '🛡️ Heavy: Wooden Set (No-Grade)', def: 12, reqLvl: 1, cost: 150, bonusName: 'Wooden Set', bonusAtk: 5, bonusDef: 5 },
+                { id: 'a_ng_l', name: '🏹 Light: Leather Set (No-Grade)', def: 10, reqLvl: 1, cost: 150, bonusName: 'Leather Set', bonusHp: 30 },
+                { id: 'a_ng_r', name: '🔮 Robe: Tunic Set (No-Grade)', def: 8, reqLvl: 1, cost: 150, bonusName: 'Tunic Set', bonusAtk: 8 },
+                { id: 'a_d_h', name: '🛡️ Heavy: Brigandine Set (D-Grade)', def: 32, reqLvl: 20, cost: 1200, bonusName: 'Brigandine Set', bonusHp: 150 },
+                { id: 'a_d_l', name: '🏹 Light: Manticore Skin Set (D-Grade)', def: 28, reqLvl: 20, cost: 1200, bonusName: 'Manticore Set', bonusAtk: 15 },
+                { id: 'a_d_r', name: '🔮 Robe: Karmian Set (D-Grade)', def: 22, reqLvl: 20, cost: 1200, bonusName: 'Karmian Set', bonusAtk: 25 },
+                { id: 'a_c_h', name: '🛡️ Heavy: Full Plate Set (C-Grade)', def: 65, reqLvl: 40, cost: 6000, bonusName: 'Full Plate Set', bonusHp: 270, bonusDef: 20 },
+                { id: 'a_c_l', name: '🏹 Light: Plated Leather Set (C-Grade)', def: 58, reqLvl: 40, cost: 6000, bonusName: 'Plated Leather Set', bonusAtk: 40 },
+                { id: 'a_c_r', name: '🔮 Robe: Demon Set (C-Grade)', def: 48, reqLvl: 40, cost: 6000, bonusName: 'Demon Set', bonusAtk: 55 },
+                { id: 'a_b_h', name: '🛡️ Heavy: Avadon Heavy Set (B-Grade)', def: 115, reqLvl: 52, cost: 20000, bonusName: 'Avadon Heavy', bonusHp: 350, bonusDef: 35 },
+                { id: 'a_b_l', name: '🏹 Light: Avadon Light Set (B-Grade)', def: 102, reqLvl: 52, cost: 20000, bonusName: 'Avadon Light', bonusAtk: 50, bonusCrit: 5 },
+                { id: 'a_b_r', name: '🔮 Robe: Avadon Robe Set (B-Grade)', def: 88, reqLvl: 52, cost: 20000, bonusName: 'Avadon Robe', bonusAtk: 70, bonusDef: 25 },
+                { id: 'a_a_h', name: '🛡️ Heavy: Tallum Heavy Set (A-Grade)', def: 175, reqLvl: 61, cost: 60000, bonusName: 'Tallum Heavy', bonusAtk: 80, bonusDef: 40 },
+                { id: 'a_a_l', name: '🏹 Light: Majestic Light Set (A-Grade)', def: 155, reqLvl: 61, cost: 60000, bonusName: 'Majestic Light', bonusAtk: 95, bonusCrit: 8 },
+                { id: 'a_a_r', name: '🔮 Robe: Dark Crystal Robe (A-Grade)', def: 135, reqLvl: 61, cost: 60000, bonusName: 'Dark Crystal Robe', bonusAtk: 110, bonusDef: 30 },
+                { id: 'a_s_h', name: '🛡️ Heavy: Imperial Crusader Set (S-Grade)', def: 250, reqLvl: 75, cost: 180000, bonusName: 'Imperial Crusader', bonusHp: 600, bonusDef: 75, bonusAtk: 100 },
+                { id: 'a_s_l', name: '🏹 Light: Draconic Leather Set (S-Grade)', def: 220, reqLvl: 75, cost: 180000, bonusName: 'Draconic Leather', bonusAtk: 160, bonusCrit: 12 },
+                { id: 'a_s_r', name: '🔮 Robe: Major Arcana Robe (S-Grade)', def: 190, reqLvl: 75, cost: 180000, bonusName: 'Major Arcana Robe', bonusAtk: 180, bonusDef: 50 }
             ],
             jewel: [
                 { id: 'j_ng', name: 'Necklace of Anguish (No-Grade)', def: 5, reqLvl: 1, cost: 100 },
@@ -425,18 +449,38 @@
                 { id: 'sc_w_ng', name: '✨ Enchant Weapon (NG)', cost: 150, type: 'w_scroll' },
                 { id: 'sc_w_d', name: '✨ Enchant Weapon (D-Grade)', cost: 500, type: 'w_scroll' },
                 { id: 'sc_w_c', name: '✨ Enchant Weapon (C-Grade)', cost: 1500, type: 'w_scroll' },
+                { id: 'sc_w_b', name: '✨ Enchant Weapon (B-Grade)', cost: 4000, type: 'w_scroll' },
+                { id: 'sc_w_a', name: '✨ Enchant Weapon (A-Grade)', cost: 10000, type: 'w_scroll' },
+                { id: 'sc_w_s', name: '✨ Enchant Weapon (S-Grade)', cost: 25000, type: 'w_scroll' },
                 { id: 'sc_a_ng', name: '🛡️ Enchant Armor (NG)', cost: 80, type: 'a_scroll' },
-                { id: 'sc_a_d', name: '🛡️ Enchant Armor (D-Grade)', cost: 250, type: 'a_scroll' }
+                { id: 'sc_a_d', name: '🛡️ Enchant Armor (D-Grade)', cost: 250, type: 'a_scroll' },
+                { id: 'sc_a_c', name: '🛡️ Enchant Armor (C-Grade)', cost: 800, type: 'a_scroll' },
+                { id: 'sc_a_b', name: '🛡️ Enchant Armor (B-Grade)', cost: 2000, type: 'a_scroll' },
+                { id: 'sc_a_a', name: '🛡️ Enchant Armor (A-Grade)', cost: 5000, type: 'a_scroll' },
+                { id: 'sc_a_s', name: '🛡️ Enchant Armor (S-Grade)', cost: 12000, type: 'a_scroll' }
             ],
             consum: [
                 { id: 'c_hp', name: 'Greater Healing Potion (+100 HP)', cost: 50, type: 'hp' },
                 { id: 'c_mp', name: 'Mana Potion (+80 MP)', cost: 100, type: 'mp' },
                 { id: 'c_ss_ng', name: '⚡ Soulshot (NG) x100', cost: 100, type: 'ss' },
-                { id: 'c_ss_d', name: '⚡ Soulshot (D) x100', cost: 300, type: 'ss' }
+                { id: 'c_ss_d', name: '⚡ Soulshot (D) x100', cost: 300, type: 'ss' },
+                { id: 'c_ss_c', name: '⚡ Soulshot (C) x100', cost: 800, type: 'ss' },
+                { id: 'c_ss_b', name: '⚡ Soulshot (B) x100', cost: 1500, type: 'ss' },
+                { id: 'c_ss_a', name: '⚡ Soulshot (A) x100', cost: 2200, type: 'ss' },
+                { id: 'c_ss_s', name: '⚡ Soulshot (S) x100', cost: 3500, type: 'ss' },
+                { id: 'c_bss_ng', name: '✨ Blessed Soulshot (NG) x100', cost: 200, type: 'bss' },
+                { id: 'c_bss_d', name: '✨ Blessed Soulshot (D) x100', cost: 600, type: 'bss' },
+                { id: 'c_bss_c', name: '✨ Blessed Soulshot (C) x100', cost: 1600, type: 'bss' },
+                { id: 'c_bss_b', name: '✨ Blessed Soulshot (B) x100', cost: 3000, type: 'bss' },
+                { id: 'c_bss_a', name: '✨ Blessed Soulshot (A) x100', cost: 4500, type: 'bss' },
+                { id: 'c_bss_s', name: '✨ Blessed Soulshot (S) x100', cost: 7000, type: 'bss' },
+                { id: 'c_arrows', name: '🏹 Стрелы x500', cost: 150, type: 'arrows' }
             ],
             dyes: [
                 { id: 'd_str', name: '🎨 Тату: +4 STR / -4 CON (Сила)', cost: 5000, stat: 'str', statSub: 'con' },
-                { id: 'd_dex', name: '🎨 Тату: +4 DEX / -4 STR (Ловкость)', cost: 5000, stat: 'dex', statSub: 'str' }
+                { id: 'd_dex', name: '🎨 Тату: +4 DEX / -4 STR (Ловкость)', cost: 5000, stat: 'dex', statSub: 'str' },
+                { id: 'd_int', name: '🎨 Тату: +4 INT / -4 MEN (Маг. Атака)', cost: 5000, stat: 'int', statSub: 'men' },
+                { id: 'd_wit', name: '🎨 Тату: +4 WIT / -4 MEN (Скорость каста)', cost: 5000, stat: 'wit', statSub: 'men' }
             ]
         };
 
@@ -467,7 +511,7 @@
         };
 
         function loadSavedPlayer() {
-            let data = localStorage.getItem('eternity_player_save_v35');
+            let data = localStorage.getItem('eternity_player_save_v36');
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             return null;
         }
@@ -490,10 +534,11 @@
                 classKey: key, title: title, race: race, archetype: archetype,
                 level: 1, exp: 0, maxExp: 100, gold: 1000, statPoints: 0,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
-                potions: 5, mpPotions: 3, wScrolls: 1, aScrolls: 1,
+                potions: 5, mpPotions: 3, ssCount: 100, bssCount: 100, arrowCount: 500,
+                wScrolls: 1, aScrolls: 1,
                 currentLocation: 'gremlin_valley',
                 equippedWeaponAtk: 15, equippedArmorDef: 12, equippedJewelDef: 5,
-                equipment: { weapon: true, chest: true, neck: true }
+                activeSet: null, equipment: { weapon: true, chest: true, neck: true }
             };
             recalcStats();
             player.hp = player.maxHp;
@@ -531,7 +576,7 @@
         }
 
         function saveGame() {
-            if (player) localStorage.setItem('eternity_player_save_v35', JSON.stringify(player));
+            if (player) localStorage.setItem('eternity_player_save_v36', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -769,9 +814,15 @@
 
             player.gold -= found.cost;
             if (activeMarketSub === 'weapon') player.equippedWeaponAtk = found.atk;
-            else if (activeMarketSub === 'armor') player.equippedArmorDef = found.def;
+            else if (activeMarketSub === 'armor') { player.equippedArmorDef = found.def; player.activeSet = found; }
             else if (activeMarketSub === 'jewel') player.equippedJewelDef = found.def;
-            else if (activeMarketSub === 'consum') player.potions += 1;
+            else if (activeMarketSub === 'consum') {
+                if (found.type === 'hp') player.potions += 1;
+                if (found.type === 'mp') player.mpPotions = (player.mpPotions || 0) + 1;
+                if (found.type === 'ss') player.ssCount = (player.ssCount || 0) + 100;
+                if (found.type === 'bss') player.bssCount = (player.bssCount || 0) + 100;
+                if (found.type === 'arrows') player.arrowCount = (player.arrowCount || 0) + 500;
+            }
             else if (activeMarketSub === 'dyes') {
                 player[found.stat] += 4; player[found.statSub] = Math.max(1, player[found.statSub] - 4);
             }
@@ -783,11 +834,18 @@
             if (!player) return;
             let bonusAtk = (player.equippedWeaponAtk || 15);
             let bonusDef = (player.equippedArmorDef || 12) + (player.equippedJewelDef || 5);
+            let extraHp = 0;
+
+            if (player.activeSet) {
+                if (player.activeSet.bonusAtk) bonusAtk += player.activeSet.bonusAtk;
+                if (player.activeSet.bonusDef) bonusDef += player.activeSet.bonusDef;
+                if (player.activeSet.bonusHp) extraHp += player.activeSet.bonusHp;
+            }
 
             player.atk = (player.str * 2.1) + (player.int * 2.3) + bonusAtk;
             player.def = (player.con * 1) + bonusDef;
             player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.7));
-            player.maxHp = 80 + (player.con * 8);
+            player.maxHp = 80 + (player.con * 8) + extraHp;
             player.maxCp = 40 + (player.con * 5);
             player.maxMp = 50 + (player.men * 6);
 
@@ -799,6 +857,8 @@
         function usePotion(type) {
             if (type === 'hp' && player.potions > 0) {
                 player.potions--; player.hp = Math.min(player.maxHp, player.hp + 100);
+            } else if (type === 'mp' && player.mpPotions > 0) {
+                player.mpPotions--; player.mp = Math.min(player.maxMp, player.mp + 80);
             }
             saveGame(); updateUI();
         }
@@ -826,8 +886,12 @@
             document.getElementById('def').innerText = Math.floor(player.def);
             document.getElementById('stat-pdef-display').innerText = Math.floor(player.def);
             document.getElementById('crit').innerText = `${player.crit}%`;
-            document.getElementById('potions').innerText = player.potions;
+            document.getElementById('potions').innerText = `${player.potions} / ${player.mpPotions || 0}`;
             document.getElementById('bag-potions').innerText = player.potions;
+            document.getElementById('bag-mp-potions').innerText = player.mpPotions || 0;
+            document.getElementById('bag-ss').innerText = player.ssCount || 0;
+            document.getElementById('bag-bss').innerText = player.bssCount || 0;
+            document.getElementById('bag-arrows').innerText = player.arrowCount || 0;
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
             document.getElementById('stat-dex').innerText = player.dex;
