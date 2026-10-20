@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternity Online - Character</title>
+    <!-- Подключаем Tailwind CSS для красивого дизайна -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-4 flex flex-col justify-between">
+
+    <!-- Верхняя панель: Имя персонажа и Уровень -->
+    <div>
+        <header class="flex justify-between items-center border-b border-slate-800 pb-4 mb-4">
+            <div>
+                <h1 class="text-xl font-bold text-amber-500 tracking-wider">ETERNITY ONLINE</h1>
+                <p id="username" class="text-sm text-slate-400">Игрок: Загрузка...</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-700 px-3 py-1 rounded-lg text-right">
+                <span class="text-xs text-slate-400 block">УРОВЕНЬ</span>
+                <span class="text-lg font-black text-amber-400">1</span>
+            </div>
+        </header>
+
+        <!-- Карточка персонажа в стиле Diablo / L2 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 mb-4 shadow-xl">
+            <div class="flex items-center space-x-4 mb-4">
+                <div class="w-16 h-16 bg-slate-800 border-2 border-amber-600 rounded-xl flex items-center justify-center text-3xl shadow-inner">
+                    🛡️
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-slate-200">Рыцарь Тьмы</h2>
+                    <p class="text-xs text-amber-500/80 font-medium">Класс: Воин (Gladiator)</p>
+                </div>
+            </div>
+
+            <!-- Шкалы здоровья и маны -->
+            <div class="space-y-2 mb-4">
+                <div>
+                    <div class="flex justify-between text-xs mb-1 text-slate-400">
+                        <span>HP (Здоровье)</span>
+                        <span>150 / 150</span>
+                    </div>
+                    <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
+                        <div class="bg-red-600 h-full w-full"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs mb-1 text-slate-400">
+                        <span>MP (Мана)</span>
+                        <span>50 / 50</span>
+                    </div>
+                    <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
+                        <div class="bg-blue-600 h-full w-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Характеристики (Статы как в L2) -->
+            <div class="grid grid-cols-2 gap-2 text-sm bg-slate-950/50 p-3 rounded-xl border border-slate-800/60">
+                <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span class="font-bold text-amber-400">24</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Защита:</span> <span class="font-bold text-slate-200">18</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Шанс Крита:</span> <span class="font-bold text-slate-200">5%</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Скорость:</span> <span class="font-bold text-slate-200">12</span></div>
+            </div>
+        </div>
+
+        <!-- Кнопки действий (Фарм / Подземелья) -->
+        <div class="space-y-3">
+            <button onclick="alert('Вы отправились на охоту в Проклятые Земли! Найден ржавый меч.')" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3 px-4 rounded-xl shadow-lg shadow-amber-900/20 active:scale-95 transition-all">
+                ⚔️ Отправиться на фарм (PvE)
+            </button>
+            <button onclick="alert('Арена в разработке! Скоро здесь будут PvP-бои.')" class="w-full bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-200 font-bold py-3 px-4 rounded-xl active:scale-95 transition-all">
+                🏛️ Арена PvP
+            </button>
+        </div>
+    </div>
+
+    <!-- Подвал / Инфо -->
+    <footer class="text-center text-xs text-slate-600 pt-4">
+        Eternity Online v0.1 • Telegram MMO RPG
+    </footer>
+
+    <!-- Скрипт инициализации Telegram -->
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачиваем Web App на весь экран
+
+        // Получаем имя реального игрока из Telegram
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            const user = tg.initDataUnsafe.user;
+            document.getElementById('username').innerText = `Игрок: ${user.first_name}`;
+        } else {
+            document.getElementById('username').innerText = `Игрок: Странник (Тест)`;
+        }
+    </script>
+</body>
+</html>
