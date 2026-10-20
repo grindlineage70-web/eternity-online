@@ -296,7 +296,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.20 • Grade Scrolls, BSS & Arrows
+        Eternity Online v0.20.1 • Permanent Progress Saved
     </footer>
 
     <script>
@@ -360,21 +360,18 @@
             consum: [
                 { id: 'c_hp', name: 'Greater Healing Potion (+100 HP)', cost: 50, type: 'hp' },
                 { id: 'c_mp', name: 'Mana Potion (+80 MP)', cost: 100, type: 'mp' },
-                // Soulshots
                 { id: 'c_ss_ng', name: '⚡ Soulshot (NG) x100', cost: 100, type: 'ss' },
                 { id: 'c_ss_d', name: '⚡ Soulshot (D) x100', cost: 300, type: 'ss' },
                 { id: 'c_ss_c', name: '⚡ Soulshot (C) x100', cost: 800, type: 'ss' },
                 { id: 'c_ss_b', name: '⚡ Soulshot (B) x100', cost: 1500, type: 'ss' },
                 { id: 'c_ss_a', name: '⚡ Soulshot (A) x100', cost: 2200, type: 'ss' },
                 { id: 'c_ss_s', name: '⚡ Soulshot (S) x100', cost: 3500, type: 'ss' },
-                // Blessed Spiritshots (Маги)
                 { id: 'c_bss_ng', name: '✨ Blessed Spiritshot (NG) x100', cost: 200, type: 'bss' },
                 { id: 'c_bss_d', name: '✨ Blessed Spiritshot (D) x100', cost: 600, type: 'bss' },
                 { id: 'c_bss_c', name: '✨ Blessed Spiritshot (C) x100', cost: 1600, type: 'bss' },
                 { id: 'c_bss_b', name: '✨ Blessed Spiritshot (B) x100', cost: 3000, type: 'bss' },
                 { id: 'c_bss_a', name: '✨ Blessed Spiritshot (A) x100', cost: 4500, type: 'bss' },
                 { id: 'c_bss_s', name: '✨ Blessed Spiritshot (S) x100', cost: 7000, type: 'bss' },
-                // Стрелы
                 { id: 'c_arr_ng', name: '🏹 Wooden Arrows (NG) x100', cost: 50, type: 'arrow' },
                 { id: 'c_arr_d', name: '🏹 Bone Arrows (D) x100', cost: 150, type: 'arrow' },
                 { id: 'c_arr_c', name: '🏹 Fine Steel Arrows (C) x100', cost: 400, type: 'arrow' },
@@ -400,11 +397,30 @@
             dragon_valley: { name: 'Долина Драконов', minLevel: 50, expMult: 9.0, goldMult: 8.0, dropChance: 0.55 }
         };
 
-        try {
-            if (localStorage.getItem('eternity_player_v20')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v20'));
+        // АВТОМАТИЧЕСКАЯ СИСТЕМА ВОССТАНОВЛЕНИЯ И ЗАЩИТЫ СОХРАНЕНИЙ
+        function loadSavedPlayer() {
+            const MAIN_SAVE_KEY = 'eternity_player_save';
+            const PREV_KEYS = ['eternity_player_v20', 'eternity_player_v19', 'eternity_player_v18_1', 'eternity_player_v18', 'eternity_player_v17', 'eternity_player_v1'];
+            
+            let data = localStorage.getItem(MAIN_SAVE_KEY);
+            if (data) {
+                try { return JSON.parse(data); } catch(e) {}
             }
-        } catch(e) { player = null; }
+            // Поиск в предыдущих версиях
+            for (let key of PREV_KEYS) {
+                let prevData = localStorage.getItem(key);
+                if (prevData) {
+                    try {
+                        let parsed = JSON.parse(prevData);
+                        localStorage.setItem(MAIN_SAVE_KEY, prevData); // Миграция
+                        return parsed;
+                    } catch(e) {}
+                }
+            }
+            return null;
+        }
+
+        player = loadSavedPlayer();
 
         if (player && player.classKey) {
             showGameScreen();
@@ -450,7 +466,9 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v20', JSON.stringify(player));
+            if (player) {
+                localStorage.setItem('eternity_player_save', JSON.stringify(player));
+            }
         }
 
         function addLog(text) {
@@ -556,8 +574,8 @@
                 player.equippedJewelDef = found.def;
                 addLog(`💎 Куплена бижутерия: **${found.name}**!`);
             } else if (category === 'scrolls') {
-                if (found.type === 'w_scroll') player.wScrolls += 1;
-                if (found.type === 'a_scroll') player.aScrolls += 1;
+                if (found.type === 'w_scroll') player.wScrolls = (player.wScrolls || 0) + 1;
+                if (found.type === 'a_scroll') player.aScrolls = (player.aScrolls || 0) + 1;
                 addLog(`✨ Куплена заточка: **${found.name}**!`);
             } else if (category === 'consum') {
                 if (found.type === 'hp') player.potions += 1;
@@ -635,7 +653,7 @@
         }
 
         function enchantWeapon() {
-            if (player.wScrolls <= 0) { alert('Нет свитков заточки оружия!'); return; }
+            if (!player.wScrolls || player.wScrolls <= 0) { alert('Нет свитков заточки оружия!'); return; }
             player.wScrolls -= 1;
             if (Math.random() <= 0.6) { 
                 player.weaponEnchant += 1; 
@@ -703,7 +721,7 @@
         }
 
         // ==========================================
-        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.20)
+        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.20.1)
         // ==========================================
         let scene, camera, renderer, characterGroup;
         let isDragging = false, previousMousePosition = { x: 0, y: 0 };
