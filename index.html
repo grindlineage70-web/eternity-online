@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <!-- Переключение Вкладок -->
+        <!-- Переключение 6 вкладок -->
         <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-2">
             <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[9px] transition-all">⚔️ Охота</button>
             <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">👤 Кукла</button>
@@ -110,7 +110,6 @@
                     </div>
                 </div>
 
-                <!-- Индикатор Активного Сетового Бонуса -->
                 <div id="set-bonus-badge" class="hidden bg-amber-950/40 border border-amber-500/40 p-1.5 rounded-lg text-[9px] text-amber-300 font-semibold flex items-center justify-between">
                     <span>✨ Сетовый бонус: <b id="set-bonus-name">Нет</b></span>
                     <span id="set-bonus-desc" class="text-[8px] text-amber-400/80"></span>
@@ -140,7 +139,7 @@
                 </button>
                 <div class="flex space-x-2">
                     <button onclick="usePotion()" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+50)</button>
-                    <button onclick="enchantWeapon()" class="flex-1 bg-slate-900 border border-amber-600/40 text-amber-400 font-bold py-2 rounded-xl text-xs active:scale-95">✨ Заточить (+1)</button>
+                    <button onclick="enchantWeapon()" class="flex-1 bg-slate-900 border border-amber-600/40 text-amber-400 font-bold py-2 rounded-xl text-xs active:scale-95">✨ Заточить Пушку</button>
                 </div>
             </div>
         </div>
@@ -193,20 +192,28 @@
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ ПЕРСОНАЖА</h3>
                 <div class="grid grid-cols-2 gap-2 text-xs">
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-amber-400 font-bold">✨ Свитки Заточки</span>
-                        <span id="bag-scrolls" class="font-black text-amber-400">0</span>
+                        <span class="text-amber-400 font-bold">✨ Заточки Оружия</span>
+                        <span id="bag-w-scrolls" class="font-black text-amber-400">0</span>
                     </div>
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-red-400 font-bold">🧪 Зелья HP</span>
+                        <span class="text-blue-400 font-bold">🛡️ Заточки Брони</span>
+                        <span id="bag-a-scrolls" class="font-black text-blue-400">0</span>
+                    </div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <span class="text-red-400 font-bold">🧪 Зелья HP / MP</span>
                         <span id="bag-potions" class="font-black text-red-400">0</span>
                     </div>
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-blue-400 font-bold">💧 Зелья MP</span>
-                        <span id="bag-mp-potions" class="font-black text-blue-400">0</span>
+                        <span class="text-yellow-500 font-bold">⚡ Соулшоты (SS)</span>
+                        <span id="bag-ss" class="font-black text-yellow-500">0</span>
                     </div>
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-yellow-500 font-bold">⚡ Заряды (SS/BS)</span>
-                        <span id="bag-ss" class="font-black text-yellow-500">0</span>
+                        <span class="text-cyan-400 font-bold">✨ Спиритшоты (BSS)</span>
+                        <span id="bag-bss" class="font-black text-cyan-400">0</span>
+                    </div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <span class="text-orange-400 font-bold">🏹 Стрелы</span>
+                        <span id="bag-arrows" class="font-black text-orange-400">0</span>
                     </div>
                 </div>
             </div>
@@ -248,14 +255,15 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 5: ПОЛНЫЙ РЫНОК С ПОДВКЛАДКАМИ L2 INTERLUDE -->
+        <!-- ВКЛАДКА 5: ПОЛНЫЙ РЫНОК -->
         <div id="tab-market" class="hidden space-y-2">
-            <div class="grid grid-cols-5 gap-1 border-b border-slate-800 pb-1.5">
-                <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]">⚔️ Пушки</button>
-                <button id="m-sub-armor" onclick="switchMarketSub('armor')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🛡️ Броня</button>
-                <button id="m-sub-jewel" onclick="switchMarketSub('jewel')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">💎 Бижа</button>
-                <button id="m-sub-consum" onclick="switchMarketSub('consum')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🧪 Зелья/SS</button>
-                <button id="m-sub-dyes" onclick="switchMarketSub('dyes')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🎨 Тату</button>
+            <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-1.5">
+                <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[7px]">⚔️ Пушки</button>
+                <button id="m-sub-armor" onclick="switchMarketSub('armor')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🛡️ Броня</button>
+                <button id="m-sub-jewel" onclick="switchMarketSub('jewel')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">💎 Бижа</button>
+                <button id="m-sub-scrolls" onclick="switchMarketSub('scrolls')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">✨ Точки</button>
+                <button id="m-sub-consum" onclick="switchMarketSub('consum')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🧪 Заряды/Стрелы</button>
+                <button id="m-sub-dyes" onclick="switchMarketSub('dyes')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🎨 Тату</button>
             </div>
 
             <div id="market-items-container" class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs"></div>
@@ -288,7 +296,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.19 • Authentic L2 Interlude Set Bonuses
+        Eternity Online v0.20 • Grade Scrolls, BSS & Arrows
     </footer>
 
     <script>
@@ -308,27 +316,21 @@
                 { id: 'w_s', name: 'Angel Slayer / Draconic Bow (S-Grade)', atk: 260, reqLvl: 75, cost: 200000 }
             ],
             armor: [
-                // No-Grade
                 { id: 'a_ng_h', name: '🛡️ Heavy: Wooden Set (No-Grade)', def: 12, reqLvl: 1, cost: 150, bonusName: 'Wooden Set', bonusAtk: 5, bonusDef: 5 },
                 { id: 'a_ng_l', name: '🏹 Light: Leather Set (No-Grade)', def: 10, reqLvl: 1, cost: 150, bonusName: 'Leather Set', bonusHp: 30 },
                 { id: 'a_ng_r', name: '🔮 Robe: Tunic Set (No-Grade)', def: 8, reqLvl: 1, cost: 150, bonusName: 'Tunic Set', bonusAtk: 8 },
-                // D-Grade
                 { id: 'a_d_h', name: '🛡️ Heavy: Brigandine Set (D-Grade)', def: 32, reqLvl: 20, cost: 1200, bonusName: 'Brigandine Set', bonusHp: 150 },
                 { id: 'a_d_l', name: '🏹 Light: Manticore Skin Set (D-Grade)', def: 28, reqLvl: 20, cost: 1200, bonusName: 'Manticore Set', bonusAtk: 15 },
-                { id: 'a_d_r', name: '🔮 Robe: Karmian Set (D-Grade)', def: 22, reqLvl: 20, cost: 1200, bonusName: 'Karmian Set', bonusAtk: 25, bonusDesc: '+15% Скорости каста' },
-                // C-Grade
+                { id: 'a_d_r', name: '🔮 Robe: Karmian Set (D-Grade)', def: 22, reqLvl: 20, cost: 1200, bonusName: 'Karmian Set', bonusAtk: 25 },
                 { id: 'a_c_h', name: '🛡️ Heavy: Full Plate Set (C-Grade)', def: 65, reqLvl: 40, cost: 6000, bonusName: 'Full Plate Set', bonusHp: 270, bonusDef: 20 },
-                { id: 'a_c_l', name: '🏹 Light: Plated Leather Set (C-Grade)', def: 58, reqLvl: 40, cost: 6000, bonusName: 'Plated Leather Set', bonusAtk: 40, bonusDesc: '+4 STR (Гигантская Атака)' },
+                { id: 'a_c_l', name: '🏹 Light: Plated Leather Set (C-Grade)', def: 58, reqLvl: 40, cost: 6000, bonusName: 'Plated Leather Set', bonusAtk: 40 },
                 { id: 'a_c_r', name: '🔮 Robe: Demon Set (C-Grade)', def: 48, reqLvl: 40, cost: 6000, bonusName: 'Demon Set', bonusAtk: 55 },
-                // B-Grade
                 { id: 'a_b_h', name: '🛡️ Heavy: Avadon Heavy Set (B-Grade)', def: 115, reqLvl: 52, cost: 20000, bonusName: 'Avadon Heavy', bonusHp: 350, bonusDef: 35 },
                 { id: 'a_b_l', name: '🏹 Light: Avadon Light Set (B-Grade)', def: 102, reqLvl: 52, cost: 20000, bonusName: 'Avadon Light', bonusAtk: 50, bonusCrit: 5 },
                 { id: 'a_b_r', name: '🔮 Robe: Avadon Robe Set (B-Grade)', def: 88, reqLvl: 52, cost: 20000, bonusName: 'Avadon Robe', bonusAtk: 70, bonusDef: 25 },
-                // A-Grade
                 { id: 'a_a_h', name: '🛡️ Heavy: Tallum Heavy Set (A-Grade)', def: 175, reqLvl: 61, cost: 60000, bonusName: 'Tallum Heavy', bonusAtk: 80, bonusDef: 40 },
                 { id: 'a_a_l', name: '🏹 Light: Majestic Light Set (A-Grade)', def: 155, reqLvl: 61, cost: 60000, bonusName: 'Majestic Light', bonusAtk: 95, bonusCrit: 8 },
                 { id: 'a_a_r', name: '🔮 Robe: Dark Crystal Robe (A-Grade)', def: 135, reqLvl: 61, cost: 60000, bonusName: 'Dark Crystal Robe', bonusAtk: 110, bonusDef: 30 },
-                // S-Grade
                 { id: 'a_s_h', name: '🛡️ Heavy: Imperial Crusader Set (S-Grade)', def: 250, reqLvl: 75, cost: 180000, bonusName: 'Imperial Crusader', bonusHp: 600, bonusDef: 75, bonusAtk: 100 },
                 { id: 'a_s_l', name: '🏹 Light: Draconic Leather Set (S-Grade)', def: 220, reqLvl: 75, cost: 180000, bonusName: 'Draconic Leather', bonusAtk: 160, bonusCrit: 12 },
                 { id: 'a_s_r', name: '🔮 Robe: Major Arcana Robe (S-Grade)', def: 190, reqLvl: 75, cost: 180000, bonusName: 'Major Arcana Robe', bonusAtk: 180, bonusDef: 50 }
@@ -341,16 +343,44 @@
                 { id: 'j_a', name: 'Majestic Jewels Set (A-Grade)', def: 90, reqLvl: 61, cost: 45000 },
                 { id: 'j_s', name: 'Tateossian Jewels Set (S-Grade)', def: 140, reqLvl: 75, cost: 120000 }
             ],
+            scrolls: [
+                { id: 'sc_w_ng', name: '✨ Enchant Weapon (NG)', cost: 150, type: 'w_scroll' },
+                { id: 'sc_w_d', name: '✨ Enchant Weapon (D-Grade)', cost: 500, type: 'w_scroll' },
+                { id: 'sc_w_c', name: '✨ Enchant Weapon (C-Grade)', cost: 1500, type: 'w_scroll' },
+                { id: 'sc_w_b', name: '✨ Enchant Weapon (B-Grade)', cost: 4000, type: 'w_scroll' },
+                { id: 'sc_w_a', name: '✨ Enchant Weapon (A-Grade)', cost: 10000, type: 'w_scroll' },
+                { id: 'sc_w_s', name: '✨ Enchant Weapon (S-Grade)', cost: 25000, type: 'w_scroll' },
+                { id: 'sc_a_ng', name: '🛡️ Enchant Armor (NG)', cost: 80, type: 'a_scroll' },
+                { id: 'sc_a_d', name: '🛡️ Enchant Armor (D-Grade)', cost: 250, type: 'a_scroll' },
+                { id: 'sc_a_c', name: '🛡️ Enchant Armor (C-Grade)', cost: 800, type: 'a_scroll' },
+                { id: 'sc_a_b', name: '🛡️ Enchant Armor (B-Grade)', cost: 2000, type: 'a_scroll' },
+                { id: 'sc_a_a', name: '🛡️ Enchant Armor (A-Grade)', cost: 5000, type: 'a_scroll' },
+                { id: 'sc_a_s', name: '🛡️ Enchant Armor (S-Grade)', cost: 12000, type: 'a_scroll' }
+            ],
             consum: [
                 { id: 'c_hp', name: 'Greater Healing Potion (+100 HP)', cost: 50, type: 'hp' },
                 { id: 'c_mp', name: 'Mana Potion (+80 MP)', cost: 100, type: 'mp' },
-                { id: 'c_ss_ng', name: 'Soulshot / Spiritshot (NG) x100', cost: 100, type: 'ss' },
-                { id: 'c_ss_d', name: 'Soulshot / Spiritshot (D) x100', cost: 300, type: 'ss' },
-                { id: 'c_ss_c', name: 'Soulshot / Spiritshot (C) x100', cost: 800, type: 'ss' },
-                { id: 'c_ss_b', name: 'Soulshot / Spiritshot (B) x100', cost: 1500, type: 'ss' },
-                { id: 'c_ss_a', name: 'Soulshot / Spiritshot (A) x100', cost: 2200, type: 'ss' },
-                { id: 'c_ss_s', name: 'Soulshot / Spiritshot (S) x100', cost: 3500, type: 'ss' },
-                { id: 'c_scroll', name: '✨ Свиток Заточки Оружия', cost: 250, type: 'scroll' }
+                // Soulshots
+                { id: 'c_ss_ng', name: '⚡ Soulshot (NG) x100', cost: 100, type: 'ss' },
+                { id: 'c_ss_d', name: '⚡ Soulshot (D) x100', cost: 300, type: 'ss' },
+                { id: 'c_ss_c', name: '⚡ Soulshot (C) x100', cost: 800, type: 'ss' },
+                { id: 'c_ss_b', name: '⚡ Soulshot (B) x100', cost: 1500, type: 'ss' },
+                { id: 'c_ss_a', name: '⚡ Soulshot (A) x100', cost: 2200, type: 'ss' },
+                { id: 'c_ss_s', name: '⚡ Soulshot (S) x100', cost: 3500, type: 'ss' },
+                // Blessed Spiritshots (Маги)
+                { id: 'c_bss_ng', name: '✨ Blessed Spiritshot (NG) x100', cost: 200, type: 'bss' },
+                { id: 'c_bss_d', name: '✨ Blessed Spiritshot (D) x100', cost: 600, type: 'bss' },
+                { id: 'c_bss_c', name: '✨ Blessed Spiritshot (C) x100', cost: 1600, type: 'bss' },
+                { id: 'c_bss_b', name: '✨ Blessed Spiritshot (B) x100', cost: 3000, type: 'bss' },
+                { id: 'c_bss_a', name: '✨ Blessed Spiritshot (A) x100', cost: 4500, type: 'bss' },
+                { id: 'c_bss_s', name: '✨ Blessed Spiritshot (S) x100', cost: 7000, type: 'bss' },
+                // Стрелы
+                { id: 'c_arr_ng', name: '🏹 Wooden Arrows (NG) x100', cost: 50, type: 'arrow' },
+                { id: 'c_arr_d', name: '🏹 Bone Arrows (D) x100', cost: 150, type: 'arrow' },
+                { id: 'c_arr_c', name: '🏹 Fine Steel Arrows (C) x100', cost: 400, type: 'arrow' },
+                { id: 'c_arr_b', name: '🏹 Red Spotted Arrows (B) x100', cost: 800, type: 'arrow' },
+                { id: 'c_arr_a', name: '🏹 Mithril Arrows (A) x100', cost: 1200, type: 'arrow' },
+                { id: 'c_arr_s', name: '🏹 Shining Arrows (S) x100', cost: 2000, type: 'arrow' }
             ],
             dyes: [
                 { id: 'd_str', name: '🎨 Тату: +4 STR / -4 CON (Сила)', cost: 5000, stat: 'str', statSub: 'con' },
@@ -371,8 +401,8 @@
         };
 
         try {
-            if (localStorage.getItem('eternity_player_v19')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v19'));
+            if (localStorage.getItem('eternity_player_v20')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v20'));
             }
         } catch(e) { player = null; }
 
@@ -392,7 +422,8 @@
                 classKey: key, title: title, race: race, archetype: archetype,
                 level: 1, exp: 0, maxExp: 100, gold: 2000, statPoints: 5,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
-                potions: 5, mpPotions: 2, ssCount: 100, weaponEnchant: 0, scrolls: 2,
+                potions: 5, mpPotions: 2, ssCount: 100, bssCount: 100, arrowCount: 100,
+                weaponEnchant: 0, armorEnchant: 0, wScrolls: 2, aScrolls: 2,
                 currentLocation: 'talking_island',
                 equippedWeaponAtk: 15,
                 equippedArmorDef: 12,
@@ -419,7 +450,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v19', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v20', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -470,12 +501,12 @@
 
         function switchMarketSub(sub) {
             activeMarketSub = sub;
-            ['weapon', 'armor', 'jewel', 'consum', 'dyes'].forEach(s => {
+            ['weapon', 'armor', 'jewel', 'scrolls', 'consum', 'dyes'].forEach(s => {
                 const btn = document.getElementById(`m-sub-${s}`);
                 if (btn) {
                     btn.className = (s === sub) ? 
-                        "bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]" : 
-                        "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]";
+                        "bg-amber-600 text-slate-950 font-bold py-1 rounded text-[7px]" : 
+                        "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]";
                 }
             });
             renderMarketItems();
@@ -495,7 +526,6 @@
                     <div>
                         <span class="font-bold ${isLocked ? 'text-slate-500' : 'text-blue-400'}">${item.name}</span>
                         <span class="text-[9px] text-amber-500 block">${item.cost} Адены ${item.reqLvl ? `• (с ${item.reqLvl} ур.)` : ''}</span>
-                        ${item.bonusName ? `<span class="text-[8px] text-amber-300 block">✨ Бонус: ${item.bonusName}</span>` : ''}
                     </div>
                     <button onclick="buyMarketItem('${item.id}')" ${isLocked ? 'disabled' : ''} class="${isLocked ? 'bg-slate-800 text-slate-600 cursor-not-allowed' : 'bg-amber-600 text-slate-950'} font-bold px-2 py-1 rounded text-xs">
                         ${isLocked ? 'Заперто' : 'Купить'}
@@ -521,15 +551,20 @@
             } else if (category === 'armor') {
                 player.equippedArmorDef = found.def;
                 player.activeSet = found;
-                addLog(`🛡️ Надета броня: **${found.name}** с Бонусом Сета!`);
+                addLog(`🛡️ Надета броня: **${found.name}**!`);
             } else if (category === 'jewel') {
                 player.equippedJewelDef = found.def;
                 addLog(`💎 Куплена бижутерия: **${found.name}**!`);
+            } else if (category === 'scrolls') {
+                if (found.type === 'w_scroll') player.wScrolls += 1;
+                if (found.type === 'a_scroll') player.aScrolls += 1;
+                addLog(`✨ Куплена заточка: **${found.name}**!`);
             } else if (category === 'consum') {
                 if (found.type === 'hp') player.potions += 1;
                 if (found.type === 'mp') player.mpPotions += 1;
                 if (found.type === 'ss') player.ssCount += 100;
-                if (found.type === 'scroll') player.scrolls += 1;
+                if (found.type === 'bss') player.bssCount += 100;
+                if (found.type === 'arrow') player.arrowCount += 100;
                 addLog(`🛒 Куплено: **${found.name}**!`);
             } else if (category === 'dyes') {
                 player[found.stat] += 4;
@@ -546,7 +581,7 @@
         function recalcStats() {
             if (!player) return;
             let bonusAtk = (player.equippedWeaponAtk || 15) + (player.weaponEnchant * 8);
-            let bonusDef = (player.equippedArmorDef || 12) + (player.equippedJewelDef || 5);
+            let bonusDef = (player.equippedArmorDef || 12) + (player.equippedJewelDef || 5) + (player.armorEnchant * 4);
             let extraHp = 0, extraCrit = 0;
 
             if (player.activeSet) {
@@ -600,8 +635,8 @@
         }
 
         function enchantWeapon() {
-            if (player.scrolls <= 0) { alert('Нет свитков заточки!'); return; }
-            player.scrolls -= 1;
+            if (player.wScrolls <= 0) { alert('Нет свитков заточки оружия!'); return; }
+            player.wScrolls -= 1;
             if (Math.random() <= 0.6) { 
                 player.weaponEnchant += 1; 
                 addLog(`🔥 **УСПЕХ!** Оружие +${player.weaponEnchant}!`); 
@@ -637,15 +672,16 @@
             document.getElementById('crit').innerText = `${player.crit}%`;
             document.getElementById('potions').innerText = player.potions;
             document.getElementById('bag-potions').innerText = player.potions;
-            document.getElementById('bag-scrolls').innerText = player.scrolls;
-            document.getElementById('bag-mp-potions').innerText = player.mpPotions || 0;
+            document.getElementById('bag-w-scrolls').innerText = player.wScrolls || 0;
+            document.getElementById('bag-a-scrolls').innerText = player.aScrolls || 0;
             document.getElementById('bag-ss').innerText = player.ssCount || 0;
+            document.getElementById('bag-bss').innerText = player.bssCount || 0;
+            document.getElementById('bag-arrows').innerText = player.arrowCount || 0;
 
             const badge = document.getElementById('set-bonus-badge');
             if (player.activeSet && player.activeSet.bonusName) {
                 badge.classList.remove('hidden');
                 document.getElementById('set-bonus-name').innerText = player.activeSet.bonusName;
-                document.getElementById('set-bonus-desc').innerText = player.activeSet.bonusDesc || '';
             } else {
                 badge.classList.add('hidden');
             }
@@ -667,7 +703,7 @@
         }
 
         // ==========================================
-        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.19)
+        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.20)
         // ==========================================
         let scene, camera, renderer, characterGroup;
         let isDragging = false, previousMousePosition = { x: 0, y: 0 };
