@@ -529,13 +529,15 @@
             document.getElementById('username').innerText = `Игрок: ${tg.initDataUnsafe.user.first_name}`;
         }
 
-        function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
+                function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
+            let skillInfo = getSkillInfo(archetype);
             player = {
                 classKey: key, title: title, race: race, archetype: archetype,
                 level: 1, exp: 0, maxExp: 100, gold: 1000, statPoints: 0,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
                 potions: 5, mpPotions: 3, ssCount: 100, bssCount: 100, arrowCount: 500,
                 wScrolls: 1, aScrolls: 1,
+                skillName: skillInfo.name, skillMp: skillInfo.mp, skillMult: skillInfo.mult,
                 currentLocation: 'gremlin_valley',
                 equippedWeaponAtk: 15, equippedArmorDef: 12, equippedJewelDef: 5,
                 activeSet: null, equipment: { weapon: true, chest: true, neck: true }
@@ -548,8 +550,17 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Создан персонаж: **${title}**! Добро пожаловать в мир Lineage 2.`);
+            addLog(`✨ Создан персонаж: **${title}**! Умение: **${player.skillName}**.`);
         }
+
+        function getSkillInfo(archetype) {
+            if (archetype === 'archer') return { name: '🏹 Power Shot', mp: 25, mult: 2.2 };
+            if (archetype === 'mage') return { name: '🔮 Hydro Blast / Flare', mp: 40, mult: 2.8 };
+            if (archetype === 'dagger') return { name: '🗡️ Deadly Blow', mp: 20, mult: 2.5 };
+            if (archetype === 'dwarf') return { name: '🔨 Spoil Assist', mp: 25, mult: 2.0 };
+            return { name: '⚔️ Fatal Strike', mp: 30, mult: 2.3 };
+        }
+
 
         function showGameScreen() {
             document.getElementById('game-screen').classList.remove('hidden');
