@@ -130,10 +130,8 @@
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🛡️ ЭКИПИРОВКА И БИЖУТЕРИЯ</h3>
                 
-                <!-- Сетка Куклы Персонажа (L2 Style) -->
                 <div class="grid grid-cols-3 gap-2 py-2 items-center justify-items-center">
-                    
-                    <!-- Левая колонка: Бижутерия (Серьга 1, Кольцо 1, Браслет 1) -->
+                    <!-- Левая колонка -->
                     <div class="flex flex-col space-y-2">
                         <div id="slot-earring1" onclick="unequip('earring1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
                             <span>💎</span><span class="text-[8px] text-slate-500">Серьга 1</span>
@@ -146,7 +144,7 @@
                         </div>
                     </div>
 
-                    <!-- Центр: Оружие, Аватар, Броня -->
+                    <!-- Центр -->
                     <div class="flex flex-col items-center space-y-2">
                         <div id="slot-weapon" onclick="unequip('weapon')" class="w-12 h-12 bg-slate-950 border-2 border-amber-600/60 rounded-xl flex flex-col items-center justify-center text-xl cursor-pointer active:scale-95">
                             <span>⚔️</span><span class="text-[8px] text-amber-500 font-bold">Оружие</span>
@@ -159,7 +157,7 @@
                         </div>
                     </div>
 
-                    <!-- Правая колонка: Бижутерия (Некля, Серьга 2, Кольцо 2, Браслет 2) -->
+                    <!-- Правая колонка -->
                     <div class="flex flex-col space-y-2">
                         <div id="slot-neck" onclick="unequip('neck')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
                             <span>📿</span><span class="text-[8px] text-slate-500">Некля</span>
@@ -173,7 +171,7 @@
                     </div>
                 </div>
 
-                <p class="text-[10px] text-slate-500 text-center">💡 Нажмите на сломанную или забитую ячейку, чтобы снять предмет.</p>
+                <p class="text-[10px] text-slate-500 text-center">💡 Нажмите на активную ячейку, чтобы снять предмет.</p>
             </div>
         </div>
 
@@ -233,13 +231,12 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 4: РЫНОК И ПОКУПКА ЭКИПИРОВКИ -->
+        <!-- ВКЛАДКА 4: РЫНОК -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ ЛАВКА ЭКИПИРОВКИ И БИЖУТЕРИИ</h3>
                 
                 <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
-                    <!-- Покупка Брони -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-blue-400">🛡️ Доспех Дракона (+30 Защиты)</span>
@@ -248,7 +245,6 @@
                         <button onclick="buyEquipment('armor', 'Доспех Дракона', 300)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Некли -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-purple-400">📿 Ожерелье Валакаса (+15 Атака)</span>
@@ -257,7 +253,6 @@
                         <button onclick="buyEquipment('neck', 'Некля Валакаса', 500)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Колец -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-400">💍 Кольцо Антараса (+5% Крита)</span>
@@ -266,7 +261,6 @@
                         <button onclick="buyJewel('ring', 'Кольцо Антараса', 250)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Серёг -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-green-400">💎 Серьга Закена (+40 HP)</span>
@@ -275,7 +269,6 @@
                         <button onclick="buyJewel('earring', 'Серьга Закена', 250)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Свитка Заточки -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span>
@@ -315,7 +308,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.8 • Paperdoll & Jewelry Update
+        Eternity Online v0.8.1 • Fix Paperdoll
     </footer>
 
     <script>
@@ -331,8 +324,17 @@
             ranger: { title: 'Следопыт', icon: '🏹', weaponBaseName: 'Лук', str: 10, dex: 20, int: 8, con: 12 }
         };
 
-        if (localStorage.getItem('eternity_player_v8')) {
-            player = JSON.parse(localStorage.getItem('eternity_player_v8'));
+        // Миграция / загрузка сохранений
+        try {
+            if (localStorage.getItem('eternity_player_v8_1')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v8_1'));
+            } else if (localStorage.getItem('eternity_player_v8')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v8'));
+                if (!player.equipment) player.equipment = { weapon: true };
+            }
+        } catch(e) { player = null; }
+
+        if (player && player.classKey) {
             showGameScreen();
         } else {
             document.getElementById('class-select-screen').classList.remove('hidden');
@@ -359,7 +361,6 @@
                 potions: 3,
                 weaponEnchant: 0,
                 scrolls: 2,
-                // Экипированные слоты
                 equipment: {
                     weapon: true,
                     armor: null,
@@ -378,10 +379,14 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Добро пожаловать! Выдано 1000 Адены на покупку экипировки.`);
+            addLog(`✨ Добро пожаловать! Выдано 1000 Адены.`);
         }
 
         function recalcStats() {
+            if (!player) return;
+            if (!player.equipment) {
+                player.equipment = { weapon: true, armor: null, neck: null, earring1: null, earring2: null, ring1: null, ring2: null, brac1: null, brac2: null };
+            }
             let bonusAtk = (player.equipment.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (player.equipment.neck ? 15 : 0);
             let bonusDef = player.equipment.armor ? 30 : 0;
             let bonusCrit = (player.equipment.ring1 ? 5 : 0) + (player.equipment.ring2 ? 5 : 0);
@@ -403,12 +408,12 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v8', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v8_1', JSON.stringify(player));
         }
 
         function addLog(text) {
             const logEl = document.getElementById('log');
-            logEl.innerHTML = `<p class="text-amber-400/90">${text}</p>` + logEl.innerHTML;
+            if (logEl) logEl.innerHTML = `<p class="text-amber-400/90">${text}</p>` + logEl.innerHTML;
         }
 
         function switchTab(tab) {
@@ -452,7 +457,7 @@
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`🛡️ Надет ${name}! Статы повышены.`);
+            addLog(`🛡️ Надет ${name}!`);
         }
 
         function buyJewel(type, name, cost) {
@@ -465,7 +470,7 @@
             } else if (!player.equipment[slot2]) {
                 player.equipment[slot2] = name;
             } else {
-                alert('У вас уже заняты оба слота под эти украшения!');
+                alert('У вас уже заняты оба слота!');
                 return;
             }
 
@@ -487,7 +492,7 @@
         }
 
         function addStat(stat) {
-            if (player.statPoints <= 0) { alert('Нет свободные очков!'); return; }
+            if (player.statPoints <= 0) { alert('Нет свободных очков!'); return; }
             player.statPoints -= 1;
             player[stat] += 1;
             recalcStats();
@@ -525,7 +530,7 @@
         }
 
         function usePotion() {
-            if (player.potions <= 0) { alert('Нет зелей!'); return; }
+            if (player.potions <= 0) { alert('Нет зелий!'); return; }
             if (player.hp >= player.maxHp) { alert('Здоровье полно!'); return; }
             player.potions -= 1;
             player.hp = Math.min(player.maxHp, player.hp + 50);
@@ -595,7 +600,8 @@
         }
 
         function updateUI() {
-            const cls = defaultClasses[player.classKey];
+            if (!player) return;
+            const cls = defaultClasses[player.classKey] || defaultClasses['knight'];
             document.getElementById('hero-avatar').innerText = cls.icon;
             document.getElementById('class-icon').innerText = cls.icon;
             document.getElementById('class-title').innerText = `${cls.title} (${player.level} ур.)`;
@@ -610,5 +616,43 @@
             document.getElementById('crit').innerText = `${player.crit}%`;
             document.getElementById('potions').innerText = player.potions;
 
-            // Обновление Куклы Персонажа (Paperdoll)
-            const setSlotUI = (slotId, isEquipped, active
+            // Обновление слотов Куклы Персонажа
+            const setSlotUI = (slotId, isEquipped, activeBorderClass) => {
+                const el = document.getElementById(slotId);
+                if (el) {
+                    if (isEquipped) {
+                        el.className = `w-11 h-11 bg-slate-900 border-2 ${activeBorderClass} rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95 shadow-md`;
+                    } else {
+                        el.className = `w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95 opacity-50`;
+                    }
+                }
+            };
+
+            setSlotUI('slot-weapon', player.equipment.weapon, 'border-amber-500');
+            setSlotUI('slot-armor', player.equipment.armor, 'border-blue-500');
+            setSlotUI('slot-neck', player.equipment.neck, 'border-purple-500');
+            setSlotUI('slot-ring1', player.equipment.ring1, 'border-amber-400');
+            setSlotUI('slot-ring2', player.equipment.ring2, 'border-amber-400');
+            setSlotUI('slot-earring1', player.equipment.earring1, 'border-green-400');
+            setSlotUI('slot-earring2', player.equipment.earring2, 'border-green-400');
+            setSlotUI('slot-brac1', player.equipment.brac1, 'border-cyan-400');
+            setSlotUI('slot-brac2', player.equipment.brac2, 'border-cyan-400');
+
+            document.getElementById('stat-points').innerText = player.statPoints;
+            document.getElementById('stat-str').innerText = player.str;
+            document.getElementById('stat-dex').innerText = player.dex;
+            document.getElementById('stat-int').innerText = player.int;
+            document.getElementById('stat-con').innerText = player.con;
+
+            document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
+            document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
+
+            document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
+            document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
+
+            document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
+            document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
+        }
+    </script>
+</body>
+</html>
