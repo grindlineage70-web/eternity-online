@@ -6,52 +6,129 @@
     <title>Eternity Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Подключаем легкую библиотеку Three.js для 3D графика -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-3 flex flex-col justify-between select-none">
 
-    <!-- 1. ВЫБОР КЛАССОВ -->
+    <!-- 1. ВЫБОР КЛАССОВ И РАС -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
         <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
             
+            <!-- ЛУЧНИКИ -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
-            <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'human', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Hawkeye (Хавк) — Человек</h3>
                 <p class="text-[9px] text-slate-400">Высокий запас HP, дальнобойный урон.</p>
             </div>
-            <div onclick="selectClass('fr', 'Phantom Ranger (ФР)', 'archer', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('fr', 'Phantom Ranger (ФР)', 'dark_elf', 'archer', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Phantom Ranger (ФР) — Темный Эльф</h3>
                 <p class="text-[9px] text-slate-400">Максимальный крит. урон и сила выстрела.</p>
             </div>
-
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
-            <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Живучий кинжальщик с высоким HP и бегом.</p>
+            <div onclick="selectClass('sr', 'Silver Ranger (СР)', 'elf', 'archer', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-blue-400 text-xs">Silver Ranger (СР) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Самая высокая скорость стрельбы и уклонение.</p>
             </div>
 
+            <!-- ДАГГЕРЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
+            <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
+                <p class="text-[9px] text-slate-400">Живучий кинжальщик с высоким HP.</p>
+            </div>
+            <div onclick="selectClass('aw', 'Abyss Walker (АВ)', 'dark_elf', 'warrior', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Abyss Walker (АВ) — Темный Эльф</h3>
+                <p class="text-[9px] text-slate-400">Смертоносные абилки с гигантским критом.</p>
+            </div>
+            <div onclick="selectClass('pw', 'Plains Walker (ПВ)', 'elf', 'warrior', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-blue-400 text-xs">Plains Walker (ПВ) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Молниеносный, высокий шанс крита и уклонение.</p>
+            </div>
+
+            <!-- МАГИ И НЕКР -->
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
-            <div onclick="selectClass('necro', 'Necromancer (Некр)', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Necromancer (Некромант)</h3>
                 <p class="text-[9px] text-slate-400">Темная магия, проклятия и призыв слуг.</p>
             </div>
-            <div onclick="selectClass('sh', 'Spellhowler (СХ)', 'mage', 28, 21, 44, 31, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('sh', 'Spellhowler (СХ)', 'dark_elf', 'mage', 28, 21, 44, 31, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-500 text-xs">Spellhowler (СХ) — Темный Эльф</h3>
                 <p class="text-[9px] text-slate-400">Самая высокая магическая атака (INT 44).</p>
             </div>
-
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Танки и Воины</p>
-            <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'warrior', 45, 23, 18, 50, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк</h3>
-                <p class="text-[9px] text-slate-400">Френзи и гигантский урон по боссам.</p>
+            <div onclick="selectClass('sps', 'Spellsinger (СС)', 'elf', 'mage', 27, 22, 37, 28, 23, 40)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-blue-400 text-xs">Spellsinger (СС) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Максимальная скорость каста магии (WIT 23).</p>
             </div>
-            <div onclick="selectClass('paladin', 'Paladin (Паладин)', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('sorc', 'Sorcerer (Сорка)', 'human', 'mage', 28, 21, 40, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-500 text-xs">Sorcerer (Сорка) — Человек</h3>
+                <p class="text-[9px] text-slate-400">Маг огня с балансом силы и скорости заклинаний.</p>
+            </div>
+
+            <!-- САППОРТЫ И ХИЛЕРЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">✨ Саппорты & Хилеры</p>
+            <div onclick="selectClass('bishop', 'Bishop (Бишоп)', 'human', 'mage', 28, 21, 39, 31, 20, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-yellow-300 text-xs">Bishop (Бишоп)</h3>
+                <p class="text-[9px] text-slate-400">Главный жрец и лучший лекарь всей группы.</p>
+            </div>
+            <div onclick="selectClass('pp', 'Prophet (ПП)', 'human', 'mage', 28, 21, 39, 31, 20, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-400 text-xs">Prophet (ПП)</h3>
+                <p class="text-[9px] text-slate-400">Мастер усилений (баффов) для всей группы.</p>
+            </div>
+            <div onclick="selectClass('ee', 'Elven Elder (ЕЕ)', 'elf', 'mage', 27, 22, 37, 28, 23, 42)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-green-400 text-xs">Elven Elder (ЕЕ)</h3>
+                <p class="text-[9px] text-slate-400">Быстрый хил, залив маны (MP) и баффы защиты.</p>
+            </div>
+            <div onclick="selectClass('se', 'Shillien Elder (ШЕ)', 'dark_elf', 'mage', 28, 21, 40, 31, 19, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Shillien Elder (ШЕ)</h3>
+                <p class="text-[9px] text-slate-400">Залив маны, мощные магические баффы.</p>
+            </div>
+            <div onclick="selectClass('bd', 'Blade Dancer (БД)', 'dark_elf', 'warrior', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-indigo-400 text-xs">Blade Dancer (БД)</h3>
+                <p class="text-[9px] text-slate-400">Танцы для усиления физ. и маг. атаки.</p>
+            </div>
+            <div onclick="selectClass('sws', 'Sword Singer (СВС)', 'elf', 'warrior', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-cyan-400 text-xs">Sword Singer (СВС)</h3>
+                <p class="text-[9px] text-slate-400">Песни для максимальной защиты группы.</p>
+            </div>
+            <div onclick="selectClass('wc', 'Warcryer (Варк)', 'orc', 'mage', 40, 23, 31, 47, 15, 38)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-orange-400 text-xs">Warcryer (Варк) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Баффер группы Chant of Victory (Чов).</p>
+            </div>
+            <div onclick="selectClass('ol', 'Overlord (Овер)', 'orc', 'mage', 40, 23, 31, 47, 15, 38)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-red-500 text-xs">Overlord (Овер) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Баффы клана и массовые дебаффы врагов.</p>
+            </div>
+
+            <!-- ТАНКИ И ВАРРИОРЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Танки и Воины</p>
+            <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 45, 23, 18, 50, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Френзи, лимиты и гигантский урон по боссам.</p>
+            </div>
+            <div onclick="selectClass('tyrant', 'Tyrant (Тир)', 'orc', 'warrior', 43, 28, 18, 48, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-orange-400 text-xs">Tyrant (Тир) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Быстрые кастеты и тотемы зверей.</p>
+            </div>
+            <div onclick="selectClass('paladin', 'Paladin (Паладин)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Paladin (Паладин)</h3>
-                <p class="text-[9px] text-slate-400">Классический танк с глухой защитой.</p>
+                <p class="text-[9px] text-slate-400">Классический танк с глухой защитой и иконой.</p>
+            </div>
+            <div onclick="selectClass('da', 'Dark Avenger (ДА)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-slate-400 text-xs">Dark Avenger (ДА)</h3>
+                <p class="text-[9px] text-slate-400">Темный рыцарь с вызовом Пантеры.</p>
+            </div>
+
+            <!-- ГНОМЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">⚒️ Гномы (Dwarves)</p>
+            <div onclick="selectClass('spoil', 'Bounty Hunter (Спойлер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-600 text-xs">Bounty Hunter (Спойлер)</h3>
+                <p class="text-[9px] text-slate-400">Мастер спойла редких ресурсов из мобов.</p>
+            </div>
+            <div onclick="selectClass('craft', 'Warsmith (Крафтер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-500 text-xs">Warsmith (Крафтер)</h3>
+                <p class="text-[9px] text-slate-400">Создание оружия, сосок и вызов Голема.</p>
             </div>
 
         </div>
@@ -149,10 +226,10 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: КУКЛА ПЕРСОНАЖА C 3D МОДЕЛЬЮ (THREE.JS) -->
+        <!-- ВКЛАДКА 2: КУКЛА ПЕРСОНАЖА C УВЕЛИЧЕННОЙ 3D МОДЕЛЬЮ И СЛОТОМ ПОД ЩИТ -->
         <div id="tab-hero" class="hidden space-y-2">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ПОЛНАЯ ЭКИПИРОВКА (3D MODEL)</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ПОЛНАЯ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
                 
                 <div class="grid grid-cols-3 gap-1.5 items-center justify-items-center">
                     <div class="flex flex-col space-y-1.5">
@@ -164,14 +241,19 @@
                         <div id="slot-boots" onclick="unequip('boots')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">👢</span><span class="text-[7px] text-slate-500">Сапоги</span></div>
                     </div>
 
-                    <!-- ЦЕНТР: ИНТЕРАКТИВНАЯ 3D-МОДЕЛЬ THREE.JS -->
-                    <div class="flex flex-col items-center space-y-2">
-                        <div id="slot-weapon" onclick="unequip('weapon')" class="w-10 h-10 bg-slate-950 border-2 border-amber-600/60 rounded-xl flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">⚔️</span><span class="text-[7px] text-amber-500 font-bold">Оружие</span>
+                    <!-- ЦЕНТР: БОЛЬШАЯ 3D-МОДЕЛЬ + ОРУЖИЕ + ЩИТ -->
+                    <div class="flex flex-col items-center space-y-1.5">
+                        <div class="flex space-x-1">
+                            <div id="slot-weapon" onclick="unequip('weapon')" class="w-9 h-9 bg-slate-950 border-2 border-amber-600/60 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                                <span class="text-[10px]">⚔️</span><span class="text-[6px] text-amber-500 font-bold">Оружие</span>
+                            </div>
+                            <div id="slot-shield" onclick="unequip('shield')" class="w-9 h-9 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                                <span class="text-[10px]">🛡️</span><span class="text-[6px] text-slate-500">Щит</span>
+                            </div>
                         </div>
-                        <!-- Canvas для 3D -->
-                        <div id="canvas-container" class="w-24 h-40 bg-slate-950/80 border-2 border-amber-500/60 rounded-xl overflow-hidden shadow-inner flex items-center justify-center relative cursor-grab">
-                            <span class="text-[8px] text-slate-600 absolute bottom-1 pointer-events-none">🔄 Покрути модель</span>
+                        <!-- Увеличенный Canvas для 3D -->
+                        <div id="canvas-container" class="w-32 h-48 bg-slate-950/85 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative cursor-grab">
+                            <span class="text-[8px] text-amber-400/70 absolute bottom-1 pointer-events-none">🔄 Вращайте 3D</span>
                         </div>
                     </div>
 
@@ -227,7 +309,7 @@
         <!-- ВКЛАДКА 4: РЫНОК -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН БРОНИ И БИЖУТЕРИИ</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН БРОНИ И ЩИТОВ</h3>
                 <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="text-xs font-bold text-blue-400">🪖 Шлем Дракона (+10 Защиты)</span><span class="text-[10px] text-amber-500 block">150 Адены</span></div>
@@ -236,6 +318,10 @@
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="text-xs font-bold text-blue-400">👕 Нагрудник Дракона (+25 Защиты)</span><span class="text-[10px] text-amber-500 block">300 Адены</span></div>
                         <button onclick="buyEquipment('chest', 'Нагрудник', 300)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div><span class="text-xs font-bold text-cyan-400">🛡️ Тяжелый Щит (+15 Защиты)</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
+                        <button onclick="buyEquipment('shield', 'Тяжелый Щит', 200)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs">Купить</button>
                     </div>
                 </div>
             </div>
@@ -268,7 +354,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.14 • Three.js 3D Characters
+        Eternity Online v0.15 • Race Proportions & Visible Gear
     </footer>
 
     <script>
@@ -287,8 +373,8 @@
         };
 
         try {
-            if (localStorage.getItem('eternity_player_v14')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v14'));
+            if (localStorage.getItem('eternity_player_v15')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v15'));
             }
         } catch(e) { player = null; }
 
@@ -303,21 +389,18 @@
             document.getElementById('username').innerText = `Игрок: ${tg.initDataUnsafe.user.first_name}`;
         }
 
-        function selectClass(key, title, archetype, str, dex, int, con, wit, men) {
+        function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
             player = {
                 classKey: key,
                 title: title,
-                archetype: archetype, // 'warrior', 'archer', 'mage'
-                level: 1,
-                exp: 0,
-                maxExp: 100,
-                gold: 1500,
-                statPoints: 5,
+                race: race,         // human, elf, dark_elf, orc, dwarf
+                archetype: archetype, // warrior, archer, mage
+                level: 1, exp: 0, maxExp: 100, gold: 1500, statPoints: 5,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
                 potions: 3, weaponEnchant: 0, scrolls: 2,
                 currentLocation: 'talking_island',
                 equipment: {
-                    weapon: true, helm: null, shoulder: null, chest: null,
+                    weapon: true, shield: null, helm: null, shoulder: null, chest: null,
                     legs: null, gloves: null, boots: null, neck: null,
                     earring1: null, earring2: null, ring1: null, ring2: null,
                     brac1: null, brac2: null
@@ -329,7 +412,7 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Создан 3D персонаж: **${title}**!`);
+            addLog(`✨ Создан персонаж: **${title}**!`);
         }
 
         function showGameScreen() {
@@ -341,7 +424,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v14', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v15', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -388,15 +471,34 @@
             if (!player) return;
             if (!player.equipment) player.equipment = { weapon: true };
             let eq = player.equipment;
-            let bonusBrac = (eq.brac1 ? 10 : 0) + (eq.brac2 ? 10 : 0);
-            let bonusAtk = (eq.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (eq.neck ? 15 : 0) + bonusBrac;
-            let bonusDef = (eq.helm ? 10 : 0) + (eq.chest ? 25 : 0);
+            let bonusAtk = (eq.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (eq.neck ? 15 : 0);
+            let bonusDef = (eq.helm ? 10 : 0) + (eq.chest ? 25 : 0) + (eq.shield ? 15 : 0);
             player.atk = (player.str * 2) + (player.int * 2.2) + bonusAtk;
             player.def = (player.con * 1) + bonusDef;
             player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.7));
-            player.critMult = (1.5 + (player.dex * 0.015)).toFixed(2);
             player.maxHp = 80 + (player.con * 8);
             if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
+        }
+
+        function buyEquipment(slot, name, cost) {
+            if (player.gold < cost) { alert('Недостаточно Адены!'); return; }
+            player.gold -= cost;
+            player.equipment[slot] = name;
+            recalcStats();
+            saveGame();
+            updateUI();
+            createCharacterMesh(); // Обновляем 3D модель (доспехи/щит появятся на персонаже)
+            addLog(`🛡️ Надет ${name}!`);
+        }
+
+        function unequip(slot) {
+            if (!player.equipment[slot]) return;
+            player.equipment[slot] = null;
+            recalcStats();
+            saveGame();
+            updateUI();
+            createCharacterMesh();
+            addLog(`❌ Предмет снят.`);
         }
 
         function farm() {
@@ -429,9 +531,16 @@
         function enchantWeapon() {
             if (player.scrolls <= 0) return;
             player.scrolls -= 1;
-            if (Math.random() <= 0.6) { player.weaponEnchant += 1; addLog(`🔥 **УСПЕХ!** Оружие +${player.weaponEnchant}!`); }
-            else { addLog(`💥 **НЕУДАЧА!**`); }
-            recalcStats(); saveGame(); updateUI();
+            if (Math.random() <= 0.6) { 
+                player.weaponEnchant += 1; 
+                addLog(`🔥 **УСПЕХ!** Оружие +${player.weaponEnchant}!`); 
+            } else { 
+                addLog(`💥 **НЕУДАЧА!**`); 
+            }
+            recalcStats(); 
+            saveGame(); 
+            updateUI();
+            createCharacterMesh(); // Обновляем свечение оружия
         }
 
         function attackBoss() {
@@ -463,11 +572,19 @@
             document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
             document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
             document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
+
+            // Подсветка слота щита
+            const shieldSlot = document.getElementById('slot-shield');
+            if (player.equipment.shield) {
+                shieldSlot.className = "w-9 h-9 bg-slate-900 border-2 border-cyan-400 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95";
+            } else {
+                shieldSlot.className = "w-9 h-9 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95 opacity-50";
+            }
         }
 
-        // ==========================================
-        // THREE.JS 3D МОДЕЛИРОВАНИЕ ПЕРСОНАЖЕЙ (V0.14)
-        // ==========================================
+        // =========================================================
+        // THREE.JS: РАСОВЫЕ ПРОПОРЦИИ И ВИДИМАЯ ЭКИПИРОВКА (V0.15)
+        // =========================================================
         let scene, camera, renderer, characterGroup;
         let isDragging = false, previousMousePosition = { x: 0, y: 0 };
 
@@ -476,26 +593,23 @@
             if (!container || scene) return;
 
             scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(0, 1.2, 3.2);
+            camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 1.2, 3.5);
 
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
             container.appendChild(renderer.domElement);
 
-            // Освещение
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
             scene.add(ambientLight);
 
-            const dirLight = new THREE.DirectionalLight(0xf59e0b, 1.2);
-            dirLight.position.set(2, 4, 3);
+            const dirLight = new THREE.DirectionalLight(0xf59e0b, 1.5);
+            dirLight.position.set(2, 5, 3);
             scene.add(dirLight);
 
-            // Создаем макет персонажа
             createCharacterMesh();
 
-            // Вращение пальцем / мышкой
             const dom = renderer.domElement;
             dom.addEventListener('pointerdown', (e) => { isDragging = true; previousMousePosition = { x: e.clientX, y: e.clientY }; });
             window.addEventListener('pointermove', (e) => {
@@ -509,7 +623,7 @@
             function animate() {
                 requestAnimationFrame(animate);
                 if (characterGroup && !isDragging) {
-                    characterGroup.rotation.y += 0.005; // Легкое авто-вращение
+                    characterGroup.rotation.y += 0.005;
                 }
                 renderer.render(scene, camera);
             }
@@ -517,57 +631,103 @@
         }
 
         function createCharacterMesh() {
+            if (!scene) return;
             if (characterGroup) scene.remove(characterGroup);
             characterGroup = new THREE.Group();
 
+            const race = player ? player.race : 'human';
             const arch = player ? player.archetype : 'warrior';
-            
-            // Цвета под архетип
-            let bodyColor = 0x3b82f6; // Воин (Синий/Сталь)
-            let weaponColor = 0xd97706;
+            const eq = player ? player.equipment : {};
 
-            if (arch === 'archer') { bodyColor = 0x10b981; } // Лучник (Зеленый)
-            else if (arch === 'mage') { bodyColor = 0x8b5cf6; weaponColor = 0xec4899; } // Маг (Фиолетовый)
+            // Настройка расовых цветов и пропорций
+            let skinColor = 0xfde047; // Человек
+            let bodyColor = 0x3b82f6;
+            let bodyScaleX = 1, bodyScaleY = 1, headScale = 1;
 
-            const bodyMat = new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.3, metalness: 0.5 });
-            const headMat = new THREE.MeshStandardMaterial({ color: 0xfde047, roughness: 0.5 });
-            const weaponMat = new THREE.MeshStandardMaterial({ color: weaponColor, metalness: 0.8, roughness: 0.2 });
+            if (race === 'orc') {
+                skinColor = 0x22c55e; // Зеленокожий орк
+                bodyColor = 0xef4444; // Красные доспехи
+                bodyScaleX = 1.4;     // Широкий торс
+                bodyScaleY = 0.9;     // Немного приземистый
+                headScale = 1.2;      // Массивная голова
+            } else if (race === 'elf') {
+                skinColor = 0xfbcfe8;
+                bodyColor = 0x10b981; // Светлый эльф
+                bodyScaleX = 0.85;    // Стройный
+                bodyScaleY = 1.1;     // Высокий
+            } else if (race === 'dark_elf') {
+                skinColor = 0xa855f7;
+                bodyColor = 0x6d28d9; // Темный эльф
+                bodyScaleX = 0.9;
+                bodyScaleY = 1.15;
+            } else if (race === 'dwarf') {
+                skinColor = 0xfcd34d;
+                bodyColor = 0xd97706; // Гном
+                bodyScaleX = 1.2;
+                bodyScaleY = 0.75;    // Низкорослый
+            }
+
+            const skinMat = new THREE.MeshStandardMaterial({ color: skinColor, roughness: 0.5 });
+            let armorMat = new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.3, metalness: 0.4 });
+
+            // Если куплен нагрудник, делаем броню металлической
+            if (eq.chest) {
+                armorMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.1, metalness: 0.9 });
+            }
 
             // 1. Голова
-            const headGeo = new THREE.SphereGeometry(0.2, 16, 16);
-            const head = new THREE.Mesh(headGeo, headMat);
-            head.position.y = 1.6;
+            const headGeo = new THREE.SphereGeometry(0.18 * headScale, 16, 16);
+            const head = new THREE.Mesh(headGeo, skinMat);
+            head.position.y = 1.55;
             characterGroup.add(head);
 
+            // 1.1. Шлем (если надет)
+            if (eq.helm) {
+                const helmMat = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.8, roughness: 0.2 });
+                const helmGeo = new THREE.SphereGeometry(0.2 * headScale, 16, 16, 0, Math.PI * 2, 0, Math.PI * 0.6);
+                const helm = new THREE.Mesh(helmGeo, helmMat);
+                helm.position.y = 1.6;
+                characterGroup.add(helm);
+            }
+
             // 2. Тело
-            const bodyGeo = new THREE.CylinderGeometry(0.25, 0.18, 0.7, 12);
-            const body = new THREE.Mesh(bodyGeo, bodyMat);
+            const bodyGeo = new THREE.CylinderGeometry(0.25 * bodyScaleX, 0.18 * bodyScaleX, 0.7 * bodyScaleY, 12);
+            const body = new THREE.Mesh(bodyGeo, armorMat);
             body.position.y = 1.05;
             characterGroup.add(body);
 
-            // 3. Плечи / Доспех
-            const shoulderGeo = new THREE.BoxGeometry(0.65, 0.15, 0.3);
-            const shoulder = new THREE.Mesh(shoulderGeo, bodyMat);
+            // 3. Плечи / Доспехи
+            const shoulderGeo = new THREE.BoxGeometry(0.65 * bodyScaleX, 0.15, 0.3);
+            const shoulder = new THREE.Mesh(shoulderGeo, armorMat);
             shoulder.position.y = 1.32;
             characterGroup.add(shoulder);
 
-            // 4. Оружие
+            // 4. Оружие с учетом заточки (Свечение при +1 и выше)
+            let weaponColor = 0xd97706;
+            if (player.weaponEnchant > 0) weaponColor = 0x38bdf8; // Светится синим при заточке
+            if (player.weaponEnchant >= 3) weaponColor = 0xec4899; // Розовое свечение при +3
+
+            const weaponMat = new THREE.MeshStandardMaterial({ 
+                color: weaponColor, 
+                metalness: 0.9, 
+                roughness: 0.1,
+                emissive: player.weaponEnchant > 0 ? weaponColor : 0x000000,
+                emissiveIntensity: 0.6
+            });
+
             if (arch === 'warrior') {
-                // Меч
-                const swordGeo = new THREE.BoxGeometry(0.06, 0.8, 0.02);
+                const swordGeo = new THREE.BoxGeometry(0.06, 0.85, 0.02);
                 const sword = new THREE.Mesh(swordGeo, weaponMat);
                 sword.position.set(0.38, 1.0, 0.2);
                 sword.rotation.x = 0.3;
                 characterGroup.add(sword);
             } else if (arch === 'archer') {
-                // Лук
                 const bowGeo = new THREE.TorusGeometry(0.35, 0.03, 8, 24, Math.PI);
                 const bow = new THREE.Mesh(bowGeo, weaponMat);
                 bow.position.set(0.35, 1.1, 0);
                 bow.rotation.y = Math.PI / 2;
                 characterGroup.add(bow);
             } else {
-                // Посох мага
                 const staffGeo = new THREE.CylinderGeometry(0.02, 0.02, 1.1, 8);
                 const staff = new THREE.Mesh(staffGeo, weaponMat);
                 staff.position.set(0.35, 1.0, 0.1);
@@ -581,6 +741,16 @@
                 characterGroup.add(orb);
             }
 
+            // 5. Щит в левой руке (если надет)
+            if (eq.shield) {
+                const shieldMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.7, roughness: 0.3 });
+                const shieldGeo = new THREE.BoxGeometry(0.35, 0.45, 0.05);
+                const shield = new THREE.Mesh(shieldGeo, shieldMat);
+                shield.position.set(-0.35, 1.0, 0.15);
+                shield.rotation.y = -0.3;
+                characterGroup.add(shield);
+            }
+
             scene.add(characterGroup);
         }
 
@@ -589,6 +759,7 @@
             if (renderer && container) {
                 renderer.setSize(container.clientWidth, container.clientHeight);
                 camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateParser = true;
                 camera.updateProjectionMatrix();
             }
         }
