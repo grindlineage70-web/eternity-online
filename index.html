@@ -3,56 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternity Online v0.38.1</title>
+    <title>Eternity Online v0.39</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-3 flex flex-col justify-between select-none">
 
-    <!-- 1. ВЫБОР КЛАССОВ (L2 INTERLUDE) -->
+    <!-- ВЫБОР КЛАССА -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude Classic 1-20 lvl):</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude Classic):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
-            <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'human', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'human', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer">
                 <h3 class="font-bold text-slate-200 text-xs">Hawkeye (Хавк) — Человек</h3>
                 <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
             </div>
-            <div onclick="selectClass('sr', 'Silver Ranger (Сыр)', 'elf', 'archer', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('sr', 'Silver Ranger (Сыр)', 'elf', 'archer', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer">
                 <h3 class="font-bold text-emerald-400 text-xs">Silver Ranger (Сыр) — Светлый Эльф</h3>
                 <p class="text-[9px] text-slate-400">STR 36 | DEX 35 | CON 36 | INT 21 | WIT 14 | MEN 26</p>
             </div>
-            <div onclick="selectClass('fr', 'Phantom Ranger (ФР)', 'dark_elf', 'archer', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-purple-400 text-xs">Phantom Ranger (ФР) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">STR 41 | DEX 32 | CON 32 | INT 23 | WIT 12 | MEN 26</p>
-            </div>
-
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
-            <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer">
                 <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
                 <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
             </div>
-
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
-            <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer">
                 <h3 class="font-bold text-indigo-400 text-xs">Necromancer (Некромант) — Человек</h3>
                 <p class="text-[9px] text-slate-400">INT 41 | WIT 20 | MEN 39 | CON 31 | STR 28 | DEX 21</p>
             </div>
-
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Воины и Орки</p>
-            <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 40, 26, 17, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 40, 26, 17, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer">
                 <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк Воин</h3>
                 <p class="text-[9px] text-slate-400">STR 40 | DEX 26 | CON 47 | INT 17 | WIT 12 | MEN 27</p>
             </div>
         </div>
     </div>
 
-    <!-- 2. ОСНОВНОЙ ИНТЕРФЕЙС ИГРЫ -->
+    <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
     <div id="game-screen" class="hidden flex-col space-y-3">
-        <!-- Шапка -->
         <header class="flex justify-between items-center border-b border-slate-800 pb-2">
             <div>
                 <h1 class="text-base font-bold text-amber-500 tracking-wider">ETERNITY ONLINE</h1>
@@ -70,35 +58,34 @@
             </div>
         </header>
 
-        <!-- Прогресс опыта -->
         <div>
             <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
                 <span>Опыт (EXP)</span>
                 <span id="exp-text">0 / 100</span>
             </div>
             <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
-                <div id="exp-bar" class="bg-amber-500 h-full w-0 transition-all duration-300"></div>
+                <div id="exp-bar" class="bg-amber-500 h-full w-0 transition-all"></div>
             </div>
         </div>
 
-        <!-- Переключение вкладок -->
+        <!-- Переключатель вкладок -->
         <div class="grid grid-cols-7 gap-1 border-b border-slate-800 pb-2">
-            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[8px] transition-all">⚔️ Охота</button>
-            <button id="tab-quests-btn" onclick="switchTab('quests')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">📜 Квесты</button>
-            <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">👤 Кукла</button>
-            <button id="tab-bag-btn" onclick="switchTab('bag')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">🎒 Сумка</button>
-            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">📊 Статы</button>
-            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">🛒 Рынок</button>
-            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">👹 Босс</button>
+            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[8px]">⚔️ Охота</button>
+            <button id="tab-quests-btn" onclick="switchTab('quests')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]">📜 Квесты</button>
+            <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]">👤 Кукла</button>
+            <button id="tab-bag-btn" onclick="switchTab('bag')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]">🎒 Сумка</button>
+            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]">📊 Статы</button>
+            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]">🛒 Рынок</button>
+            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]">👹 Босс</button>
         </div>
 
-        <!-- ВКЛАДКА 1: ОХОТА -->
+        <!-- ОХОТА -->
         <div id="tab-farm" class="space-y-3">
             <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 space-y-2">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <div>
                         <h2 id="class-title" class="text-xs font-bold text-slate-200">Класс</h2>
-                        <p id="weapon-title" class="text-[10px] text-amber-400 font-semibold">Оружие: Базовое</p>
+                        <p id="weapon-title" class="text-[10px] text-amber-400 font-semibold">Оружие: Нет</p>
                     </div>
                     <div class="text-right">
                         <span class="text-[9px] text-slate-400 block">ЛОКАЦИЯ:</span>
@@ -115,37 +102,37 @@
                         <span class="text-[9px] text-amber-400 font-bold block">👤 NPC В ЛОКАЦИИ:</span>
                         <span id="npc-name" class="font-bold text-slate-200">Gallint</span>
                     </div>
-                    <button onclick="talkToNpc()" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px]">🗣️ Говорить</button>
+                    <button onclick="talkToNpc()" class="bg-amber-600 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px]">🗣️ Говорить</button>
                 </div>
 
-                <!-- Полоски параметров -->
+                <!-- Полоски CP / HP / MP -->
                 <div class="space-y-1">
                     <div>
-                        <div class="flex justify-between text-[9px] text-amber-400 font-bold mb-0.5"><span>CP (Combat Points)</span><span id="cp-text">50 / 50</span></div>
+                        <div class="flex justify-between text-[9px] text-amber-400 font-bold mb-0.5"><span>CP</span><span id="cp-text">50 / 50</span></div>
                         <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-amber-950"><div id="cp-bar" class="bg-amber-400 h-full w-full transition-all"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-[9px] text-red-400 font-bold mb-0.5"><span>HP (Здоровье)</span><span id="hp-text">100 / 100</span></div>
+                        <div class="flex justify-between text-[9px] text-red-400 font-bold mb-0.5"><span>HP</span><span id="hp-text">100 / 100</span></div>
                         <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-red-950"><div id="hp-bar" class="bg-red-600 h-full w-full transition-all"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-[9px] text-blue-400 font-bold mb-0.5"><span>MP (Мана)</span><span id="mp-text">80 / 80</span></div>
+                        <div class="flex justify-between text-[9px] text-blue-400 font-bold mb-0.5"><span>MP</span><span id="mp-text">80 / 80</span></div>
                         <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-blue-950"><div id="mp-bar" class="bg-blue-500 h-full w-full transition-all"></div></div>
                     </div>
                 </div>
 
-                <!-- Таргет -->
+                <!-- Таргет моба -->
                 <div class="bg-slate-950/90 border border-red-900/40 p-2 rounded-lg space-y-1">
                     <div class="flex justify-between items-center text-xs">
                         <span class="text-slate-400 font-semibold">🎯 ТАРГЕТ:</span>
-                        <span id="target-name" class="font-bold text-red-400">Выберите моба ниже</span>
+                        <span id="target-name" class="font-bold text-red-400">Выберите моба</span>
                     </div>
                     <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
                         <div id="target-hp-bar" class="bg-red-500 h-full w-0 transition-all"></div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
+                <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                     <div class="flex justify-between"><span class="text-slate-400">Атака (P.Atk):</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
                     <div class="flex justify-between"><span class="text-slate-400">Защита (P.Def):</span> <span id="def" class="font-bold text-slate-200">12</span></div>
                 </div>
@@ -153,12 +140,12 @@
 
             <!-- Список мобов -->
             <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 space-y-2">
-                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 РАЗНООБРАЗНЫЕ МОБЫ В ЛОКАЦИИ:</h3>
+                <h3 class="text-[10px] font-bold text-amber-400 uppercase">👾 МОБЫ В ЛОКАЦИИ:</h3>
                 <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-36 overflow-y-auto pr-1"></div>
             </div>
 
             <div class="space-y-2">
-                <button onclick="attackTarget()" class="w-full bg-gradient-to-r from-red-600 to-amber-600 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs">⚔️ Атаковать выбранного моба</button>
+                <button onclick="attackTarget()" class="w-full bg-gradient-to-r from-red-600 to-amber-600 text-slate-950 font-black py-2.5 rounded-xl text-xs active:scale-95">⚔️ Атаковать выбранного моба</button>
                 <div class="flex space-x-2">
                     <button onclick="usePotion('hp')" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+100)</button>
                     <button onclick="usePotion('mp')" class="flex-1 bg-slate-900 border border-blue-900/50 text-blue-400 font-bold py-2 rounded-xl text-xs active:scale-95">💧 Выпить MP (+80)</button>
@@ -166,38 +153,45 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: КВЕСТЫ -->
+        <!-- КВЕСТЫ -->
         <div id="tab-quests" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">📜 ЖУРНАЛ КВЕСТОВ (1-20 УРОВНИ)</h3>
+                <h3 class="font-bold text-amber-400 text-xs text-center border-b border-slate-800 pb-2">📜 ЖУРНАЛ КВЕСТОВ</h3>
                 <div id="quests-container" class="space-y-2 max-h-72 overflow-y-auto pr-1 text-xs"></div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: КУКЛА И 3D -->
+        <!-- КУКЛА Персонажа -->
         <div id="tab-hero" class="hidden space-y-2">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
+                <h3 class="font-bold text-amber-400 text-xs text-center border-b border-slate-800 pb-1.5">🛡️ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
                 <div class="grid grid-cols-3 gap-1.5 items-center justify-items-center">
-                    <div class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center text-center"><span class="text-xs">👕</span><span id="doll-armor-txt" class="text-[6px] text-slate-500">Броня</span></div>
+                    <div class="w-12 h-12 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center p-1 text-center">
+                        <span class="text-xs">👕</span>
+                        <span id="doll-armor-txt" class="text-[7px] text-amber-400 font-bold truncate w-full">Пусто</span>
+                    </div>
                     <div class="flex flex-col items-center space-y-1.5">
-                        <div class="w-11 h-11 bg-slate-950 border-2 border-amber-600/60 rounded-lg flex flex-col items-center justify-center text-center"><span class="text-xs">⚔️</span><span id="doll-weapon-txt" class="text-[6px] text-amber-500 font-bold">Оружие</span></div>
+                        <div class="w-12 h-12 bg-slate-950 border-2 border-amber-600/60 rounded-lg flex flex-col items-center justify-center p-1 text-center">
+                            <span class="text-xs">⚔️</span>
+                            <span id="doll-weapon-txt" class="text-[7px] text-amber-400 font-bold truncate w-full">Пусто</span>
+                        </div>
                         <div id="canvas-container" class="w-32 h-48 bg-slate-950/85 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative cursor-grab">
                             <span class="text-[8px] text-amber-400/70 absolute bottom-1 pointer-events-none">🔄 3D Персонаж</span>
                         </div>
                     </div>
-                    <div class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center text-center"><span class="text-xs">💎</span><span id="doll-jewel-txt" class="text-[6px] text-slate-500">Бижа</span></div>
+                    <div class="w-12 h-12 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center p-1 text-center">
+                        <span class="text-xs">💎</span>
+                        <span id="doll-jewel-txt" class="text-[7px] text-amber-400 font-bold truncate w-full">Пусто</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА 4: СУМКА -->
+        <!-- СУМКА -->
         <div id="tab-bag" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ (КУПЛЕННЫЕ ВЕЩИ)</h3>
-                <div id="inventory-container" class="space-y-1.5 max-h-56 overflow-y-auto pr-1 text-xs">
-                    <p class="text-slate-500 text-center text-xs py-4">Сумка пуста. Купите вещи на рынке!</p>
-                </div>
+                <h3 class="font-bold text-amber-400 text-xs text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ (КУПЛЕННЫЕ ВЕЩИ)</h3>
+                <div id="inventory-container" class="space-y-1.5 max-h-56 overflow-y-auto pr-1 text-xs"></div>
                 <div class="border-t border-slate-800 pt-2 grid grid-cols-2 gap-2 text-xs">
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center"><span class="text-red-400 font-bold">🧪 HP Зелья</span><span id="bag-potions" class="font-black text-red-400">5</span></div>
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center"><span class="text-blue-400 font-bold">💧 MP Зелья</span><span id="bag-mp-potions" class="font-black text-blue-400">3</span></div>
@@ -207,7 +201,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 5: СТАТЫ -->
+        <!-- СТАТЫ -->
         <div id="tab-stats" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -215,15 +209,15 @@
                     <span id="stat-points" class="text-sm font-black text-amber-400 bg-amber-950/60 border border-amber-600 px-2 py-0.5 rounded-lg">0</span>
                 </div>
                 <div class="space-y-1.5 text-xs">
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-amber-500">STR (Сила)</span><div class="flex items-center space-x-2"><span id="stat-str">40</span><button onclick="addStat('str')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-green-500">DEX (Ловкость)</span><div class="flex items-center space-x-2"><span id="stat-dex">30</span><button onclick="addStat('dex')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-blue-400">INT (Интеллект)</span><div class="flex items-center space-x-2"><span id="stat-int">21</span><button onclick="addStat('int')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-red-500">CON (Выносливость)</span><div class="flex items-center space-x-2"><span id="stat-con">43</span><button onclick="addStat('con')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-amber-500">STR</span><div class="flex items-center space-x-2"><span id="stat-str">40</span><button onclick="addStat('str')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-green-500">DEX</span><div class="flex items-center space-x-2"><span id="stat-dex">30</span><button onclick="addStat('dex')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-blue-400">INT</span><div class="flex items-center space-x-2"><span id="stat-int">21</span><button onclick="addStat('int')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-red-500">CON</span><div class="flex items-center space-x-2"><span id="stat-con">43</span><button onclick="addStat('con')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
                 </div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА 6: РЫНОК -->
+        <!-- РЫНОК -->
         <div id="tab-market" class="hidden space-y-2">
             <div class="grid grid-cols-5 gap-1 border-b border-slate-800 pb-1.5">
                 <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]">⚔️ Пушки</button>
@@ -235,27 +229,25 @@
             <div id="market-items-container" class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs"></div>
         </div>
 
-        <!-- ВКЛАДКА 7: БОСС -->
+        <!-- БОСС -->
         <div id="tab-boss" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
                 <div class="text-4xl animate-pulse">👹</div>
-                <h3 class="font-black text-red-500 text-sm tracking-wide">ГИБРИД ТЬМЫ (Helliquary Boss)</h3>
+                <h3 class="font-black text-red-500 text-sm">ГИБРИД ТЬМЫ</h3>
                 <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-red-950">
                     <div id="boss-hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
                 </div>
             </div>
-            <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 px-4 rounded-xl shadow-lg text-xs">💥 АТАКОВАТЬ БОССА</button>
+            <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 rounded-xl text-xs">💥 АТАКОВАТЬ БОССА</button>
         </div>
 
-        <!-- Лог боя -->
+        <!-- ЛОГ -->
         <div id="log" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-[11px] text-slate-400 h-24 overflow-y-auto space-y-1">
-            <p class="text-slate-500">📜 Лог боя и диалоги с NPC...</p>
+            <p class="text-slate-500">📜 Лог боя...</p>
         </div>
     </div>
 
-    <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.38.1 • Fixed Inventory, Dolls & More Mobs/Quests
-    </footer>
+    <footer class="text-center text-[10px] text-slate-600 pt-1">Eternity Online v0.39</footer>
 
     <script>
         const tg = window.Telegram.WebApp;
@@ -266,25 +258,21 @@
         let currentTarget = null;
         let lastCombatTime = 0;
 
-        // РАСШИРЕННЫЕ КВЕСТЫ (разнообразные по уровням)
         let quests = {
-            q1: { id: 'q1', title: '🌱 Охота на Гремлинов (1 ур.)', npc: 'Gallint', desc: 'Убейте 3 Гремлинов в Gremlin Valley.', targetMobId: 'g1', requiredCount: 3, currentCount: 0, rewardGold: 500, rewardExp: 150, status: 'available' },
-            q2: { id: 'q2', title: '🐺 Волчья угроза (3 ур.)', npc: 'Gallint', desc: 'Убейте 4 Кельтиров.', targetMobId: 'g2', requiredCount: 4, currentCount: 0, rewardGold: 800, rewardExp: 250, status: 'locked', minLvl: 3 },
-            q3: { id: 'q3', title: '🏰 Очищение острова (6 ур.)', npc: 'Raymond', desc: 'Убейте 5 Оборотней в Talking Island.', targetMobId: 't1', requiredCount: 5, currentCount: 0, rewardGold: 1500, rewardExp: 400, status: 'locked', minLvl: 6 },
-            q4: { id: 'q4', title: '🪓 Набег Орков (9 ур.)', npc: 'Raymond', desc: 'Убейте 6 Воинов Орков.', targetMobId: 't2', requiredCount: 6, currentCount: 0, rewardGold: 3000, rewardExp: 900, status: 'locked', minLvl: 9 },
-            q5: { id: 'q5', title: '🕳️ Забытые Скелеты (12 ур.)', npc: 'Selius', desc: 'Убейте 8 Скелетов-Лучников в Elven Ruins.', targetMobId: 'e1', requiredCount: 8, currentCount: 0, rewardGold: 6000, rewardExp: 2000, status: 'locked', minLvl: 12 },
-            q6: { id: 'q6', title: '🧟 Нашествие Зомби (16 ур.)', npc: 'Selius', desc: 'Убейте 10 Зомби Руин.', targetMobId: 'e2', requiredCount: 10, currentCount: 0, rewardGold: 12000, rewardExp: 4500, status: 'locked', minLvl: 16 }
+            q1: { id: 'q1', title: '🌱 Охота на Гремлинов (1 ур.)', npc: 'Gallint', desc: 'Убейте 3 Гремлинов.', targetMobId: 'g1', requiredCount: 3, currentCount: 0, rewardGold: 200, rewardExp: 100, status: 'available' },
+            q2: { id: 'q2', title: '🐺 Волчья угроза (3 ур.)', npc: 'Gallint', desc: 'Убейте 4 Кельтиров.', targetMobId: 'g2', requiredCount: 4, currentCount: 0, rewardGold: 400, rewardExp: 200, status: 'locked', minLvl: 3 },
+            q3: { id: 'q3', title: '🏰 Очищение острова (6 ур.)', npc: 'Raymond', desc: 'Убейте 5 Оборотней.', targetMobId: 't1', requiredCount: 5, currentCount: 0, rewardGold: 800, rewardExp: 400, status: 'locked', minLvl: 6 }
         };
 
         const marketData = {
             weapon: [
-                { id: 'w_ng', type: 'weapon', name: 'Shortsword / Staff (NG)', atk: 15, reqLvl: 1, cost: 200 },
-                { id: 'w_d', type: 'weapon', name: 'Elven Longsword / Bow (D)', atk: 35, reqLvl: 20, cost: 1500 },
-                { id: 'w_c', type: 'weapon', name: 'Berserker Blade / Bow (C)', atk: 75, reqLvl: 40, cost: 8000 }
+                { id: 'w_ng', type: 'weapon', name: 'Shortsword (NG)', atk: 15, reqLvl: 1, cost: 200 },
+                { id: 'w_d', type: 'weapon', name: 'Elven Longsword (D)', atk: 35, reqLvl: 20, cost: 1500 },
+                { id: 'w_c', type: 'weapon', name: 'Berserker Blade (C)', atk: 75, reqLvl: 40, cost: 8000 }
             ],
             armor: [
-                { id: 'a_ng_h', type: 'armor', name: '🛡️ Heavy: Wooden Set (NG)', def: 12, reqLvl: 1, cost: 150, bonusHp: 30 },
-                { id: 'a_d_h', type: 'armor', name: '🛡️ Heavy: Brigandine Set (D)', def: 32, reqLvl: 20, cost: 1200, bonusHp: 150 }
+                { id: 'a_ng_h', type: 'armor', name: 'Wooden Set (NG)', def: 12, reqLvl: 1, cost: 150, bonusHp: 30 },
+                { id: 'a_d_h', type: 'armor', name: 'Brigandine Set (D)', def: 32, reqLvl: 20, cost: 1200, bonusHp: 150 }
             ],
             jewel: [
                 { id: 'j_ng', type: 'jewel', name: 'Necklace of Anguish (NG)', def: 5, reqLvl: 1, cost: 100 }
@@ -302,36 +290,32 @@
 
         let activeMarketSub = 'weapon';
 
-        // РАСШИРЕННЫЙ СПИСОК МОБОВ ПО ЛОКАЦИЯМ
         const locations = {
             gremlin_valley: { 
-                name: 'Gremlin Valley (1-6)', minLevel: 1, npcName: 'Gallint', npcDialog: 'Приветствую! Очисти долину от гремлинов и волков.', 
+                name: 'Gremlin Valley (1-6)', minLevel: 1, npcName: 'Gallint', npcDialog: 'Приветствую! Очисти долину от мобов.', 
                 mobs: [
-                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 180, maxHp: 180, atk: 45, exp: 12, gold: 16 },
-                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 260, maxHp: 260, atk: 65, exp: 20, gold: 28 },
-                    { id: 'g3', name: 'Young Wolf (Молодой Волк)', hp: 350, maxHp: 350, atk: 85, exp: 32, gold: 42 }
+                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 120, maxHp: 120, atk: 12, exp: 15, gold: 18 },
+                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 180, maxHp: 180, atk: 18, exp: 25, gold: 30 },
+                    { id: 'g3', name: 'Young Wolf (Молодой Волк)', hp: 250, maxHp: 250, atk: 25, exp: 40, gold: 45 }
                 ] 
             },
             talking_north: { 
-                name: 'Talking Island (6-12)', minLevel: 6, npcName: 'Raymond', npcDialog: 'Сразись с нечистью и орками у северных врат!', 
+                name: 'Talking Island (6-12)', minLevel: 6, npcName: 'Raymond', npcDialog: 'Очисти острова!', 
                 mobs: [
-                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 540, maxHp: 540, atk: 140, exp: 50, gold: 65 },
-                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 750, maxHp: 750, atk: 190, exp: 80, gold: 110 },
-                    { id: 't3', name: 'Giant Spider (Гигантский Паук)', hp: 980, maxHp: 980, atk: 250, exp: 125, gold: 170 }
+                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 450, maxHp: 450, atk: 40, exp: 70, gold: 80 },
+                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 650, maxHp: 650, atk: 55, exp: 110, gold: 120 }
                 ] 
             },
             elven_ruins: { 
-                name: 'Elven Ruins (12-20)', minLevel: 12, npcName: 'Selius', npcDialog: 'Опасная зона! Будь осторожен со скелетами и зомби.', 
+                name: 'Elven Ruins (12-20)', minLevel: 12, npcName: 'Selius', npcDialog: 'Опасные руины!', 
                 mobs: [
-                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 1300, maxHp: 1300, atk: 350, exp: 180, gold: 240 },
-                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 1750, maxHp: 1750, atk: 440, exp: 260, gold: 350 },
-                    { id: 'e3', name: 'Ruins Guardian (Страж Руин)', hp: 2400, maxHp: 2400, atk: 580, exp: 410, gold: 520 }
+                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 1100, maxHp: 1100, atk: 85, exp: 200, gold: 220 }
                 ] 
             }
         };
 
         function loadSavedPlayer() {
-            let data = localStorage.getItem('eternity_player_save_v38');
+            let data = localStorage.getItem('eternity_player_save_v39');
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             return null;
         }
@@ -376,16 +360,16 @@
 
         function naturalRegenTick() {
             if (!player) return;
-            if (Date.now() - lastCombatTime > 2000) {
+            if (Date.now() - lastCombatTime > 3000) {
                 let changed = false;
-                if (player.hp < player.maxHp) { player.hp = Math.min(player.maxHp, player.hp + 3); changed = true; }
-                if (player.mp < player.maxMp) { player.mp = Math.min(player.maxMp, player.mp + 4); changed = true; }
+                if (player.hp < player.maxHp) { player.hp = Math.min(player.maxHp, player.hp + 4); changed = true; }
+                if (player.mp < player.maxMp) { player.mp = Math.min(player.maxMp, player.mp + 5); changed = true; }
                 if (player.cp < player.maxCp) { player.cp = Math.min(player.maxCp, player.cp + 6); changed = true; }
                 if (changed) { saveGame(); updateUI(); }
             }
         }
 
-        function saveGame() { if (player) localStorage.setItem('eternity_player_save_v38', JSON.stringify(player)); }
+        function saveGame() { if (player) localStorage.setItem('eternity_player_save_v39', JSON.stringify(player)); }
         function addLog(text) {
             const logEl = document.getElementById('log');
             if (logEl) logEl.innerHTML = `<p class="text-amber-400/90">${text}</p>` + logEl.innerHTML;
@@ -407,7 +391,7 @@
             loc.mobs.forEach(mob => {
                 const isSelected = currentTarget && currentTarget.id === mob.id;
                 const div = document.createElement('div');
-                div.className = `flex justify-between items-center p-2 rounded-lg border cursor-pointer transition-all ${isSelected ? 'bg-amber-950/80 border-amber-500' : 'bg-slate-950/70 border-slate-800'}`;
+                div.className = `flex justify-between items-center p-2 rounded-lg border cursor-pointer ${isSelected ? 'bg-amber-950/80 border-amber-500' : 'bg-slate-950/70 border-slate-800'}`;
                 div.onclick = () => selectTarget(mob);
                 div.innerHTML = `<span class="font-bold text-xs text-slate-200">${mob.name}</span><span class="text-[9px] ${isSelected ? 'text-amber-400 font-bold' : 'text-slate-500'}">${isSelected ? 'В ТАРГЕТЕ' : 'Выбрать'}</span>`;
                 container.appendChild(div);
@@ -451,25 +435,39 @@
             }
         }
 
+        // РЕАЛЬНЫЙ БОЙ С ВЫЧЕТОМ HP У ПЕРСОНАЖА
         function attackTarget() {
             if (!currentTarget) { alert('Выберите моба!'); return; }
-            if (player.hp <= 0) { alert('Вы мертвы!'); return; }
+            if (player.hp <= 0) { alert('Вы мертвы! Восстановление HP...'); player.hp = player.maxHp; updateUI(); return; }
+            
             lastCombatTime = Date.now();
             let finalAtk = player.atk;
             if (player.ssCount > 0) { player.ssCount--; finalAtk *= 1.35; }
             if (player.archetype === 'archer') {
                 if (player.arrowCount > 0) player.arrowCount--; else { alert('Нет стрел!'); return; }
             }
-            const dmg = Math.max(5, Math.floor(finalAtk));
+            
+            // Урон игрока мобу
+            const dmg = Math.max(8, Math.floor(finalAtk * (0.8 + Math.random() * 0.4)));
             currentTarget.hp = Math.max(0, currentTarget.hp - dmg);
             
-            let mobDmg = Math.max(5, currentTarget.atk - Math.floor(player.def * 0.35));
-            player.hp = Math.max(0, player.hp - mobDmg);
-            addLog(`⚔️ Урон: ${dmg}. Получено: ${mobDmg} HP.`);
+            // Ответный урон моба персонажу (с учетом P.Def)
+            let rawMobDmg = currentTarget.atk - Math.floor(player.def * 0.2);
+            let mobDmg = Math.max(4, Math.floor(rawMobDmg * (0.8 + Math.random() * 0.4)));
+            
+            // Сначала уходит CP, затем HP
+            if (player.cp > 0) {
+                if (player.cp >= mobDmg) { player.cp -= mobDmg; }
+                else { mobDmg -= player.cp; player.cp = 0; player.hp = Math.max(0, player.hp - mobDmg); }
+            } else {
+                player.hp = Math.max(0, player.hp - mobDmg);
+            }
+
+            addLog(`⚔️ Урон: ${dmg}. Моб ответил: -${mobDmg} HP.`);
 
             if (currentTarget.hp <= 0) {
-                player.exp += currentTarget.exp * 3; player.gold += currentTarget.gold * 2;
-                addLog(`🎉 Моб повержен! +${currentTarget.gold * 2} Адены.`);
+                player.exp += currentTarget.exp; player.gold += currentTarget.gold;
+                addLog(`🎉 Повержен ${currentTarget.name}! +${currentTarget.gold} Адены.`);
                 Object.values(quests).forEach(q => {
                     if (q.status === 'active' && q.targetMobId === currentTarget.id) {
                         q.currentCount++; if (q.currentCount >= q.requiredCount) q.status = 'completed';
@@ -477,6 +475,12 @@
                 });
                 currentTarget = null; checkLevelUp(); renderLocationInfo(); renderQuests();
             }
+
+            if (player.hp <= 0) {
+                addLog(`☠️ Вы погибли в бою! Воскрешение...`);
+                player.hp = Math.floor(player.maxHp * 0.5);
+            }
+
             saveGame(); updateUI(); updateTargetUI();
         }
 
@@ -531,7 +535,7 @@
             else if (found.type === 'ss') player.ssCount += 100;
             else if (found.type === 'arrows') player.arrowCount += 500;
             else {
-                let itemInstance = { ...found, instanceId: 'item_' + Date.now() + Math.random() };
+                let itemInstance = { ...found, instanceId: 'item_' + Date.now() + Math.floor(Math.random()*1000) };
                 player.inventory.push(itemInstance);
                 addLog(`🛒 Куплено: ${found.name}`);
             }
@@ -569,16 +573,16 @@
             let wAtk = player.equipped.weapon ? player.equipped.weapon.atk : 15;
             let aDef = player.equipped.armor ? player.equipped.armor.def : 12;
             let jDef = player.equipped.jewel ? player.equipped.jewel.def : 5;
-            player.atk = (player.str * 2.1) + wAtk;
-            player.def = (player.con * 1) + aDef + jDef;
+            player.atk = (player.str * 1.5) + wAtk;
+            player.def = (player.con * 0.8) + aDef + jDef;
             player.maxHp = 80 + (player.con * 8);
             player.maxCp = 40 + (player.con * 5);
             player.maxMp = 50 + (player.men * 6);
         }
 
         function usePotion(type) {
-            if (type === 'hp' && player.potions > 0) { player.potions--; player.hp = Math.min(player.maxHp, player.hp + 100); }
-            else if (type === 'mp' && player.mpPotions > 0) { player.mpPotions--; player.mp = Math.min(player.maxMp, player.mp + 80); }
+            if (type === 'hp' && player.potions > 0) { player.potions--; player.hp = Math.min(player.maxHp, player.hp + 100); addLog(`🧪 Восстановлено +100 HP`); }
+            else if (type === 'mp' && player.mpPotions > 0) { player.mpPotions--; player.mp = Math.min(player.maxMp, player.mp + 80); addLog(`💧 Восстановлено +80 MP`); }
             saveGame(); updateUI();
         }
 
@@ -596,6 +600,7 @@
         function updateUI() {
             if (!player) return;
             document.getElementById('class-title').innerText = `${player.title} (${player.level})`;
+            document.getElementById('weapon-title').innerText = `Оружие: ${player.equipped.weapon ? player.equipped.weapon.name : 'Базовое'}`;
             document.getElementById('level').innerText = player.level;
             document.getElementById('gold').innerText = Math.floor(player.gold);
             document.getElementById('atk').innerText = Math.floor(player.atk);
@@ -609,9 +614,16 @@
             document.getElementById('stat-dex').innerText = player.dex;
             document.getElementById('stat-int').innerText = player.int;
             document.getElementById('stat-con').innerText = player.con;
-            document.getElementById('doll-weapon-txt').innerText = player.equipped.weapon ? player.equipped.weapon.name.split(' ')[0] : 'Оружие';
-            document.getElementById('doll-armor-txt').innerText = player.equipped.armor ? player.equipped.armor.name.split(' ')[0] : 'Броня';
-            document.getElementById('doll-jewel-txt').innerText = player.equipped.jewel ? player.equipped.jewel.name.split(' ')[0] : 'Бижа';
+
+            // Отображение экипировки на кукле
+            document.getElementById('doll-weapon-txt').innerText = player.equipped.weapon ? player.equipped.weapon.name.split(' ')[0] : 'Пусто';
+            document.getElementById('doll-armor-txt').innerText = player.equipped.armor ? player.equipped.armor.name.split(' ')[0] : 'Пусто';
+            document.getElementById('doll-jewel-txt').innerText = player.equipped.jewel ? player.equipped.jewel.name.split(' ')[0] : 'Пусто';
+
+            document.getElementById('cp-text').innerText = `${Math.floor(player.cp)} / ${player.maxCp}`;
+            document.getElementById('hp-text').innerText = `${Math.floor(player.hp)} / ${player.maxHp}`;
+            document.getElementById('mp-text').innerText = `${Math.floor(player.mp)} / ${player.maxMp}`;
+
             document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
             document.getElementById('mp-bar').style.width = `${Math.floor((player.mp / player.maxMp) * 100)}%`;
@@ -619,7 +631,7 @@
             document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
         }
 
-        // THREE.JS 3D МОДЕЛЬ
+        // THREE.JS
         let scene, camera, renderer, characterGroup;
         function init3DModel() {
             const container = document.getElementById('canvas-container');
