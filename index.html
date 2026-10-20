@@ -10,76 +10,76 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-3 flex flex-col justify-between select-none">
 
-    <!-- 1. ВЫБОР КЛАССОВ И РАС (ПОЛНЫЙ СПИСОК L2 INTERLUDE) -->
+    <!-- 1. ВЫБОР КЛАССОВ С БАЛАНСОМ СТАТОВ L2 INTERLUDE -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Lineage 2 Interlude):</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Точные статы Interlude):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
             <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', 'human', 'archer', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Hawkeye (Хавк) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Высокий запас HP/CP, сбалансированная точность и дальность.</p>
+                <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
             </div>
             <div onclick="selectClass('sr', 'Silver Ranger (Сыр)', 'elf', 'archer', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-emerald-400 text-xs">Silver Ranger (Сыр) — Светлый Эльф</h3>
-                <p class="text-[9px] text-slate-400">Максимальная скорость стрельбы и уклонение.</p>
+                <p class="text-[9px] text-slate-400">STR 36 | DEX 35 | CON 36 | INT 21 | WIT 14 | MEN 26</p>
             </div>
             <div onclick="selectClass('fr', 'Phantom Ranger (ФР)', 'dark_elf', 'archer', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Phantom Ranger (ФР) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">Максимальный критический урон и сила выстрела.</p>
+                <p class="text-[9px] text-slate-400">STR 41 | DEX 32 | CON 32 | INT 23 | WIT 12 | MEN 26</p>
             </div>
 
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
             <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Живучий кинжальщик с высоким запасом HP и CP.</p>
+                <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
             </div>
             <div onclick="selectClass('pw', 'Plains Walker (ПВ)', 'elf', 'warrior', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-emerald-400 text-xs">Plains Walker (ПВ) — Светлый Эльф</h3>
-                <p class="text-[9px] text-slate-400">Частый шанс абилок, уклонение и самолечение.</p>
+                <p class="text-[9px] text-slate-400">STR 36 | DEX 35 | CON 36 | INT 21 | WIT 14 | MEN 26</p>
             </div>
             <div onclick="selectClass('aw', 'Abyss Walker (АВ)', 'dark_elf', 'warrior', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Abyss Walker (АВ) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">Сокрушительный смертельный урон из тени.</p>
+                <p class="text-[9px] text-slate-400">STR 41 | DEX 32 | CON 32 | INT 23 | WIT 12 | MEN 26</p>
             </div>
 
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
-            <div onclick="selectClass('sps', 'Spellsinger (Сорки/СпС)', 'elf', 'mage', 21, 24, 37, 23, 23, 40)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('sps', 'Spellsinger (СпС)', 'elf', 'mage', 21, 24, 37, 23, 23, 40)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-cyan-400 text-xs">Spellsinger (СпС) — Светлый Эльф</h3>
-                <p class="text-[9px] text-slate-400">Самая высокая скорость каста и заморозка.</p>
+                <p class="text-[9px] text-slate-400">INT 37 | WIT 23 | MEN 40 | CON 23 | STR 21 | DEX 24</p>
             </div>
-            <div onclick="selectClass('sph', 'Spellhowler (Сх)', 'dark_elf', 'mage', 23, 23, 44, 24, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+            <div onclick="selectClass('sph', 'Spellhowler (СХ)', 'dark_elf', 'mage', 23, 23, 44, 24, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-purple-400 text-xs">Spellhowler (СХ) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">Самая высокая магическая атака в игре (INT 44).</p>
+                <p class="text-[9px] text-slate-400">INT 44 | WIT 19 | MEN 37 | CON 24 | STR 23 | DEX 23</p>
             </div>
             <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-indigo-400 text-xs">Necromancer (Некромант) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Темная магия, проклятия и призыв слуг.</p>
+                <p class="text-[9px] text-slate-400">INT 41 | WIT 20 | MEN 39 | CON 31 | STR 28 | DEX 21</p>
             </div>
 
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Воины, Танки и Орки</p>
-            <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 45, 23, 18, 50, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Зеленый Орк</h3>
-                <p class="text-[9px] text-slate-400">Френзи, лимиты и гигантский урон с двуручником.</p>
+            <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 40, 26, 17, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк Воин</h3>
+                <p class="text-[9px] text-slate-400">STR 40 | DEX 26 | CON 47 | INT 17 | WIT 12 | MEN 27</p>
             </div>
-            <div onclick="selectClass('tyrant', 'Tyrant (Тир)', 'orc', 'warrior', 43, 28, 18, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-amber-600 text-xs">Tyrant (Тирант) — Орк</h3>
-                <p class="text-[9px] text-slate-400">Удары кастетами, тотемы волка и бизона.</p>
+            <div onclick="selectClass('tyrant', 'Tyrant (Тир)', 'orc', 'warrior', 40, 26, 17, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-600 text-xs">Tyrant (Тирант) — Орк Воин</h3>
+                <p class="text-[9px] text-slate-400">STR 40 | DEX 26 | CON 47 | INT 17 | WIT 12 | MEN 27</p>
             </div>
             <div onclick="selectClass('paladin', 'Paladin (Паладин)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-yellow-400 text-xs">Paladin (Паладин) — Человек</h3>
-                <p class="text-[9px] text-slate-400">Непробиваемый танк со щитом и большим CP.</p>
+                <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
             </div>
 
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔨 Гномы (Dwarves)</p>
             <div onclick="selectClass('spoil', 'Bounty Hunter (Спойлер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-yellow-600 text-xs">Bounty Hunter (Спойл) — Гном</h3>
-                <p class="text-[9px] text-slate-400">Добыча редких ресурсов и фарм с синим свечением.</p>
+                <p class="text-[9px] text-slate-400">STR 39 | DEX 29 | CON 45 | INT 20 | WIT 10 | MEN 27</p>
             </div>
             <div onclick="selectClass('craft', 'Warsmith (Крафтер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-yellow-500 text-xs">Warsmith (Крафт) — Гном</h3>
-                <p class="text-[9px] text-slate-400">Создание оружия, предметов и призыв големов.</p>
+                <p class="text-[9px] text-slate-400">STR 39 | DEX 29 | CON 45 | INT 20 | WIT 10 | MEN 27</p>
             </div>
         </div>
     </div>
@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <!-- Переключение 6 вкладок -->
+        <!-- Навигация -->
         <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-2">
             <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[9px] transition-all">⚔️ Охота</button>
             <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">👤 Кукла</button>
@@ -125,7 +125,7 @@
             <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">👹 Босс</button>
         </div>
 
-        <!-- ВКЛАДКА 1: ФАРМ, CP И ТАРГЕТ -->
+        <!-- ВКЛАДКА 1: ФАРМ И ШКАЛЫ (CP/HP/MP) -->
         <div id="tab-farm" class="space-y-3">
             <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 space-y-2">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
@@ -150,11 +150,11 @@
                     </div>
                 </div>
 
-                <!-- CP & HP ИГРОКА -->
+                <!-- ПОЛОСКИ CP / HP / MP -->
                 <div class="space-y-1">
                     <div>
                         <div class="flex justify-between text-[9px] text-amber-400 font-bold mb-0.5">
-                            <span>CP (Combat Points)</span>
+                            <span>CP (Combat Points - Только в PvP)</span>
                             <span id="cp-text">50 / 50</span>
                         </div>
                         <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-amber-950">
@@ -169,6 +169,16 @@
                         </div>
                         <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-red-950">
                             <div id="hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[9px] text-blue-400 font-bold mb-0.5">
+                            <span>MP (Мана)</span>
+                            <span id="mp-text">80 / 80</span>
+                        </div>
+                        <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-blue-950">
+                            <div id="mp-bar" class="bg-blue-500 h-full w-full transition-all"></div>
                         </div>
                     </div>
                 </div>
@@ -191,10 +201,10 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
-                    <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">Защита:</span> <span id="def" class="font-bold text-slate-200">12</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Атака (P.Atk):</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Защита (P.Def):</span> <span id="def" class="font-bold text-slate-200">12</span></div>
                     <div class="flex justify-between"><span class="text-slate-400">Крит Шанс:</span> <span id="crit" class="font-bold text-slate-200">5%</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">Зелья HP:</span> <span id="potions" class="font-bold text-red-400">3</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Зелья (HP/MP):</span> <span id="potions" class="font-bold text-red-400">3 / 2</span></div>
                 </div>
             </div>
 
@@ -209,8 +219,8 @@
                     <span>⚔️ Атаковать выбранного моба</span>
                 </button>
                 <div class="flex space-x-2">
-                    <button onclick="usePotion()" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+50)</button>
-                    <button onclick="enchantWeapon()" class="flex-1 bg-slate-900 border border-amber-600/40 text-amber-400 font-bold py-2 rounded-xl text-xs active:scale-95">✨ Заточить Пушку</button>
+                    <button onclick="usePotion('hp')" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+100)</button>
+                    <button onclick="usePotion('mp')" class="flex-1 bg-slate-900 border border-blue-900/50 text-blue-400 font-bold py-2 rounded-xl text-xs active:scale-95">💧 Выпить MP (+80)</button>
                 </div>
             </div>
         </div>
@@ -271,8 +281,12 @@
                         <span id="bag-a-scrolls" class="font-black text-blue-400">0</span>
                     </div>
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-red-400 font-bold">🧪 Зелья HP / MP</span>
+                        <span class="text-red-400 font-bold">🧪 Зелья HP</span>
                         <span id="bag-potions" class="font-black text-red-400">0</span>
+                    </div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
+                        <span class="text-blue-400 font-bold">💧 Зелья MP</span>
+                        <span id="bag-mp-potions" class="font-black text-blue-400">0</span>
                     </div>
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
                         <span class="text-yellow-500 font-bold">⚡ Соулшоты (SS)</span>
@@ -281,10 +295,6 @@
                     <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
                         <span class="text-cyan-400 font-bold">✨ Блесс Соулшоты (BSS)</span>
                         <span id="bag-bss" class="font-black text-cyan-400">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-orange-400 font-bold">🏹 Стрелы</span>
-                        <span id="bag-arrows" class="font-black text-orange-400">0</span>
                     </div>
                 </div>
             </div>
@@ -316,11 +326,11 @@
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="font-bold text-purple-400">WIT (Мудрость)</span><span class="text-[9px] text-slate-500 block">+Скорость каста</span></div>
-                        <div class="flex items-center space-x-2"><span id="stat-wit" class="font-bold">10</span><button onclick="addStat('wit')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
+                        <div class="flex items-center space-x-2"><span id="stat-wit" class="font-bold">11</span><button onclick="addStat('wit')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div><span class="font-bold text-indigo-400">MEN (Дух)</span><span class="text-[9px] text-slate-500 block">+Запас MP и M.Def</span></div>
-                        <div class="flex items-center space-x-2"><span id="stat-men" class="font-bold">11</span><button onclick="addStat('men')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
+                        <div class="flex items-center space-x-2"><span id="stat-men" class="font-bold">25</span><button onclick="addStat('men')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
                     </div>
                 </div>
             </div>
@@ -340,7 +350,7 @@
             <div id="market-items-container" class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs"></div>
         </div>
 
-        <!-- ВКЛАДКА 6: БОСС -->
+        <!-- ВКЛАДКА 6: БОСС (РЕЙД БОСС ХАРДКОР) -->
         <div id="tab-boss" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
                 <div class="text-4xl animate-pulse">👹</div>
@@ -348,7 +358,7 @@
                 <div>
                     <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
                         <span>HP Босса</span>
-                        <span id="boss-hp-text">5000 / 5000</span>
+                        <span id="boss-hp-text">25000 / 25000</span>
                     </div>
                     <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-red-950">
                         <div id="boss-hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
@@ -356,7 +366,7 @@
                 </div>
             </div>
             <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 px-4 rounded-xl shadow-lg text-xs flex items-center justify-center">
-                <span>💥 АТАКОВАТЬ БОССА</span>
+                <span>💥 АТАКОВАТЬ БОССА (Опасный урон)</span>
             </button>
         </div>
 
@@ -367,7 +377,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.24 • Damage Fix & CP Bar System
+        Eternity Online v0.25 • Interlude Stats & Hardcore PvE
     </footer>
 
     <script>
@@ -375,7 +385,7 @@
         tg.expand();
 
         let player = null;
-        let boss = { hp: 5000, maxHp: 5000 };
+        let boss = { hp: 25000, maxHp: 25000 };
         let currentTarget = null;
 
         const marketData = {
@@ -443,13 +453,7 @@
                 { id: 'c_bss_c', name: '✨ Blessed Soulshot (C) x100', cost: 1600, type: 'bss' },
                 { id: 'c_bss_b', name: '✨ Blessed Soulshot (B) x100', cost: 3000, type: 'bss' },
                 { id: 'c_bss_a', name: '✨ Blessed Soulshot (A) x100', cost: 4500, type: 'bss' },
-                { id: 'c_bss_s', name: '✨ Blessed Soulshot (S) x100', cost: 7000, type: 'bss' },
-                { id: 'c_arr_ng', name: '🏹 Wooden Arrows (NG) x100', cost: 50, type: 'arrow' },
-                { id: 'c_arr_d', name: '🏹 Bone Arrows (D) x100', cost: 150, type: 'arrow' },
-                { id: 'c_arr_c', name: '🏹 Fine Steel Arrows (C) x100', cost: 400, type: 'arrow' },
-                { id: 'c_arr_b', name: '🏹 Red Spotted Arrows (B) x100', cost: 800, type: 'arrow' },
-                { id: 'c_arr_a', name: '🏹 Mithril Arrows (A) x100', cost: 1200, type: 'arrow' },
-                { id: 'c_arr_s', name: '🏹 Shining Arrows (S) x100', cost: 2000, type: 'arrow' }
+                { id: 'c_bss_s', name: '✨ Blessed Soulshot (S) x100', cost: 7000, type: 'bss' }
             ],
             dyes: [
                 { id: 'd_str', name: '🎨 Тату: +4 STR / -4 CON (Сила)', cost: 5000, stat: 'str', statSub: 'con' },
@@ -461,67 +465,68 @@
 
         let activeMarketSub = 'weapon';
 
+        // УСИЛЕННЫЕ И ХАРДКОРНЫЕ МОБЫ (УРОН УВЕЛИЧЕН)
         const locations = {
             gremlin_valley: {
                 name: 'Gremlin Valley (1-6 ур.)', minLevel: 1,
                 mobs: [
-                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 45, maxHp: 45, atk: 12, exp: 12, gold: 8, isAggro: false },
-                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 60, maxHp: 60, atk: 16, exp: 18, gold: 12, isAggro: false },
-                    { id: 'g3', name: 'Elder Keltir (Старший Кельтир)', hp: 90, maxHp: 90, atk: 22, exp: 25, gold: 18, isAggro: false }
+                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 60, maxHp: 60, atk: 18, exp: 12, gold: 8, isAggro: false },
+                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 85, maxHp: 85, atk: 25, exp: 18, gold: 12, isAggro: false },
+                    { id: 'g3', name: 'Elder Keltir (Старший Кельтир)', hp: 120, maxHp: 120, atk: 35, exp: 25, gold: 18, isAggro: false }
                 ]
             },
             talking_north: {
                 name: 'Talking Island North (6-12 ур.)', minLevel: 6,
                 mobs: [
-                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 130, maxHp: 130, atk: 30, exp: 40, gold: 28, isAggro: false },
-                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 170, maxHp: 170, atk: 40, exp: 55, gold: 40, isAggro: true },
-                    { id: 't3', name: 'Giant Spider (Гигантский Паук)', hp: 220, maxHp: 220, atk: 52, exp: 75, gold: 55, isAggro: true }
+                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 180, maxHp: 180, atk: 50, exp: 40, gold: 28, isAggro: false },
+                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 240, maxHp: 240, atk: 70, exp: 55, gold: 40, isAggro: true },
+                    { id: 't3', name: 'Giant Spider (Гигантский Паук)', hp: 320, maxHp: 320, atk: 95, exp: 75, gold: 55, isAggro: true }
                 ]
             },
             elven_ruins: {
                 name: 'Elven Ruins Vicinity (12-20 ур.)', minLevel: 12,
                 mobs: [
-                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 280, maxHp: 280, atk: 65, exp: 110, gold: 80, isAggro: false },
-                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 360, maxHp: 360, atk: 80, exp: 150, gold: 110, isAggro: true },
-                    { id: 'e3', name: 'Ruins Shield Skeleton (Скелет со Щитом)', hp: 450, maxHp: 450, atk: 98, exp: 210, gold: 150, isAggro: true }
+                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 420, maxHp: 420, atk: 125, exp: 110, gold: 80, isAggro: false },
+                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 550, maxHp: 550, atk: 160, exp: 150, gold: 110, isAggro: true },
+                    { id: 'e3', name: 'Ruins Shield Skeleton (Скелет со Щитом)', hp: 720, maxHp: 720, atk: 200, exp: 210, gold: 150, isAggro: true }
                 ]
             },
             execution_grounds: {
                 name: 'Земли Казненных (20+ ур.)', minLevel: 20,
                 mobs: [
-                    { id: 'x1', name: 'Neer Ghoul (Гуль)', hp: 650, maxHp: 650, atk: 125, exp: 320, gold: 240, isAggro: false },
-                    { id: 'x2', name: 'Strain (Висельник)', hp: 800, maxHp: 800, atk: 150, exp: 420, gold: 310, isAggro: true },
-                    { id: 'x3', name: 'Hanged Man Necromancer', hp: 1000, maxHp: 1000, atk: 185, exp: 580, gold: 430, isAggro: true }
+                    { id: 'x1', name: 'Neer Ghoul (Гуль)', hp: 1100, maxHp: 1100, atk: 280, exp: 320, gold: 240, isAggro: false },
+                    { id: 'x2', name: 'Strain (Висельник)', hp: 1450, maxHp: 1450, atk: 350, exp: 420, gold: 310, isAggro: true },
+                    { id: 'x3', name: 'Hanged Man Necromancer', hp: 1900, maxHp: 1900, atk: 440, exp: 580, gold: 430, isAggro: true }
                 ]
             },
             hunters_village: {
                 name: 'Деревня Охотников (30+ ур.)', minLevel: 30,
                 mobs: [
-                    { id: 'h1', name: 'Tamak Orc (Орк Тамак)', hp: 1400, maxHp: 1400, atk: 240, exp: 800, gold: 600, isAggro: false },
-                    { id: 'h2', name: 'Lakin Archer (Лучник Лакин)', hp: 1750, maxHp: 1750, atk: 290, exp: 1100, gold: 820, isAggro: true },
-                    { id: 'h3', name: 'Grave Overlord (Повелитель)', hp: 2200, maxHp: 2200, atk: 350, exp: 1500, gold: 1150, isAggro: true }
+                    { id: 'h1', name: 'Tamak Orc (Орк Тамак)', hp: 2800, maxHp: 2800, atk: 580, exp: 800, gold: 600, isAggro: false },
+                    { id: 'h2', name: 'Lakin Archer (Лучник Лакин)', hp: 3600, maxHp: 3600, atk: 720, exp: 1100, gold: 820, isAggro: true },
+                    { id: 'h3', name: 'Grave Overlord (Повелитель)', hp: 4800, maxHp: 4800, atk: 900, exp: 1500, gold: 1150, isAggro: true }
                 ]
             },
             plains_of_glory: {
                 name: 'Окрестности Хантера (40+ ур.)', minLevel: 40,
                 mobs: [
-                    { id: 'p1', name: 'Vanor Silenos (Силенос)', hp: 3000, maxHp: 3000, atk: 450, exp: 2200, gold: 1600, isAggro: false },
-                    { id: 'p2', name: 'Vanor Silenos Chieftain', hp: 3800, maxHp: 3800, atk: 540, exp: 2900, gold: 2100, isAggro: true }
+                    { id: 'p1', name: 'Vanor Silenos (Силенос)', hp: 6500, maxHp: 6500, atk: 1150, exp: 2200, gold: 1600, isAggro: false },
+                    { id: 'p2', name: 'Vanor Silenos Chieftain', hp: 8500, maxHp: 8500, atk: 1400, exp: 2900, gold: 2100, isAggro: true }
                 ]
             },
             dragon_valley: {
                 name: 'Долина Драконов (50+ ур.)', minLevel: 50,
                 mobs: [
-                    { id: 'd1', name: 'Cave Maiden (Пещерная Дева)', hp: 5500, maxHp: 5500, atk: 720, exp: 4500, gold: 3200, isAggro: true },
-                    { id: 'd2', name: 'Malruk Knight (Рыцарь Малрук)', hp: 7000, maxHp: 7000, atk: 880, exp: 6200, gold: 4500, isAggro: true },
-                    { id: 'd3', name: 'Drake (Дрейк)', hp: 9500, maxHp: 9500, atk: 1100, exp: 9000, gold: 6500, isAggro: true }
+                    { id: 'd1', name: 'Cave Maiden (Пещерная Дева)', hp: 12000, maxHp: 12000, atk: 1800, exp: 4500, gold: 3200, isAggro: true },
+                    { id: 'd2', name: 'Malruk Knight (Рыцарь Малрук)', hp: 16000, maxHp: 16000, atk: 2300, exp: 6200, gold: 4500, isAggro: true },
+                    { id: 'd3', name: 'Drake (Дрейк)', hp: 22000, maxHp: 22000, atk: 3000, exp: 9000, gold: 6500, isAggro: true }
                 ]
             }
         };
 
         function loadSavedPlayer() {
             const MAIN_SAVE_KEY = 'eternity_player_save';
-            const PREV_KEYS = ['eternity_player_v23', 'eternity_player_v22', 'eternity_player_v21'];
+            const PREV_KEYS = ['eternity_player_v24', 'eternity_player_v23'];
             let data = localStorage.getItem(MAIN_SAVE_KEY);
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             for (let key of PREV_KEYS) {
@@ -547,9 +552,9 @@
         function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
             player = {
                 classKey: key, title: title, race: race, archetype: archetype,
-                level: 1, exp: 0, maxExp: 100, gold: 500, statPoints: 5,
+                level: 1, exp: 0, maxExp: 100, gold: 500, statPoints: 0,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
-                potions: 5, mpPotions: 2, ssCount: 100, bssCount: 100, arrowCount: 100,
+                potions: 5, mpPotions: 3, ssCount: 100, bssCount: 100, arrowCount: 100,
                 weaponEnchant: 0, armorEnchant: 0, wScrolls: 1, aScrolls: 1,
                 currentLocation: 'gremlin_valley',
                 equippedWeaponAtk: 15, equippedArmorDef: 12, equippedJewelDef: 5,
@@ -558,6 +563,7 @@
             recalcStats();
             player.hp = player.maxHp;
             player.cp = player.maxCp;
+            player.mp = player.maxMp;
             saveGame();
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
@@ -626,22 +632,10 @@
             });
         }
 
-        // ПОЛНОЦЕННОЕ НАНЕСЕНИЕ УРОНА ПО CP И HP
-        function applyDamageToPlayer(rawDamage) {
-            // Формула урезания урона защитой
-            let actualDmg = Math.max(3, rawDamage - Math.floor(player.def * 0.35));
-
-            if (player.cp > 0) {
-                if (player.cp >= actualDmg) {
-                    player.cp -= actualDmg;
-                } else {
-                    let remainder = actualDmg - player.cp;
-                    player.cp = 0;
-                    player.hp = Math.max(0, player.hp - remainder);
-                }
-            } else {
-                player.hp = Math.max(0, player.hp - actualDmg);
-            }
+        // В PVE УРОН ИДЕТ СТРОГО В HP (CP ТОЛЬКО ДЛЯ PVP)
+        function applyPveDamageToPlayer(rawDamage) {
+            let actualDmg = Math.max(5, rawDamage - Math.floor(player.def * 0.4));
+            player.hp = Math.max(0, player.hp - actualDmg);
             return actualDmg;
         }
 
@@ -651,10 +645,9 @@
             updateTargetUI();
             addLog(`🎯 Выбран моб: **${currentTarget.name}** ${currentTarget.isAggro ? '(⚔️ Агр)' : ''}`);
 
-            // Если моб агрессивный, он сразу атакует при таргете!
             if (currentTarget.isAggro && Math.random() <= 0.5) {
-                let takenDmg = applyDamageToPlayer(currentTarget.atk);
-                addLog(`⚠️ **АГР-МОБ НАПАЛ ПЕРВЫМ!** ${currentTarget.name} нанес **${takenDmg}** урона!`);
+                let takenDmg = applyPveDamageToPlayer(currentTarget.atk);
+                addLog(`⚠️ **АГР-МОБ НАПАЛ ПЕРВЫМ!** ${currentTarget.name} нанес **${takenDmg}** урона по HP!`);
                 updateUI();
             }
         }
@@ -678,20 +671,17 @@
         function attackTarget() {
             if (!currentTarget) { alert('Сначала выберите моба из списка ниже!'); return; }
             if (player.hp <= 0) { 
-                alert('Вы погибли! Воскрешение с половинным запасом HP/CP.'); 
+                alert('Вы погибли! Воскрешение.'); 
                 player.hp = Math.floor(player.maxHp * 0.5); 
-                player.cp = Math.floor(player.maxCp * 0.5); 
                 saveGame(); updateUI(); return; 
             }
 
-            // Урон игрока по мобу
             const dmgToMob = Math.max(5, player.atk);
             currentTarget.hp = Math.max(0, currentTarget.hp - dmgToMob);
 
-            // Моб гарантированно наносит ответный урон по CP/HP
-            const dmgToPlayer = applyDamageToPlayer(currentTarget.atk);
+            const dmgToPlayer = applyPveDamageToPlayer(currentTarget.atk);
 
-            addLog(`⚔️ Урон по **${currentTarget.name}**: **${dmgToMob}**. Ответный урон: **${dmgToPlayer}**.`);
+            addLog(`⚔️ Урон по **${currentTarget.name}**: **${dmgToMob}**. Ответка моба по HP: **${dmgToPlayer}**.`);
 
             if (currentTarget.hp <= 0) {
                 player.exp += currentTarget.exp;
@@ -706,7 +696,7 @@
                     player.statPoints += 5;
                     recalcStats();
                     player.hp = player.maxHp;
-                    player.cp = player.maxCp;
+                    player.mp = player.maxMp;
                     addLog(`🎉 **НОВЫЙ УРОВЕНЬ ${player.level}!**`);
                 }
                 renderLocationMobs();
@@ -812,7 +802,6 @@
                 if (found.type === 'mp') player.mpPotions += 1;
                 if (found.type === 'ss') player.ssCount += 100;
                 if (found.type === 'bss') player.bssCount += 100;
-                if (found.type === 'arrow') player.arrowCount += 100;
                 addLog(`🛒 Куплено: **${found.name}**!`);
             } else if (category === 'dyes') {
                 player[found.stat] += 4; player[found.statSub] = Math.max(1, player[found.statSub] - 4);
@@ -835,39 +824,39 @@
                 if (player.activeSet.bonusCrit) extraCrit += player.activeSet.bonusCrit;
             }
 
-            player.atk = (player.str * 2) + (player.int * 2.2) + bonusAtk;
+            player.atk = (player.str * 2.1) + (player.int * 2.3) + bonusAtk;
             player.def = (player.con * 1) + bonusDef;
             player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.7) + extraCrit);
             
             player.maxHp = 80 + (player.con * 8) + extraHp;
             player.maxCp = 40 + (player.con * 5);
+            player.maxMp = 50 + (player.men * 6);
 
             if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
             if (player.cp === undefined || player.cp > player.maxCp) player.cp = player.maxCp;
+            if (player.mp === undefined || player.mp > player.maxMp) player.mp = player.maxMp;
         }
 
-        function usePotion() {
-            if (player.potions <= 0) { alert('Нет зелий!'); return; }
-            player.potions -= 1;
-            player.hp = Math.min(player.maxHp, player.hp + 50);
+        function usePotion(type) {
+            if (type === 'hp') {
+                if (player.potions <= 0) { alert('Нет зелий HP!'); return; }
+                player.potions -= 1;
+                player.hp = Math.min(player.maxHp, player.hp + 100);
+            } else if (type === 'mp') {
+                if (player.mpPotions <= 0) { alert('Нет зелий MP!'); return; }
+                player.mpPotions -= 1;
+                player.mp = Math.min(player.maxMp, player.mp + 80);
+            }
             saveGame(); updateUI();
         }
 
-        function enchantWeapon() {
-            if (!player.wScrolls || player.wScrolls <= 0) { alert('Нет свитков заточки оружия!'); return; }
-            player.wScrolls -= 1;
-            if (Math.random() <= 0.6) { player.weaponEnchant += 1; addLog(`🔥 **УСПЕХ!** Оружие +${player.weaponEnchant}!`); }
-            else { addLog(`💥 **НЕУДАЧА!**`); }
-            recalcStats(); saveGame(); updateUI(); createCharacterMesh();
-        }
-
         function attackBoss() {
-            if (player.hp <= 0) { alert('Вы погибли! Авто-воскрешение.'); player.hp = Math.floor(player.maxHp * 0.5); saveGame(); updateUI(); return; }
+            if (player.hp <= 0) { alert('Вы погибли! Воскрешение.'); player.hp = Math.floor(player.maxHp * 0.5); saveGame(); updateUI(); return; }
             const damage = player.atk + 15;
             boss.hp = Math.max(0, boss.hp - damage);
-            applyDamageToPlayer(60);
-            addLog(`👹 Урон Боссу: **${damage}**. Ответка Босса: **60** урона по CP/HP.`);
-            if (boss.hp <= 0) { addLog(`👑 **БОСС ПОВЕРЖЕН!** +1000 Адены!`); player.gold += 1000; boss.hp = boss.maxHp; }
+            applyPveDamageToPlayer(180);
+            addLog(`👹 Урон Боссу: **${damage}**. Сокрушительный ответ Босса по HP: **180**.`);
+            if (boss.hp <= 0) { addLog(`👑 **БОСС ПОВЕРЖЕН!** +3000 Адены!`); player.gold += 3000; boss.hp = boss.maxHp; }
             saveGame(); updateUI();
         }
 
@@ -879,13 +868,13 @@
             document.getElementById('atk').innerText = Math.floor(player.atk);
             document.getElementById('def').innerText = Math.floor(player.def);
             document.getElementById('crit').innerText = `${player.crit}%`;
-            document.getElementById('potions').innerText = player.potions;
+            document.getElementById('potions').innerText = `${player.potions} / ${player.mpPotions || 0}`;
             document.getElementById('bag-potions').innerText = player.potions;
+            document.getElementById('bag-mp-potions').innerText = player.mpPotions || 0;
             document.getElementById('bag-w-scrolls').innerText = player.wScrolls || 0;
             document.getElementById('bag-a-scrolls').innerText = player.aScrolls || 0;
             document.getElementById('bag-ss').innerText = player.ssCount || 0;
             document.getElementById('bag-bss').innerText = player.bssCount || 0;
-            document.getElementById('bag-arrows').innerText = player.arrowCount || 0;
 
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
@@ -895,12 +884,15 @@
             document.getElementById('stat-wit').innerText = player.wit;
             document.getElementById('stat-men').innerText = player.men;
 
-            // Шкалы CP и HP
+            // Шкалы CP, HP, MP
             document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
             document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
 
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
+
+            document.getElementById('mp-text').innerText = `${player.mp} / ${player.maxMp}`;
+            document.getElementById('mp-bar').style.width = `${Math.floor((player.mp / player.maxMp) * 100)}%`;
 
             document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
             document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
