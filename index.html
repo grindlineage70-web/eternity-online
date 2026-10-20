@@ -159,7 +159,7 @@
             </div>
         </div>
 
-        <!-- Переключение вкладок (6 ВКЛАДОК: Охота, Кукла, Сумка, Статы, Рынок, Босс) -->
+        <!-- Переключение вкладок -->
         <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-2">
             <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[9px] transition-all">⚔️ Охота</button>
             <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[9px] transition-all">👤 Кукла</button>
@@ -221,7 +221,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: КУКЛА ПЕРСОНАЖА -->
+        <!-- ВКЛАДКА 2: КУКЛА -->
         <div id="tab-hero" class="hidden space-y-2">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
@@ -263,7 +263,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: СУМКА (ИНВЕНТАРЬ РАСХОДНИКОВ) -->
+        <!-- ВКЛАДКА 3: СУМКА -->
         <div id="tab-bag" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ (СУМКА)</h3>
@@ -322,7 +322,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 5: ПОЛНЫЙ РЫНОК (БРОНЯ, БИЖУТЕРИЯ, СВИТКИ И ЩИТЫ) -->
+        <!-- ВКЛАДКА 5: РЫНОК -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН ЭКИПИРОВКИ И РАСХОДНИКОВ</h3>
@@ -390,7 +390,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.16 • Inventory Bag & Full Market Restored
+        Eternity Online v0.17 • Fixed Boss & Death Logic
     </footer>
 
     <script>
@@ -409,8 +409,8 @@
         };
 
         try {
-            if (localStorage.getItem('eternity_player_v16')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v16'));
+            if (localStorage.getItem('eternity_player_v17')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v17'));
             }
         } catch(e) { player = null; }
 
@@ -460,7 +460,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v16', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v17', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -555,6 +555,14 @@
         }
 
         function farm() {
+            if (player.hp <= 0) {
+                alert('Вы погибли! Авто-воскрешение с 50% HP.');
+                player.hp = Math.floor(player.maxHp * 0.5);
+                saveGame();
+                updateUI();
+                return;
+            }
+
             const loc = locations[player.currentLocation || 'talking_island'];
             const expGained = Math.floor((Math.random() * 25 + 15) * loc.expMult);
             const goldGained = Math.floor((Math.random() * 12 + 5) * loc.goldMult);
@@ -607,11 +615,37 @@
         }
 
         function attackBoss() {
-            let damage = player.atk + 10;
+            if (player.hp <= 0) {
+                alert('Вы погибли! Авто-воскрешение с 50% HP.');
+                player.hp = Math.floor(player.maxHp * 0.5);
+                saveGame();
+                updateUI();
+                return;
+            }
+
+            if (boss.hp <= 0) {
+                boss.hp = boss.maxHp; // Сброс босса, если он был добит
+            }
+
+            const damage = player.atk + Math.floor(Math.random() * 10);
             boss.hp = Math.max(0, boss.hp - damage);
-            player.hp = Math.max(0, player.hp - 15);
-            addLog(`👹 Урон Боссу: **${damage}**. Ответка: **15** HP.`);
-            saveGame(); updateUI();
+            
+            const bossDamage = Math.max(5, 25 - Math.floor(player.def * 0.3));
+            player.hp = Math.max(0, player.hp - bossDamage);
+
+            addLog(`👹 Урон Боссу: **${damage}**. Ответка: **${bossDamage}** HP.`);
+
+            if (boss.hp <= 0) {
+                addLog(`👑 **БОСС ПОВЕРЖЕН!** Награда: +500 Адены, +3 Свитка!`);
+                player.gold += 500;
+                player.scrolls += 3;
+                boss.hp = boss.maxHp; // Полный респ босса для следующих попыток
+            } else if (player.hp <= 0) {
+                addLog(`💀 **Вы погибли в бою с боссом!**`);
+            }
+
+            saveGame();
+            updateUI();
         }
 
         function updateUI() {
@@ -650,7 +684,7 @@
         }
 
         // ==========================================
-        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.16)
+        // THREE.JS 3D МОДЕЛИРОВАНИЕ (V0.17)
         // ==========================================
         let scene, camera, renderer, characterGroup;
         let isDragging = false, previousMousePosition = { x: 0, y: 0 };
