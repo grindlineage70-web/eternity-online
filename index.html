@@ -384,7 +384,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.31 • P.Def Stat & Balance
+        Eternity Online v0.32 • Fixed Syntax & P.Def
     </footer>
 
     <script>
@@ -533,7 +533,7 @@
 
         function loadSavedPlayer() {
             const MAIN_SAVE_KEY = 'eternity_player_save';
-            const PREV_KEYS = ['eternity_player_v30', 'eternity_player_v29'];
+            const PREV_KEYS = ['eternity_player_v31', 'eternity_player_v30'];
             let data = localStorage.getItem(MAIN_SAVE_KEY);
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             for (let key of PREV_KEYS) {
@@ -930,9 +930,9 @@
             document.getElementById('stat-wit').innerText = player.wit;
             document.getElementById('stat-men').innerText = player.men;
 
-            // Шкалы CP, HP, MP
+            // Шкалы CP, HP, MP (Исправлено)
             document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
-            document.getElementById('cp-bar'].style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
+            document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
 
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
