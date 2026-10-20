@@ -13,7 +13,7 @@
     <!-- 1. ВЫБОР КЛАССОВ (L2 INTERLUDE) -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Balance: Mobs x5 / Adena x2):</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Balance: Mobs x3 / Adena x2 / Regen):</p>
 
         <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
@@ -154,7 +154,7 @@
                 <div class="space-y-1">
                     <div>
                         <div class="flex justify-between text-[9px] text-amber-400 font-bold mb-0.5">
-                            <span>CP (Combat Points - Только в PvP)</span>
+                            <span>CP (Combat Points - Реген вне боя)</span>
                             <span id="cp-text">50 / 50</span>
                         </div>
                         <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-amber-950">
@@ -164,7 +164,7 @@
 
                     <div>
                         <div class="flex justify-between text-[9px] text-red-400 font-bold mb-0.5">
-                            <span>HP (Здоровье)</span>
+                            <span>HP (Здоровье - Реген вне боя)</span>
                             <span id="hp-text">100 / 100</span>
                         </div>
                         <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-red-950">
@@ -174,7 +174,7 @@
 
                     <div>
                         <div class="flex justify-between text-[9px] text-blue-400 font-bold mb-0.5">
-                            <span>MP (Мана)</span>
+                            <span>MP (Мана - Реген вне боя)</span>
                             <span id="mp-text">80 / 80</span>
                         </div>
                         <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-blue-950">
@@ -210,7 +210,7 @@
 
             <!-- СПИСОК МОБОВ -->
             <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 space-y-2">
-                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 МОБЫ В ЛОКАЦИИ (Mobs x5 / Adena x2):</h3>
+                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 МОБЫ В ЛОКАЦИИ (Mobs x3 / Adena x2):</h3>
                 <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-36 overflow-y-auto pr-1"></div>
             </div>
 
@@ -358,7 +358,7 @@
                 <div>
                     <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
                         <span>HP Босса</span>
-                        <span id="boss-hp-text">125000 / 125000</span>
+                        <span id="boss-hp-text">100000 / 100000</span>
                     </div>
                     <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-red-950">
                         <div id="boss-hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
@@ -377,7 +377,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.29 • Mobs x5 / Adena x2 Balance
+        Eternity Online v0.30 • Mobs x3 / Adena x2 / Natural Regen
     </footer>
 
     <script>
@@ -385,8 +385,9 @@
         tg.expand();
 
         let player = null;
-        let boss = { hp: 125000, maxHp: 125000 };
+        let boss = { hp: 100000, maxHp: 100000 };
         let currentTarget = null;
+        let lastCombatTime = 0; // Для отслеживания времени вне боя (реген)
 
         const marketData = {
             weapon: [
@@ -465,68 +466,68 @@
 
         let activeMarketSub = 'weapon';
 
-        // МОБЫ Х5, АДЕНА Х2 (EXP x1 остается стандартным)
+        // МОБЫ Х3, АДЕНА Х2
         const locations = {
             gremlin_valley: {
                 name: 'Gremlin Valley (1-6 ур.)', minLevel: 1,
                 mobs: [
-                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 300, maxHp: 300, atk: 90, exp: 12, gold: 16, isAggro: false },
-                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 425, maxHp: 425, atk: 125, exp: 18, gold: 24, isAggro: false },
-                    { id: 'g3', name: 'Elder Keltir (Старший Кельтир)', hp: 600, maxHp: 600, atk: 175, exp: 25, gold: 35, isAggro: false }
+                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 180, maxHp: 180, atk: 55, exp: 12, gold: 16, isAggro: false },
+                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 250, maxHp: 250, atk: 75, exp: 18, gold: 24, isAggro: false },
+                    { id: 'g3', name: 'Elder Keltir (Старший Кельтир)', hp: 350, maxHp: 350, atk: 105, exp: 25, gold: 35, isAggro: false }
                 ]
             },
             talking_north: {
                 name: 'Talking Island North (6-12 ур.)', minLevel: 6,
                 mobs: [
-                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 900, maxHp: 900, atk: 250, exp: 40, gold: 56, isAggro: false },
-                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 1200, maxHp: 1200, atk: 350, exp: 55, gold: 80, isAggro: true },
-                    { id: 't3', name: 'Giant Spider (Гигантский Паук)', hp: 1600, maxHp: 1600, atk: 475, exp: 75, gold: 110, isAggro: true }
+                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 540, maxHp: 540, atk: 150, exp: 40, gold: 56, isAggro: false },
+                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 720, maxHp: 720, atk: 210, exp: 55, gold: 80, isAggro: true },
+                    { id: 't3', name: 'Giant Spider (Гигантский Паук)', hp: 960, maxHp: 960, atk: 285, exp: 75, gold: 110, isAggro: true }
                 ]
             },
             elven_ruins: {
                 name: 'Elven Ruins Vicinity (12-20 ур.)', minLevel: 12,
                 mobs: [
-                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 2100, maxHp: 2100, atk: 625, exp: 110, gold: 160, isAggro: false },
-                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 2750, maxHp: 2750, atk: 800, exp: 150, gold: 220, isAggro: true },
-                    { id: 'e3', name: 'Ruins Shield Skeleton (Скелет со Щитом)', hp: 3600, maxHp: 3600, atk: 1000, exp: 210, gold: 300, isAggro: true }
+                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 1260, maxHp: 1260, atk: 375, exp: 110, gold: 160, isAggro: false },
+                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 1650, maxHp: 1650, atk: 480, exp: 150, gold: 220, isAggro: true },
+                    { id: 'e3', name: 'Ruins Shield Skeleton (Скелет со Щитом)', hp: 2160, maxHp: 2160, atk: 600, exp: 210, gold: 300, isAggro: true }
                 ]
             },
             execution_grounds: {
                 name: 'Земли Казненных (20+ ур.)', minLevel: 20,
                 mobs: [
-                    { id: 'x1', name: 'Neer Ghoul (Гуль)', hp: 5500, maxHp: 5500, atk: 1400, exp: 320, gold: 480, isAggro: false },
-                    { id: 'x2', name: 'Strain (Висельник)', hp: 7250, maxHp: 7250, atk: 1750, exp: 420, gold: 620, isAggro: true },
-                    { id: 'x3', name: 'Hanged Man Necromancer', hp: 9500, maxHp: 9500, atk: 2200, exp: 580, gold: 860, isAggro: true }
+                    { id: 'x1', name: 'Neer Ghoul (Гуль)', hp: 3300, maxHp: 3300, atk: 840, exp: 320, gold: 480, isAggro: false },
+                    { id: 'x2', name: 'Strain (Висельник)', hp: 4350, maxHp: 4350, atk: 1050, exp: 420, gold: 620, isAggro: true },
+                    { id: 'x3', name: 'Hanged Man Necromancer', hp: 5700, maxHp: 5700, atk: 1320, exp: 580, gold: 860, isAggro: true }
                 ]
             },
             hunters_village: {
                 name: 'Деревня Охотников (30+ ур.)', minLevel: 30,
                 mobs: [
-                    { id: 'h1', name: 'Tamak Orc (Орк Тамак)', hp: 14000, maxHp: 14000, atk: 2900, exp: 800, gold: 1200, isAggro: false },
-                    { id: 'h2', name: 'Lakin Archer (Лучник Лакин)', hp: 18000, maxHp: 18000, atk: 3600, exp: 1100, gold: 1640, isAggro: true },
-                    { id: 'h3', name: 'Grave Overlord (Повелитель)', hp: 24000, maxHp: 24000, atk: 4500, exp: 1500, gold: 2300, isAggro: true }
+                    { id: 'h1', name: 'Tamak Orc (Орк Тамак)', hp: 8400, maxHp: 8400, atk: 1740, exp: 800, gold: 1200, isAggro: false },
+                    { id: 'h2', name: 'Lakin Archer (Лучник Лакин)', hp: 10800, maxHp: 10800, atk: 2160, exp: 1100, gold: 1640, isAggro: true },
+                    { id: 'h3', name: 'Grave Overlord (Повелитель)', hp: 14400, maxHp: 14400, atk: 2700, exp: 1500, gold: 2300, isAggro: true }
                 ]
             },
             plains_of_glory: {
                 name: 'Окрестности Хантера (40+ ур.)', minLevel: 40,
                 mobs: [
-                    { id: 'p1', name: 'Vanor Silenos (Силенос)', hp: 32500, maxHp: 32500, atk: 5750, exp: 2200, gold: 3200, isAggro: false },
-                    { id: 'p2', name: 'Vanor Silenos Chieftain', hp: 42500, maxHp: 42500, atk: 7000, exp: 2900, gold: 4200, isAggro: true }
+                    { id: 'p1', name: 'Vanor Silenos (Силенос)', hp: 19500, maxHp: 19500, atk: 3450, exp: 2200, gold: 3200, isAggro: false },
+                    { id: 'p2', name: 'Vanor Silenos Chieftain', hp: 25500, maxHp: 25500, atk: 4200, exp: 2900, gold: 4200, isAggro: true }
                 ]
             },
             dragon_valley: {
                 name: 'Долина Драконов (50+ ур.)', minLevel: 50,
                 mobs: [
-                    { id: 'd1', name: 'Cave Maiden (Пещерная Дева)', hp: 60000, maxHp: 60000, atk: 9000, exp: 4500, gold: 6400, isAggro: true },
-                    { id: 'd2', name: 'Malruk Knight (Рыцарь Малрук)', hp: 80000, maxHp: 80000, atk: 11500, exp: 6200, gold: 9000, isAggro: true },
-                    { id: 'd3', name: 'Drake (Дрейк)', hp: 110000, maxHp: 110000, atk: 15000, exp: 9000, gold: 13000, isAggro: true }
+                    { id: 'd1', name: 'Cave Maiden (Пещерная Дева)', hp: 36000, maxHp: 36000, atk: 5400, exp: 4500, gold: 6400, isAggro: true },
+                    { id: 'd2', name: 'Malruk Knight (Рыцарь Малрук)', hp: 48000, maxHp: 48000, atk: 6900, exp: 6200, gold: 9000, isAggro: true },
+                    { id: 'd3', name: 'Drake (Дрейк)', hp: 66000, maxHp: 66000, atk: 9000, exp: 9000, gold: 13000, isAggro: true }
                 ]
             }
         };
 
         function loadSavedPlayer() {
             const MAIN_SAVE_KEY = 'eternity_player_save';
-            const PREV_KEYS = ['eternity_player_v28', 'eternity_player_v27'];
+            const PREV_KEYS = ['eternity_player_v29', 'eternity_player_v28'];
             let data = localStorage.getItem(MAIN_SAVE_KEY);
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             for (let key of PREV_KEYS) {
@@ -579,6 +580,33 @@
             renderMarketItems();
             renderLocationMobs();
             init3DModel();
+            setInterval(naturalRegenTick, 1000); // Запуск регена каждую секунду
+        }
+
+        // ЕСТЕСТВЕННЫЙ РЕГЕН (HP, MP, CP) ВНЕ БОЯ КАК В L2
+        function naturalRegenTick() {
+            if (!player) return;
+            let now = Date.now();
+            // Если прошло больше 2 секунд после последнего удара — включается реген
+            if (now - lastCombatTime > 2000) {
+                let changed = false;
+                if (player.hp < player.maxHp) {
+                    player.hp = Math.min(player.maxHp, player.hp + Math.max(2, Math.floor(player.maxHp * 0.05)));
+                    changed = true;
+                }
+                if (player.mp < player.maxMp) {
+                    player.mp = Math.min(player.maxMp, player.mp + Math.max(3, Math.floor(player.maxMp * 0.07)));
+                    changed = true;
+                }
+                if (player.cp < player.maxCp) {
+                    player.cp = Math.min(player.maxCp, player.cp + Math.max(5, Math.floor(player.maxCp * 0.1)));
+                    changed = true;
+                }
+                if (changed) {
+                    saveGame();
+                    updateUI();
+                }
+            }
         }
 
         function saveGame() {
@@ -633,7 +661,7 @@
         }
 
         function applyPveDamageToPlayer(rawDamage) {
-            let actualDmg = Math.max(8, rawDamage - Math.floor(player.def * 0.4));
+            let actualDmg = Math.max(6, rawDamage - Math.floor(player.def * 0.4));
             player.hp = Math.max(0, player.hp - actualDmg);
             return actualDmg;
         }
@@ -645,6 +673,7 @@
             addLog(`🎯 Выбран моб: **${currentTarget.name}** ${currentTarget.isAggro ? '(⚔️ Агр)' : ''}`);
 
             if (currentTarget.isAggro && Math.random() <= 0.5) {
+                lastCombatTime = Date.now();
                 let takenDmg = applyPveDamageToPlayer(currentTarget.atk);
                 addLog(`⚠️ **АГР-МОБ НАПАЛ ПЕРВЫМ!** ${currentTarget.name} нанес **${takenDmg}** урона по HP!`);
                 updateUI();
@@ -674,6 +703,8 @@
                 player.hp = Math.floor(player.maxHp * 0.5); 
                 saveGame(); updateUI(); return; 
             }
+
+            lastCombatTime = Date.now(); // Фиксируем бой, реген останавливается
 
             const dmgToMob = Math.max(5, player.atk);
             currentTarget.hp = Math.max(0, currentTarget.hp - dmgToMob);
@@ -851,10 +882,11 @@
 
         function attackBoss() {
             if (player.hp <= 0) { alert('Вы погибли! Воскрешение.'); player.hp = Math.floor(player.maxHp * 0.5); saveGame(); updateUI(); return; }
+            lastCombatTime = Date.now();
             const damage = player.atk + 15;
             boss.hp = Math.max(0, boss.hp - damage);
-            applyPveDamageToPlayer(900);
-            addLog(`👹 Урон Боссу: **${damage}**. Сокрушительный ответ Босса по HP: **900**.`);
+            applyPveDamageToPlayer(700);
+            addLog(`👹 Урон Боссу: **${damage}**. Сокрушительный ответ Босса по HP: **700**.`);
             if (boss.hp <= 0) { addLog(`👑 **БОСС ПОВЕРЖЕН!** +10000 Адены!`); player.gold += 10000; boss.hp = boss.maxHp; }
             saveGame(); updateUI();
         }
