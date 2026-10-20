@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternity Online v0.38</title>
+    <title>Eternity Online v0.39</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -220,7 +220,7 @@
                 <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-32 overflow-y-auto pr-1"></div>
             </div>
 
-                        <div class="space-y-2">
+            <div class="space-y-2">
                 <button onclick="attackTarget()" class="w-full bg-gradient-to-r from-red-600 to-amber-600 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs flex items-center justify-center space-x-1">
                     <span>⚔️ Обычная атака</span>
                 </button>
@@ -232,7 +232,6 @@
                 </button>
 
                 <div class="flex space-x-2">
-
                     <button onclick="usePotion('hp')" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+100)</button>
                     <button onclick="usePotion('mp')" class="flex-1 bg-slate-900 border border-blue-900/50 text-blue-400 font-bold py-2 rounded-xl text-xs active:scale-95">💧 Выпить MP (+80)</button>
                 </div>
@@ -398,7 +397,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.38 • Death Mechanics Fix
+        Eternity Online v0.39 • Active Skills Fix
     </footer>
 
     <script>
@@ -537,7 +536,7 @@
             document.getElementById('username').innerText = `Игрок: ${tg.initDataUnsafe.user.first_name}`;
         }
 
-                function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
+        function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
             let skillInfo = getSkillInfo(archetype);
             player = {
                 classKey: key, title: title, race: race, archetype: archetype,
@@ -568,7 +567,6 @@
             if (archetype === 'dwarf') return { name: '🔨 Spoil Assist', mp: 25, mult: 2.0 };
             return { name: '⚔️ Fatal Strike', mp: 30, mult: 2.3 };
         }
-
 
         function showGameScreen() {
             document.getElementById('game-screen').classList.remove('hidden');
@@ -740,57 +738,6 @@
             }
         }
 
-        function attackTarget() {
-            if (player.hp <= 0) {
-                handlePlayerDeath();
-                return;
-            }
-
-            if (!currentTarget) { alert('Сначала выберите моба!'); return; }
-
-            lastCombatTime = Date.now();
-            let finalAtk = player.atk;
-
-            if (player.archetype === 'mage') {
-                if (player.bssCount && player.bssCount > 0) {
-                    player.bssCount--;
-                    finalAtk *= 1.5;
-                } else {
-                    addLog(`⚠️ У вас закончились Blessed Soulshots (BSS)!`);
-                }
-            } else {
-                if (player.ssCount && player.ssCount > 0) {
-                    player.ssCount--;
-                    finalAtk *= 1.35;
-                } else {
-                    addLog(`⚠️ У вас закончились Soulshots (SS)!`);
-                }
-
-                if (player.archetype === 'archer') {
-                    if (player.arrowCount && player.arrowCount > 0) {
-                        player.arrowCount--;
-                    } else {
-                        alert('У вас закончились стрелы! Купите их на рынке.');
-                        addLog(`❌ Невозможно атаковать: закончились стрелы!`);
-                        return;
-                    }
-                }
-            }
-
-            const dmgToMob = Math.max(5, Math.floor(finalAtk));
-            currentTarget.hp = Math.max(0, currentTarget.hp - dmgToMob);
-
-            let actualDmg = Math.max(6, currentTarget.atk - Math.floor(player.def * 0.4));
-            
-            // Расчет списания CP -> HP
-            if (player.cp > 0) {
-                if (player.cp >= actualDmg) {
-                    player.cp -= actualDmg;
-                } else {
-                    let restDmg = actualDmg - player.cp;
-                    player.cp = 0;
-                    player.hp = Math.max(0, player.hp - restDmg);
-                }
         function executeAttack(isSkill = false) {
             if (player.hp <= 0) {
                 handlePlayerDeath();
@@ -863,7 +810,6 @@
 
         function attackTarget() { executeAttack(false); }
         function useActiveSkill() { executeAttack(true); }
-
 
         function checkLevelUp() {
             if (player.exp >= player.maxExp) {
@@ -1030,6 +976,7 @@
             document.getElementById('stat-dex').innerText = player.dex;
             document.getElementById('stat-int').innerText = player.int;
             document.getElementById('stat-con').innerText = player.con;
+            
             document.getElementById('skill-name-ui').innerText = player.skillName || '⚡ Активный скилл';
             document.getElementById('skill-mp-ui').innerText = `${player.skillMp || 25} MP`;
 
