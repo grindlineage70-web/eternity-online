@@ -9,10 +9,10 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-4 flex flex-col justify-between select-none">
 
-    <!-- 1. ЭКРАН ВЫБОРА КЛАССА -->
+    <!-- 1. ВЫБОР КЛАССА -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-4">
         <h2 class="text-2xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-sm text-slate-400 text-center mb-2">Выберите свой путь и базовый класс:</p>
+        <p class="text-sm text-slate-400 text-center mb-2">Выберите класс персонажа:</p>
 
         <div onclick="selectClass('knight')" class="w-full bg-slate-900 border border-slate-800 hover:border-amber-500 p-4 rounded-2xl cursor-pointer transition-all active:scale-95">
             <div class="flex items-center space-x-3">
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <!-- 2. ОСНОВНОЙ ИГРОВОЙ ИНТЕРФЕЙС -->
+    <!-- 2. ОСНОВНОЙ ИНТЕРФЕЙС -->
     <div id="game-screen" class="hidden flex-col space-y-3">
         <!-- Шапка -->
         <header class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -79,8 +79,8 @@
         <!-- Переключение вкладок -->
         <div class="grid grid-cols-5 gap-1 border-b border-slate-800 pb-2">
             <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[10px] transition-all">⚔️ Охота</button>
+            <button id="tab-hero-btn" onclick="switchTab('hero')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">👤 Кукла</button>
             <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">📊 Статы</button>
-            <button id="tab-inv-btn" onclick="switchTab('inventory')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">📦 Сумка</button>
             <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">🛒 Рынок</button>
             <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">👹 Босс</button>
         </div>
@@ -96,7 +96,6 @@
                     </div>
                 </div>
 
-                <!-- Здоровье -->
                 <div class="mb-2">
                     <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
                         <span>HP (Здоровье)</span>
@@ -109,8 +108,8 @@
 
                 <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
                     <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Защита:</span> <span id="def" class="font-bold text-slate-200">12</span></div>
                     <div class="flex justify-between"><span class="text-slate-400">Крит Шанс:</span> <span id="crit" class="font-bold text-slate-200">5%</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">Крит Урон:</span> <span id="crit-dmg" class="font-bold text-slate-200">x1.5</span></div>
                     <div class="flex justify-between"><span class="text-slate-400">Зелья HP:</span> <span id="potions" class="font-bold text-red-400">3</span></div>
                 </div>
             </div>
@@ -126,7 +125,59 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: СТАТЫ -->
+        <!-- ВКЛАДКА 2: ПАНЕЛЬ ПЕРСОНАЖА (КУКЛА / PAPERDOLL) -->
+        <div id="tab-hero" class="hidden space-y-3">
+            <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🛡️ ЭКИПИРОВКА И БИЖУТЕРИЯ</h3>
+                
+                <!-- Сетка Куклы Персонажа (L2 Style) -->
+                <div class="grid grid-cols-3 gap-2 py-2 items-center justify-items-center">
+                    
+                    <!-- Левая колонка: Бижутерия (Серьга 1, Кольцо 1, Браслет 1) -->
+                    <div class="flex flex-col space-y-2">
+                        <div id="slot-earring1" onclick="unequip('earring1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
+                            <span>💎</span><span class="text-[8px] text-slate-500">Серьга 1</span>
+                        </div>
+                        <div id="slot-ring1" onclick="unequip('ring1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
+                            <span>💍</span><span class="text-[8px] text-slate-500">Кольцо 1</span>
+                        </div>
+                        <div id="slot-brac1" onclick="unequip('brac1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
+                            <span>📿</span><span class="text-[8px] text-slate-500">Браслет 1</span>
+                        </div>
+                    </div>
+
+                    <!-- Центр: Оружие, Аватар, Броня -->
+                    <div class="flex flex-col items-center space-y-2">
+                        <div id="slot-weapon" onclick="unequip('weapon')" class="w-12 h-12 bg-slate-950 border-2 border-amber-600/60 rounded-xl flex flex-col items-center justify-center text-xl cursor-pointer active:scale-95">
+                            <span>⚔️</span><span class="text-[8px] text-amber-500 font-bold">Оружие</span>
+                        </div>
+                        <div id="hero-avatar" class="w-16 h-16 bg-slate-800 border-2 border-amber-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
+                            🧙‍♂️
+                        </div>
+                        <div id="slot-armor" onclick="unequip('armor')" class="w-12 h-12 bg-slate-950 border-2 border-blue-600/60 rounded-xl flex flex-col items-center justify-center text-xl cursor-pointer active:scale-95">
+                            <span>🛡️</span><span class="text-[8px] text-blue-400 font-bold">Броня</span>
+                        </div>
+                    </div>
+
+                    <!-- Правая колонка: Бижутерия (Некля, Серьга 2, Кольцо 2, Браслет 2) -->
+                    <div class="flex flex-col space-y-2">
+                        <div id="slot-neck" onclick="unequip('neck')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
+                            <span>📿</span><span class="text-[8px] text-slate-500">Некля</span>
+                        </div>
+                        <div id="slot-earring2" onclick="unequip('earring2')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
+                            <span>💎</span><span class="text-[8px] text-slate-500">Серьга 2</span>
+                        </div>
+                        <div id="slot-ring2" onclick="unequip('ring2')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
+                            <span>💍</span><span class="text-[8px] text-slate-500">Кольцо 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-[10px] text-slate-500 text-center">💡 Нажмите на сломанную или забитую ячейку, чтобы снять предмет.</p>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА 3: СТАТЫ -->
         <div id="tab-stats" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -182,90 +233,55 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: ИНВЕНТАРЬ (СУМКА) -->
-        <div id="tab-inventory" class="hidden space-y-3">
-            <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">📦 СУМКА И РЕСУРСЫ</h3>
-                
-                <div class="grid grid-cols-2 gap-2">
-                    <!-- Слот Зелий -->
-                    <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-2.5 flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl">🧪</span>
-                            <div>
-                                <span class="text-xs font-bold text-red-400 block">Зелья HP</span>
-                                <span id="inv-potions" class="text-[10px] text-slate-400">Кол-во: 3</span>
-                            </div>
-                        </div>
-                        <button onclick="usePotion()" class="bg-red-950 border border-red-800 text-red-400 font-bold px-2 py-1 rounded-lg text-[10px] active:scale-95">Пить</button>
-                    </div>
-
-                    <!-- Слот Свитков -->
-                    <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-2.5 flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl">✨</span>
-                            <div>
-                                <span class="text-xs font-bold text-amber-400 block">Свитки</span>
-                                <span id="inv-scrolls" class="text-[10px] text-slate-400">Кол-во: 1</span>
-                            </div>
-                        </div>
-                        <button onclick="enchantWeapon()" class="bg-amber-950 border border-amber-800 text-amber-400 font-bold px-2 py-1 rounded-lg text-[10px] active:scale-95">Точить</button>
-                    </div>
-                </div>
-
-                <!-- Информация об экипировке -->
-                <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1 mt-2">
-                    <span class="text-slate-400 font-bold block text-[10px] uppercase">Надетая экипировка:</span>
-                    <div class="flex justify-between"><span class="text-slate-400">Оружие:</span> <span id="inv-weapon-info" class="font-bold text-amber-400">Рядовое (+0)</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">Грейд:</span> <span id="inv-tier-info" class="font-bold text-blue-400">No-Grade</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ВКЛАДКА 4: РЫНОК -->
+        <!-- ВКЛАДКА 4: РЫНОК И ПОКУПКА ЭКИПИРОВКИ -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ ОРУЖЕЙНАЯ ЛАВКА И РЫНОК</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ ЛАВКА ЭКИПИРОВКИ И БИЖУТЕРИИ</h3>
                 
-                <div class="space-y-2 pt-1">
+                <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+                    <!-- Покупка Брони -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
-                            <span class="text-xs font-bold text-blue-400">⚔️ Оружие D-Grade (База +20)</span>
-                            <span class="text-[10px] text-amber-500 block">Цена: 400 Адены</span>
+                            <span class="text-xs font-bold text-blue-400">🛡️ Доспех Дракона (+30 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">300 Адены</span>
                         </div>
-                        <button onclick="buyWeapon(1, 400)" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyEquipment('armor', 'Доспех Дракона', 300)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Покупка Некли -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
-                            <span class="text-xs font-bold text-purple-400">⚔️ Оружие C-Grade (База +50)</span>
-                            <span class="text-[10px] text-amber-500 block">Цена: 1200 Адены</span>
+                            <span class="text-xs font-bold text-purple-400">📿 Ожерелье Валакаса (+15 Атака)</span>
+                            <span class="text-[10px] text-amber-500 block">500 Адены</span>
                         </div>
-                        <button onclick="buyWeapon(2, 1200)" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyEquipment('neck', 'Некля Валакаса', 500)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Покупка Колец -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
-                            <span class="text-xs font-bold text-red-400">🧪 Зелье HP (+50 HP)</span>
-                            <span class="text-[10px] text-amber-500 block">Цена: 50 Адены</span>
+                            <span class="text-xs font-bold text-amber-400">💍 Кольцо Антараса (+5% Крита)</span>
+                            <span class="text-[10px] text-amber-500 block">250 Адены</span>
                         </div>
-                        <button onclick="buyItem('potion')" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyJewel('ring', 'Кольцо Антараса', 250)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Покупка Серёг -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-green-400">💎 Серьга Закена (+40 HP)</span>
+                            <span class="text-[10px] text-amber-500 block">250 Адены</span>
+                        </div>
+                        <button onclick="buyJewel('earring', 'Серьга Закена', 250)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Покупка Свитка Заточки -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span>
-                            <span class="text-[10px] text-amber-500 block">Цена: 200 Адены</span>
+                            <span class="text-[10px] text-amber-500 block">200 Адены</span>
                         </div>
-                        <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
-                    </div>
-
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-slate-300">💰 Продать Свиток</span>
-                            <span class="text-[10px] text-green-400 block">+100 Адены</span>
-                        </div>
-                        <button onclick="sellScroll()" class="bg-slate-800 text-amber-400 border border-amber-600/30 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Продать</button>
+                        <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
                 </div>
             </div>
@@ -299,7 +315,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.7 • Inventory Update
+        Eternity Online v0.8 • Paperdoll & Jewelry Update
     </footer>
 
     <script>
@@ -315,9 +331,8 @@
             ranger: { title: 'Следопыт', icon: '🏹', weaponBaseName: 'Лук', str: 10, dex: 20, int: 8, con: 12 }
         };
 
-        if (localStorage.getItem('eternity_player_v6')) {
-            player = JSON.parse(localStorage.getItem('eternity_player_v6'));
-            if (player.weaponTier === undefined) player.weaponTier = 0;
+        if (localStorage.getItem('eternity_player_v8')) {
+            player = JSON.parse(localStorage.getItem('eternity_player_v8'));
             showGameScreen();
         } else {
             document.getElementById('class-select-screen').classList.remove('hidden');
@@ -335,16 +350,27 @@
                 level: 1,
                 exp: 0,
                 maxExp: 100,
-                gold: 500,
+                gold: 1000,
                 statPoints: 5,
                 str: base.str,
                 dex: base.dex,
                 int: base.int,
                 con: base.con,
                 potions: 3,
-                weaponTier: 0,
                 weaponEnchant: 0,
-                scrolls: 1
+                scrolls: 2,
+                // Экипированные слоты
+                equipment: {
+                    weapon: true,
+                    armor: null,
+                    neck: null,
+                    earring1: null,
+                    earring2: null,
+                    ring1: null,
+                    ring2: null,
+                    brac1: null,
+                    brac2: null
+                }
             };
             recalcStats();
             player.hp = player.maxHp;
@@ -352,26 +378,21 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Старт пути! Выдана Сумка и 500 Адены.`);
+            addLog(`✨ Добро пожаловать! Выдано 1000 Адены на покупку экипировки.`);
         }
 
         function recalcStats() {
-            let tierBonus = player.weaponTier === 1 ? 20 : (player.weaponTier === 2 ? 50 : 0);
-            player.atk = (player.str * 2) + (player.int * 2.5) + tierBonus + (player.weaponEnchant * 8);
-            player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.8));
-            player.critMult = (1.5 + (player.dex * 0.02)).toFixed(2);
-            player.maxHp = 80 + (player.con * 10);
-            if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
-        }
+            let bonusAtk = (player.equipment.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (player.equipment.neck ? 15 : 0);
+            let bonusDef = player.equipment.armor ? 30 : 0;
+            let bonusCrit = (player.equipment.ring1 ? 5 : 0) + (player.equipment.ring2 ? 5 : 0);
+            let bonusHp = (player.equipment.earring1 ? 40 : 0) + (player.equipment.earring2 ? 40 : 0);
 
-        function addStat(stat) {
-            if (player.statPoints <= 0) { alert('Нет свободных очков статов!'); return; }
-            player.statPoints -= 1;
-            player[stat] += 1;
-            recalcStats();
-            saveGame();
-            updateUI();
-            addLog(`➕ Вложено очко в **${stat.toUpperCase()}**!`);
+            player.atk = (player.str * 2) + (player.int * 2.5) + bonusAtk;
+            player.def = (player.con * 1) + bonusDef;
+            player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.8) + bonusCrit);
+            player.critMult = (1.5 + (player.dex * 0.02)).toFixed(2);
+            player.maxHp = 80 + (player.con * 10) + bonusHp;
+            if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
         }
 
         function showGameScreen() {
@@ -382,7 +403,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v6', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v8', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -392,8 +413,8 @@
 
         function switchTab(tab) {
             document.getElementById('tab-farm').classList.add('hidden');
+            document.getElementById('tab-hero').classList.add('hidden');
             document.getElementById('tab-stats').classList.add('hidden');
-            document.getElementById('tab-inventory').classList.add('hidden');
             document.getElementById('tab-market').classList.add('hidden');
             document.getElementById('tab-boss').classList.add('hidden');
 
@@ -401,20 +422,20 @@
             const activeBtn = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[10px] transition-all";
 
             document.getElementById('tab-farm-btn').className = defaultBtn;
+            document.getElementById('tab-hero-btn').className = defaultBtn;
             document.getElementById('tab-stats-btn').className = defaultBtn;
-            document.getElementById('tab-inv-btn').className = defaultBtn;
             document.getElementById('tab-market-btn').className = defaultBtn;
             document.getElementById('tab-boss-btn').className = defaultBtn;
 
             if (tab === 'farm') {
                 document.getElementById('tab-farm').classList.remove('hidden');
                 document.getElementById('tab-farm-btn').className = activeBtn;
+            } else if (tab === 'hero') {
+                document.getElementById('tab-hero').classList.remove('hidden');
+                document.getElementById('tab-hero-btn').className = activeBtn;
             } else if (tab === 'stats') {
                 document.getElementById('tab-stats').classList.remove('hidden');
                 document.getElementById('tab-stats-btn').className = activeBtn;
-            } else if (tab === 'inventory') {
-                document.getElementById('tab-inventory').classList.remove('hidden');
-                document.getElementById('tab-inv-btn').className = activeBtn;
             } else if (tab === 'market') {
                 document.getElementById('tab-market').classList.remove('hidden');
                 document.getElementById('tab-market-btn').className = activeBtn;
@@ -424,46 +445,60 @@
             }
         }
 
-        function buyWeapon(tier, cost) {
-            if (player.weaponTier >= tier) { alert('У вас уже есть это или более крутое оружие!'); return; }
-            if (player.gold < cost) { alert(`Недостаточно Адены (Нужно ${cost})!`); return; }
-            
+        function buyEquipment(slot, name, cost) {
+            if (player.gold < cost) { alert('Недостаточно Адены!'); return; }
             player.gold -= cost;
-            player.weaponTier = tier;
+            player.equipment[slot] = name;
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`⚔️ Успешно куплено новое оружие (Tier ${tier})!`);
+            addLog(`🛡️ Надет ${name}! Статы повышены.`);
         }
 
-        function buyItem(item) {
-            if (item === 'potion') {
-                if (player.gold < 50) { alert('Недостаточно Адены (Нужно 50)!'); return; }
-                player.gold -= 50;
-                player.potions += 1;
-                addLog(`🛒 Куплено Зелье HP за 50 Адены.`);
-            } else if (item === 'scroll') {
-                if (player.gold < 200) { alert('Недостаточно Адены (Нужно 200)!'); return; }
-                player.gold -= 200;
-                player.scrolls += 1;
-                addLog(`🛒 Куплен Свиток Заточки за 200 Адены.`);
+        function buyJewel(type, name, cost) {
+            if (player.gold < cost) { alert('Недостаточно Адены!'); return; }
+            let slot1 = `${type}1`;
+            let slot2 = `${type}2`;
+
+            if (!player.equipment[slot1]) {
+                player.equipment[slot1] = name;
+            } else if (!player.equipment[slot2]) {
+                player.equipment[slot2] = name;
+            } else {
+                alert('У вас уже заняты оба слота под эти украшения!');
+                return;
             }
+
+            player.gold -= cost;
+            recalcStats();
             saveGame();
             updateUI();
+            addLog(`💍 Надето ${name}!`);
         }
 
-        function sellScroll() {
-            if (player.scrolls <= 0) { alert('У вас нет свитков для продажи!'); return; }
-            player.scrolls -= 1;
-            player.gold += 100;
-            addLog(`💰 Продан Свиток Заточки за +100 Адены.`);
+        function unequip(slot) {
+            if (!player.equipment[slot]) return;
+            const itemName = player.equipment[slot];
+            player.equipment[slot] = null;
+            recalcStats();
             saveGame();
             updateUI();
+            addLog(`❌ Снято: ${typeof itemName === 'string' ? itemName : 'Предмет'}`);
+        }
+
+        function addStat(stat) {
+            if (player.statPoints <= 0) { alert('Нет свободные очков!'); return; }
+            player.statPoints -= 1;
+            player[stat] += 1;
+            recalcStats();
+            saveGame();
+            updateUI();
+            addLog(`➕ Вложено очко в **${stat.toUpperCase()}**!`);
         }
 
         function farm() {
             const expGained = Math.floor(Math.random() * 25) + 15;
-            const goldGained = Math.floor(Math.random() * 12) + 5;
+            const goldGained = Math.floor(Math.random() * 15) + 5;
             let scrollDrop = Math.random() < 0.15;
             let potionDrop = Math.random() < 0.25;
 
@@ -482,7 +517,7 @@
                 player.statPoints += 5;
                 recalcStats();
                 player.hp = player.maxHp;
-                addLog(`🎉 **НОВЫЙ УРОВЕНЬ ${player.level}!** Получено +5 очков статов!`);
+                addLog(`🎉 **НОВЫЙ УРОВЕНЬ ${player.level}!** +5 очков статов!`);
             }
 
             saveGame();
@@ -490,17 +525,18 @@
         }
 
         function usePotion() {
-            if (player.potions <= 0) { alert('Нет зелий в сумке!'); return; }
+            if (player.potions <= 0) { alert('Нет зелей!'); return; }
             if (player.hp >= player.maxHp) { alert('Здоровье полно!'); return; }
             player.potions -= 1;
             player.hp = Math.min(player.maxHp, player.hp + 50);
-            addLog(`🧪 Вы выпили зелье из сумки. HP восстановлено!`);
+            addLog(`🧪 Вы выпили зелье. HP восстановлено!`);
             saveGame();
             updateUI();
         }
 
         function enchantWeapon() {
-            if (player.scrolls <= 0) { alert('Нет Свитков Заточки в сумке!'); return; }
+            if (!player.equipment.weapon) { alert('Сначала наденьте оружие!'); return; }
+            if (player.scrolls <= 0) { alert('Нет Свитков Заточки!'); return; }
             player.scrolls -= 1;
             let chance = player.weaponEnchant < 3 ? 1.0 : 0.6;
             
@@ -531,10 +567,10 @@
             if (isCrit) damage = Math.floor(damage * player.critMult);
 
             boss.hp = Math.max(0, boss.hp - damage);
-            const bossDamage = Math.max(5, 25);
+            const bossDamage = Math.max(5, 25 - Math.floor(player.def * 0.3));
             player.hp = Math.max(0, player.hp - bossDamage);
 
-            addLog(`👹 Урон Боссу: **${damage}** ${isCrit ? `💥 (КРИТ x${player.critMult}!)` : ''}. Ответка Босса: **${bossDamage}** HP.`);
+            addLog(`👹 Урон Боссу: **${damage}** ${isCrit ? `💥 (КРИТ x${player.critMult}!)` : ''}. Ответка: **${bossDamage}** HP.`);
 
             if (boss.hp <= 0) {
                 addLog(`👑 **БОСС ПОВЕРЖЕН!** Награда: +500 Адены, +3 Свитка!`);
@@ -547,43 +583,32 @@
             updateUI();
         }
 
+        function buyItem(item) {
+            if (item === 'scroll') {
+                if (player.gold < 200) { alert('Недостаточно Адены!'); return; }
+                player.gold -= 200;
+                player.scrolls += 1;
+                addLog(`🛒 Куплен Свиток Заточки.`);
+            }
+            saveGame();
+            updateUI();
+        }
+
         function updateUI() {
             const cls = defaultClasses[player.classKey];
-            let weaponGradeStr = player.weaponTier === 2 ? 'C-Grade' : (player.weaponTier === 1 ? 'D-Grade' : 'No-Grade');
-            let weaponFullName = `${cls.weaponBaseName} [${weaponGradeStr}] (+${player.weaponEnchant})`;
-            
+            document.getElementById('hero-avatar').innerText = cls.icon;
             document.getElementById('class-icon').innerText = cls.icon;
             document.getElementById('class-title').innerText = `${cls.title} (${player.level} ур.)`;
-            document.getElementById('weapon-title').innerText = `Оружие: ${weaponFullName}`;
+            
+            let wName = player.equipment.weapon ? `${cls.weaponBaseName} (+${player.weaponEnchant})` : 'Без оружия';
+            document.getElementById('weapon-title').innerText = `Оружие: ${wName}`;
             
             document.getElementById('level').innerText = player.level;
             document.getElementById('gold').innerText = player.gold;
             document.getElementById('atk').innerText = Math.floor(player.atk);
+            document.getElementById('def').innerText = Math.floor(player.def);
             document.getElementById('crit').innerText = `${player.crit}%`;
-            document.getElementById('crit-dmg').innerText = `x${player.critMult}`;
             document.getElementById('potions').innerText = player.potions;
 
-            // Инвентарь UI
-            document.getElementById('inv-potions').innerText = `Кол-во: ${player.potions}`;
-            document.getElementById('inv-scrolls').innerText = `Кол-во: ${player.scrolls}`;
-            document.getElementById('inv-weapon-info').innerText = weaponFullName;
-            document.getElementById('inv-tier-info').innerText = weaponGradeStr;
-
-            document.getElementById('stat-points').innerText = player.statPoints;
-            document.getElementById('stat-str').innerText = player.str;
-            document.getElementById('stat-dex').innerText = player.dex;
-            document.getElementById('stat-int').innerText = player.int;
-            document.getElementById('stat-con').innerText = player.con;
-
-            document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
-            document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
-
-            document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
-            document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
-
-            document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
-            document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
-        }
-    </script>
-</body>
-</html>
+            // Обновление Куклы Персонажа (Paperdoll)
+            const setSlotUI = (slotId, isEquipped, active
