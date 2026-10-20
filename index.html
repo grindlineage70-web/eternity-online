@@ -77,11 +77,12 @@
         </div>
 
         <!-- Переключение вкладок -->
-        <div class="grid grid-cols-4 gap-1 border-b border-slate-800 pb-2">
-            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[11px] transition-all">⚔️ Охота</button>
-            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all">📊 Статы</button>
-            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all">🛒 Рынок</button>
-            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all">👹 Босс</button>
+        <div class="grid grid-cols-5 gap-1 border-b border-slate-800 pb-2">
+            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[10px] transition-all">⚔️ Охота</button>
+            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">📊 Статы</button>
+            <button id="tab-inv-btn" onclick="switchTab('inventory')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">📦 Сумка</button>
+            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">🛒 Рынок</button>
+            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">👹 Босс</button>
         </div>
 
         <!-- ВКЛАДКА 1: ФАРМ -->
@@ -181,13 +182,52 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: РЫНОК И ОРУЖЕЙНЫЙ МАГАЗИН -->
+        <!-- ВКЛАДКА 3: ИНВЕНТАРЬ (СУМКА) -->
+        <div id="tab-inventory" class="hidden space-y-3">
+            <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 space-y-2">
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">📦 СУМКА И РЕСУРСЫ</h3>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <!-- Слот Зелий -->
+                    <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-2.5 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">🧪</span>
+                            <div>
+                                <span class="text-xs font-bold text-red-400 block">Зелья HP</span>
+                                <span id="inv-potions" class="text-[10px] text-slate-400">Кол-во: 3</span>
+                            </div>
+                        </div>
+                        <button onclick="usePotion()" class="bg-red-950 border border-red-800 text-red-400 font-bold px-2 py-1 rounded-lg text-[10px] active:scale-95">Пить</button>
+                    </div>
+
+                    <!-- Слот Свитков -->
+                    <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-2.5 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">✨</span>
+                            <div>
+                                <span class="text-xs font-bold text-amber-400 block">Свитки</span>
+                                <span id="inv-scrolls" class="text-[10px] text-slate-400">Кол-во: 1</span>
+                            </div>
+                        </div>
+                        <button onclick="enchantWeapon()" class="bg-amber-950 border border-amber-800 text-amber-400 font-bold px-2 py-1 rounded-lg text-[10px] active:scale-95">Точить</button>
+                    </div>
+                </div>
+
+                <!-- Информация об экипировке -->
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1 mt-2">
+                    <span class="text-slate-400 font-bold block text-[10px] uppercase">Надетая экипировка:</span>
+                    <div class="flex justify-between"><span class="text-slate-400">Оружие:</span> <span id="inv-weapon-info" class="font-bold text-amber-400">Рядовое (+0)</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Грейд:</span> <span id="inv-tier-info" class="font-bold text-blue-400">No-Grade</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА 4: РЫНОК -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ ОРУЖЕЙНАЯ ЛАВКА И РЫНОК</h3>
                 
                 <div class="space-y-2 pt-1">
-                    <!-- Покупка Оружия D-Grade -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-blue-400">⚔️ Оружие D-Grade (База +20)</span>
@@ -196,7 +236,6 @@
                         <button onclick="buyWeapon(1, 400)" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Оружия C-Grade -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-purple-400">⚔️ Оружие C-Grade (База +50)</span>
@@ -205,7 +244,6 @@
                         <button onclick="buyWeapon(2, 1200)" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Зелья HP -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-red-400">🧪 Зелье HP (+50 HP)</span>
@@ -214,7 +252,6 @@
                         <button onclick="buyItem('potion')" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Покупка Свитка Точки -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span>
@@ -223,7 +260,6 @@
                         <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
-                    <!-- Продажа Свитка -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-slate-300">💰 Продать Свиток</span>
@@ -235,7 +271,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 4: БОСС -->
+        <!-- ВКЛАДКА 5: БОСС -->
         <div id="tab-boss" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
                 <div class="text-4xl animate-pulse">👹</div>
@@ -263,7 +299,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.6 • Weapon Store Update
+        Eternity Online v0.7 • Inventory Update
     </footer>
 
     <script>
@@ -279,9 +315,8 @@
             ranger: { title: 'Следопыт', icon: '🏹', weaponBaseName: 'Лук', str: 10, dex: 20, int: 8, con: 12 }
         };
 
-        if (localStorage.getItem('eternity_player_v5')) {
-            player = JSON.parse(localStorage.getItem('eternity_player_v5'));
-            // Совместимость со старыми сохранениями
+        if (localStorage.getItem('eternity_player_v6')) {
+            player = JSON.parse(localStorage.getItem('eternity_player_v6'));
             if (player.weaponTier === undefined) player.weaponTier = 0;
             showGameScreen();
         } else {
@@ -300,14 +335,14 @@
                 level: 1,
                 exp: 0,
                 maxExp: 100,
-                gold: 500, // даем стартовый капитал на покупку оружия
+                gold: 500,
                 statPoints: 5,
                 str: base.str,
                 dex: base.dex,
                 int: base.int,
                 con: base.con,
                 potions: 3,
-                weaponTier: 0, // 0 - Рядовое, 1 - D-Grade, 2 - C-Grade
+                weaponTier: 0,
                 weaponEnchant: 0,
                 scrolls: 1
             };
@@ -317,7 +352,7 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Старт пути! Выдано 500 Адены на покупку оружия в лавке.`);
+            addLog(`✨ Старт пути! Выдана Сумка и 500 Адены.`);
         }
 
         function recalcStats() {
@@ -347,7 +382,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v5', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v6', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -358,14 +393,16 @@
         function switchTab(tab) {
             document.getElementById('tab-farm').classList.add('hidden');
             document.getElementById('tab-stats').classList.add('hidden');
+            document.getElementById('tab-inventory').classList.add('hidden');
             document.getElementById('tab-market').classList.add('hidden');
             document.getElementById('tab-boss').classList.add('hidden');
 
-            const defaultBtn = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all";
-            const activeBtn = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[11px] transition-all";
+            const defaultBtn = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all";
+            const activeBtn = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[10px] transition-all";
 
             document.getElementById('tab-farm-btn').className = defaultBtn;
             document.getElementById('tab-stats-btn').className = defaultBtn;
+            document.getElementById('tab-inv-btn').className = defaultBtn;
             document.getElementById('tab-market-btn').className = defaultBtn;
             document.getElementById('tab-boss-btn').className = defaultBtn;
 
@@ -375,12 +412,15 @@
             } else if (tab === 'stats') {
                 document.getElementById('tab-stats').classList.remove('hidden');
                 document.getElementById('tab-stats-btn').className = activeBtn;
+            } else if (tab === 'inventory') {
+                document.getElementById('tab-inventory').classList.remove('hidden');
+                document.getElementById('tab-inv-btn').className = activeBtn;
             } else if (tab === 'market') {
                 document.getElementById('tab-market').classList.remove('hidden');
                 document.getElementById('tab-market-btn').className = activeBtn;
             } else {
                 document.getElementById('tab-boss').classList.remove('hidden');
-                document.getElementById('tab-boss-btn').className = "bg-red-600 text-white font-bold py-1.5 rounded-lg text-[11px] transition-all";
+                document.getElementById('tab-boss-btn').className = "bg-red-600 text-white font-bold py-1.5 rounded-lg text-[10px] transition-all";
             }
         }
 
@@ -393,7 +433,7 @@
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`⚔️ Успешно куплено новое оружие (Tier ${tier})! Атака выросла.`);
+            addLog(`⚔️ Успешно куплено новое оружие (Tier ${tier})!`);
         }
 
         function buyItem(item) {
@@ -450,17 +490,17 @@
         }
 
         function usePotion() {
-            if (player.potions <= 0) { alert('Нет зелий!'); return; }
+            if (player.potions <= 0) { alert('Нет зелий в сумке!'); return; }
             if (player.hp >= player.maxHp) { alert('Здоровье полно!'); return; }
             player.potions -= 1;
             player.hp = Math.min(player.maxHp, player.hp + 50);
-            addLog(`🧪 Вы выпили зелье. HP восстановлено!`);
+            addLog(`🧪 Вы выпили зелье из сумки. HP восстановлено!`);
             saveGame();
             updateUI();
         }
 
         function enchantWeapon() {
-            if (player.scrolls <= 0) { alert('Нет Свитков Заточки!'); return; }
+            if (player.scrolls <= 0) { alert('Нет Свитков Заточки в сумке!'); return; }
             player.scrolls -= 1;
             let chance = player.weaponEnchant < 3 ? 1.0 : 0.6;
             
@@ -509,10 +549,12 @@
 
         function updateUI() {
             const cls = defaultClasses[player.classKey];
-            let weaponGradeStr = player.weaponTier === 2 ? 'C-Grade' : (player.weaponTier === 1 ? 'D-Grade' : 'Рядовое');
+            let weaponGradeStr = player.weaponTier === 2 ? 'C-Grade' : (player.weaponTier === 1 ? 'D-Grade' : 'No-Grade');
+            let weaponFullName = `${cls.weaponBaseName} [${weaponGradeStr}] (+${player.weaponEnchant})`;
+            
             document.getElementById('class-icon').innerText = cls.icon;
             document.getElementById('class-title').innerText = `${cls.title} (${player.level} ур.)`;
-            document.getElementById('weapon-title').innerText = `Оружие: ${cls.weaponBaseName} [${weaponGradeStr}] (+${player.weaponEnchant})`;
+            document.getElementById('weapon-title').innerText = `Оружие: ${weaponFullName}`;
             
             document.getElementById('level').innerText = player.level;
             document.getElementById('gold').innerText = player.gold;
@@ -520,6 +562,12 @@
             document.getElementById('crit').innerText = `${player.crit}%`;
             document.getElementById('crit-dmg').innerText = `x${player.critMult}`;
             document.getElementById('potions').innerText = player.potions;
+
+            // Инвентарь UI
+            document.getElementById('inv-potions').innerText = `Кол-во: ${player.potions}`;
+            document.getElementById('inv-scrolls').innerText = `Кол-во: ${player.scrolls}`;
+            document.getElementById('inv-weapon-info').innerText = weaponFullName;
+            document.getElementById('inv-tier-info').innerText = weaponGradeStr;
 
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
