@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-4 flex flex-col justify-between select-none">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-3 flex flex-col justify-between select-none">
 
     <!-- 1. ВЫБОР КЛАССА -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-4">
@@ -125,53 +125,70 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: ПАНЕЛЬ ПЕРСОНАЖА (КУКЛА / PAPERDOLL) -->
-        <div id="tab-hero" class="hidden space-y-3">
-            <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🛡️ ЭКИПИРОВКА И БИЖУТЕРИЯ</h3>
+        <!-- ВКЛАДКА 2: ПАНЕЛЬ ПЕРСОНАЖА (FULL PAPERDOLL) -->
+        <div id="tab-hero" class="hidden space-y-2">
+            <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ПОЛНАЯ ЭКИПИРОВКА</h3>
                 
-                <div class="grid grid-cols-3 gap-2 py-2 items-center justify-items-center">
-                    <!-- Левая колонка -->
-                    <div class="flex flex-col space-y-2">
-                        <div id="slot-earring1" onclick="unequip('earring1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
-                            <span>💎</span><span class="text-[8px] text-slate-500">Серьга 1</span>
+                <!-- Полная сетка куклы L2 -->
+                <div class="grid grid-cols-3 gap-1.5 items-center justify-items-center">
+                    
+                    <!-- Левая колонка: Броня (Шлем, Наплечники, Тело, Штаны, Перчатки, Сапоги) -->
+                    <div class="flex flex-col space-y-1.5">
+                        <div id="slot-helm" onclick="unequip('helm')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">🪖</span><span class="text-[7px] text-slate-500">Шлем</span>
                         </div>
-                        <div id="slot-ring1" onclick="unequip('ring1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
-                            <span>💍</span><span class="text-[8px] text-slate-500">Кольцо 1</span>
+                        <div id="slot-shoulder" onclick="unequip('shoulder')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">🛡️</span><span class="text-[7px] text-slate-500">Плечи</span>
                         </div>
-                        <div id="slot-brac1" onclick="unequip('brac1')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
-                            <span>📿</span><span class="text-[8px] text-slate-500">Браслет 1</span>
+                        <div id="slot-chest" onclick="unequip('chest')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">👕</span><span class="text-[7px] text-slate-500">Тело</span>
+                        </div>
+                        <div id="slot-legs" onclick="unequip('legs')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">👖</span><span class="text-[7px] text-slate-500">Штаны</span>
+                        </div>
+                        <div id="slot-gloves" onclick="unequip('gloves')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">🧤</span><span class="text-[7px] text-slate-500">Перчатки</span>
+                        </div>
+                        <div id="slot-boots" onclick="unequip('boots')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">👢</span><span class="text-[7px] text-slate-500">Сапоги</span>
                         </div>
                     </div>
 
-                    <!-- Центр -->
-                    <div class="flex flex-col items-center space-y-2">
-                        <div id="slot-weapon" onclick="unequip('weapon')" class="w-12 h-12 bg-slate-950 border-2 border-amber-600/60 rounded-xl flex flex-col items-center justify-center text-xl cursor-pointer active:scale-95">
-                            <span>⚔️</span><span class="text-[8px] text-amber-500 font-bold">Оружие</span>
+                    <!-- Центр: Оружие и Персонаж -->
+                    <div class="flex flex-col items-center space-y-3">
+                        <div id="slot-weapon" onclick="unequip('weapon')" class="w-12 h-12 bg-slate-950 border-2 border-amber-600/60 rounded-xl flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-base">⚔️</span><span class="text-[8px] text-amber-500 font-bold">Оружие</span>
                         </div>
                         <div id="hero-avatar" class="w-16 h-16 bg-slate-800 border-2 border-amber-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
                             🧙‍♂️
                         </div>
-                        <div id="slot-armor" onclick="unequip('armor')" class="w-12 h-12 bg-slate-950 border-2 border-blue-600/60 rounded-xl flex flex-col items-center justify-center text-xl cursor-pointer active:scale-95">
-                            <span>🛡️</span><span class="text-[8px] text-blue-400 font-bold">Броня</span>
-                        </div>
                     </div>
 
-                    <!-- Правая колонка -->
-                    <div class="flex flex-col space-y-2">
-                        <div id="slot-neck" onclick="unequip('neck')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
-                            <span>📿</span><span class="text-[8px] text-slate-500">Некля</span>
+                    <!-- Правая колонка: Бижутерия (Некля, 2 Серьги, 2 Кольца, 2 Браслета) -->
+                    <div class="flex flex-col space-y-1.5">
+                        <div id="slot-neck" onclick="unequip('neck')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Некля</span>
                         </div>
-                        <div id="slot-earring2" onclick="unequip('earring2')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
-                            <span>💎</span><span class="text-[8px] text-slate-500">Серьга 2</span>
+                        <div id="slot-earring1" onclick="unequip('earring1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 1</span>
                         </div>
-                        <div id="slot-ring2" onclick="unequip('ring2')" class="w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95">
-                            <span>💍</span><span class="text-[8px] text-slate-500">Кольцо 2</span>
+                        <div id="slot-earring2" onclick="unequip('earring2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 2</span>
+                        </div>
+                        <div id="slot-ring1" onclick="unequip('ring1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 1</span>
+                        </div>
+                        <div id="slot-ring2" onclick="unequip('ring2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 2</span>
+                        </div>
+                        <div id="slot-brac1" onclick="unequip('brac1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
+                            <span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Браслет</span>
                         </div>
                     </div>
                 </div>
 
-                <p class="text-[10px] text-slate-500 text-center">💡 Нажмите на активную ячейку, чтобы снять предмет.</p>
+                <p class="text-[9px] text-slate-500 text-center">💡 Нажмите на любой надетый предмет, чтобы снять его.</p>
             </div>
         </div>
 
@@ -231,50 +248,100 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 4: РЫНОК -->
+        <!-- ВКЛАДКА 4: РЫНОК БРОНИ И БИЖУТЕРИИ -->
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ ЛАВКА ЭКИПИРОВКИ И БИЖУТЕРИИ</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН БРОНИ И БИЖУТЕРИИ</h3>
                 
                 <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+                    <!-- Шлем -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
-                            <span class="text-xs font-bold text-blue-400">🛡️ Доспех Дракона (+30 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">300 Адены</span>
+                            <span class="text-xs font-bold text-blue-400">🪖 Шлем Дракона (+10 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">150 Адены</span>
                         </div>
-                        <button onclick="buyEquipment('armor', 'Доспех Дракона', 300)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyEquipment('helm', 'Шлем Дракона', 150)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Наплечники -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400">🛡️ Наплечники Дракона (+8 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">120 Адены</span>
+                        </div>
+                        <button onclick="buyEquipment('shoulder', 'Наплечники', 120)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Тело -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400">👕 Нагрудник Дракона (+25 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">300 Адены</span>
+                        </div>
+                        <button onclick="buyEquipment('chest', 'Нагрудник', 300)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Штаны -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400">👖 Штаны Дракона (+15 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">200 Адены</span>
+                        </div>
+                        <button onclick="buyEquipment('legs', 'Штаны Дракона', 200)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Перчатки -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400">🧤 Перчатки Дракона (+6 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">100 Адены</span>
+                        </div>
+                        <button onclick="buyEquipment('gloves', 'Перчатки', 100)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Сапоги -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400">👢 Сапоги Дракона (+8 Защиты)</span>
+                            <span class="text-[10px] text-amber-500 block">110 Адены</span>
+                        </div>
+                        <button onclick="buyEquipment('boots', 'Сапоги Дракона', 110)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Некля -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-purple-400">📿 Ожерелье Валакаса (+15 Атака)</span>
                             <span class="text-[10px] text-amber-500 block">500 Адены</span>
                         </div>
-                        <button onclick="buyEquipment('neck', 'Некля Валакаса', 500)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyEquipment('neck', 'Некля Валакаса', 500)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Кольца -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-400">💍 Кольцо Антараса (+5% Крита)</span>
                             <span class="text-[10px] text-amber-500 block">250 Адены</span>
                         </div>
-                        <button onclick="buyJewel('ring', 'Кольцо Антараса', 250)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyJewel('ring', 'Кольцо Антараса', 250)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Серьги -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-green-400">💎 Серьга Закена (+40 HP)</span>
                             <span class="text-[10px] text-amber-500 block">250 Адены</span>
                         </div>
-                        <button onclick="buyJewel('earring', 'Серьга Закена', 250)" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyJewel('earring', 'Серьга Закена', 250)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
 
+                    <!-- Свиток -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span>
                             <span class="text-[10px] text-amber-500 block">200 Адены</span>
                         </div>
-                        <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                        <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
                 </div>
             </div>
@@ -308,7 +375,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.8.1 • Fix Paperdoll
+        Eternity Online v0.9 • Full L2 Armor Set
     </footer>
 
     <script>
@@ -324,13 +391,9 @@
             ranger: { title: 'Следопыт', icon: '🏹', weaponBaseName: 'Лук', str: 10, dex: 20, int: 8, con: 12 }
         };
 
-        // Миграция / загрузка сохранений
         try {
-            if (localStorage.getItem('eternity_player_v8_1')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v8_1'));
-            } else if (localStorage.getItem('eternity_player_v8')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v8'));
-                if (!player.equipment) player.equipment = { weapon: true };
+            if (localStorage.getItem('eternity_player_v9')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v9'));
             }
         } catch(e) { player = null; }
 
@@ -352,7 +415,7 @@
                 level: 1,
                 exp: 0,
                 maxExp: 100,
-                gold: 1000,
+                gold: 1500, // Даем кап на покупку базовых вещей
                 statPoints: 5,
                 str: base.str,
                 dex: base.dex,
@@ -363,14 +426,18 @@
                 scrolls: 2,
                 equipment: {
                     weapon: true,
-                    armor: null,
+                    helm: null,
+                    shoulder: null,
+                    chest: null,
+                    legs: null,
+                    gloves: null,
+                    boots: null,
                     neck: null,
                     earring1: null,
                     earring2: null,
                     ring1: null,
                     ring2: null,
-                    brac1: null,
-                    brac2: null
+                    brac1: null
                 }
             };
             recalcStats();
@@ -379,18 +446,22 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Добро пожаловать! Выдано 1000 Адены.`);
+            addLog(`✨ Добро пожаловать! Выдано 1500 Адены на приоберетение сета.`);
         }
 
         function recalcStats() {
             if (!player) return;
-            if (!player.equipment) {
-                player.equipment = { weapon: true, armor: null, neck: null, earring1: null, earring2: null, ring1: null, ring2: null, brac1: null, brac2: null };
-            }
-            let bonusAtk = (player.equipment.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (player.equipment.neck ? 15 : 0);
-            let bonusDef = player.equipment.armor ? 30 : 0;
-            let bonusCrit = (player.equipment.ring1 ? 5 : 0) + (player.equipment.ring2 ? 5 : 0);
-            let bonusHp = (player.equipment.earring1 ? 40 : 0) + (player.equipment.earring2 ? 40 : 0);
+            if (!player.equipment) player.equipment = { weapon: true };
+
+            let eq = player.equipment;
+            let bonusAtk = (eq.weapon ? 20 : 0) + (player.weaponEnchant * 8) + (eq.neck ? 15 : 0);
+            
+            // Расчет Защиты со всего СЕТА БРОНИ
+            let bonusDef = (eq.helm ? 10 : 0) + (eq.shoulder ? 8 : 0) + (eq.chest ? 25 : 0) + 
+                           (eq.legs ? 15 : 0) + (eq.gloves ? 6 : 0) + (eq.boots ? 8 : 0);
+
+            let bonusCrit = (eq.ring1 ? 5 : 0) + (eq.ring2 ? 5 : 0);
+            let bonusHp = (eq.earring1 ? 40 : 0) + (eq.earring2 ? 40 : 0);
 
             player.atk = (player.str * 2) + (player.int * 2.5) + bonusAtk;
             player.def = (player.con * 1) + bonusDef;
@@ -408,7 +479,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v8_1', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v9', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -457,7 +528,7 @@
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`🛡️ Надет ${name}!`);
+            addLog(`🛡️ Надет ${name}! Защита выросла.`);
         }
 
         function buyJewel(type, name, cost) {
@@ -483,12 +554,11 @@
 
         function unequip(slot) {
             if (!player.equipment[slot]) return;
-            const itemName = player.equipment[slot];
             player.equipment[slot] = null;
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`❌ Снято: ${typeof itemName === 'string' ? itemName : 'Предмет'}`);
+            addLog(`❌ Снята вещь со слота.`);
         }
 
         function addStat(stat) {
@@ -616,27 +686,32 @@
             document.getElementById('crit').innerText = `${player.crit}%`;
             document.getElementById('potions').innerText = player.potions;
 
-            // Обновление слотов Куклы Персонажа
+            // Обновление всей Куклы Персонажа
             const setSlotUI = (slotId, isEquipped, activeBorderClass) => {
                 const el = document.getElementById(slotId);
                 if (el) {
                     if (isEquipped) {
-                        el.className = `w-11 h-11 bg-slate-900 border-2 ${activeBorderClass} rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95 shadow-md`;
+                        el.className = `w-10 h-10 bg-slate-900 border-2 ${activeBorderClass} rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95 shadow-md`;
                     } else {
-                        el.className = `w-11 h-11 bg-slate-950 border border-slate-800 rounded-xl flex flex-col items-center justify-center text-lg cursor-pointer active:scale-95 opacity-50`;
+                        el.className = `w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95 opacity-50`;
                     }
                 }
             };
 
             setSlotUI('slot-weapon', player.equipment.weapon, 'border-amber-500');
-            setSlotUI('slot-armor', player.equipment.armor, 'border-blue-500');
+            setSlotUI('slot-helm', player.equipment.helm, 'border-blue-400');
+            setSlotUI('slot-shoulder', player.equipment.shoulder, 'border-blue-400');
+            setSlotUI('slot-chest', player.equipment.chest, 'border-blue-500');
+            setSlotUI('slot-legs', player.equipment.legs, 'border-blue-500');
+            setSlotUI('slot-gloves', player.equipment.gloves, 'border-blue-400');
+            setSlotUI('slot-boots', player.equipment.boots, 'border-blue-400');
+
             setSlotUI('slot-neck', player.equipment.neck, 'border-purple-500');
             setSlotUI('slot-ring1', player.equipment.ring1, 'border-amber-400');
             setSlotUI('slot-ring2', player.equipment.ring2, 'border-amber-400');
             setSlotUI('slot-earring1', player.equipment.earring1, 'border-green-400');
             setSlotUI('slot-earring2', player.equipment.earring2, 'border-green-400');
             setSlotUI('slot-brac1', player.equipment.brac1, 'border-cyan-400');
-            setSlotUI('slot-brac2', player.equipment.brac2, 'border-cyan-400');
 
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
