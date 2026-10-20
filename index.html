@@ -77,10 +77,11 @@
         </div>
 
         <!-- Переключение вкладок -->
-        <div class="flex space-x-2 border-b border-slate-800 pb-2">
-            <button id="tab-farm-btn" onclick="switchTab('farm')" class="flex-1 bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-xs transition-all">⚔️ Охота</button>
-            <button id="tab-stats-btn" onclick="switchTab('stats')" class="flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all">📊 Характеристики</button>
-            <button id="tab-boss-btn" onclick="switchTab('boss')" class="flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all">👹 Босс</button>
+        <div class="grid grid-cols-4 gap-1 border-b border-slate-800 pb-2">
+            <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[11px] transition-all">⚔️ Охота</button>
+            <button id="tab-stats-btn" onclick="switchTab('stats')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all">📊 Статы</button>
+            <button id="tab-market-btn" onclick="switchTab('market')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all">🛒 Рынок</button>
+            <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all">👹 Босс</button>
         </div>
 
         <!-- ВКЛАДКА 1: ФАРМ -->
@@ -124,7 +125,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: СТАТЫ И ПРОКАЧКА (L2 STYLE) -->
+        <!-- ВКЛАДКА 2: СТАТЫ -->
         <div id="tab-stats" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -133,7 +134,6 @@
                 </div>
 
                 <div class="space-y-2 pt-1">
-                    <!-- STR -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-amber-500">STR (Сила)</span>
@@ -145,7 +145,6 @@
                         </div>
                     </div>
 
-                    <!-- DEX -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-green-500">DEX (Ловкость)</span>
@@ -157,7 +156,6 @@
                         </div>
                     </div>
 
-                    <!-- INT -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-blue-400">INT (Интеллект)</span>
@@ -169,7 +167,6 @@
                         </div>
                     </div>
 
-                    <!-- CON -->
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
                         <div>
                             <span class="text-xs font-bold text-red-500">CON (Выносливость)</span>
@@ -184,7 +181,43 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: БОСС -->
+        <!-- ВКЛАДКА 3: ТОРГОВЫЙ РЫНОК -->
+        <div id="tab-market" class="hidden space-y-3">
+            <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ ТОРГОВАЯ ЛАВКА АДЕНЫ</h3>
+                
+                <div class="space-y-2 pt-1">
+                    <!-- Покупка HP Зелья -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-red-400">🧪 Зелье HP (+50 HP)</span>
+                            <span class="text-[10px] text-amber-500 block">Цена: 50 Адены</span>
+                        </div>
+                        <button onclick="buyItem('potion')" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Покупка Свитка Точки -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span>
+                            <span class="text-[10px] text-amber-500 block">Цена: 200 Адены</span>
+                        </div>
+                        <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Купить</button>
+                    </div>
+
+                    <!-- Продажа Свитка -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-slate-300">💰 Продать Свиток</span>
+                            <span class="text-[10px] text-green-400 block">+100 Адены</span>
+                        </div>
+                        <button onclick="sellScroll()" class="bg-slate-800 text-amber-400 border border-amber-600/30 font-bold px-3 py-1 rounded-lg text-xs active:scale-95">Продать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА 4: БОСС -->
         <div id="tab-boss" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
                 <div class="text-4xl animate-pulse">👹</div>
@@ -212,7 +245,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.4 • L2 Stats System
+        Eternity Online v0.5 • Marketplace Update
     </footer>
 
     <script>
@@ -248,7 +281,7 @@
                 exp: 0,
                 maxExp: 100,
                 gold: 0,
-                statPoints: 5, // 5 стартовых очков!
+                statPoints: 5,
                 str: base.str,
                 dex: base.dex,
                 int: base.int,
@@ -267,10 +300,9 @@
         }
 
         function recalcStats() {
-            // Расчет параметров от характеристики
             player.atk = (player.str * 2) + (player.int * 2.5) + (player.weaponEnchant * 8);
-            player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.8)); // DEX капает Крит шанс
-            player.critMult = (1.5 + (player.dex * 0.02)).toFixed(2); // DEX растет Крит Урон
+            player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.8));
+            player.critMult = (1.5 + (player.dex * 0.02)).toFixed(2);
             player.maxHp = 80 + (player.con * 10);
             if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
         }
@@ -304,22 +336,55 @@
         function switchTab(tab) {
             document.getElementById('tab-farm').classList.add('hidden');
             document.getElementById('tab-stats').classList.add('hidden');
+            document.getElementById('tab-market').classList.add('hidden');
             document.getElementById('tab-boss').classList.add('hidden');
 
-            document.getElementById('tab-farm-btn').className = "flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all";
-            document.getElementById('tab-stats-btn').className = "flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all";
-            document.getElementById('tab-boss-btn').className = "flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all";
+            const defaultBtn = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[11px] transition-all";
+            const activeBtn = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[11px] transition-all";
+
+            document.getElementById('tab-farm-btn').className = defaultBtn;
+            document.getElementById('tab-stats-btn').className = defaultBtn;
+            document.getElementById('tab-market-btn').className = defaultBtn;
+            document.getElementById('tab-boss-btn').className = defaultBtn;
 
             if (tab === 'farm') {
                 document.getElementById('tab-farm').classList.remove('hidden');
-                document.getElementById('tab-farm-btn').className = "flex-1 bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-xs transition-all";
+                document.getElementById('tab-farm-btn').className = activeBtn;
             } else if (tab === 'stats') {
                 document.getElementById('tab-stats').classList.remove('hidden');
-                document.getElementById('tab-stats-btn').className = "flex-1 bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-xs transition-all";
+                document.getElementById('tab-stats-btn').className = activeBtn;
+            } else if (tab === 'market') {
+                document.getElementById('tab-market').classList.remove('hidden');
+                document.getElementById('tab-market-btn').className = activeBtn;
             } else {
                 document.getElementById('tab-boss').classList.remove('hidden');
-                document.getElementById('tab-boss-btn').className = "flex-1 bg-red-600 text-white font-bold py-1.5 rounded-lg text-xs transition-all";
+                document.getElementById('tab-boss-btn').className = "bg-red-600 text-white font-bold py-1.5 rounded-lg text-[11px] transition-all";
             }
+        }
+
+        function buyItem(item) {
+            if (item === 'potion') {
+                if (player.gold < 50) { alert('Недостаточно Адены (Нужно 50)!'); return; }
+                player.gold -= 50;
+                player.potions += 1;
+                addLog(`🛒 Куплено Зелье HP за 50 Адены.`);
+            } else if (item === 'scroll') {
+                if (player.gold < 200) { alert('Недостаточно Адены (Нужно 200)!'); return; }
+                player.gold -= 200;
+                player.scrolls += 1;
+                addLog(`🛒 Куплен Свиток Заточки за 200 Адены.`);
+            }
+            saveGame();
+            updateUI();
+        }
+
+        function sellScroll() {
+            if (player.scrolls <= 0) { alert('У вас нет свитков для продажи!'); return; }
+            player.scrolls -= 1;
+            player.gold += 100;
+            addLog(`💰 Продан Свиток Заточки за +100 Адены.`);
+            saveGame();
+            updateUI();
         }
 
         function farm() {
@@ -340,7 +405,7 @@
                 player.level += 1;
                 player.exp -= player.maxExp;
                 player.maxExp = Math.floor(player.maxExp * 1.5);
-                player.statPoints += 5; // +5 очков статов за ЛВЛ!
+                player.statPoints += 5;
                 recalcStats();
                 player.hp = player.maxHp;
                 addLog(`🎉 **НОВЫЙ УРОВЕНЬ ${player.level}!** Получено +5 очков статов!`);
@@ -421,22 +486,18 @@
             document.getElementById('crit-dmg').innerText = `x${player.critMult}`;
             document.getElementById('potions').innerText = player.potions;
 
-            // Статы
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
             document.getElementById('stat-dex').innerText = player.dex;
             document.getElementById('stat-int').innerText = player.int;
             document.getElementById('stat-con').innerText = player.con;
 
-            // HP Игрока
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
 
-            // EXP
             document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
             document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
 
-            // HP Босса
             document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
             document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
         }
