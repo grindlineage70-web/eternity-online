@@ -1030,6 +1030,8 @@
             document.getElementById('stat-dex').innerText = player.dex;
             document.getElementById('stat-int').innerText = player.int;
             document.getElementById('stat-con').innerText = player.con;
+            document.getElementById('skill-name-ui').innerText = player.skillName || '⚡ Активный скилл';
+            document.getElementById('skill-mp-ui').innerText = `${player.skillMp || 25} MP`;
 
             document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
             document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
