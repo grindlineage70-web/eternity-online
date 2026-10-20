@@ -378,7 +378,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.34 • Full Market Restored
+        Eternity Online v0.35 • Fixed Syntax Error
     </footer>
 
     <script>
@@ -390,14 +390,12 @@
         let currentTarget = null;
         let lastCombatTime = 0;
 
-        // КВЕСТОВАЯ СИСТЕМА
         let quests = {
             q1: { id: 'q1', title: '🌱 Угроза долине (1 ур.)', npc: 'Grand Master Gallint', desc: 'Убейте 3 Гремлинов в Gremlin Valley.', targetMobId: 'g1', requiredCount: 3, currentCount: 0, rewardGold: 500, rewardExp: 150, status: 'available' },
             q2: { id: 'q2', title: '🏰 Очищение острова (6 ур.)', npc: 'High Priest Raymond', desc: 'Убейте 5 Оборотней в Talking Island North.', targetMobId: 't1', requiredCount: 5, currentCount: 0, rewardGold: 1500, rewardExp: 400, status: 'locked', minLvl: 6 },
             q3: { id: 'q3', title: '⚔️ Испытание Первой Профессии (18 ур.)', npc: 'Master Selius', desc: 'Хардкорный квест: убейте 10 Скелетов-лучников в Elven Ruins и принесите древний фолиант!', targetMobId: 'e1', requiredCount: 10, currentCount: 0, rewardGold: 15000, rewardExp: 5000, status: 'locked', minLvl: 18 }
         };
 
-        // ПОЛНЫЙ РЫНОК Л2
         const marketData = {
             weapon: [
                 { id: 'w_ng', name: 'Shortsword / Staff (No-Grade)', atk: 15, reqLvl: 1, cost: 200 },
@@ -469,7 +467,7 @@
         };
 
         function loadSavedPlayer() {
-            let data = localStorage.getItem('eternity_player_save_v34');
+            let data = localStorage.getItem('eternity_player_save_v35');
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             return null;
         }
@@ -533,7 +531,7 @@
         }
 
         function saveGame() {
-            if (player) localStorage.setItem('eternity_player_save_v34', JSON.stringify(player));
+            if (player) localStorage.setItem('eternity_player_save_v35', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -837,7 +835,7 @@
             document.getElementById('stat-con').innerText = player.con;
 
             document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
-            document.getElementById('cp-bar'].style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
+            document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
             document.getElementById('mp-text').innerText = `${player.mp} / ${player.maxMp}`;
