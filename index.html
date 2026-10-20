@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternity Online</title>
+    <title>Eternity Online v0.38.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -35,56 +35,22 @@
                 <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
                 <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
             </div>
-            <div onclick="selectClass('pw', 'Plains Walker (ПВ)', 'elf', 'warrior', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-emerald-400 text-xs">Plains Walker (ПВ) — Светлый Эльф</h3>
-                <p class="text-[9px] text-slate-400">STR 36 | DEX 35 | CON 36 | INT 21 | WIT 14 | MEN 26</p>
-            </div>
-            <div onclick="selectClass('aw', 'Abyss Walker (АВ)', 'dark_elf', 'warrior', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-purple-400 text-xs">Abyss Walker (АВ) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">STR 41 | DEX 32 | CON 32 | INT 23 | WIT 12 | MEN 26</p>
-            </div>
 
             <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
-            <div onclick="selectClass('sps', 'Spellsinger (СпС)', 'elf', 'mage', 21, 24, 37, 23, 23, 40)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-cyan-400 text-xs">Spellsinger (СпС) — Светлый Эльф</h3>
-                <p class="text-[9px] text-slate-400">INT 37 | WIT 23 | MEN 40 | CON 23 | STR 21 | DEX 24</p>
-            </div>
-            <div onclick="selectClass('sph', 'Spellhowler (СХ)', 'dark_elf', 'mage', 23, 23, 44, 24, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-purple-400 text-xs">Spellhowler (СХ) — Темный Эльф</h3>
-                <p class="text-[9px] text-slate-400">INT 44 | WIT 19 | MEN 37 | CON 24 | STR 23 | DEX 23</p>
-            </div>
             <div onclick="selectClass('necro', 'Necromancer (Некр)', 'human', 'mage', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-indigo-400 text-xs">Necromancer (Некромант) — Человек</h3>
                 <p class="text-[9px] text-slate-400">INT 41 | WIT 20 | MEN 39 | CON 31 | STR 28 | DEX 21</p>
             </div>
 
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Воины, Танки и Орки</p>
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Воины и Орки</p>
             <div onclick="selectClass('destro', 'Destroyer (Дестр)', 'orc', 'warrior', 40, 26, 17, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
                 <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк Воин</h3>
                 <p class="text-[9px] text-slate-400">STR 40 | DEX 26 | CON 47 | INT 17 | WIT 12 | MEN 27</p>
             </div>
-            <div onclick="selectClass('tyrant', 'Tyrant (Тир)', 'orc', 'warrior', 40, 26, 17, 47, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-amber-600 text-xs">Tyrant (Тирант) — Орк Воин</h3>
-                <p class="text-[9px] text-slate-400">STR 40 | DEX 26 | CON 47 | INT 17 | WIT 12 | MEN 27</p>
-            </div>
-            <div onclick="selectClass('paladin', 'Paladin (Паладин)', 'human', 'warrior', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-yellow-400 text-xs">Paladin (Паладин) — Человек</h3>
-                <p class="text-[9px] text-slate-400">STR 40 | DEX 30 | CON 43 | INT 21 | WIT 11 | MEN 25</p>
-            </div>
-
-            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔨 Гномы (Dwarves)</p>
-            <div onclick="selectClass('spoil', 'Bounty Hunter (Спойлер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-yellow-600 text-xs">Bounty Hunter (Спойл) — Гном</h3>
-                <p class="text-[9px] text-slate-400">STR 39 | DEX 29 | CON 45 | INT 20 | WIT 10 | MEN 27</p>
-            </div>
-            <div onclick="selectClass('craft', 'Warsmith (Крафтер)', 'dwarf', 'warrior', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
-                <h3 class="font-bold text-yellow-500 text-xs">Warsmith (Крафт) — Гном</h3>
-                <p class="text-[9px] text-slate-400">STR 39 | DEX 29 | CON 45 | INT 20 | WIT 10 | MEN 27</p>
-            </div>
         </div>
     </div>
 
-    <!-- 2. ОСНОВНОЙ ИНТЕРФЕЙС -->
+    <!-- 2. ОСНОВНОЙ ИНТЕРФЕЙС ИГРЫ -->
     <div id="game-screen" class="hidden flex-col space-y-3">
         <!-- Шапка -->
         <header class="flex justify-between items-center border-b border-slate-800 pb-2">
@@ -94,7 +60,7 @@
             </div>
             <div class="text-right flex items-center space-x-1.5">
                 <div class="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-lg">
-                    <span class="text-[9px] text-amber-400 font-bold block">💰 АДЕНА (x2)</span>
+                    <span class="text-[9px] text-amber-400 font-bold block">💰 АДЕНА</span>
                     <span id="gold" class="text-xs font-black text-slate-200">0</span>
                 </div>
                 <div class="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-lg">
@@ -107,7 +73,7 @@
         <!-- Прогресс опыта -->
         <div>
             <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
-                <span>Опыт (EXP x1)</span>
+                <span>Опыт (EXP)</span>
                 <span id="exp-text">0 / 100</span>
             </div>
             <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
@@ -126,104 +92,73 @@
             <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">👹 Босс</button>
         </div>
 
-        <!-- ВКЛАДКА 1: ФАРМ -->
+        <!-- ВКЛАДКА 1: ОХОТА -->
         <div id="tab-farm" class="space-y-3">
             <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 space-y-2">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                    <div class="flex items-center space-x-2.5">
-                        <div id="class-icon" class="w-10 h-10 bg-slate-800 border border-amber-600 rounded-xl flex items-center justify-center text-lg">⚔️</div>
-                        <div>
-                            <h2 id="class-title" class="text-xs font-bold text-slate-200">Класс</h2>
-                            <p id="weapon-title" class="text-[10px] text-amber-400 font-semibold">Оружие: (+0)</p>
-                        </div>
+                    <div>
+                        <h2 id="class-title" class="text-xs font-bold text-slate-200">Класс</h2>
+                        <p id="weapon-title" class="text-[10px] text-amber-400 font-semibold">Оружие: Базовое</p>
                     </div>
                     <div class="text-right">
-                        <span class="text-[9px] text-slate-400 block">ЛОКАЦИЯ (Mobs x3 / Adena x2):</span>
+                        <span class="text-[9px] text-slate-400 block">ЛОКАЦИЯ:</span>
                         <select id="location-select" onchange="changeLocation()" class="bg-slate-950 border border-amber-600/50 text-amber-400 text-[10px] font-bold rounded-lg px-2 py-1 outline-none">
-                            <option value="gremlin_valley">🌱 Gremlin Valley (1-6 ур.)</option>
-                            <option value="talking_north">🏰 Talking Island North (6-12 ур.)</option>
-                            <option value="elven_ruins">🕳️ Elven Ruins Vicinity (12-20 ур.)</option>
+                            <option value="gremlin_valley">🌱 Gremlin Valley (1-6)</option>
+                            <option value="talking_north">🏰 Talking Island (6-12)</option>
+                            <option value="elven_ruins">🕳️ Elven Ruins (12-20)</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- NPC В ЛОКАЦИИ -->
                 <div class="bg-slate-950/80 border border-amber-500/30 p-2 rounded-lg text-xs flex justify-between items-center">
                     <div>
                         <span class="text-[9px] text-amber-400 font-bold block">👤 NPC В ЛОКАЦИИ:</span>
-                        <span id="npc-name" class="font-bold text-slate-200">Grand Master Gallint</span>
+                        <span id="npc-name" class="font-bold text-slate-200">Gallint</span>
                     </div>
                     <button onclick="talkToNpc()" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px]">🗣️ Говорить</button>
                 </div>
 
-                <!-- ПОЛОСКИ CP / HP / MP -->
+                <!-- Полоски параметров -->
                 <div class="space-y-1">
                     <div>
-                        <div class="flex justify-between text-[9px] text-amber-400 font-bold mb-0.5">
-                            <span>CP (Combat Points)</span>
-                            <span id="cp-text">50 / 50</span>
-                        </div>
-                        <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-amber-950">
-                            <div id="cp-bar" class="bg-amber-400 h-full w-full transition-all"></div>
-                        </div>
+                        <div class="flex justify-between text-[9px] text-amber-400 font-bold mb-0.5"><span>CP (Combat Points)</span><span id="cp-text">50 / 50</span></div>
+                        <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-amber-950"><div id="cp-bar" class="bg-amber-400 h-full w-full transition-all"></div></div>
                     </div>
-
                     <div>
-                        <div class="flex justify-between text-[9px] text-red-400 font-bold mb-0.5">
-                            <span>HP (Здоровье)</span>
-                            <span id="hp-text">100 / 100</span>
-                        </div>
-                        <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-red-950">
-                            <div id="hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
-                        </div>
+                        <div class="flex justify-between text-[9px] text-red-400 font-bold mb-0.5"><span>HP (Здоровье)</span><span id="hp-text">100 / 100</span></div>
+                        <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-red-950"><div id="hp-bar" class="bg-red-600 h-full w-full transition-all"></div></div>
                     </div>
-
                     <div>
-                        <div class="flex justify-between text-[9px] text-blue-400 font-bold mb-0.5">
-                            <span>MP (Мана)</span>
-                            <span id="mp-text">80 / 80</span>
-                        </div>
-                        <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-blue-950">
-                            <div id="mp-bar" class="bg-blue-500 h-full w-full transition-all"></div>
-                        </div>
+                        <div class="flex justify-between text-[9px] text-blue-400 font-bold mb-0.5"><span>MP (Мана)</span><span id="mp-text">80 / 80</span></div>
+                        <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden border border-blue-950"><div id="mp-bar" class="bg-blue-500 h-full w-full transition-all"></div></div>
                     </div>
                 </div>
 
-                <!-- ТАРГЕТ МОБ -->
-                <div class="bg-slate-950/90 border border-red-900/40 p-2 rounded-lg space-y-1.5">
+                <!-- Таргет -->
+                <div class="bg-slate-950/90 border border-red-900/40 p-2 rounded-lg space-y-1">
                     <div class="flex justify-between items-center text-xs">
                         <span class="text-slate-400 font-semibold">🎯 ТАРГЕТ:</span>
                         <span id="target-name" class="font-bold text-red-400">Выберите моба ниже</span>
                     </div>
-                    <div>
-                        <div class="flex justify-between text-[9px] text-slate-400 mb-0.5">
-                            <span>HP Мобы</span>
-                            <span id="target-hp-text">0 / 0</span>
-                        </div>
-                        <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
-                            <div id="target-hp-bar" class="bg-red-500 h-full w-0 transition-all"></div>
-                        </div>
+                    <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                        <div id="target-hp-bar" class="bg-red-500 h-full w-0 transition-all"></div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
                     <div class="flex justify-between"><span class="text-slate-400">Атака (P.Atk):</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
                     <div class="flex justify-between"><span class="text-slate-400">Защита (P.Def):</span> <span id="def" class="font-bold text-slate-200">12</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">Крит Шанс:</span> <span id="crit" class="font-bold text-slate-200">5%</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">Зелья (HP/MP):</span> <span id="potions" class="font-bold text-red-400">5 / 3</span></div>
                 </div>
             </div>
 
-            <!-- СПИСОК МОБОВ -->
+            <!-- Список мобов -->
             <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-2.5 space-y-2">
-                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 МОБЫ В ЛОКАЦИИ (Mobs x3 / Adena x2):</h3>
-                <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-32 overflow-y-auto pr-1"></div>
+                <h3 class="text-[10px] font-bold text-amber-400 tracking-wider uppercase">👾 РАЗНООБРАЗНЫЕ МОБЫ В ЛОКАЦИИ:</h3>
+                <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-36 overflow-y-auto pr-1"></div>
             </div>
 
             <div class="space-y-2">
-                <button onclick="attackTarget()" class="w-full bg-gradient-to-r from-red-600 to-amber-600 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs flex items-center justify-center space-x-1">
-                    <span>⚔️ Атаковать выбранного моба</span>
-                </button>
+                <button onclick="attackTarget()" class="w-full bg-gradient-to-r from-red-600 to-amber-600 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs">⚔️ Атаковать выбранного моба</button>
                 <div class="flex space-x-2">
                     <button onclick="usePotion('hp')" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+100)</button>
                     <button onclick="usePotion('mp')" class="flex-1 bg-slate-900 border border-blue-900/50 text-blue-400 font-bold py-2 rounded-xl text-xs active:scale-95">💧 Выпить MP (+80)</button>
@@ -234,49 +169,24 @@
         <!-- ВКЛАДКА 2: КВЕСТЫ -->
         <div id="tab-quests" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">📜 ЖУРНАЛ КВЕСТОВ (1 - 20 LVL)</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">📜 ЖУРНАЛ КВЕСТОВ (1-20 УРОВНИ)</h3>
                 <div id="quests-container" class="space-y-2 max-h-72 overflow-y-auto pr-1 text-xs"></div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА 3: КУКЛА -->
+        <!-- ВКЛАДКА 3: КУКЛА И 3D -->
         <div id="tab-hero" class="hidden space-y-2">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ЭКИПИРОВКА И 3D ПЕРСОНАЖ</h3>
-                
                 <div class="grid grid-cols-3 gap-1.5 items-center justify-items-center">
-                    <div class="flex flex-col space-y-1.5">
-                        <div id="slot-helm" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">🪖</span><span class="text-[7px] text-slate-500">Шлем</span></div>
-                        <div id="slot-shoulder" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">🛡️</span><span class="text-[7px] text-slate-500">Плечи</span></div>
-                        <div id="slot-chest" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">👕</span><span class="text-[7px] text-slate-500">Тело</span></div>
-                        <div id="slot-legs" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">👖</span><span class="text-[7px] text-slate-500">Штаны</span></div>
-                        <div id="slot-gloves" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">🧤</span><span class="text-[7px] text-slate-500">Перчатки</span></div>
-                        <div id="slot-boots" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">👢</span><span class="text-[7px] text-slate-500">Сапоги</span></div>
-                    </div>
-
+                    <div class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center text-center"><span class="text-xs">👕</span><span id="doll-armor-txt" class="text-[6px] text-slate-500">Броня</span></div>
                     <div class="flex flex-col items-center space-y-1.5">
-                        <div class="flex space-x-1">
-                            <div id="slot-weapon" class="w-9 h-9 bg-slate-950 border-2 border-amber-600/60 rounded-lg flex flex-col items-center justify-center">
-                                <span class="text-[10px]">⚔️</span><span class="text-[6px] text-amber-500 font-bold">Оружие</span>
-                            </div>
-                            <div id="slot-shield" class="w-9 h-9 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center">
-                                <span class="text-[10px]">🛡️</span><span class="text-[6px] text-slate-500">Щит</span>
-                            </div>
-                        </div>
+                        <div class="w-11 h-11 bg-slate-950 border-2 border-amber-600/60 rounded-lg flex flex-col items-center justify-center text-center"><span class="text-xs">⚔️</span><span id="doll-weapon-txt" class="text-[6px] text-amber-500 font-bold">Оружие</span></div>
                         <div id="canvas-container" class="w-32 h-48 bg-slate-950/85 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative cursor-grab">
-                            <span class="text-[8px] text-amber-400/70 absolute bottom-1 pointer-events-none">🔄 Вращайте 3D</span>
+                            <span class="text-[8px] text-amber-400/70 absolute bottom-1 pointer-events-none">🔄 3D Персонаж</span>
                         </div>
                     </div>
-
-                    <div class="flex flex-col space-y-1.5">
-                        <div id="slot-neck" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Некля</span></div>
-                        <div id="slot-earring1" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 1</span></div>
-                        <div id="slot-earring2" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 2</span></div>
-                        <div id="slot-ring1" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 1</span></div>
-                        <div id="slot-ring2" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 2</span></div>
-                        <div id="slot-brac1" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Брасл. 1</span></div>
-                        <div id="slot-brac2" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center"><span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Брасл. 2</span></div>
-                    </div>
+                    <div class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center text-center"><span class="text-xs">💎</span><span id="doll-jewel-txt" class="text-[6px] text-slate-500">Бижа</span></div>
                 </div>
             </div>
         </div>
@@ -284,36 +194,15 @@
         <!-- ВКЛАДКА 4: СУМКА -->
         <div id="tab-bag" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ ПЕРСОНАЖА</h3>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-amber-400 font-bold">✨ Заточки Оружия</span>
-                        <span id="bag-w-scrolls" class="font-black text-amber-400">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-blue-400 font-bold">🛡️ Заточки Брони</span>
-                        <span id="bag-a-scrolls" class="font-black text-blue-400">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-red-400 font-bold">🧪 Зелья HP</span>
-                        <span id="bag-potions" class="font-black text-red-400">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-blue-400 font-bold">💧 Зелья MP</span>
-                        <span id="bag-mp-potions" class="font-black text-blue-400">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-yellow-500 font-bold">⚡ Соулшоты (SS)</span>
-                        <span id="bag-ss" class="font-black text-yellow-500">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center">
-                        <span class="text-cyan-400 font-bold">✨ Блесс Соулшоты (BSS)</span>
-                        <span id="bag-bss" class="font-black text-cyan-400">0</span>
-                    </div>
-                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center col-span-2">
-                        <span class="text-amber-200 font-bold">🏹 Стрелы</span>
-                        <span id="bag-arrows" class="font-black text-amber-200">100</span>
-                    </div>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">🎒 ИНВЕНТАРЬ (КУПЛЕННЫЕ ВЕЩИ)</h3>
+                <div id="inventory-container" class="space-y-1.5 max-h-56 overflow-y-auto pr-1 text-xs">
+                    <p class="text-slate-500 text-center text-xs py-4">Сумка пуста. Купите вещи на рынке!</p>
+                </div>
+                <div class="border-t border-slate-800 pt-2 grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center"><span class="text-red-400 font-bold">🧪 HP Зелья</span><span id="bag-potions" class="font-black text-red-400">5</span></div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center"><span class="text-blue-400 font-bold">💧 MP Зелья</span><span id="bag-mp-potions" class="font-black text-blue-400">3</span></div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center"><span class="text-yellow-500 font-bold">⚡ Соулшоты</span><span id="bag-ss" class="font-black text-yellow-500">100</span></div>
+                    <div class="bg-slate-950/70 p-2 rounded-lg border border-slate-800 flex justify-between items-center"><span class="text-amber-200 font-bold">🏹 Стрелы</span><span id="bag-arrows" class="font-black text-amber-200">500</span></div>
                 </div>
             </div>
         </div>
@@ -323,42 +212,25 @@
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-2">
                     <span class="text-xs font-bold text-slate-300">Свободные очки:</span>
-                    <span id="stat-points" class="text-sm font-black text-amber-400 bg-amber-950/60 border border-amber-600/40 px-2 py-0.5 rounded-lg">0</span>
+                    <span id="stat-points" class="text-sm font-black text-amber-400 bg-amber-950/60 border border-amber-600 px-2 py-0.5 rounded-lg">0</span>
                 </div>
-                <div class="bg-slate-950/80 border border-amber-600/30 p-2 rounded-lg flex justify-between items-center text-xs">
-                    <span class="font-bold text-slate-400">🛡️ Физическая Защита (P.Def):</span>
-                    <span id="stat-pdef-display" class="font-black text-amber-400">12</span>
-                </div>
-                <div class="space-y-1.5 pt-1 text-xs">
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-amber-500">STR (Сила)</span></div>
-                        <div class="flex items-center space-x-2"><span id="stat-str" class="font-bold">40</span><button onclick="addStat('str')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
-                    </div>
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-green-500">DEX (Ловкость)</span></div>
-                        <div class="flex items-center space-x-2"><span id="stat-dex" class="font-bold">30</span><button onclick="addStat('dex')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
-                    </div>
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-blue-400">INT (Интеллект)</span></div>
-                        <div class="flex items-center space-x-2"><span id="stat-int" class="font-bold">21</span><button onclick="addStat('int')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
-                    </div>
-                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-red-500">CON (Выносливость)</span></div>
-                        <div class="flex items-center space-x-2"><span id="stat-con" class="font-bold">43</span><button onclick="addStat('con')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs flex items-center justify-center">+</button></div>
-                    </div>
+                <div class="space-y-1.5 text-xs">
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-amber-500">STR (Сила)</span><div class="flex items-center space-x-2"><span id="stat-str">40</span><button onclick="addStat('str')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-green-500">DEX (Ловкость)</span><div class="flex items-center space-x-2"><span id="stat-dex">30</span><button onclick="addStat('dex')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-blue-400">INT (Интеллект)</span><div class="flex items-center space-x-2"><span id="stat-int">21</span><button onclick="addStat('int')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800"><span class="font-bold text-red-500">CON (Выносливость)</span><div class="flex items-center space-x-2"><span id="stat-con">43</span><button onclick="addStat('con')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded">+</button></div></div>
                 </div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА 6: РЫНОК (ПОЛНЫЙ АССОРТИМЕНТ) -->
+        <!-- ВКЛАДКА 6: РЫНОК -->
         <div id="tab-market" class="hidden space-y-2">
-            <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-1.5">
-                <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[7px]">⚔️ Пушки</button>
-                <button id="m-sub-armor" onclick="switchMarketSub('armor')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🛡️ Броня</button>
-                <button id="m-sub-jewel" onclick="switchMarketSub('jewel')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">💎 Бижа</button>
-                <button id="m-sub-scrolls" onclick="switchMarketSub('scrolls')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">✨ Точки</button>
-                <button id="m-sub-consum" onclick="switchMarketSub('consum')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🧪 Заряды</button>
-                <button id="m-sub-dyes" onclick="switchMarketSub('dyes')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🎨 Тату</button>
+            <div class="grid grid-cols-5 gap-1 border-b border-slate-800 pb-1.5">
+                <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]">⚔️ Пушки</button>
+                <button id="m-sub-armor" onclick="switchMarketSub('armor')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🛡️ Броня</button>
+                <button id="m-sub-jewel" onclick="switchMarketSub('jewel')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">💎 Бижа</button>
+                <button id="m-sub-consum" onclick="switchMarketSub('consum')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🧪 Расход</button>
+                <button id="m-sub-dyes" onclick="switchMarketSub('dyes')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🎨 Тату</button>
             </div>
             <div id="market-items-container" class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs"></div>
         </div>
@@ -368,29 +240,21 @@
             <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
                 <div class="text-4xl animate-pulse">👹</div>
                 <h3 class="font-black text-red-500 text-sm tracking-wide">ГИБРИД ТЬМЫ (Helliquary Boss)</h3>
-                <div>
-                    <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
-                        <span>HP Босса</span>
-                        <span id="boss-hp-text">100000 / 100000</span>
-                    </div>
-                    <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-red-950">
-                        <div id="boss-hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
-                    </div>
+                <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-red-950">
+                    <div id="boss-hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
                 </div>
             </div>
-            <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 px-4 rounded-xl shadow-lg text-xs flex items-center justify-center">
-                <span>💥 АТАКОВАТЬ БОССА</span>
-            </button>
+            <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 px-4 rounded-xl shadow-lg text-xs">💥 АТАКОВАТЬ БОССА</button>
         </div>
 
         <!-- Лог боя -->
-        <div id="log" class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5 text-[11px] text-slate-400 h-24 overflow-y-auto space-y-1">
-            <p class="text-slate-500">📜 История сражений и диалоги с NPC...</p>
+        <div id="log" class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-[11px] text-slate-400 h-24 overflow-y-auto space-y-1">
+            <p class="text-slate-500">📜 Лог боя и диалоги с NPC...</p>
         </div>
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.37 • Consumables Consumption Fix
+        Eternity Online v0.38.1 • Fixed Inventory, Dolls & More Mobs/Quests
     </footer>
 
     <script>
@@ -402,122 +266,77 @@
         let currentTarget = null;
         let lastCombatTime = 0;
 
+        // РАСШИРЕННЫЕ КВЕСТЫ (разнообразные по уровням)
         let quests = {
-            q1: { id: 'q1', title: '🌱 Угроза долине (1 ур.)', npc: 'Grand Master Gallint', desc: 'Убейте 3 Гремлинов в Gremlin Valley.', targetMobId: 'g1', requiredCount: 3, currentCount: 0, rewardGold: 500, rewardExp: 150, status: 'available' },
-            q2: { id: 'q2', title: '🏰 Очищение острова (6 ур.)', npc: 'High Priest Raymond', desc: 'Убейте 5 Оборотней в Talking Island North.', targetMobId: 't1', requiredCount: 5, currentCount: 0, rewardGold: 1500, rewardExp: 400, status: 'locked', minLvl: 6 },
-            q3: { id: 'q3', title: '⚔️ Испытание Первой Профессии (18 ур.)', npc: 'Master Selius', desc: 'Хардкорный квест: убейте 10 Скелетов-лучников в Elven Ruins и принесите древний фолиант!', targetMobId: 'e1', requiredCount: 10, currentCount: 0, rewardGold: 15000, rewardExp: 5000, status: 'locked', minLvl: 18 }
+            q1: { id: 'q1', title: '🌱 Охота на Гремлинов (1 ур.)', npc: 'Gallint', desc: 'Убейте 3 Гремлинов в Gremlin Valley.', targetMobId: 'g1', requiredCount: 3, currentCount: 0, rewardGold: 500, rewardExp: 150, status: 'available' },
+            q2: { id: 'q2', title: '🐺 Волчья угроза (3 ур.)', npc: 'Gallint', desc: 'Убейте 4 Кельтиров.', targetMobId: 'g2', requiredCount: 4, currentCount: 0, rewardGold: 800, rewardExp: 250, status: 'locked', minLvl: 3 },
+            q3: { id: 'q3', title: '🏰 Очищение острова (6 ур.)', npc: 'Raymond', desc: 'Убейте 5 Оборотней в Talking Island.', targetMobId: 't1', requiredCount: 5, currentCount: 0, rewardGold: 1500, rewardExp: 400, status: 'locked', minLvl: 6 },
+            q4: { id: 'q4', title: '🪓 Набег Орков (9 ур.)', npc: 'Raymond', desc: 'Убейте 6 Воинов Орков.', targetMobId: 't2', requiredCount: 6, currentCount: 0, rewardGold: 3000, rewardExp: 900, status: 'locked', minLvl: 9 },
+            q5: { id: 'q5', title: '🕳️ Забытые Скелеты (12 ур.)', npc: 'Selius', desc: 'Убейте 8 Скелетов-Лучников в Elven Ruins.', targetMobId: 'e1', requiredCount: 8, currentCount: 0, rewardGold: 6000, rewardExp: 2000, status: 'locked', minLvl: 12 },
+            q6: { id: 'q6', title: '🧟 Нашествие Зомби (16 ур.)', npc: 'Selius', desc: 'Убейте 10 Зомби Руин.', targetMobId: 'e2', requiredCount: 10, currentCount: 0, rewardGold: 12000, rewardExp: 4500, status: 'locked', minLvl: 16 }
         };
 
         const marketData = {
             weapon: [
-                { id: 'w_ng', name: 'Shortsword / Staff (No-Grade)', atk: 15, reqLvl: 1, cost: 200 },
-                { id: 'w_d', name: 'Elven Longsword / Bow (D-Grade)', atk: 35, reqLvl: 20, cost: 1500 },
-                { id: 'w_c', name: 'Berserker Blade / Bow (C-Grade)', atk: 75, reqLvl: 40, cost: 8000 },
-                { id: 'w_b', name: 'Sword of Damascus / Bow (B-Grade)', atk: 120, reqLvl: 52, cost: 25000 },
-                { id: 'w_a', name: 'Tallum Blade / Soul Bow (A-Grade)', atk: 180, reqLvl: 61, cost: 75000 },
-                { id: 'w_s', name: 'Angel Slayer / Draconic Bow (S-Grade)', atk: 260, reqLvl: 75, cost: 200000 }
+                { id: 'w_ng', type: 'weapon', name: 'Shortsword / Staff (NG)', atk: 15, reqLvl: 1, cost: 200 },
+                { id: 'w_d', type: 'weapon', name: 'Elven Longsword / Bow (D)', atk: 35, reqLvl: 20, cost: 1500 },
+                { id: 'w_c', type: 'weapon', name: 'Berserker Blade / Bow (C)', atk: 75, reqLvl: 40, cost: 8000 }
             ],
             armor: [
-                { id: 'a_ng_h', name: '🛡️ Heavy: Wooden Set (No-Grade)', def: 12, reqLvl: 1, cost: 150, bonusName: 'Wooden Set', bonusAtk: 5, bonusDef: 5 },
-                { id: 'a_ng_l', name: '🏹 Light: Leather Set (No-Grade)', def: 10, reqLvl: 1, cost: 150, bonusName: 'Leather Set', bonusHp: 30 },
-                { id: 'a_ng_r', name: '🔮 Robe: Tunic Set (No-Grade)', def: 8, reqLvl: 1, cost: 150, bonusName: 'Tunic Set', bonusAtk: 8 },
-                { id: 'a_d_h', name: '🛡️ Heavy: Brigandine Set (D-Grade)', def: 32, reqLvl: 20, cost: 1200, bonusName: 'Brigandine Set', bonusHp: 150 },
-                { id: 'a_d_l', name: '🏹 Light: Manticore Skin Set (D-Grade)', def: 28, reqLvl: 20, cost: 1200, bonusName: 'Manticore Set', bonusAtk: 15 },
-                { id: 'a_d_r', name: '🔮 Robe: Karmian Set (D-Grade)', def: 22, reqLvl: 20, cost: 1200, bonusName: 'Karmian Set', bonusAtk: 25 },
-                { id: 'a_c_h', name: '🛡️ Heavy: Full Plate Set (C-Grade)', def: 65, reqLvl: 40, cost: 6000, bonusName: 'Full Plate Set', bonusHp: 270, bonusDef: 20 },
-                { id: 'a_c_l', name: '🏹 Light: Plated Leather Set (C-Grade)', def: 58, reqLvl: 40, cost: 6000, bonusName: 'Plated Leather Set', bonusAtk: 40 },
-                { id: 'a_c_r', name: '🔮 Robe: Demon Set (C-Grade)', def: 48, reqLvl: 40, cost: 6000, bonusName: 'Demon Set', bonusAtk: 55 },
-                { id: 'a_b_h', name: '🛡️ Heavy: Avadon Heavy Set (B-Grade)', def: 115, reqLvl: 52, cost: 20000, bonusName: 'Avadon Heavy', bonusHp: 350, bonusDef: 35 },
-                { id: 'a_b_l', name: '🏹 Light: Avadon Light Set (B-Grade)', def: 102, reqLvl: 52, cost: 20000, bonusName: 'Avadon Light', bonusAtk: 50, bonusCrit: 5 },
-                { id: 'a_b_r', name: '🔮 Robe: Avadon Robe Set (B-Grade)', def: 88, reqLvl: 52, cost: 20000, bonusName: 'Avadon Robe', bonusAtk: 70, bonusDef: 25 },
-                { id: 'a_a_h', name: '🛡️ Heavy: Tallum Heavy Set (A-Grade)', def: 175, reqLvl: 61, cost: 60000, bonusName: 'Tallum Heavy', bonusAtk: 80, bonusDef: 40 },
-                { id: 'a_a_l', name: '🏹 Light: Majestic Light Set (A-Grade)', def: 155, reqLvl: 61, cost: 60000, bonusName: 'Majestic Light', bonusAtk: 95, bonusCrit: 8 },
-                { id: 'a_a_r', name: '🔮 Robe: Dark Crystal Robe (A-Grade)', def: 135, reqLvl: 61, cost: 60000, bonusName: 'Dark Crystal Robe', bonusAtk: 110, bonusDef: 30 },
-                { id: 'a_s_h', name: '🛡️ Heavy: Imperial Crusader Set (S-Grade)', def: 250, reqLvl: 75, cost: 180000, bonusName: 'Imperial Crusader', bonusHp: 600, bonusDef: 75, bonusAtk: 100 },
-                { id: 'a_s_l', name: '🏹 Light: Draconic Leather Set (S-Grade)', def: 220, reqLvl: 75, cost: 180000, bonusName: 'Draconic Leather', bonusAtk: 160, bonusCrit: 12 },
-                { id: 'a_s_r', name: '🔮 Robe: Major Arcana Robe (S-Grade)', def: 190, reqLvl: 75, cost: 180000, bonusName: 'Major Arcana Robe', bonusAtk: 180, bonusDef: 50 }
+                { id: 'a_ng_h', type: 'armor', name: '🛡️ Heavy: Wooden Set (NG)', def: 12, reqLvl: 1, cost: 150, bonusHp: 30 },
+                { id: 'a_d_h', type: 'armor', name: '🛡️ Heavy: Brigandine Set (D)', def: 32, reqLvl: 20, cost: 1200, bonusHp: 150 }
             ],
             jewel: [
-                { id: 'j_ng', name: 'Necklace of Anguish (No-Grade)', def: 5, reqLvl: 1, cost: 100 },
-                { id: 'j_d', name: 'Elven Ring & Earring Set (D-Grade)', def: 15, reqLvl: 20, cost: 800 },
-                { id: 'j_c', name: 'Binding Ring & Earring Set (C-Grade)', def: 35, reqLvl: 40, cost: 4000 },
-                { id: 'j_b', name: 'Black Ore Jewels (B-Grade)', def: 60, reqLvl: 52, cost: 15000 },
-                { id: 'j_a', name: 'Majestic Jewels Set (A-Grade)', def: 90, reqLvl: 61, cost: 45000 },
-                { id: 'j_s', name: 'Tateossian Jewels Set (S-Grade)', def: 140, reqLvl: 75, cost: 120000 }
-            ],
-            scrolls: [
-                { id: 'sc_w_ng', name: '✨ Enchant Weapon (NG)', cost: 150, type: 'w_scroll' },
-                { id: 'sc_w_d', name: '✨ Enchant Weapon (D-Grade)', cost: 500, type: 'w_scroll' },
-                { id: 'sc_w_c', name: '✨ Enchant Weapon (C-Grade)', cost: 1500, type: 'w_scroll' },
-                { id: 'sc_w_b', name: '✨ Enchant Weapon (B-Grade)', cost: 4000, type: 'w_scroll' },
-                { id: 'sc_w_a', name: '✨ Enchant Weapon (A-Grade)', cost: 10000, type: 'w_scroll' },
-                { id: 'sc_w_s', name: '✨ Enchant Weapon (S-Grade)', cost: 25000, type: 'w_scroll' },
-                { id: 'sc_a_ng', name: '🛡️ Enchant Armor (NG)', cost: 80, type: 'a_scroll' },
-                { id: 'sc_a_d', name: '🛡️ Enchant Armor (D-Grade)', cost: 250, type: 'a_scroll' },
-                { id: 'sc_a_c', name: '🛡️ Enchant Armor (C-Grade)', cost: 800, type: 'a_scroll' },
-                { id: 'sc_a_b', name: '🛡️ Enchant Armor (B-Grade)', cost: 2000, type: 'a_scroll' },
-                { id: 'sc_a_a', name: '🛡️ Enchant Armor (A-Grade)', cost: 5000, type: 'a_scroll' },
-                { id: 'sc_a_s', name: '🛡️ Enchant Armor (S-Grade)', cost: 12000, type: 'a_scroll' }
+                { id: 'j_ng', type: 'jewel', name: 'Necklace of Anguish (NG)', def: 5, reqLvl: 1, cost: 100 }
             ],
             consum: [
                 { id: 'c_hp', name: 'Greater Healing Potion (+100 HP)', cost: 50, type: 'hp' },
                 { id: 'c_mp', name: 'Mana Potion (+80 MP)', cost: 100, type: 'mp' },
-                { id: 'c_ss_ng', name: '⚡ Soulshot (NG) x100', cost: 100, type: 'ss' },
-                { id: 'c_ss_d', name: '⚡ Soulshot (D) x100', cost: 300, type: 'ss' },
-                { id: 'c_ss_c', name: '⚡ Soulshot (C) x100', cost: 800, type: 'ss' },
-                { id: 'c_ss_b', name: '⚡ Soulshot (B) x100', cost: 1500, type: 'ss' },
-                { id: 'c_ss_a', name: '⚡ Soulshot (A) x100', cost: 2200, type: 'ss' },
-                { id: 'c_ss_s', name: '⚡ Soulshot (S) x100', cost: 3500, type: 'ss' },
-                { id: 'c_bss_ng', name: '✨ Blessed Soulshot (NG) x100', cost: 200, type: 'bss' },
-                { id: 'c_bss_d', name: '✨ Blessed Soulshot (D) x100', cost: 600, type: 'bss' },
-                { id: 'c_bss_c', name: '✨ Blessed Soulshot (C) x100', cost: 1600, type: 'bss' },
-                { id: 'c_bss_b', name: '✨ Blessed Soulshot (B) x100', cost: 3000, type: 'bss' },
-                { id: 'c_bss_a', name: '✨ Blessed Soulshot (A) x100', cost: 4500, type: 'bss' },
-                { id: 'c_bss_s', name: '✨ Blessed Soulshot (S) x100', cost: 7000, type: 'bss' },
+                { id: 'c_ss', name: '⚡ Soulshots x100', cost: 100, type: 'ss' },
                 { id: 'c_arrows', name: '🏹 Стрелы x500', cost: 150, type: 'arrows' }
             ],
             dyes: [
-                { id: 'd_str', name: '🎨 Тату: +4 STR / -4 CON (Сила)', cost: 5000, stat: 'str', statSub: 'con' },
-                { id: 'd_dex', name: '🎨 Тату: +4 DEX / -4 STR (Ловкость)', cost: 5000, stat: 'dex', statSub: 'str' },
-                { id: 'd_int', name: '🎨 Тату: +4 INT / -4 MEN (Маг. Атака)', cost: 5000, stat: 'int', statSub: 'men' },
-                { id: 'd_wit', name: '🎨 Тату: +4 WIT / -4 MEN (Скорость каста)', cost: 5000, stat: 'wit', statSub: 'men' }
+                { id: 'd_str', name: '🎨 Тату: +4 STR / -4 CON', cost: 5000, stat: 'str', statSub: 'con' }
             ]
         };
 
         let activeMarketSub = 'weapon';
 
+        // РАСШИРЕННЫЙ СПИСОК МОБОВ ПО ЛОКАЦИЯМ
         const locations = {
-            gremlin_valley: {
-                name: 'Gremlin Valley (1-6 ур.)', minLevel: 1, npcName: 'Grand Master Gallint', npcDialog: 'Приветствую, юный искатель приключений! Возьми квест во вкладке "Квесты", чтобы очистить долину от гремлинов.',
+            gremlin_valley: { 
+                name: 'Gremlin Valley (1-6)', minLevel: 1, npcName: 'Gallint', npcDialog: 'Приветствую! Очисти долину от гремлинов и волков.', 
                 mobs: [
-                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 180, maxHp: 180, atk: 55, exp: 12, gold: 16, isAggro: false },
-                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 250, maxHp: 250, atk: 75, exp: 18, gold: 24, isAggro: false }
-                ]
+                    { id: 'g1', name: 'Gremlin (Гремлин)', hp: 180, maxHp: 180, atk: 45, exp: 12, gold: 16 },
+                    { id: 'g2', name: 'Keltir (Кельтир)', hp: 260, maxHp: 260, atk: 65, exp: 20, gold: 28 },
+                    { id: 'g3', name: 'Young Wolf (Молодой Волк)', hp: 350, maxHp: 350, atk: 85, exp: 32, gold: 42 }
+                ] 
             },
-            talking_north: {
-                name: 'Talking Island North (6-12 ур.)', minLevel: 6, npcName: 'High Priest Raymond', npcDialog: 'Монстры подступают к северным вратам. Докажи свою доблесть в битве с оборотнями!',
+            talking_north: { 
+                name: 'Talking Island (6-12)', minLevel: 6, npcName: 'Raymond', npcDialog: 'Сразись с нечистью и орками у северных врат!', 
                 mobs: [
-                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 540, maxHp: 540, atk: 150, exp: 40, gold: 56, isAggro: false },
-                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 720, maxHp: 720, atk: 210, exp: 55, gold: 80, isAggro: true }
-                ]
+                    { id: 't1', name: 'Werewolf (Оборотень)', hp: 540, maxHp: 540, atk: 140, exp: 50, gold: 65 },
+                    { id: 't2', name: 'Orc Warrior (Воин Орков)', hp: 750, maxHp: 750, atk: 190, exp: 80, gold: 110 },
+                    { id: 't3', name: 'Giant Spider (Гигантский Паук)', hp: 980, maxHp: 980, atk: 250, exp: 125, gold: 170 }
+                ] 
             },
-            elven_ruins: {
-                name: 'Elven Ruins Vicinity (12-20 ур.)', minLevel: 12, npcName: 'Master Selius', npcDialog: 'Здесь начинается путь к истинной силе. Достигни 18 уровня и начни испытание Первой Профессии!',
+            elven_ruins: { 
+                name: 'Elven Ruins (12-20)', minLevel: 12, npcName: 'Selius', npcDialog: 'Опасная зона! Будь осторожен со скелетами и зомби.', 
                 mobs: [
-                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 1260, maxHp: 1260, atk: 375, exp: 110, gold: 160, isAggro: false },
-                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 1650, maxHp: 1650, atk: 480, exp: 150, gold: 220, isAggro: true }
-                ]
+                    { id: 'e1', name: 'Skeleton Archer (Скелет-Лучник)', hp: 1300, maxHp: 1300, atk: 350, exp: 180, gold: 240 },
+                    { id: 'e2', name: 'Zombie (Зомби Руин)', hp: 1750, maxHp: 1750, atk: 440, exp: 260, gold: 350 },
+                    { id: 'e3', name: 'Ruins Guardian (Страж Руин)', hp: 2400, maxHp: 2400, atk: 580, exp: 410, gold: 520 }
+                ] 
             }
         };
 
         function loadSavedPlayer() {
-            let data = localStorage.getItem('eternity_player_save_v37');
+            let data = localStorage.getItem('eternity_player_save_v38');
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             return null;
         }
 
         player = loadSavedPlayer();
-
         if (player && player.classKey) {
             showGameScreen();
         } else {
@@ -532,41 +351,32 @@
         function selectClass(key, title, race, archetype, str, dex, int, con, wit, men) {
             player = {
                 classKey: key, title: title, race: race, archetype: archetype,
-                level: 1, exp: 0, maxExp: 100, gold: 1000, statPoints: 0,
+                level: 1, exp: 0, maxExp: 100, gold: 1500, statPoints: 0,
                 str: str, dex: dex, int: int, con: con, wit: wit, men: men,
-                potions: 5, mpPotions: 3, ssCount: 100, bssCount: 100, arrowCount: 500,
-                wScrolls: 1, aScrolls: 1,
-                currentLocation: 'gremlin_valley',
-                equippedWeaponAtk: 15, equippedArmorDef: 12, equippedJewelDef: 5,
-                activeSet: null, equipment: { weapon: true, chest: true, neck: true }
+                potions: 5, mpPotions: 3, ssCount: 100, arrowCount: 500,
+                currentLocation: 'gremlin_valley', inventory: [],
+                equipped: { weapon: null, armor: null, jewel: null }
             };
             recalcStats();
-            player.hp = player.maxHp;
-            player.cp = player.maxCp;
-            player.mp = player.maxMp;
+            player.hp = player.maxHp; player.cp = player.maxCp; player.mp = player.maxMp;
             saveGame();
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Создан персонаж: **${title}**! Добро пожаловать в мир Lineage 2.`);
+            addLog(`✨ Создан персонаж: **${title}**!`);
         }
 
         function showGameScreen() {
             document.getElementById('game-screen').classList.remove('hidden');
             document.getElementById('game-screen').classList.add('flex');
-            recalcStats();
-            updateUI();
-            renderMarketItems();
-            renderLocationInfo();
-            renderQuests();
-            init3DModel();
+            recalcStats(); updateUI(); renderMarketItems(); renderInventory();
+            renderLocationInfo(); renderQuests(); init3DModel();
             setInterval(naturalRegenTick, 1000);
         }
 
         function naturalRegenTick() {
             if (!player) return;
-            let now = Date.now();
-            if (now - lastCombatTime > 2000) {
+            if (Date.now() - lastCombatTime > 2000) {
                 let changed = false;
                 if (player.hp < player.maxHp) { player.hp = Math.min(player.maxHp, player.hp + 3); changed = true; }
                 if (player.mp < player.maxMp) { player.mp = Math.min(player.maxMp, player.mp + 4); changed = true; }
@@ -575,10 +385,7 @@
             }
         }
 
-        function saveGame() {
-            if (player) localStorage.setItem('eternity_player_save_v37', JSON.stringify(player));
-        }
-
+        function saveGame() { if (player) localStorage.setItem('eternity_player_save_v38', JSON.stringify(player)); }
         function addLog(text) {
             const logEl = document.getElementById('log');
             if (logEl) logEl.innerHTML = `<p class="text-amber-400/90">${text}</p>` + logEl.innerHTML;
@@ -587,23 +394,14 @@
         function changeLocation() {
             const sel = document.getElementById('location-select').value;
             const loc = locations[sel];
-            if (player.level < loc.minLevel) {
-                alert(`Требуется ${loc.minLevel} уровень!`);
-                document.getElementById('location-select').value = player.currentLocation;
-                return;
-            }
-            player.currentLocation = sel;
-            currentTarget = null;
-            saveGame();
-            renderLocationInfo();
-            updateTargetUI();
-            addLog(`✈️ Переход в локацию: **${loc.name}**.`);
+            if (player.level < loc.minLevel) { alert(`Требуется ${loc.minLevel} уровень!`); document.getElementById('location-select').value = player.currentLocation; return; }
+            player.currentLocation = sel; currentTarget = null;
+            saveGame(); renderLocationInfo(); updateTargetUI();
         }
 
         function renderLocationInfo() {
             const loc = locations[player.currentLocation];
             document.getElementById('npc-name').innerText = loc.npcName;
-            
             const container = document.getElementById('mobs-list');
             container.innerHTML = '';
             loc.mobs.forEach(mob => {
@@ -611,209 +409,102 @@
                 const div = document.createElement('div');
                 div.className = `flex justify-between items-center p-2 rounded-lg border cursor-pointer transition-all ${isSelected ? 'bg-amber-950/80 border-amber-500' : 'bg-slate-950/70 border-slate-800'}`;
                 div.onclick = () => selectTarget(mob);
-                div.innerHTML = `
-                    <span class="font-bold text-xs ${mob.isAggro ? 'text-red-400' : 'text-slate-200'}">${mob.name}</span>
-                    <span class="text-[9px] ${isSelected ? 'text-amber-400 font-bold' : 'text-slate-500'}">${isSelected ? 'В ТАРГЕТЕ' : 'Выбрать'}</span>
-                `;
+                div.innerHTML = `<span class="font-bold text-xs text-slate-200">${mob.name}</span><span class="text-[9px] ${isSelected ? 'text-amber-400 font-bold' : 'text-slate-500'}">${isSelected ? 'В ТАРГЕТЕ' : 'Выбрать'}</span>`;
                 container.appendChild(div);
             });
         }
 
         function talkToNpc() {
             const loc = locations[player.currentLocation];
-            addLog(`💬 [${loc.npcName}]: "${loc.npcDialog}"`);
             alert(`${loc.npcName}:\n\n"${loc.npcDialog}"`);
         }
 
         function renderQuests() {
             const container = document.getElementById('quests-container');
             container.innerHTML = '';
-            
             Object.values(quests).forEach(q => {
-                if (q.status === 'locked' && q.minLvl && player.level >= q.minLvl) {
-                    q.status = 'available';
-                }
-
+                if (q.status === 'locked' && q.minLvl && player.level >= q.minLvl) q.status = 'available';
                 const div = document.createElement('div');
                 div.className = "bg-slate-950/70 p-2.5 rounded-lg border border-slate-800 space-y-1";
-                
-                let actionBtn = '';
-                if (q.status === 'available') {
-                    actionBtn = `<button onclick="acceptQuest('${q.id}')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold px-2 py-1 rounded text-[10px]">Взять квест</button>`;
-                } else if (q.status === 'active') {
-                    actionBtn = `<span class="text-amber-400 text-[10px] font-bold">Выполняется: ${q.currentCount} / ${q.requiredCount}</span>`;
-                } else if (q.status === 'completed') {
-                    actionBtn = `<button onclick="claimReward('${q.id}')" class="bg-emerald-600 text-white font-bold px-2 py-1 rounded text-[10px]">🎁 Забрать награду</button>`;
-                } else if (q.status === 'done') {
-                    actionBtn = `<span class="text-slate-500 text-[10px]">✅ Завершено</span>`;
-                } else if (q.status === 'locked') {
-                    actionBtn = `<span class="text-red-400 text-[10px]">🔒 Требуется ${q.minLvl} ур.</span>`;
-                }
-
-                div.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold text-amber-400">${q.title}</span>
-                        ${actionBtn}
-                    </div>
-                    <p class="text-[10px] text-slate-400">NPC: <b>${q.npc}</b> | Награда: 💰 ${q.rewardGold} Адены, ✨ ${q.rewardExp} EXP</p>
-                    <p class="text-[9px] text-slate-500">${q.desc}</p>
-                `;
+                let actionBtn = q.status === 'available' ? `<button onclick="acceptQuest('${q.id}')" class="bg-amber-600 text-slate-950 font-bold px-2 py-1 rounded text-[10px]">Взять</button>` :
+                                q.status === 'active' ? `<span class="text-amber-400 text-[10px] font-bold">${q.currentCount}/${q.requiredCount}</span>` :
+                                q.status === 'completed' ? `<button onclick="claimReward('${q.id}')" class="bg-emerald-600 text-white font-bold px-2 py-1 rounded text-[10px]">Награда</button>` : '<span class="text-slate-500 text-[10px]">✅</span>';
+                div.innerHTML = `<div class="flex justify-between items-center"><span class="font-bold text-amber-400">${q.title}</span>${actionBtn}</div><p class="text-[9px] text-slate-400">${q.desc}</p>`;
                 container.appendChild(div);
             });
         }
 
-        function acceptQuest(qId) {
-            quests[qId].status = 'active';
-            addLog(`📜 Вы приняли квест: **${quests[qId].title}**.`);
-            renderQuests();
-        }
-
+        function acceptQuest(qId) { quests[qId].status = 'active'; addLog(`📜 Квест принят.`); renderQuests(); }
         function claimReward(qId) {
-            let q = quests[qId];
-            q.status = 'done';
-            player.gold += q.rewardGold;
-            player.exp += q.rewardExp;
-            addLog(`🎉 Квест **${q.title}** выполнен! Получено: +${q.rewardGold} Адены, +${q.rewardExp} EXP.`);
-            
-            if (qId === 'q3') {
-                player.title += ' (1-я Профессия)';
-                addLog(`👑 **ПОЗДРАВЛЯЕМ! Вы прошли квест на 1-ю профессию и стали элитным бойцом!**`);
-            }
-
-            checkLevelUp();
-            saveGame();
-            updateUI();
-            renderQuests();
+            let q = quests[qId]; q.status = 'done'; player.gold += q.rewardGold; player.exp += q.rewardExp;
+            addLog(`🎉 Квест выполнен! +${q.rewardGold} Адены.`); checkLevelUp(); saveGame(); updateUI(); renderQuests();
         }
 
-        function selectTarget(mob) {
-            currentTarget = JSON.parse(JSON.stringify(mob));
-            renderLocationInfo();
-            updateTargetUI();
-            addLog(`🎯 Выбран моб: **${currentTarget.name}**.`);
-        }
-
+        function selectTarget(mob) { currentTarget = JSON.parse(JSON.stringify(mob)); renderLocationInfo(); updateTargetUI(); }
         function updateTargetUI() {
-            const nameEl = document.getElementById('target-name');
-            const hpTextEl = document.getElementById('target-hp-text');
             const hpBarEl = document.getElementById('target-hp-bar');
-
             if (currentTarget) {
-                nameEl.innerText = currentTarget.name;
-                hpTextEl.innerText = `${currentTarget.hp} / ${currentTarget.maxHp}`;
+                document.getElementById('target-name').innerText = currentTarget.name;
                 hpBarEl.style.width = `${Math.max(0, Math.floor((currentTarget.hp / currentTarget.maxHp) * 100))}%`;
             } else {
-                nameEl.innerText = 'Выберите моба ниже';
-                hpTextEl.innerText = '0 / 0';
-                hpBarEl.style.width = '0%';
+                document.getElementById('target-name').innerText = 'Выберите моба'; hpBarEl.style.width = '0%';
             }
         }
 
         function attackTarget() {
-            if (!currentTarget) { alert('Сначала выберите моба!'); return; }
-            if (player.hp <= 0) { alert('Вы погибли!'); player.hp = Math.floor(player.maxHp * 0.5); saveGame(); updateUI(); return; }
-
+            if (!currentTarget) { alert('Выберите моба!'); return; }
+            if (player.hp <= 0) { alert('Вы мертвы!'); return; }
             lastCombatTime = Date.now();
             let finalAtk = player.atk;
-
-            // Расход расходников в зависимости от класса
-            if (player.archetype === 'mage') {
-                if (player.bssCount && player.bssCount > 0) {
-                    player.bssCount--;
-                    finalAtk *= 1.5; // Усиление магии от BSS
-                } else {
-                    addLog(`⚠️ У вас закончились Blessed Soulshots (BSS)!`);
-                }
-            } else {
-                // Воины и лучники
-                if (player.ssCount && player.ssCount > 0) {
-                    player.ssCount--;
-                    finalAtk *= 1.35; // Усиление атаки от SS
-                } else {
-                    addLog(`⚠️ У вас закончились Soulshots (SS)!`);
-                }
-
-                // Если лучник — тратим стрелы
-                if (player.archetype === 'archer') {
-                    if (player.arrowCount && player.arrowCount > 0) {
-                        player.arrowCount--;
-                    } else {
-                        alert('У вас закончились стрелы! Купите их на рынке.');
-                        addLog(`❌ Невозможно атаковать: закончились стрелы!`);
-                        return;
-                    }
-                }
+            if (player.ssCount > 0) { player.ssCount--; finalAtk *= 1.35; }
+            if (player.archetype === 'archer') {
+                if (player.arrowCount > 0) player.arrowCount--; else { alert('Нет стрел!'); return; }
             }
-
-            const dmgToMob = Math.max(5, Math.floor(finalAtk));
-            currentTarget.hp = Math.max(0, currentTarget.hp - dmgToMob);
-
-            let actualDmg = Math.max(6, currentTarget.atk - Math.floor(player.def * 0.4));
-            player.hp = Math.max(0, player.hp - actualDmg);
-
-            addLog(`⚔️ Урон по **${currentTarget.name}**: **${dmgToMob}**. Ответка: **${actualDmg}** HP.`);
+            const dmg = Math.max(5, Math.floor(finalAtk));
+            currentTarget.hp = Math.max(0, currentTarget.hp - dmg);
+            
+            let mobDmg = Math.max(5, currentTarget.atk - Math.floor(player.def * 0.35));
+            player.hp = Math.max(0, player.hp - mobDmg);
+            addLog(`⚔️ Урон: ${dmg}. Получено: ${mobDmg} HP.`);
 
             if (currentTarget.hp <= 0) {
-                player.exp += currentTarget.exp;
-                player.gold += currentTarget.gold;
-                addLog(`🎉 **${currentTarget.name} повержен!** +${currentTarget.exp} EXP, +${currentTarget.gold} Адена.`);
-
+                player.exp += currentTarget.exp * 3; player.gold += currentTarget.gold * 2;
+                addLog(`🎉 Моб повержен! +${currentTarget.gold * 2} Адены.`);
                 Object.values(quests).forEach(q => {
                     if (q.status === 'active' && q.targetMobId === currentTarget.id) {
-                        q.currentCount++;
-                        if (q.currentCount >= q.requiredCount) {
-                            q.status = 'completed';
-                            addLog(`📜 **Квест выполнен!** Вернитесь за наградой в журнал квестов.`);
-                        }
+                        q.currentCount++; if (q.currentCount >= q.requiredCount) q.status = 'completed';
                     }
                 });
-
-                currentTarget = null;
-                checkLevelUp();
-                renderLocationInfo();
-                renderQuests();
+                currentTarget = null; checkLevelUp(); renderLocationInfo(); renderQuests();
             }
-
-            saveGame();
-            updateUI();
-            updateTargetUI();
+            saveGame(); updateUI(); updateTargetUI();
         }
 
         function checkLevelUp() {
             if (player.exp >= player.maxExp) {
-                player.level += 1;
-                player.exp -= player.maxExp;
-                player.maxExp = Math.floor(player.maxExp * 1.5);
-                player.statPoints += 5;
-                recalcStats();
-                player.hp = player.maxHp;
-                player.mp = player.maxMp;
-                addLog(`🎉 **НОВЫЙ УРОВЕНЬ ${player.level}!**`);
-                renderQuests();
+                player.level++; player.exp -= player.maxExp; player.maxExp = Math.floor(player.maxExp * 1.5);
+                player.statPoints += 5; recalcStats(); player.hp = player.maxHp;
+                addLog(`🎉 НОВЫЙ УРОВЕНЬ: ${player.level}!`); renderQuests();
             }
         }
 
         function switchTab(tab) {
             ['farm', 'quests', 'hero', 'bag', 'stats', 'market', 'boss'].forEach(t => {
                 document.getElementById(`tab-${t}`).classList.add('hidden');
-                document.getElementById(`tab-${t}-btn`).className = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all";
+                document.getElementById(`tab-${t}-btn`).className = "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px]";
             });
-
             document.getElementById(`tab-${tab}`).classList.remove('hidden');
-            document.getElementById(`tab-${tab}-btn`).className = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[8px] transition-all";
-
+            document.getElementById(`tab-${tab}-btn`).className = "bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[8px]";
             if (tab === 'hero') setTimeout(resize3D, 100);
             if (tab === 'market') renderMarketItems();
-            if (tab === 'quests') renderQuests();
+            if (tab === 'bag') renderInventory();
         }
 
         function switchMarketSub(sub) {
             activeMarketSub = sub;
-            ['weapon', 'armor', 'jewel', 'scrolls', 'consum', 'dyes'].forEach(s => {
+            ['weapon', 'armor', 'jewel', 'consum', 'dyes'].forEach(s => {
                 const btn = document.getElementById(`m-sub-${s}`);
-                if (btn) {
-                    btn.className = (s === sub) ? "bg-amber-600 text-slate-950 font-bold py-1 rounded text-[7px]" : "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]";
-                }
+                if (btn) btn.className = (s === sub) ? "bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]" : "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]";
             });
             renderMarketItems();
         }
@@ -821,127 +512,114 @@
         function renderMarketItems() {
             const container = document.getElementById('market-items-container');
             container.innerHTML = '';
-            const list = marketData[activeMarketSub] || [];
-            list.forEach(item => {
+            marketData[activeMarketSub].forEach(item => {
                 const isLocked = item.reqLvl && player.level < item.reqLvl;
                 const div = document.createElement('div');
                 div.className = "flex justify-between items-center bg-slate-950/70 p-2 rounded-lg border border-slate-800";
-                div.innerHTML = `
-                    <div>
-                        <span class="font-bold ${isLocked ? 'text-slate-500' : 'text-blue-400'}">${item.name}</span>
-                        <span class="text-[9px] text-amber-500 block">${item.cost} Адены ${item.reqLvl ? `• (с ${item.reqLvl} ур.)` : ''}</span>
-                    </div>
-                    <button onclick="buyMarketItem('${item.id}')" ${isLocked ? 'disabled' : ''} class="${isLocked ? 'bg-slate-800 text-slate-600' : 'bg-amber-600 text-slate-950'} font-bold px-2 py-1 rounded text-xs">Купить</button>
-                `;
+                div.innerHTML = `<div><span class="font-bold text-blue-400">${item.name}</span><span class="text-[9px] text-amber-500 block">${item.cost} Адены</span></div><button onclick="buyMarketItem('${item.id}')" ${isLocked ? 'disabled' : ''} class="bg-amber-600 text-slate-950 font-bold px-2 py-1 rounded text-xs">Купить</button>`;
                 container.appendChild(div);
             });
         }
 
-        function buyMarketItem(itemId) {
+        function buyMarketItem(id) {
             let found = null;
-            Object.values(marketData).forEach(list => list.forEach(i => { if (i.id === itemId) found = i; }));
+            Object.values(marketData).forEach(list => list.forEach(i => { if (i.id === id) found = i; }));
             if (!found || player.gold < found.cost) { alert('Недостаточно Адены!'); return; }
-            if (found.reqLvl && player.level < found.reqLvl) { alert(`Требуется ${found.reqLvl} уровень!`); return; }
-
             player.gold -= found.cost;
-            if (activeMarketSub === 'weapon') player.equippedWeaponAtk = found.atk;
-            else if (activeMarketSub === 'armor') { player.equippedArmorDef = found.def; player.activeSet = found; }
-            else if (activeMarketSub === 'jewel') player.equippedJewelDef = found.def;
-            else if (activeMarketSub === 'consum') {
-                if (found.type === 'hp') player.potions += 1;
-                if (found.type === 'mp') player.mpPotions = (player.mpPotions || 0) + 1;
-                if (found.type === 'ss') player.ssCount = (player.ssCount || 0) + 100;
-                if (found.type === 'bss') player.bssCount = (player.bssCount || 0) + 100;
-                if (found.type === 'arrows') player.arrowCount = (player.arrowCount || 0) + 500;
+            if (found.type === 'hp') player.potions++;
+            else if (found.type === 'mp') player.mpPotions++;
+            else if (found.type === 'ss') player.ssCount += 100;
+            else if (found.type === 'arrows') player.arrowCount += 500;
+            else {
+                let itemInstance = { ...found, instanceId: 'item_' + Date.now() + Math.random() };
+                player.inventory.push(itemInstance);
+                addLog(`🛒 Куплено: ${found.name}`);
             }
-            else if (activeMarketSub === 'dyes') {
-                player[found.stat] += 4; player[found.statSub] = Math.max(1, player[found.statSub] - 4);
-            }
+            saveGame(); updateUI(); renderInventory();
+        }
 
-            recalcStats(); saveGame(); updateUI(); addLog(`🛒 Куплено: **${found.name}**.`);
+        function renderInventory() {
+            const container = document.getElementById('inventory-container');
+            container.innerHTML = '';
+            if (!player.inventory.length) { container.innerHTML = `<p class="text-slate-500 text-center text-xs py-4">Сумка пуста</p>`; return; }
+            player.inventory.forEach(item => {
+                let isEquipped = (player.equipped[item.type] && player.equipped[item.type].instanceId === item.instanceId);
+                const div = document.createElement('div');
+                div.className = `flex justify-between items-center p-2 rounded-lg border ${isEquipped ? 'bg-amber-950/50 border-amber-500' : 'bg-slate-950/70 border-slate-800'}`;
+                div.innerHTML = `<div><span class="font-bold text-amber-300">${item.name}</span></div><button onclick="toggleEquip('${item.instanceId}')" class="${isEquipped ? 'bg-red-600' : 'bg-emerald-600'} text-white font-bold px-2.5 py-1 rounded text-[10px]">${isEquipped ? 'Снять' : 'Надеть'}</button>`;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleEquip(instanceId) {
+            let item = player.inventory.find(i => i.instanceId === instanceId);
+            if (!item) return;
+            if (player.equipped[item.type] && player.equipped[item.type].instanceId === instanceId) {
+                player.equipped[item.type] = null;
+                addLog(`🛡️ Снято: ${item.name}`);
+            } else {
+                player.equipped[item.type] = item;
+                addLog(`⚔️ Надето: ${item.name}`);
+            }
+            recalcStats(); saveGame(); updateUI(); renderInventory();
         }
 
         function recalcStats() {
             if (!player) return;
-            let bonusAtk = (player.equippedWeaponAtk || 15);
-            let bonusDef = (player.equippedArmorDef || 12) + (player.equippedJewelDef || 5);
-            let extraHp = 0;
-
-            if (player.activeSet) {
-                if (player.activeSet.bonusAtk) bonusAtk += player.activeSet.bonusAtk;
-                if (player.activeSet.bonusDef) bonusDef += player.activeSet.bonusDef;
-                if (player.activeSet.bonusHp) extraHp += player.activeSet.bonusHp;
-            }
-
-            player.atk = (player.str * 2.1) + (player.int * 2.3) + bonusAtk;
-            player.def = (player.con * 1) + bonusDef;
-            player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.7));
-            player.maxHp = 80 + (player.con * 8) + extraHp;
+            let wAtk = player.equipped.weapon ? player.equipped.weapon.atk : 15;
+            let aDef = player.equipped.armor ? player.equipped.armor.def : 12;
+            let jDef = player.equipped.jewel ? player.equipped.jewel.def : 5;
+            player.atk = (player.str * 2.1) + wAtk;
+            player.def = (player.con * 1) + aDef + jDef;
+            player.maxHp = 80 + (player.con * 8);
             player.maxCp = 40 + (player.con * 5);
             player.maxMp = 50 + (player.men * 6);
-
-            if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
-            if (player.cp === undefined || player.cp > player.maxCp) player.cp = player.maxCp;
-            if (player.mp === undefined || player.mp > player.maxMp) player.mp = player.maxMp;
         }
 
         function usePotion(type) {
-            if (type === 'hp' && player.potions > 0) {
-                player.potions--; player.hp = Math.min(player.maxHp, player.hp + 100);
-            } else if (type === 'mp' && player.mpPotions > 0) {
-                player.mpPotions--; player.mp = Math.min(player.maxMp, player.mp + 80);
-            }
+            if (type === 'hp' && player.potions > 0) { player.potions--; player.hp = Math.min(player.maxHp, player.hp + 100); }
+            else if (type === 'mp' && player.mpPotions > 0) { player.mpPotions--; player.mp = Math.min(player.maxMp, player.mp + 80); }
             saveGame(); updateUI();
         }
 
         function addStat(stat) {
-            if (player.statPoints <= 0) { alert('Нет очков!'); return; }
+            if (player.statPoints <= 0) return;
             player.statPoints--; player[stat]++; recalcStats(); saveGame(); updateUI();
         }
 
         function attackBoss() {
-            if (player.hp <= 0) return;
-            lastCombatTime = Date.now();
             boss.hp = Math.max(0, boss.hp - player.atk);
-            player.hp = Math.max(0, player.hp - 500);
-            if (boss.hp <= 0) { player.gold += 10000; boss.hp = boss.maxHp; addLog(`👑 БОСС ПОВЕРЖЕН! +10000 Адены!`); }
+            if (boss.hp <= 0) { player.gold += 10000; boss.hp = boss.maxHp; addLog(`👑 БОСС ПОБЕЖДЕН!`); }
             saveGame(); updateUI();
         }
 
         function updateUI() {
             if (!player) return;
-            document.getElementById('class-title').innerText = `${player.title} (${player.level} ур.)`;
+            document.getElementById('class-title').innerText = `${player.title} (${player.level})`;
             document.getElementById('level').innerText = player.level;
             document.getElementById('gold').innerText = Math.floor(player.gold);
             document.getElementById('atk').innerText = Math.floor(player.atk);
             document.getElementById('def').innerText = Math.floor(player.def);
-            document.getElementById('stat-pdef-display').innerText = Math.floor(player.def);
-            document.getElementById('crit').innerText = `${player.crit}%`;
-            document.getElementById('potions').innerText = `${player.potions} / ${player.mpPotions || 0}`;
             document.getElementById('bag-potions').innerText = player.potions;
-            document.getElementById('bag-mp-potions').innerText = player.mpPotions || 0;
-            document.getElementById('bag-ss').innerText = player.ssCount || 0;
-            document.getElementById('bag-bss').innerText = player.bssCount || 0;
-            document.getElementById('bag-arrows').innerText = player.arrowCount || 0;
+            document.getElementById('bag-mp-potions').innerText = player.mpPotions;
+            document.getElementById('bag-ss').innerText = player.ssCount;
+            document.getElementById('bag-arrows').innerText = player.arrowCount;
             document.getElementById('stat-points').innerText = player.statPoints;
             document.getElementById('stat-str').innerText = player.str;
             document.getElementById('stat-dex').innerText = player.dex;
             document.getElementById('stat-int').innerText = player.int;
             document.getElementById('stat-con').innerText = player.con;
-
-            document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
+            document.getElementById('doll-weapon-txt').innerText = player.equipped.weapon ? player.equipped.weapon.name.split(' ')[0] : 'Оружие';
+            document.getElementById('doll-armor-txt').innerText = player.equipped.armor ? player.equipped.armor.name.split(' ')[0] : 'Броня';
+            document.getElementById('doll-jewel-txt').innerText = player.equipped.jewel ? player.equipped.jewel.name.split(' ')[0] : 'Бижа';
             document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
-            document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
-            document.getElementById('mp-text').innerText = `${player.mp} / ${player.maxMp}`;
             document.getElementById('mp-bar').style.width = `${Math.floor((player.mp / player.maxMp) * 100)}%`;
-            document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
             document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
-            document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
             document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
         }
 
-        // THREE.JS 3D
+        // THREE.JS 3D МОДЕЛЬ
         let scene, camera, renderer, characterGroup;
         function init3DModel() {
             const container = document.getElementById('canvas-container');
