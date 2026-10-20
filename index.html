@@ -9,17 +9,17 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-4 flex flex-col justify-between select-none">
 
-    <!-- 1. ЭКРАН ВЫБОРА КЛАССА (показывается только при первом входе) -->
+    <!-- 1. ЭКРАН ВЫБОРА КЛАССА -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-4">
         <h2 class="text-2xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-sm text-slate-400 text-center mb-2">Выберите свой путь и класс персонажа:</p>
+        <p class="text-sm text-slate-400 text-center mb-2">Выберите свой путь и базовый класс:</p>
 
         <div onclick="selectClass('knight')" class="w-full bg-slate-900 border border-slate-800 hover:border-amber-500 p-4 rounded-2xl cursor-pointer transition-all active:scale-95">
             <div class="flex items-center space-x-3">
                 <span class="text-3xl">🛡️</span>
                 <div>
                     <h3 class="font-bold text-slate-200">Рыцарь (Knight)</h3>
-                    <p class="text-xs text-slate-400">Высокая защита, большой запас HP.</p>
+                    <p class="text-xs text-slate-400">Упор на Силу (STR) и Выносливость (CON).</p>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <span class="text-3xl">🧙‍♂️</span>
                 <div>
                     <h3 class="font-bold text-amber-400">Некромант (Necromancer)</h3>
-                    <p class="text-xs text-slate-400">Огромный магический урон и призыв слуг.</p>
+                    <p class="text-xs text-slate-400">Упор на Интеллект (INT) и Магию.</p>
                 </div>
             </div>
         </div>
@@ -39,35 +39,35 @@
                 <span class="text-3xl">🏹</span>
                 <div>
                     <h3 class="font-bold text-slate-200">Следопыт (Ranger)</h3>
-                    <p class="text-xs text-slate-400">Смертоносные критические атаки.</p>
+                    <p class="text-xs text-slate-400">Упор на Ловкость (DEX) и Криты.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 2. ОСНОВНОЙ ИГРОВОЙ ИНТЕРФЕЙС -->
-    <div id="game-screen" class="hidden flex-col space-y-4">
+    <div id="game-screen" class="hidden flex-col space-y-3">
         <!-- Шапка -->
-        <header class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <header class="flex justify-between items-center border-b border-slate-800 pb-2">
             <div>
-                <h1 class="text-lg font-bold text-amber-500 tracking-wider">ETERNITY ONLINE</h1>
-                <p id="username" class="text-xs text-slate-400">Игрок: ...</p>
+                <h1 class="text-base font-bold text-amber-500 tracking-wider">ETERNITY ONLINE</h1>
+                <p id="username" class="text-[10px] text-slate-400">Игрок: ...</p>
             </div>
-            <div class="text-right flex items-center space-x-2">
-                <div class="bg-slate-900 border border-slate-800 px-2 py-1 rounded-lg">
-                    <span class="text-[10px] text-amber-400 font-bold block">💰 АДЕНА</span>
+            <div class="text-right flex items-center space-x-1.5">
+                <div class="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-lg">
+                    <span class="text-[9px] text-amber-400 font-bold block">💰 АДЕНА</span>
                     <span id="gold" class="text-xs font-black text-slate-200">0</span>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg">
-                    <span class="text-[10px] text-slate-400 block">УРОВЕНЬ</span>
-                    <span id="level" class="text-sm font-black text-amber-400">1</span>
+                <div class="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-lg">
+                    <span class="text-[9px] text-slate-400 block">УРОВЕНЬ</span>
+                    <span id="level" class="text-xs font-black text-amber-400">1</span>
                 </div>
             </div>
         </header>
 
         <!-- Прогресс опыта -->
         <div>
-            <div class="flex justify-between text-[11px] mb-1 text-slate-400">
+            <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
                 <span>Опыт (EXP)</span>
                 <span id="exp-text">0 / 100</span>
             </div>
@@ -76,45 +76,143 @@
             </div>
         </div>
 
-        <!-- Карточка персонажа -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 shadow-xl">
-            <div class="flex items-center space-x-3 mb-3">
-                <div id="class-icon" class="w-14 h-14 bg-slate-800 border-2 border-amber-600 rounded-xl flex items-center justify-center text-2xl shadow-inner">
-                    🧙‍♂️
+        <!-- Переключение вкладок -->
+        <div class="flex space-x-2 border-b border-slate-800 pb-2">
+            <button id="tab-farm-btn" onclick="switchTab('farm')" class="flex-1 bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-xs transition-all">⚔️ Охота</button>
+            <button id="tab-stats-btn" onclick="switchTab('stats')" class="flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all">📊 Характеристики</button>
+            <button id="tab-boss-btn" onclick="switchTab('boss')" class="flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all">👹 Босс</button>
+        </div>
+
+        <!-- ВКЛАДКА 1: ФАРМ -->
+        <div id="tab-farm" class="space-y-3">
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div id="class-icon" class="w-12 h-12 bg-slate-800 border-2 border-amber-600 rounded-xl flex items-center justify-center text-xl">🧙‍♂️</div>
+                    <div>
+                        <h2 id="class-title" class="text-sm font-bold text-slate-200">Некромант</h2>
+                        <p id="weapon-title" class="text-[11px] text-amber-400 font-semibold">Оружие: Посох (+0)</p>
+                    </div>
                 </div>
-                <div>
-                    <h2 id="class-title" class="text-base font-bold text-slate-200">Некромант</h2>
-                    <p id="weapon-title" class="text-xs text-amber-400 font-semibold">Оружие: Посох (+0)</p>
+
+                <!-- Здоровье -->
+                <div class="mb-2">
+                    <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
+                        <span>HP (Здоровье)</span>
+                        <span id="hp-text">100 / 100</span>
+                    </div>
+                    <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
+                        <div id="hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
+                    <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Крит Шанс:</span> <span id="crit" class="font-bold text-slate-200">5%</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Крит Урон:</span> <span id="crit-dmg" class="font-bold text-slate-200">x1.5</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">Зелья HP:</span> <span id="potions" class="font-bold text-red-400">3</span></div>
                 </div>
             </div>
 
-            <!-- Характеристики -->
-            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60 mb-2">
-                <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Защита:</span> <span id="def" class="font-bold text-slate-200">12</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Крит. Шанс:</span> <span id="crit" class="font-bold text-slate-200">5%</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Свитки Точки:</span> <span id="scrolls" class="font-bold text-amber-400">0</span></div>
+            <div class="space-y-2">
+                <button onclick="farm()" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs">
+                    ⚔️ Охота в Подземелье
+                </button>
+                <div class="flex space-x-2">
+                    <button onclick="usePotion()" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+50)</button>
+                    <button onclick="enchantWeapon()" class="flex-1 bg-slate-900 border border-amber-600/40 text-amber-400 font-bold py-2 rounded-xl text-xs active:scale-95">✨ Заточить (+1)</button>
+                </div>
             </div>
         </div>
 
-        <!-- Кнопки действий -->
-        <div class="space-y-2">
-            <button onclick="farm()" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3 px-4 rounded-xl shadow-lg active:scale-95 transition-all text-sm">
-                ⚔️ Охота в Подземелье
-            </button>
-            <button onclick="enchantWeapon()" class="w-full bg-slate-900 border border-amber-600/40 hover:bg-slate-800 text-amber-400 font-bold py-2.5 px-4 rounded-xl active:scale-95 transition-all text-xs flex justify-center items-center space-x-1">
-                <span>✨ Заточить Оружие (Нужен свиток)</span>
+        <!-- ВКЛАДКА 2: СТАТЫ И ПРОКАЧКА (L2 STYLE) -->
+        <div id="tab-stats" class="hidden space-y-3">
+            <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                    <span class="text-xs font-bold text-slate-300">Свободные очки:</span>
+                    <span id="stat-points" class="text-sm font-black text-amber-400 bg-amber-950/60 border border-amber-600/40 px-2 py-0.5 rounded-lg">0</span>
+                </div>
+
+                <div class="space-y-2 pt-1">
+                    <!-- STR -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-amber-500">STR (Сила)</span>
+                            <span class="text-[10px] text-slate-500 block">+Атака</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span id="stat-str" class="text-xs font-bold">10</span>
+                            <button onclick="addStat('str')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+
+                    <!-- DEX -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-green-500">DEX (Ловкость)</span>
+                            <span class="text-[10px] text-slate-500 block">+Крит Шанс и Крит Урон</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span id="stat-dex" class="text-xs font-bold">10</span>
+                            <button onclick="addStat('dex')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+
+                    <!-- INT -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400">INT (Интеллект)</span>
+                            <span class="text-[10px] text-slate-500 block">+Маг. Атака</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span id="stat-int" class="text-xs font-bold">10</span>
+                            <button onclick="addStat('int')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+
+                    <!-- CON -->
+                    <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                        <div>
+                            <span class="text-xs font-bold text-red-500">CON (Выносливость)</span>
+                            <span class="text-[10px] text-slate-500 block">+Запас HP</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span id="stat-con" class="text-xs font-bold">10</span>
+                            <button onclick="addStat('con')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВКЛАДКА 3: БОСС -->
+        <div id="tab-boss" class="hidden space-y-3">
+            <div class="bg-slate-900/90 border border-red-900/40 rounded-xl p-3 text-center space-y-2">
+                <div class="text-4xl animate-pulse">👹</div>
+                <h3 class="font-black text-red-500 text-sm tracking-wide">ГИБРИД ТЬМЫ (Helliquary Boss)</h3>
+                <div>
+                    <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
+                        <span>HP Босса</span>
+                        <span id="boss-hp-text">5000 / 5000</span>
+                    </div>
+                    <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-red-950">
+                        <div id="boss-hp-bar" class="bg-red-600 h-full w-full transition-all"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 px-4 rounded-xl shadow-lg active:scale-95 transition-all text-xs flex items-center justify-center space-x-2">
+                <span>💥 АТАКОВАТЬ БОССА</span>
             </button>
         </div>
 
         <!-- Лог боя -->
-        <div id="log" class="bg-slate-950 border border-slate-800/80 rounded-xl p-3 text-xs text-slate-400 h-28 overflow-y-auto space-y-1">
+        <div id="log" class="bg-slate-950 border border-slate-800/80 rounded-xl p-2.5 text-[11px] text-slate-400 h-24 overflow-y-auto space-y-1">
             <p class="text-slate-500">📜 История сражений...</p>
         </div>
     </div>
 
-    <footer class="text-center text-[10px] text-slate-600 pt-2">
-        Eternity Online v0.2 • L2 & Diablo Style
+    <footer class="text-center text-[10px] text-slate-600 pt-1">
+        Eternity Online v0.4 • L2 Stats System
     </footer>
 
     <script>
@@ -122,16 +220,16 @@
         tg.expand();
 
         let player = null;
+        let boss = { hp: 5000, maxHp: 5000 };
 
         const defaultClasses = {
-            knight: { title: 'Рыцарь', icon: '🛡️', weaponName: 'Меч', atk: 25, def: 25, crit: 5 },
-            necro: { title: 'Некромант', icon: '🧙‍♂️', weaponName: 'Посох', atk: 40, def: 10, crit: 8 },
-            ranger: { title: 'Следопыт', icon: '🏹', weaponName: 'Лук', atk: 32, def: 14, crit: 20 }
+            knight: { title: 'Рыцарь', icon: '🛡️', weaponName: 'Меч', str: 15, dex: 10, int: 5, con: 18 },
+            necro: { title: 'Некромант', icon: '🧙‍♂️', weaponName: 'Посох', str: 6, dex: 10, int: 20, con: 10 },
+            ranger: { title: 'Следопыт', icon: '🏹', weaponName: 'Лук', str: 10, dex: 20, int: 8, con: 12 }
         };
 
-        // Старт игры
-        if (localStorage.getItem('eternity_player_v2')) {
-            player = JSON.parse(localStorage.getItem('eternity_player_v2'));
+        if (localStorage.getItem('eternity_player_v4')) {
+            player = JSON.parse(localStorage.getItem('eternity_player_v4'));
             showGameScreen();
         } else {
             document.getElementById('class-select-screen').classList.remove('hidden');
@@ -150,27 +248,52 @@
                 exp: 0,
                 maxExp: 100,
                 gold: 0,
-                atk: base.atk,
-                def: base.def,
-                crit: base.crit,
+                statPoints: 5, // 5 стартовых очков!
+                str: base.str,
+                dex: base.dex,
+                int: base.int,
+                con: base.con,
+                potions: 3,
                 weaponEnchant: 0,
-                scrolls: 1 // даем 1 стартовый свиток
+                scrolls: 1
             };
+            recalcStats();
+            player.hp = player.maxHp;
             saveGame();
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Вы выбрали путь **${base.title}**! Выдан 1 Свиток Заточки.`);
+            addLog(`✨ Старт пути **${base.title}**! Выданы 5 очков статов.`);
+        }
+
+        function recalcStats() {
+            // Расчет параметров от характеристики
+            player.atk = (player.str * 2) + (player.int * 2.5) + (player.weaponEnchant * 8);
+            player.crit = Math.min(60, 5 + Math.floor(player.dex * 0.8)); // DEX капает Крит шанс
+            player.critMult = (1.5 + (player.dex * 0.02)).toFixed(2); // DEX растет Крит Урон
+            player.maxHp = 80 + (player.con * 10);
+            if (!player.hp || player.hp > player.maxHp) player.hp = player.maxHp;
+        }
+
+        function addStat(stat) {
+            if (player.statPoints <= 0) { alert('Нет свободных очков статов!'); return; }
+            player.statPoints -= 1;
+            player[stat] += 1;
+            recalcStats();
+            saveGame();
+            updateUI();
+            addLog(`➕ Вложено очко в **${stat.toUpperCase()}**!`);
         }
 
         function showGameScreen() {
             document.getElementById('game-screen').classList.remove('hidden');
             document.getElementById('game-screen').classList.add('flex');
+            recalcStats();
             updateUI();
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v2', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v4', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -178,56 +301,107 @@
             logEl.innerHTML = `<p class="text-amber-400/90">${text}</p>` + logEl.innerHTML;
         }
 
+        function switchTab(tab) {
+            document.getElementById('tab-farm').classList.add('hidden');
+            document.getElementById('tab-stats').classList.add('hidden');
+            document.getElementById('tab-boss').classList.add('hidden');
+
+            document.getElementById('tab-farm-btn').className = "flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all";
+            document.getElementById('tab-stats-btn').className = "flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all";
+            document.getElementById('tab-boss-btn').className = "flex-1 bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-xs transition-all";
+
+            if (tab === 'farm') {
+                document.getElementById('tab-farm').classList.remove('hidden');
+                document.getElementById('tab-farm-btn').className = "flex-1 bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-xs transition-all";
+            } else if (tab === 'stats') {
+                document.getElementById('tab-stats').classList.remove('hidden');
+                document.getElementById('tab-stats-btn').className = "flex-1 bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-xs transition-all";
+            } else {
+                document.getElementById('tab-boss').classList.remove('hidden');
+                document.getElementById('tab-boss-btn').className = "flex-1 bg-red-600 text-white font-bold py-1.5 rounded-lg text-xs transition-all";
+            }
+        }
+
         function farm() {
             const expGained = Math.floor(Math.random() * 25) + 15;
             const goldGained = Math.floor(Math.random() * 12) + 5;
-            let scrollDrop = Math.random() < 0.2; // 20% шанс выбить свиток
+            let scrollDrop = Math.random() < 0.15;
+            let potionDrop = Math.random() < 0.25;
 
             player.exp += expGained;
             player.gold += goldGained;
 
-            let logText = `⚔️ Убит монстр! Получено: +${expGained} EXP, +${goldGained} Адена.`;
-            if (scrollDrop) {
-                player.scrolls += 1;
-                logText += ` ✨ **Выпал Свиток Заточки!**`;
-            }
+            let logText = `⚔️ Убит моб! +${expGained} EXP, +${goldGained} Адена.`;
+            if (scrollDrop) { player.scrolls += 1; logText += ` ✨ **Свиток Заточки!**`; }
+            if (potionDrop) { player.potions += 1; logText += ` 🧪 **Зелье HP!**`; }
             addLog(logText);
 
             if (player.exp >= player.maxExp) {
                 player.level += 1;
                 player.exp -= player.maxExp;
                 player.maxExp = Math.floor(player.maxExp * 1.5);
-                player.atk += 5;
-                addLog(`🎉 **УРОВЕНЬ ПОВЫШЕН!** Вы достигли ${player.level} уровня!`);
+                player.statPoints += 5; // +5 очков статов за ЛВЛ!
+                recalcStats();
+                player.hp = player.maxHp;
+                addLog(`🎉 **НОВЫЙ УРОВЕНЬ ${player.level}!** Получено +5 очков статов!`);
             }
 
             saveGame();
             updateUI();
         }
 
+        function usePotion() {
+            if (player.potions <= 0) { alert('Нет зелий!'); return; }
+            if (player.hp >= player.maxHp) { alert('Здоровье полно!'); return; }
+            player.potions -= 1;
+            player.hp = Math.min(player.maxHp, player.hp + 50);
+            addLog(`🧪 Вы выпили зелье. HP восстановлено!`);
+            saveGame();
+            updateUI();
+        }
+
         function enchantWeapon() {
-            if (player.scrolls <= 0) {
-                alert('У вас нет Свитков Заточки! Добудьте их на охоте.');
+            if (player.scrolls <= 0) { alert('Нет Свитков Заточки!'); return; }
+            player.scrolls -= 1;
+            let chance = player.weaponEnchant < 3 ? 1.0 : 0.6;
+            
+            if (Math.random() <= chance) {
+                player.weaponEnchant += 1;
+                recalcStats();
+                addLog(`🔥 **УСПЕХ!** Оружие +${player.weaponEnchant}!`);
+            } else {
+                if (player.weaponEnchant > 3) player.weaponEnchant = 3;
+                recalcStats();
+                addLog(`💥 **НЕУДАЧА!** Заточка сорвалась.`);
+            }
+            saveGame();
+            updateUI();
+        }
+
+        function attackBoss() {
+            if (player.hp <= 0) {
+                alert('Вы погибли! Авто-воскрешение в городе.');
+                player.hp = Math.floor(player.maxHp * 0.5);
+                saveGame();
+                updateUI();
                 return;
             }
 
-            player.scrolls -= 1;
-            const currentEnchant = player.weaponEnchant;
-            
-            // Безопасная точка до +3, далее шанс 60%
-            let successChance = currentEnchant < 3 ? 1.0 : 0.6;
-            
-            if (Math.random() <= successChance) {
-                player.weaponEnchant += 1;
-                player.atk += 8; // Каждая точка дает +8 атаки
-                addLog(`🔥 **УСПЕХ!** Оружие заточено на **+${player.weaponEnchant}**! (Атака +8)`);
-            } else {
-                if (currentEnchant > 3) {
-                    player.weaponEnchant = 3; // Сброс до безопаски +3
-                    addLog(`💥 **НЕУДАЧА!** Заточка сорвалась до +3!`);
-                } else {
-                    addLog(`❌ **НЕУДАЧА!** Заточка не удалась, но безопаска +${currentEnchant} сохранена.`);
-                }
+            const isCrit = Math.random() * 100 <= player.crit;
+            let damage = player.atk + Math.floor(Math.random() * 10);
+            if (isCrit) damage = Math.floor(damage * player.critMult);
+
+            boss.hp = Math.max(0, boss.hp - damage);
+            const bossDamage = Math.max(5, 25);
+            player.hp = Math.max(0, player.hp - bossDamage);
+
+            addLog(`👹 Урон Боссу: **${damage}** ${isCrit ? `💥 (КРИТ x${player.critMult}!)` : ''}. Ответка Босса: **${bossDamage}** HP.`);
+
+            if (boss.hp <= 0) {
+                addLog(`👑 **БОСС ПОВЕРЖЕН!** Награда: +500 Адены, +3 Свитка!`);
+                player.gold += 500;
+                player.scrolls += 3;
+                boss.hp = boss.maxHp;
             }
 
             saveGame();
@@ -242,14 +416,29 @@
             
             document.getElementById('level').innerText = player.level;
             document.getElementById('gold').innerText = player.gold;
-            document.getElementById('atk').innerText = player.atk;
-            document.getElementById('def').innerText = player.def;
+            document.getElementById('atk').innerText = Math.floor(player.atk);
             document.getElementById('crit').innerText = `${player.crit}%`;
-            document.getElementById('scrolls').innerText = player.scrolls;
+            document.getElementById('crit-dmg').innerText = `x${player.critMult}`;
+            document.getElementById('potions').innerText = player.potions;
 
+            // Статы
+            document.getElementById('stat-points').innerText = player.statPoints;
+            document.getElementById('stat-str').innerText = player.str;
+            document.getElementById('stat-dex').innerText = player.dex;
+            document.getElementById('stat-int').innerText = player.int;
+            document.getElementById('stat-con').innerText = player.con;
+
+            // HP Игрока
+            document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
+            document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
+
+            // EXP
             document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
-            const expPercent = Math.min(100, Math.floor((player.exp / player.maxExp) * 100));
-            document.getElementById('exp-bar').style.width = `${expPercent}%`;
+            document.getElementById('exp-bar').style.width = `${Math.min(100, Math.floor((player.exp / player.maxExp) * 100))}%`;
+
+            // HP Босса
+            document.getElementById('boss-hp-text').innerText = `${boss.hp} / ${boss.maxHp}`;
+            document.getElementById('boss-hp-bar').style.width = `${Math.floor((boss.hp / boss.maxHp) * 100)}%`;
         }
     </script>
 </body>
