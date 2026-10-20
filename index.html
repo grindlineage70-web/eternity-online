@@ -9,102 +9,127 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-3 flex flex-col justify-between select-none">
 
-    <!-- 1. ВЫБОР РАСЫ И КЛАССА (INTERLUDE) -->
+    <!-- 1. ВЫБОР ВСЕХ КЛАССОВ L2 INTERLUDE -->
     <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-3">
         <h2 class="text-xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
-        <p class="text-xs text-slate-400 text-center mb-1">Выберите расу и путь персонажа:</p>
+        <p class="text-xs text-slate-400 text-center mb-1">Выберите профессию (Interlude):</p>
 
-        <div id="race-list" class="w-full space-y-2 max-h-96 overflow-y-auto pr-1">
-            <!-- Список генерируется динамически или выводится кнопками -->
-            <div onclick="selectRaceClass('human_fighter', 'Человек Воины', '⚔️', 40, 12, 8, 43, 10, 11)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">⚔️</span>
-                    <div>
-                        <h3 class="font-bold text-slate-200 text-xs">Люди: Воины (Gladiator / Warlord / Paladin...)</h3>
-                        <p class="text-[10px] text-slate-400">Сбалансированные бойцы ближнего боя.</p>
-                    </div>
-                </div>
+        <div id="race-list" class="w-full space-y-2 max-h-[75vh] overflow-y-auto pr-1">
+            
+            <!-- ЛУЧНИКИ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-1">🏹 Лучники (Archers)</p>
+            <div onclick="selectClass('hawkeye', 'Hawkeye (Хавк)', '🏹', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-slate-200 text-xs">Hawkeye (Хавк) — Человек</h3>
+                <p class="text-[9px] text-slate-400">Высокий запас HP, дальнобойный и сбалансированный урон.</p>
+            </div>
+            <div onclick="selectClass('fr', 'Phantom Ranger (ФР)', '🏹', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Phantom Ranger (ФР) — Темный Эльф</h3>
+                <p class="text-[9px] text-slate-400">Максимальный крит. урон и сила выстрела.</p>
+            </div>
+            <div onclick="selectClass('sr', 'Silver Ranger (СР)', '🏹', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-blue-400 text-xs">Silver Ranger (СР) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Самая высокая скорость стрельбы и уклонение.</p>
             </div>
 
-            <div onclick="selectRaceClass('human_mage', 'Человек Маги', '🔮', 30, 21, 6, 35, 12, 12)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">🔮</span>
-                    <div>
-                        <h3 class="font-bold text-amber-400 text-xs">Люди: Маги (Sorcerer / Necromancer / Warlock)</h3>
-                        <p class="text-[10px] text-slate-400">Мощная магия стихий и темных сил.</p>
-                    </div>
-                </div>
+            <!-- ДАГГЕРЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🗡️ Кинжальщики (Daggers)</p>
+            <div onclick="selectClass('th', 'Treasure Hunter (ТХ)', '🗡️', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-slate-200 text-xs">Treasure Hunter (ТХ) — Человек</h3>
+                <p class="text-[9px] text-slate-400">Живучий кинжальщик с высоким HP и бегом.</p>
+            </div>
+            <div onclick="selectClass('aw', 'Abyss Walker (АВ)', '🗡️', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Abyss Walker (АВ) — Темный Эльф</h3>
+                <p class="text-[9px] text-slate-400">Смертоносные абилки с гигантским критическим уроном.</p>
+            </div>
+            <div onclick="selectClass('pw', 'Plains Walker (ПВ)', '🗡️', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-blue-400 text-xs">Plains Walker (ПВ) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Молниеносный, невероятный шанс крита и уклонение.</p>
             </div>
 
-            <div onclick="selectRaceClass('elf_fighter', 'Эльфы Воины', '🏹', 36, 15, 7, 36, 11, 10)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">🏹</span>
-                    <div>
-                        <h3 class="font-bold text-slate-200 text-xs">Эльфы: Воины (Temple Knight / Plains Walker / SR)</h3>
-                        <p class="text-[10px] text-slate-400">Высокая скорость атаки и уклонение.</p>
-                    </div>
-                </div>
+            <!-- МАГИИ И НЕКР -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🔮 Маги (Mages)</p>
+            <div onclick="selectClass('necro', 'Necromancer (Некр)', '💀', 28, 21, 41, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Necromancer (Некромант)</h3>
+                <p class="text-[9px] text-slate-400">Темная магия, проклятия и призыв скелета/зомби.</p>
+            </div>
+            <div onclick="selectClass('sh', 'Spellhowler (СХ)', '🌪️', 28, 21, 44, 31, 19, 37)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-500 text-xs">Spellhowler (СХ) — Темный Эльф</h3>
+                <p class="text-[9px] text-slate-400">Самая высокая магическая атака в игре (INT 44).</p>
+            </div>
+            <div onclick="selectClass('sps', 'Spellsinger (СС)', '❄️', 27, 22, 37, 28, 23, 40)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-blue-400 text-xs">Spellsinger (СС) — Светлый Эльф</h3>
+                <p class="text-[9px] text-slate-400">Максимальная скорость каста магии (WIT 23).</p>
+            </div>
+            <div onclick="selectClass('sorc', 'Sorcerer (Сорка)', '🔥', 28, 21, 40, 31, 20, 39)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-500 text-xs">Sorcerer (Сорка) — Человек</h3>
+                <p class="text-[9px] text-slate-400">Маг огня с балансом силы и скорости заклинаний.</p>
             </div>
 
-            <div onclick="selectRaceClass('elf_mage', 'Эльфы Маги', '✨', 27, 24, 7, 30, 13, 14)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">✨</span>
-                    <div>
-                        <h3 class="font-bold text-blue-400 text-xs">Эльфы: Маги (Spellsinger / Elemental Summoner)</h3>
-                        <p class="text-[10px] text-slate-400">Быстрое чтение заклинаний и ветер.</p>
-                    </div>
-                </div>
+            <!-- САППОРТЫ И ХИЛЕРЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">✨ Саппорты & Хилеры</p>
+            <div onclick="selectClass('bishop', 'Bishop (Бишоп)', '✝️', 28, 21, 39, 31, 20, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-yellow-300 text-xs">Bishop (Бишоп)</h3>
+                <p class="text-[9px] text-slate-400">Главный жрец и лучший лекарь всей группы.</p>
+            </div>
+            <div onclick="selectClass('pp', 'Prophet (ПП)', '📜', 28, 21, 39, 31, 20, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-400 text-xs">Prophet (ПП)</h3>
+                <p class="text-[9px] text-slate-400">Мастер усилений (баффов) для всей группы.</p>
+            </div>
+            <div onclick="selectClass('ee', 'Elven Elder (ЕЕ)', '🌿', 27, 22, 37, 28, 23, 42)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-green-400 text-xs">Elven Elder (ЕЕ)</h3>
+                <p class="text-[9px] text-slate-400">Быстрый хил, залив маны (MP) и баффы защиты.</p>
+            </div>
+            <div onclick="selectClass('se', 'Shillien Elder (ШЕ)', '🌙', 28, 21, 40, 31, 19, 41)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-purple-400 text-xs">Shillien Elder (ШЕ)</h3>
+                <p class="text-[9px] text-slate-400">Залив маны, мощные магические баффы и Vampiric Rage.</p>
+            </div>
+            <div onclick="selectClass('bd', 'Blade Dancer (БД)', '⚔️', 41, 32, 23, 32, 12, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-indigo-400 text-xs">Blade Dancer (БД)</h3>
+                <p class="text-[9px] text-slate-400">Танцы для усиления физ. и маг. атаки всей пати.</p>
+            </div>
+            <div onclick="selectClass('sws', 'Sword Singer (СВС)', '🎶', 36, 35, 21, 36, 14, 26)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-cyan-400 text-xs">Sword Singer (СВС)</h3>
+                <p class="text-[9px] text-slate-400">Песни для максимальной защиты и скорости группы.</p>
+            </div>
+            <div onclick="selectClass('wc', 'Warcryer (Варк)', '🔥', 40, 23, 31, 47, 15, 38)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-orange-400 text-xs">Warcryer (Варк) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Баффер группы Chant of Victory (Чов).</p>
+            </div>
+            <div onclick="selectClass('ol', 'Overlord (Овер)', '👑', 40, 23, 31, 47, 15, 38)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-red-500 text-xs">Overlord (Овер) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Баффы клана и массовые дебаффы врагов.</p>
             </div>
 
-            <div onclick="selectRaceClass('dark_fighter', 'Темные Эльфы Воины', '🗡️', 41, 14, 7, 35, 10, 10)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">🗡️</span>
-                    <div>
-                        <h3 class="font-bold text-purple-400 text-xs">Темные Эльфы: Воины (Dark Avenger / Abyss Walker / PR)</h3>
-                        <p class="text-[10px] text-slate-400">Максимальная сила критического урона.</p>
-                    </div>
-                </div>
+            <!-- ТАНКИ И ВАРРИОРЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">🛡️ Танки и Воины</p>
+            <div onclick="selectClass('destro', 'Destroyer (Дестр)', '🪓', 45, 23, 18, 50, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-red-500 text-xs">Destroyer (Дестр) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Френзи, лимиты и гигантский урон по боссам.</p>
+            </div>
+            <div onclick="selectClass('tyrant', 'Tyrant (Тир)', '👊', 43, 28, 18, 48, 12, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-orange-400 text-xs">Tyrant (Тир) — Орк</h3>
+                <p class="text-[9px] text-slate-400">Быстрые кастеты и тотемы зверей.</p>
+            </div>
+            <div onclick="selectClass('paladin', 'Paladin (Паладин)', '🛡️', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-slate-200 text-xs">Paladin (Паладин)</h3>
+                <p class="text-[9px] text-slate-400">Классический танк с глухой защитой и иконой.</p>
+            </div>
+            <div onclick="selectClass('da', 'Dark Avenger (ДА)', '⬛', 40, 30, 21, 43, 11, 25)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-slate-400 text-xs">Dark Avenger (ДА)</h3>
+                <p class="text-[9px] text-slate-400">Темный рыцарь с вызовом Пантеры и хаосом.</p>
             </div>
 
-            <div onclick="selectRaceClass('dark_mage', 'Темные Эльфы Маги', '💀', 27, 23, 8, 29, 13, 14)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">💀</span>
-                    <div>
-                        <h3 class="font-bold text-purple-500 text-xs">Темные Эльфы: Маги (Spellhowler / Phantom Summoner)</h3>
-                        <p class="text-[10px] text-slate-400">Сокрушительная разрушительная магия.</p>
-                    </div>
-                </div>
+            <!-- ГНОМЫ -->
+            <p class="text-[10px] font-bold text-amber-400 tracking-wider uppercase pt-2">⚒️ Гномы (Dwarves)</p>
+            <div onclick="selectClass('spoil', 'Bounty Hunter (Спойлер)', '⛏️', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-600 text-xs">Bounty Hunter (Спойлер)</h3>
+                <p class="text-[9px] text-slate-400">Мастер спойла редких ресурсов из мобов.</p>
+            </div>
+            <div onclick="selectClass('craft', 'Warsmith (Крафтер)', '🔨', 39, 29, 20, 45, 10, 27)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95">
+                <h3 class="font-bold text-amber-500 text-xs">Warsmith (Крафтер)</h3>
+                <p class="text-[9px] text-slate-400">Создание оружия, сосок и вызов Голема.</p>
             </div>
 
-            <div onclick="selectRaceClass('orc_fighter', 'Орки Воины', '🪓', 46, 8, 6, 51, 9, 9)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">🪓</span>
-                    <div>
-                        <h3 class="font-bold text-red-500 text-xs">Орки: Воины (Destroyer / Tyrant / Overlord)</h3>
-                        <p class="text-[10px] text-slate-400">Огромный запас здоровья и сила удара.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div onclick="selectRaceClass('orc_mage', 'Орки Шаманы', '🔥', 29, 12, 12, 39, 12, 12)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">🔥</span>
-                    <div>
-                        <h3 class="font-bold text-orange-400 text-xs">Орки: Шаманы (Warcryer / Overlord)</h3>
-                        <p class="text-[10px] text-slate-400">Боевые баффы и целительные силы клана.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div onclick="selectRaceClass('dwarf_fighter', 'Гномы', '⚒️', 40, 10, 8, 45, 10, 10)" class="bg-slate-900 border border-slate-800 hover:border-amber-500 p-3 rounded-xl cursor-pointer transition-all active:scale-95">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">⚒️</span>
-                    <div>
-                        <h3 class="font-bold text-amber-600 text-xs">Гномы: Мастера (Bounty Hunter / Warsmith)</h3>
-                        <p class="text-[10px] text-slate-400">Крафт, спойл ресурсов и надежная защита.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -244,11 +269,11 @@
                 </div>
                 <div class="space-y-1.5 pt-1 text-xs">
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-amber-500">STR (Сила)</span><span class="text-[9px] text-slate-500 block">+Физическая атака</span></div>
+                        <div><span class="font-bold text-amber-500">STR (Сила)</span><span class="text-[9px] text-slate-500 block">+Физ. атака</span></div>
                         <div class="flex items-center space-x-2"><span id="stat-str" class="font-bold">40</span><button onclick="addStat('str')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-green-500">DEX (Ловкость)</span><span class="text-[9px] text-slate-500 block">+Скорость, Шанс крита, Уклонение</span></div>
+                        <div><span class="font-bold text-green-500">DEX (Ловкость)</span><span class="text-[9px] text-slate-500 block">+Скорость, Крит, Уклонение</span></div>
                         <div class="flex items-center space-x-2"><span id="stat-dex" class="font-bold">30</span><button onclick="addStat('dex')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
@@ -256,15 +281,15 @@
                         <div class="flex items-center space-x-2"><span id="stat-int" class="font-bold">21</span><button onclick="addStat('int')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-red-500">CON (Выносливость)</span><span class="text-[9px] text-slate-500 block">+Запас HP и дыхание</span></div>
+                        <div><span class="font-bold text-red-500">CON (Выносливость)</span><span class="text-[9px] text-slate-500 block">+Запас HP</span></div>
                         <div class="flex items-center space-x-2"><span id="stat-con" class="font-bold">43</span><button onclick="addStat('con')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-purple-400">WIT (Мудрость)</span><span class="text-[9px] text-slate-500 block">+Скорость каста заклинаний</span></div>
+                        <div><span class="font-bold text-purple-400">WIT (Мудрость)</span><span class="text-[9px] text-slate-500 block">+Скорость каста</span></div>
                         <div class="flex items-center space-x-2"><span id="stat-wit" class="font-bold">10</span><button onclick="addStat('wit')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div><span class="font-bold text-indigo-400">MEN (Дух)</span><span class="text-[9px] text-slate-500 block">+Запас MP и резист к магии</span></div>
+                        <div><span class="font-bold text-indigo-400">MEN (Дух)</span><span class="text-[9px] text-slate-500 block">+Запас MP и M.Def</span></div>
                         <div class="flex items-center space-x-2"><span id="stat-men" class="font-bold">11</span><button onclick="addStat('men')" class="bg-amber-600 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                 </div>
@@ -351,7 +376,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.12 • All Interlude Races & Stats
+        Eternity Online v0.13 • Interlude Full Classes
     </footer>
 
     <script>
@@ -370,12 +395,12 @@
         };
 
         try {
-            if (localStorage.getItem('eternity_player_v12')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v12'));
+            if (localStorage.getItem('eternity_player_v13')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v13'));
             }
         } catch(e) { player = null; }
 
-        if (player && player.raceClassKey) {
+        if (player && player.classKey) {
             showGameScreen();
         } else {
             document.getElementById('class-select-screen').classList.remove('hidden');
@@ -386,9 +411,9 @@
             document.getElementById('username').innerText = `Игрок: ${tg.initDataUnsafe.user.first_name}`;
         }
 
-        function selectRaceClass(key, title, icon, str, dex, int, con, wit, men) {
+        function selectClass(key, title, icon, str, dex, int, con, wit, men) {
             player = {
-                raceClassKey: key,
+                classKey: key,
                 title: title,
                 icon: icon,
                 level: 1,
@@ -419,7 +444,7 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Вы выбрали класс: **${title}**! Добро пожаловать в мир Interlude.`);
+            addLog(`✨ Вы выбрали класс: **${title}**! Добро пожаловать.`);
         }
 
         function changeLocation() {
@@ -471,7 +496,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v12', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v13', JSON.stringify(player));
         }
 
         function addLog(text) {
