@@ -3,97 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternity Online - Character</title>
-    <!-- Подключаем Tailwind CSS для красивого дизайна -->
+    <title>Eternity Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Telegram Web App SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-4 flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen p-4 flex flex-col justify-between select-none">
 
-    <!-- Верхняя панель: Имя персонажа и Уровень -->
-    <div>
-        <header class="flex justify-between items-center border-b border-slate-800 pb-4 mb-4">
-            <div>
-                <h1 class="text-xl font-bold text-amber-500 tracking-wider">ETERNITY ONLINE</h1>
-                <p id="username" class="text-sm text-slate-400">Игрок: Загрузка...</p>
-            </div>
-            <div class="bg-slate-900 border border-slate-700 px-3 py-1 rounded-lg text-right">
-                <span class="text-xs text-slate-400 block">УРОВЕНЬ</span>
-                <span class="text-lg font-black text-amber-400">1</span>
-            </div>
-        </header>
+    <!-- 1. ЭКРАН ВЫБОРА КЛАССА (показывается только при первом входе) -->
+    <div id="class-select-screen" class="hidden flex-col items-center justify-center my-auto space-y-4">
+        <h2 class="text-2xl font-black text-amber-500 tracking-wider text-center">ETERNITY ONLINE</h2>
+        <p class="text-sm text-slate-400 text-center mb-2">Выберите свой путь и класс персонажа:</p>
 
-        <!-- Карточка персонажа в стиле Diablo / L2 -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 mb-4 shadow-xl">
-            <div class="flex items-center space-x-4 mb-4">
-                <div class="w-16 h-16 bg-slate-800 border-2 border-amber-600 rounded-xl flex items-center justify-center text-3xl shadow-inner">
-                    🛡️
-                </div>
+        <div onclick="selectClass('knight')" class="w-full bg-slate-900 border border-slate-800 hover:border-amber-500 p-4 rounded-2xl cursor-pointer transition-all active:scale-95">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🛡️</span>
                 <div>
-                    <h2 class="text-lg font-bold text-slate-200">Рыцарь Тьмы</h2>
-                    <p class="text-xs text-amber-500/80 font-medium">Класс: Воин (Gladiator)</p>
+                    <h3 class="font-bold text-slate-200">Рыцарь (Knight)</h3>
+                    <p class="text-xs text-slate-400">Высокая защита, большой запас HP.</p>
                 </div>
-            </div>
-
-            <!-- Шкалы здоровья и маны -->
-            <div class="space-y-2 mb-4">
-                <div>
-                    <div class="flex justify-between text-xs mb-1 text-slate-400">
-                        <span>HP (Здоровье)</span>
-                        <span>150 / 150</span>
-                    </div>
-                    <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
-                        <div class="bg-red-600 h-full w-full"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between text-xs mb-1 text-slate-400">
-                        <span>MP (Мана)</span>
-                        <span>50 / 50</span>
-                    </div>
-                    <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
-                        <div class="bg-blue-600 h-full w-full"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Характеристики (Статы как в L2) -->
-            <div class="grid grid-cols-2 gap-2 text-sm bg-slate-950/50 p-3 rounded-xl border border-slate-800/60">
-                <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span class="font-bold text-amber-400">24</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Защита:</span> <span class="font-bold text-slate-200">18</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Шанс Крита:</span> <span class="font-bold text-slate-200">5%</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Скорость:</span> <span class="font-bold text-slate-200">12</span></div>
             </div>
         </div>
 
-        <!-- Кнопки действий (Фарм / Подземелья) -->
-        <div class="space-y-3">
-            <button onclick="alert('Вы отправились на охоту в Проклятые Земли! Найден ржавый меч.')" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3 px-4 rounded-xl shadow-lg shadow-amber-900/20 active:scale-95 transition-all">
-                ⚔️ Отправиться на фарм (PvE)
-            </button>
-            <button onclick="alert('Арена в разработке! Скоро здесь будут PvP-бои.')" class="w-full bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-200 font-bold py-3 px-4 rounded-xl active:scale-95 transition-all">
-                🏛️ Арена PvP
-            </button>
+        <div onclick="selectClass('necro')" class="w-full bg-slate-900 border border-slate-800 hover:border-amber-500 p-4 rounded-2xl cursor-pointer transition-all active:scale-95">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🧙‍♂️</span>
+                <div>
+                    <h3 class="font-bold text-amber-400">Некромант (Necromancer)</h3>
+                    <p class="text-xs text-slate-400">Огромный магический урон и призыв слуг.</p>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="selectClass('ranger')" class="w-full bg-slate-900 border border-slate-800 hover:border-amber-500 p-4 rounded-2xl cursor-pointer transition-all active:scale-95">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🏹</span>
+                <div>
+                    <h3 class="font-bold text-slate-200">Следопыт (Ranger)</h3>
+                    <p class="text-xs text-slate-400">Смертоносные критические атаки.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Подвал / Инфо -->
-    <footer class="text-center text-xs text-slate-600 pt-4">
-        Eternity Online v0.1 • Telegram MMO RPG
+    <!-- 2. ОСНОВНОЙ ИГРОВОЙ ИНТЕРФЕЙС -->
+    <div id="game-screen" class="hidden flex-col space-y-4">
+        <!-- Шапка -->
+        <header class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <div>
+                <h1 class="text-lg font-bold text-amber-500 tracking-wider">ETERNITY ONLINE</h1>
+                <p id="username" class="text-xs text-slate-400">Игрок: ...</p>
+            </div>
+            <div class="text-right flex items-center space-x-2">
+                <div class="bg-slate-900 border border-slate-800 px-2 py-1 rounded-lg">
+                    <span class="text-[10px] text-amber-400 font-bold block">💰 АДЕНА</span>
+                    <span id="gold" class="text-xs font-black text-slate-200">0</span>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg">
+                    <span class="text-[10px] text-slate-400 block">УРОВЕНЬ</span>
+                    <span id="level" class="text-sm font-black text-amber-400">1</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Прогресс опыта -->
+        <div>
+            <div class="flex justify-between text-[11px] mb-1 text-slate-400">
+                <span>Опыт (EXP)</span>
+                <span id="exp-text">0 / 100</span>
+            </div>
+            <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
+                <div id="exp-bar" class="bg-amber-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+        </div>
+
+        <!-- Карточка персонажа -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 shadow-xl">
+            <div class="flex items-center space-x-3 mb-3">
+                <div id="class-icon" class="w-14 h-14 bg-slate-800 border-2 border-amber-600 rounded-xl flex items-center justify-center text-2xl shadow-inner">
+                    🧙‍♂️
+                </div>
+                <div>
+                    <h2 id="class-title" class="text-base font-bold text-slate-200">Некромант</h2>
+                    <p id="weapon-title" class="text-xs text-amber-400 font-semibold">Оружие: Посох (+0)</p>
+                </div>
+            </div>
+
+            <!-- Характеристики -->
+            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60 mb-2">
+                <div class="flex justify-between"><span class="text-slate-400">Атака:</span> <span id="atk" class="font-bold text-amber-400">35</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Защита:</span> <span id="def" class="font-bold text-slate-200">12</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Крит. Шанс:</span> <span id="crit" class="font-bold text-slate-200">5%</span></div>
+                <div class="flex justify-between"><span class="text-slate-400">Свитки Точки:</span> <span id="scrolls" class="font-bold text-amber-400">0</span></div>
+            </div>
+        </div>
+
+        <!-- Кнопки действий -->
+        <div class="space-y-2">
+            <button onclick="farm()" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3 px-4 rounded-xl shadow-lg active:scale-95 transition-all text-sm">
+                ⚔️ Охота в Подземелье
+            </button>
+            <button onclick="enchantWeapon()" class="w-full bg-slate-900 border border-amber-600/40 hover:bg-slate-800 text-amber-400 font-bold py-2.5 px-4 rounded-xl active:scale-95 transition-all text-xs flex justify-center items-center space-x-1">
+                <span>✨ Заточить Оружие (Нужен свиток)</span>
+            </button>
+        </div>
+
+        <!-- Лог боя -->
+        <div id="log" class="bg-slate-950 border border-slate-800/80 rounded-xl p-3 text-xs text-slate-400 h-28 overflow-y-auto space-y-1">
+            <p class="text-slate-500">📜 История сражений...</p>
+        </div>
+    </div>
+
+    <footer class="text-center text-[10px] text-slate-600 pt-2">
+        Eternity Online v0.2 • L2 & Diablo Style
     </footer>
 
-    <!-- Скрипт инициализации Telegram -->
     <script>
         const tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачиваем Web App на весь экран
+        tg.expand();
 
-        // Получаем имя реального игрока из Telegram
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            const user = tg.initDataUnsafe.user;
-            document.getElementById('username').innerText = `Игрок: ${user.first_name}`;
+        let player = null;
+
+        const defaultClasses = {
+            knight: { title: 'Рыцарь', icon: '🛡️', weaponName: 'Меч', atk: 25, def: 25, crit: 5 },
+            necro: { title: 'Некромант', icon: '🧙‍♂️', weaponName: 'Посох', atk: 40, def: 10, crit: 8 },
+            ranger: { title: 'Следопыт', icon: '🏹', weaponName: 'Лук', atk: 32, def: 14, crit: 20 }
+        };
+
+        // Старт игры
+        if (localStorage.getItem('eternity_player_v2')) {
+            player = JSON.parse(localStorage.getItem('eternity_player_v2'));
+            showGameScreen();
         } else {
-            document.getElementById('username').innerText = `Игрок: Странник (Тест)`;
+            document.getElementById('class-select-screen').classList.remove('hidden');
+            document.getElementById('class-select-screen').classList.add('flex');
+        }
+
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById('username').innerText = `Игрок: ${tg.initDataUnsafe.user.first_name}`;
+        }
+
+        function selectClass(classKey) {
+            const base = defaultClasses[classKey];
+            player = {
+                classKey: classKey,
+                level: 1,
+                exp: 0,
+                maxExp: 100,
+                gold: 0,
+                atk: base.atk,
+                def: base.def,
+                crit: base.crit,
+                weaponEnchant: 0,
+                scrolls: 1 // даем 1 стартовый свиток
+            };
+            saveGame();
+            document.getElementById('class-select-screen').classList.add('hidden');
+            document.getElementById('class-select-screen').classList.remove('flex');
+            showGameScreen();
+            addLog(`✨ Вы выбрали путь **${base.title}**! Выдан 1 Свиток Заточки.`);
+        }
+
+        function showGameScreen() {
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('game-screen').classList.add('flex');
+            updateUI();
+        }
+
+        function saveGame() {
+            localStorage.setItem('eternity_player_v2', JSON.stringify(player));
+        }
+
+        function addLog(text) {
+            const logEl = document.getElementById('log');
+            logEl.innerHTML = `<p class="text-amber-400/90">${text}</p>` + logEl.innerHTML;
+        }
+
+        function farm() {
+            const expGained = Math.floor(Math.random() * 25) + 15;
+            const goldGained = Math.floor(Math.random() * 12) + 5;
+            let scrollDrop = Math.random() < 0.2; // 20% шанс выбить свиток
+
+            player.exp += expGained;
+            player.gold += goldGained;
+
+            let logText = `⚔️ Убит монстр! Получено: +${expGained} EXP, +${goldGained} Адена.`;
+            if (scrollDrop) {
+                player.scrolls += 1;
+                logText += ` ✨ **Выпал Свиток Заточки!**`;
+            }
+            addLog(logText);
+
+            if (player.exp >= player.maxExp) {
+                player.level += 1;
+                player.exp -= player.maxExp;
+                player.maxExp = Math.floor(player.maxExp * 1.5);
+                player.atk += 5;
+                addLog(`🎉 **УРОВЕНЬ ПОВЫШЕН!** Вы достигли ${player.level} уровня!`);
+            }
+
+            saveGame();
+            updateUI();
+        }
+
+        function enchantWeapon() {
+            if (player.scrolls <= 0) {
+                alert('У вас нет Свитков Заточки! Добудьте их на охоте.');
+                return;
+            }
+
+            player.scrolls -= 1;
+            const currentEnchant = player.weaponEnchant;
+            
+            // Безопасная точка до +3, далее шанс 60%
+            let successChance = currentEnchant < 3 ? 1.0 : 0.6;
+            
+            if (Math.random() <= successChance) {
+                player.weaponEnchant += 1;
+                player.atk += 8; // Каждая точка дает +8 атаки
+                addLog(`🔥 **УСПЕХ!** Оружие заточено на **+${player.weaponEnchant}**! (Атака +8)`);
+            } else {
+                if (currentEnchant > 3) {
+                    player.weaponEnchant = 3; // Сброс до безопаски +3
+                    addLog(`💥 **НЕУДАЧА!** Заточка сорвалась до +3!`);
+                } else {
+                    addLog(`❌ **НЕУДАЧА!** Заточка не удалась, но безопаска +${currentEnchant} сохранена.`);
+                }
+            }
+
+            saveGame();
+            updateUI();
+        }
+
+        function updateUI() {
+            const cls = defaultClasses[player.classKey];
+            document.getElementById('class-icon').innerText = cls.icon;
+            document.getElementById('class-title').innerText = `${cls.title} (${player.level} ур.)`;
+            document.getElementById('weapon-title').innerText = `Оружие: ${cls.weaponName} (+${player.weaponEnchant})`;
+            
+            document.getElementById('level').innerText = player.level;
+            document.getElementById('gold').innerText = player.gold;
+            document.getElementById('atk').innerText = player.atk;
+            document.getElementById('def').innerText = player.def;
+            document.getElementById('crit').innerText = `${player.crit}%`;
+            document.getElementById('scrolls').innerText = player.scrolls;
+
+            document.getElementById('exp-text').innerText = `${player.exp} / ${player.maxExp}`;
+            const expPercent = Math.min(100, Math.floor((player.exp / player.maxExp) * 100));
+            document.getElementById('exp-bar').style.width = `${expPercent}%`;
         }
     </script>
 </body>
