@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <!-- Переключение вкладок (7 вкладок, включая Квесты) -->
+        <!-- Переключение вкладок -->
         <div class="grid grid-cols-7 gap-1 border-b border-slate-800 pb-2">
             <button id="tab-farm-btn" onclick="switchTab('farm')" class="bg-amber-600 text-slate-950 font-bold py-1.5 rounded-lg text-[8px] transition-all">⚔️ Охота</button>
             <button id="tab-quests-btn" onclick="switchTab('quests')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[8px] transition-all">📜 Квесты</button>
@@ -338,13 +338,15 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 6: РЫНОК -->
+        <!-- ВКЛАДКА 6: РЫНОК (ПОЛНЫЙ АССОРТИМЕНТ) -->
         <div id="tab-market" class="hidden space-y-2">
-            <div class="grid grid-cols-4 gap-1 border-b border-slate-800 pb-1.5">
-                <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]">⚔️ Пушки</button>
-                <button id="m-sub-armor" onclick="switchMarketSub('armor')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🛡️ Броня</button>
-                <button id="m-sub-scrolls" onclick="switchMarketSub('scrolls')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">✨ Точки</button>
-                <button id="m-sub-consum" onclick="switchMarketSub('consum')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]">🧪 Зелья</button>
+            <div class="grid grid-cols-6 gap-1 border-b border-slate-800 pb-1.5">
+                <button id="m-sub-weapon" onclick="switchMarketSub('weapon')" class="bg-amber-600 text-slate-950 font-bold py-1 rounded text-[7px]">⚔️ Пушки</button>
+                <button id="m-sub-armor" onclick="switchMarketSub('armor')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🛡️ Броня</button>
+                <button id="m-sub-jewel" onclick="switchMarketSub('jewel')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">💎 Бижа</button>
+                <button id="m-sub-scrolls" onclick="switchMarketSub('scrolls')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">✨ Точки</button>
+                <button id="m-sub-consum" onclick="switchMarketSub('consum')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🧪 Заряды</button>
+                <button id="m-sub-dyes" onclick="switchMarketSub('dyes')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]">🎨 Тату</button>
             </div>
             <div id="market-items-container" class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs"></div>
         </div>
@@ -376,7 +378,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.33 • Quests & NPCs (1-20 Lvl)
+        Eternity Online v0.34 • Full Market Restored
     </footer>
 
     <script>
@@ -395,23 +397,48 @@
             q3: { id: 'q3', title: '⚔️ Испытание Первой Профессии (18 ур.)', npc: 'Master Selius', desc: 'Хардкорный квест: убейте 10 Скелетов-лучников в Elven Ruins и принесите древний фолиант!', targetMobId: 'e1', requiredCount: 10, currentCount: 0, rewardGold: 15000, rewardExp: 5000, status: 'locked', minLvl: 18 }
         };
 
+        // ПОЛНЫЙ РЫНОК Л2
         const marketData = {
             weapon: [
-                { id: 'w_ng', name: 'Shortsword (No-Grade)', atk: 15, reqLvl: 1, cost: 200 },
-                { id: 'w_d', name: 'Elven Longsword (D-Grade)', atk: 35, reqLvl: 20, cost: 1500 },
-                { id: 'w_c', name: 'Berserker Blade (C-Grade)', atk: 75, reqLvl: 40, cost: 8000 }
+                { id: 'w_ng', name: 'Shortsword / Staff (No-Grade)', atk: 15, reqLvl: 1, cost: 200 },
+                { id: 'w_d', name: 'Elven Longsword / Bow (D-Grade)', atk: 35, reqLvl: 20, cost: 1500 },
+                { id: 'w_c', name: 'Berserker Blade / Bow (C-Grade)', atk: 75, reqLvl: 40, cost: 8000 },
+                { id: 'w_b', name: 'Sword of Damascus / Bow (B-Grade)', atk: 120, reqLvl: 52, cost: 25000 },
+                { id: 'w_a', name: 'Tallum Blade / Soul Bow (A-Grade)', atk: 180, reqLvl: 61, cost: 75000 },
+                { id: 'w_s', name: 'Angel Slayer / Draconic Bow (S-Grade)', atk: 260, reqLvl: 75, cost: 200000 }
             ],
             armor: [
-                { id: 'a_ng_h', name: '🛡️ Wooden Set (No-Grade)', def: 12, reqLvl: 1, cost: 150 },
-                { id: 'a_d_h', name: '🛡️ Brigandine Set (D-Grade)', def: 32, reqLvl: 20, cost: 1200 }
+                { id: 'a_ng_h', name: '🛡️ Heavy: Wooden Set (No-Grade)', def: 12, reqLvl: 1, cost: 150 },
+                { id: 'a_d_h', name: '🛡️ Heavy: Brigandine Set (D-Grade)', def: 32, reqLvl: 20, cost: 1200 },
+                { id: 'a_c_h', name: '🛡️ Heavy: Full Plate Set (C-Grade)', def: 65, reqLvl: 40, cost: 6000 },
+                { id: 'a_b_h', name: '🛡️ Heavy: Avadon Heavy Set (B-Grade)', def: 115, reqLvl: 52, cost: 20000 },
+                { id: 'a_a_h', name: '🛡️ Heavy: Tallum Heavy Set (A-Grade)', def: 175, reqLvl: 61, cost: 60000 },
+                { id: 'a_s_h', name: '🛡️ Heavy: Imperial Crusader Set (S-Grade)', def: 250, reqLvl: 75, cost: 180000 }
+            ],
+            jewel: [
+                { id: 'j_ng', name: 'Necklace of Anguish (No-Grade)', def: 5, reqLvl: 1, cost: 100 },
+                { id: 'j_d', name: 'Elven Ring & Earring Set (D-Grade)', def: 15, reqLvl: 20, cost: 800 },
+                { id: 'j_c', name: 'Binding Ring & Earring Set (C-Grade)', def: 35, reqLvl: 40, cost: 4000 },
+                { id: 'j_b', name: 'Black Ore Jewels (B-Grade)', def: 60, reqLvl: 52, cost: 15000 },
+                { id: 'j_a', name: 'Majestic Jewels Set (A-Grade)', def: 90, reqLvl: 61, cost: 45000 },
+                { id: 'j_s', name: 'Tateossian Jewels Set (S-Grade)', def: 140, reqLvl: 75, cost: 120000 }
             ],
             scrolls: [
                 { id: 'sc_w_ng', name: '✨ Enchant Weapon (NG)', cost: 150, type: 'w_scroll' },
-                { id: 'sc_a_ng', name: '🛡️ Enchant Armor (NG)', cost: 80, type: 'a_scroll' }
+                { id: 'sc_w_d', name: '✨ Enchant Weapon (D-Grade)', cost: 500, type: 'w_scroll' },
+                { id: 'sc_w_c', name: '✨ Enchant Weapon (C-Grade)', cost: 1500, type: 'w_scroll' },
+                { id: 'sc_a_ng', name: '🛡️ Enchant Armor (NG)', cost: 80, type: 'a_scroll' },
+                { id: 'sc_a_d', name: '🛡️ Enchant Armor (D-Grade)', cost: 250, type: 'a_scroll' }
             ],
             consum: [
                 { id: 'c_hp', name: 'Greater Healing Potion (+100 HP)', cost: 50, type: 'hp' },
-                { id: 'c_mp', name: 'Mana Potion (+80 MP)', cost: 100, type: 'mp' }
+                { id: 'c_mp', name: 'Mana Potion (+80 MP)', cost: 100, type: 'mp' },
+                { id: 'c_ss_ng', name: '⚡ Soulshot (NG) x100', cost: 100, type: 'ss' },
+                { id: 'c_ss_d', name: '⚡ Soulshot (D) x100', cost: 300, type: 'ss' }
+            ],
+            dyes: [
+                { id: 'd_str', name: '🎨 Тату: +4 STR / -4 CON (Сила)', cost: 5000, stat: 'str', statSub: 'con' },
+                { id: 'd_dex', name: '🎨 Тату: +4 DEX / -4 STR (Ловкость)', cost: 5000, stat: 'dex', statSub: 'str' }
             ]
         };
 
@@ -442,7 +469,7 @@
         };
 
         function loadSavedPlayer() {
-            let data = localStorage.getItem('eternity_player_save_v33');
+            let data = localStorage.getItem('eternity_player_save_v34');
             if (data) { try { return JSON.parse(data); } catch(e) {} }
             return null;
         }
@@ -506,7 +533,7 @@
         }
 
         function saveGame() {
-            if (player) localStorage.setItem('eternity_player_save_v33', JSON.stringify(player));
+            if (player) localStorage.setItem('eternity_player_save_v34', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -555,13 +582,11 @@
             alert(`${loc.npcName}:\n\n"${loc.npcDialog}"`);
         }
 
-        // РЕНДЕР КВЕСТОВ
         function renderQuests() {
             const container = document.getElementById('quests-container');
             container.innerHTML = '';
             
             Object.values(quests).forEach(q => {
-                // Разблокировка по уровню
                 if (q.status === 'locked' && q.minLvl && player.level >= q.minLvl) {
                     q.status = 'available';
                 }
@@ -659,7 +684,6 @@
                 player.gold += currentTarget.gold;
                 addLog(`🎉 **${currentTarget.name} повержен!** +${currentTarget.exp} EXP, +${currentTarget.gold} Адена.`);
 
-                // Проверка квестового прогресса
                 Object.values(quests).forEach(q => {
                     if (q.status === 'active' && q.targetMobId === currentTarget.id) {
                         q.currentCount++;
@@ -711,8 +735,11 @@
 
         function switchMarketSub(sub) {
             activeMarketSub = sub;
-            ['weapon', 'armor', 'scrolls', 'consum'].forEach(s => {
-                document.getElementById(`m-sub-${s}`).className = (s === sub) ? "bg-amber-600 text-slate-950 font-bold py-1 rounded text-[8px]" : "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[8px]";
+            ['weapon', 'armor', 'jewel', 'scrolls', 'consum', 'dyes'].forEach(s => {
+                const btn = document.getElementById(`m-sub-${s}`);
+                if (btn) {
+                    btn.className = (s === sub) ? "bg-amber-600 text-slate-950 font-bold py-1 rounded text-[7px]" : "bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1 rounded text-[7px]";
+                }
             });
             renderMarketItems();
         }
@@ -720,14 +747,15 @@
         function renderMarketItems() {
             const container = document.getElementById('market-items-container');
             container.innerHTML = '';
-            marketData[activeMarketSub].forEach(item => {
+            const list = marketData[activeMarketSub] || [];
+            list.forEach(item => {
                 const isLocked = item.reqLvl && player.level < item.reqLvl;
                 const div = document.createElement('div');
                 div.className = "flex justify-between items-center bg-slate-950/70 p-2 rounded-lg border border-slate-800";
                 div.innerHTML = `
                     <div>
                         <span class="font-bold ${isLocked ? 'text-slate-500' : 'text-blue-400'}">${item.name}</span>
-                        <span class="text-[9px] text-amber-500 block">${item.cost} Адены</span>
+                        <span class="text-[9px] text-amber-500 block">${item.cost} Адены ${item.reqLvl ? `• (с ${item.reqLvl} ур.)` : ''}</span>
                     </div>
                     <button onclick="buyMarketItem('${item.id}')" ${isLocked ? 'disabled' : ''} class="${isLocked ? 'bg-slate-800 text-slate-600' : 'bg-amber-600 text-slate-950'} font-bold px-2 py-1 rounded text-xs">Купить</button>
                 `;
@@ -739,11 +767,16 @@
             let found = null;
             Object.values(marketData).forEach(list => list.forEach(i => { if (i.id === itemId) found = i; }));
             if (!found || player.gold < found.cost) { alert('Недостаточно Адены!'); return; }
+            if (found.reqLvl && player.level < found.reqLvl) { alert(`Требуется ${found.reqLvl} уровень!`); return; }
 
             player.gold -= found.cost;
             if (activeMarketSub === 'weapon') player.equippedWeaponAtk = found.atk;
-            if (activeMarketSub === 'armor') player.equippedArmorDef = found.def;
-            if (activeMarketSub === 'consum') player.potions += 1;
+            else if (activeMarketSub === 'armor') player.equippedArmorDef = found.def;
+            else if (activeMarketSub === 'jewel') player.equippedJewelDef = found.def;
+            else if (activeMarketSub === 'consum') player.potions += 1;
+            else if (activeMarketSub === 'dyes') {
+                player[found.stat] += 4; player[found.statSub] = Math.max(1, player[found.statSub] - 4);
+            }
 
             recalcStats(); saveGame(); updateUI(); addLog(`🛒 Куплено: **${found.name}**.`);
         }
@@ -804,7 +837,7 @@
             document.getElementById('stat-con').innerText = player.con;
 
             document.getElementById('cp-text').innerText = `${player.cp} / ${player.maxCp}`;
-            document.getElementById('cp-bar').style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
+            document.getElementById('cp-bar'].style.width = `${Math.floor((player.cp / player.maxCp) * 100)}%`;
             document.getElementById('hp-text').innerText = `${player.hp} / ${player.maxHp}`;
             document.getElementById('hp-bar').style.width = `${Math.floor((player.hp / player.maxHp) * 100)}%`;
             document.getElementById('mp-text').innerText = `${player.mp} / ${player.maxMp}`;
