@@ -220,11 +220,19 @@
                 <div id="mobs-list" class="grid grid-cols-1 gap-1.5 max-h-32 overflow-y-auto pr-1"></div>
             </div>
 
-            <div class="space-y-2">
+                        <div class="space-y-2">
                 <button onclick="attackTarget()" class="w-full bg-gradient-to-r from-red-600 to-amber-600 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs flex items-center justify-center space-x-1">
-                    <span>⚔️ Атаковать выбранного моба</span>
+                    <span>⚔️ Обычная атака</span>
                 </button>
+
+                <!-- КНОПКА АКТИВНОГО СКИЛЛА -->
+                <button id="skill-btn" onclick="useActiveSkill()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-2 px-3 rounded-xl active:scale-95 transition-all text-xs flex items-center justify-between px-4 shadow-lg">
+                    <span id="skill-name-ui">⚡ Активный скилл</span>
+                    <span id="skill-mp-ui" class="text-[10px] bg-blue-950 px-2 py-0.5 rounded text-blue-300">25 MP</span>
+                </button>
+
                 <div class="flex space-x-2">
+
                     <button onclick="usePotion('hp')" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+100)</button>
                     <button onclick="usePotion('mp')" class="flex-1 bg-slate-900 border border-blue-900/50 text-blue-400 font-bold py-2 rounded-xl text-xs active:scale-95">💧 Выпить MP (+80)</button>
                 </div>
