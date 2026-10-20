@@ -85,18 +85,31 @@
             <button id="tab-boss-btn" onclick="switchTab('boss')" class="bg-slate-900 text-slate-400 border border-slate-800 font-bold py-1.5 rounded-lg text-[10px] transition-all">👹 Босс</button>
         </div>
 
-        <!-- ВКЛАДКА 1: ФАРМ -->
+        <!-- ВКЛАДКА 1: ФАРМ И ВЫБОР ЛОКАЦИЙ -->
         <div id="tab-farm" class="space-y-3">
-            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3">
-                <div class="flex items-center space-x-3 mb-2">
-                    <div id="class-icon" class="w-12 h-12 bg-slate-800 border-2 border-amber-600 rounded-xl flex items-center justify-center text-xl">🧙‍♂️</div>
-                    <div>
-                        <h2 id="class-title" class="text-sm font-bold text-slate-200">Некромант</h2>
-                        <p id="weapon-title" class="text-[11px] text-amber-400 font-semibold">Оружие: Рядовое (+0)</p>
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 space-y-2">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <div class="flex items-center space-x-2.5">
+                        <div id="class-icon" class="w-10 h-10 bg-slate-800 border border-amber-600 rounded-xl flex items-center justify-center text-lg">🧙‍♂️</div>
+                        <div>
+                            <h2 id="class-title" class="text-xs font-bold text-slate-200">Некромант</h2>
+                            <p id="weapon-title" class="text-[10px] text-amber-400 font-semibold">Оружие: (+0)</p>
+                        </div>
+                    </div>
+                    <!-- Выбор локации -->
+                    <div class="text-right">
+                        <span class="text-[9px] text-slate-400 block">ЛОКАЦИЯ:</span>
+                        <select id="location-select" onchange="changeLocation()" class="bg-slate-950 border border-amber-600/50 text-amber-400 text-[11px] font-bold rounded-lg px-2 py-1 outline-none">
+                            <option value="talking_island">🌳 Говорящий Остров (1+)</option>
+                            <option value="execution_grounds">🌲 Земли Казненных (20+)</option>
+                            <option value="hunters_village">⛺ Деревня Охотников (30+)</option>
+                            <option value="plains_of_glory">🌾 Окрестности Хантера (40+)</option>
+                            <option value="dragon_valley">🔥 Долина Драконов (50+)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="mb-2">
+                <div class="mb-1">
                     <div class="flex justify-between text-[10px] mb-0.5 text-slate-400">
                         <span>HP (Здоровье)</span>
                         <span id="hp-text">100 / 100</span>
@@ -116,7 +129,7 @@
 
             <div class="space-y-2">
                 <button onclick="farm()" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 text-slate-950 font-black py-2.5 px-3 rounded-xl active:scale-95 transition-all text-xs">
-                    ⚔️ Охота в Подземелье
+                    ⚔️ Охота в локации
                 </button>
                 <div class="flex space-x-2">
                     <button onclick="usePotion()" class="flex-1 bg-slate-900 border border-red-900/50 text-red-400 font-bold py-2 rounded-xl text-xs active:scale-95">🧪 Выпить HP (+50)</button>
@@ -125,72 +138,38 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА 2: ПАНЕЛЬ ПЕРСОНАЖА (FULL PAPERDOLL 6x6) -->
+        <!-- ВКЛАДКА 2: КУКЛА ПЕРСОНАЖА -->
         <div id="tab-hero" class="hidden space-y-2">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-2.5 space-y-2">
-                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ПОЛНАЯ ЭКИПИРОВКА (12 СЛОТОВ)</h3>
+                <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-1.5">🛡️ ПОЛНАЯ ЭКИПИРОВКА</h3>
                 
                 <div class="grid grid-cols-3 gap-1.5 items-center justify-items-center">
-                    
-                    <!-- Левая колонка: Броня (Шлем, Наплечники, Тело, Штаны, Перчатки, Сапоги) -->
                     <div class="flex flex-col space-y-1.5">
-                        <div id="slot-helm" onclick="unequip('helm')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">🪖</span><span class="text-[7px] text-slate-500">Шлем</span>
-                        </div>
-                        <div id="slot-shoulder" onclick="unequip('shoulder')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">🛡️</span><span class="text-[7px] text-slate-500">Плечи</span>
-                        </div>
-                        <div id="slot-chest" onclick="unequip('chest')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">👕</span><span class="text-[7px] text-slate-500">Тело</span>
-                        </div>
-                        <div id="slot-legs" onclick="unequip('legs')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">👖</span><span class="text-[7px] text-slate-500">Штаны</span>
-                        </div>
-                        <div id="slot-gloves" onclick="unequip('gloves')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">🧤</span><span class="text-[7px] text-slate-500">Перчатки</span>
-                        </div>
-                        <div id="slot-boots" onclick="unequip('boots')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">👢</span><span class="text-[7px] text-slate-500">Сапоги</span>
-                        </div>
+                        <div id="slot-helm" onclick="unequip('helm')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">🪖</span><span class="text-[7px] text-slate-500">Шлем</span></div>
+                        <div id="slot-shoulder" onclick="unequip('shoulder')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">🛡️</span><span class="text-[7px] text-slate-500">Плечи</span></div>
+                        <div id="slot-chest" onclick="unequip('chest')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">👕</span><span class="text-[7px] text-slate-500">Тело</span></div>
+                        <div id="slot-legs" onclick="unequip('legs')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">👖</span><span class="text-[7px] text-slate-500">Штаны</span></div>
+                        <div id="slot-gloves" onclick="unequip('gloves')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">🧤</span><span class="text-[7px] text-slate-500">Перчатки</span></div>
+                        <div id="slot-boots" onclick="unequip('boots')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">👢</span><span class="text-[7px] text-slate-500">Сапоги</span></div>
                     </div>
 
-                    <!-- Центр: Оружие и Персонаж -->
                     <div class="flex flex-col items-center space-y-3">
                         <div id="slot-weapon" onclick="unequip('weapon')" class="w-12 h-12 bg-slate-950 border-2 border-amber-600/60 rounded-xl flex flex-col items-center justify-center cursor-pointer active:scale-95">
                             <span class="text-base">⚔️</span><span class="text-[8px] text-amber-500 font-bold">Оружие</span>
                         </div>
-                        <div id="hero-avatar" class="w-16 h-16 bg-slate-800 border-2 border-amber-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                            🧙‍♂️
-                        </div>
+                        <div id="hero-avatar" class="w-16 h-16 bg-slate-800 border-2 border-amber-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🧙‍♂️</div>
                     </div>
 
-                    <!-- Правая колонка: Бижутерия (Некля, 2 Серьги, 2 Кольца, 2 Браслета) -->
                     <div class="flex flex-col space-y-1.5">
-                        <div id="slot-neck" onclick="unequip('neck')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Некля</span>
-                        </div>
-                        <div id="slot-earring1" onclick="unequip('earring1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 1</span>
-                        </div>
-                        <div id="slot-earring2" onclick="unequip('earring2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 2</span>
-                        </div>
-                        <div id="slot-ring1" onclick="unequip('ring1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 1</span>
-                        </div>
-                        <div id="slot-ring2" onclick="unequip('ring2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 2</span>
-                        </div>
-                        <div id="slot-brac1" onclick="unequip('brac1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Брасл. 1</span>
-                        </div>
-                        <div id="slot-brac2" onclick="unequip('brac2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95">
-                            <span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Брасл. 2</span>
-                        </div>
+                        <div id="slot-neck" onclick="unequip('neck')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Некля</span></div>
+                        <div id="slot-earring1" onclick="unequip('earring1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 1</span></div>
+                        <div id="slot-earring2" onclick="unequip('earring2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">💎</span><span class="text-[7px] text-slate-500">Серьга 2</span></div>
+                        <div id="slot-ring1" onclick="unequip('ring1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 1</span></div>
+                        <div id="slot-ring2" onclick="unequip('ring2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">💍</span><span class="text-[7px] text-slate-500">Кольцо 2</span></div>
+                        <div id="slot-brac1" onclick="unequip('brac1')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Брасл. 1</span></div>
+                        <div id="slot-brac2" onclick="unequip('brac2')" class="w-10 h-10 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center cursor-pointer active:scale-95"><span class="text-xs">📿</span><span class="text-[7px] text-slate-500">Брасл. 2</span></div>
                     </div>
                 </div>
-
-                <p class="text-[9px] text-slate-500 text-center">💡 Нажмите на любой надетый предмет, чтобы снять его.</p>
             </div>
         </div>
 
@@ -201,50 +180,22 @@
                     <span class="text-xs font-bold text-slate-300">Свободные очки:</span>
                     <span id="stat-points" class="text-sm font-black text-amber-400 bg-amber-950/60 border border-amber-600/40 px-2 py-0.5 rounded-lg">0</span>
                 </div>
-
                 <div class="space-y-2 pt-1">
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-amber-500">STR (Сила)</span>
-                            <span class="text-[10px] text-slate-500 block">+Атака</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span id="stat-str" class="text-xs font-bold">10</span>
-                            <button onclick="addStat('str')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
-                        </div>
+                        <div><span class="text-xs font-bold text-amber-500">STR (Сила)</span><span class="text-[10px] text-slate-500 block">+Атака</span></div>
+                        <div class="flex items-center space-x-2"><span id="stat-str" class="text-xs font-bold">10</span><button onclick="addStat('str')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-green-500">DEX (Ловкость)</span>
-                            <span class="text-[10px] text-slate-500 block">+Крит Шанс и Крит Урон</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span id="stat-dex" class="text-xs font-bold">10</span>
-                            <button onclick="addStat('dex')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
-                        </div>
+                        <div><span class="text-xs font-bold text-green-500">DEX (Ловкость)</span><span class="text-[10px] text-slate-500 block">+Крит Шанс</span></div>
+                        <div class="flex items-center space-x-2"><span id="stat-dex" class="text-xs font-bold">10</span><button onclick="addStat('dex')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">INT (Интеллект)</span>
-                            <span class="text-[10px] text-slate-500 block">+Маг. Атака</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span id="stat-int" class="text-xs font-bold">10</span>
-                            <button onclick="addStat('int')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">INT (Интеллект)</span><span class="text-[10px] text-slate-500 block">+Маг. Атака</span></div>
+                        <div class="flex items-center space-x-2"><span id="stat-int" class="text-xs font-bold">10</span><button onclick="addStat('int')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-red-500">CON (Выносливость)</span>
-                            <span class="text-[10px] text-slate-500 block">+Запас HP</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span id="stat-con" class="text-xs font-bold">10</span>
-                            <button onclick="addStat('con')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button>
-                        </div>
+                        <div><span class="text-xs font-bold text-red-500">CON (Выносливость)</span><span class="text-[10px] text-slate-500 block">+Запас HP</span></div>
+                        <div class="flex items-center space-x-2"><span id="stat-con" class="text-xs font-bold">10</span><button onclick="addStat('con')" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-black w-6 h-6 rounded-lg text-xs active:scale-95 flex items-center justify-center">+</button></div>
                     </div>
                 </div>
             </div>
@@ -254,93 +205,49 @@
         <div id="tab-market" class="hidden space-y-3">
             <div class="bg-slate-900/90 border border-amber-600/30 rounded-xl p-3 space-y-2">
                 <h3 class="font-bold text-amber-400 text-xs tracking-wide text-center border-b border-slate-800 pb-2">⚖️ МАГАЗИН БРОНИ И БИЖУТЕРИИ</h3>
-                
                 <div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">🪖 Шлем Дракона (+10 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">150 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">🪖 Шлем Дракона (+10 Защиты)</span><span class="text-[10px] text-amber-500 block">150 Адены</span></div>
                         <button onclick="buyEquipment('helm', 'Шлем Дракона', 150)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">🛡️ Наплечники Дракона (+8 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">120 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">🛡️ Наплечники Дракона (+8 Защиты)</span><span class="text-[10px] text-amber-500 block">120 Адены</span></div>
                         <button onclick="buyEquipment('shoulder', 'Наплечники', 120)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">👕 Нагрудник Дракона (+25 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">300 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">👕 Нагрудник Дракона (+25 Защиты)</span><span class="text-[10px] text-amber-500 block">300 Адены</span></div>
                         <button onclick="buyEquipment('chest', 'Нагрудник', 300)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">👖 Штаны Дракона (+15 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">200 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">👖 Штаны Дракона (+15 Защиты)</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
                         <button onclick="buyEquipment('legs', 'Штаны Дракона', 200)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">🧤 Перчатки Дракона (+6 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">100 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">🧤 Перчатки Дракона (+6 Защиты)</span><span class="text-[10px] text-amber-500 block">100 Адены</span></div>
                         <button onclick="buyEquipment('gloves', 'Перчатки', 100)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-blue-400">👢 Сапоги Дракона (+8 Защиты)</span>
-                            <span class="text-[10px] text-amber-500 block">110 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-blue-400">👢 Сапоги Дракона (+8 Защиты)</span><span class="text-[10px] text-amber-500 block">110 Адены</span></div>
                         <button onclick="buyEquipment('boots', 'Сапоги Дракона', 110)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-purple-400">📿 Ожерелье Валакаса (+15 Атака)</span>
-                            <span class="text-[10px] text-amber-500 block">500 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-purple-400">📿 Ожерелье Валакаса (+15 Атака)</span><span class="text-[10px] text-amber-500 block">500 Адены</span></div>
                         <button onclick="buyEquipment('neck', 'Некля Валакаса', 500)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-amber-400">💍 Кольцо Антараса (+5% Крита)</span>
-                            <span class="text-[10px] text-amber-500 block">250 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-amber-400">💍 Кольцо Антараса (+5% Крита)</span><span class="text-[10px] text-amber-500 block">250 Адены</span></div>
                         <button onclick="buyJewel('ring', 'Кольцо Антараса', 250)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-green-400">💎 Серьга Закена (+40 HP)</span>
-                            <span class="text-[10px] text-amber-500 block">250 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-green-400">💎 Серьга Закена (+40 HP)</span><span class="text-[10px] text-amber-500 block">250 Адены</span></div>
                         <button onclick="buyJewel('earring', 'Серьга Закена', 250)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-cyan-400">📿 Браслет Рун (+10 Атака)</span>
-                            <span class="text-[10px] text-amber-500 block">200 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-cyan-400">📿 Браслет Рун (+10 Атака)</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
                         <button onclick="buyJewel('brac', 'Браслет Рун', 200)" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
-
                     <div class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span>
-                            <span class="text-[10px] text-amber-500 block">200 Адены</span>
-                        </div>
+                        <div><span class="text-xs font-bold text-amber-400">✨ Свиток Заточки</span><span class="text-[10px] text-amber-500 block">200 Адены</span></div>
                         <button onclick="buyItem('scroll')" class="bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-xs active:scale-95">Купить</button>
                     </div>
                 </div>
@@ -362,7 +269,6 @@
                     </div>
                 </div>
             </div>
-
             <button onclick="attackBoss()" class="w-full bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-3 px-4 rounded-xl shadow-lg active:scale-95 transition-all text-xs flex items-center justify-center space-x-2">
                 <span>💥 АТАКОВАТЬ БОССА</span>
             </button>
@@ -375,7 +281,7 @@
     </div>
 
     <footer class="text-center text-[10px] text-slate-600 pt-1">
-        Eternity Online v0.9.1 • 2 Bracelets Update
+        Eternity Online v0.11 • Hunter's Village & Surroundings
     </footer>
 
     <script>
@@ -391,9 +297,18 @@
             ranger: { title: 'Следопыт', icon: '🏹', weaponBaseName: 'Лук', str: 10, dex: 20, int: 8, con: 12 }
         };
 
+        // Обновленный контент локаций L2
+        const locations = {
+            talking_island: { name: 'Говорящий Остров', minLevel: 1, expMult: 1, goldMult: 1, dropChance: 0.15 },
+            execution_grounds: { name: 'Земли Казненных', minLevel: 20, expMult: 2.2, goldMult: 2.0, dropChance: 0.22 },
+            hunters_village: { name: 'Деревня Охотников', minLevel: 30, expMult: 3.8, goldMult: 3.5, dropChance: 0.30 },
+            plains_of_glory: { name: 'Окрестности Хантера', minLevel: 40, expMult: 6.0, goldMult: 5.5, dropChance: 0.40 },
+            dragon_valley: { name: 'Долина Драконов', minLevel: 50, expMult: 9.0, goldMult: 8.0, dropChance: 0.55 }
+        };
+
         try {
-            if (localStorage.getItem('eternity_player_v9_1')) {
-                player = JSON.parse(localStorage.getItem('eternity_player_v9_1'));
+            if (localStorage.getItem('eternity_player_v11')) {
+                player = JSON.parse(localStorage.getItem('eternity_player_v11'));
             }
         } catch(e) { player = null; }
 
@@ -424,21 +339,12 @@
                 potions: 3,
                 weaponEnchant: 0,
                 scrolls: 2,
+                currentLocation: 'talking_island',
                 equipment: {
-                    weapon: true,
-                    helm: null,
-                    shoulder: null,
-                    chest: null,
-                    legs: null,
-                    gloves: null,
-                    boots: null,
-                    neck: null,
-                    earring1: null,
-                    earring2: null,
-                    ring1: null,
-                    ring2: null,
-                    brac1: null,
-                    brac2: null
+                    weapon: true, helm: null, shoulder: null, chest: null,
+                    legs: null, gloves: null, boots: null, neck: null,
+                    earring1: null, earring2: null, ring1: null, ring2: null,
+                    brac1: null, brac2: null
                 }
             };
             recalcStats();
@@ -447,7 +353,23 @@
             document.getElementById('class-select-screen').classList.add('hidden');
             document.getElementById('class-select-screen').classList.remove('flex');
             showGameScreen();
-            addLog(`✨ Добро пожаловать! Выдано 1500 Адены на приоберетение сета.`);
+            addLog(`✨ Добро пожаловать! Вы на Говорящем Острове.`);
+        }
+
+        function changeLocation() {
+            const selectEl = document.getElementById('location-select');
+            const targetLoc = selectEl.value;
+            const locData = locations[targetLoc];
+
+            if (player.level < locData.minLevel) {
+                alert(`⚠️ Эта локация требует ${locData.minLevel} уровень!`);
+                selectEl.value = player.currentLocation;
+                return;
+            }
+
+            player.currentLocation = targetLoc;
+            saveGame();
+            addLog(`🗺️ Телепортация в: **${locData.name}**!`);
         }
 
         function recalcStats() {
@@ -475,12 +397,15 @@
         function showGameScreen() {
             document.getElementById('game-screen').classList.remove('hidden');
             document.getElementById('game-screen').classList.add('flex');
+            if (player.currentLocation) {
+                document.getElementById('location-select').value = player.currentLocation;
+            }
             recalcStats();
             updateUI();
         }
 
         function saveGame() {
-            localStorage.setItem('eternity_player_v9_1', JSON.stringify(player));
+            localStorage.setItem('eternity_player_v11', JSON.stringify(player));
         }
 
         function addLog(text) {
@@ -529,7 +454,7 @@
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`🛡️ Надет ${name}! Защита выросла.`);
+            addLog(`🛡️ Надет ${name}!`);
         }
 
         function buyJewel(type, name, cost) {
@@ -542,7 +467,7 @@
             } else if (!player.equipment[slot2]) {
                 player.equipment[slot2] = name;
             } else {
-                alert('У вас уже заняты оба слота под украшения этого типа!');
+                alert('Оба слота заняты!');
                 return;
             }
 
@@ -559,7 +484,7 @@
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`❌ Снята вещь со слота.`);
+            addLog(`❌ Предмет снят.`);
         }
 
         function addStat(stat) {
@@ -569,20 +494,21 @@
             recalcStats();
             saveGame();
             updateUI();
-            addLog(`➕ Вложено очко в **${stat.toUpperCase()}**!`);
+            addLog(`➕ Вложено в **${stat.toUpperCase()}**!`);
         }
 
         function farm() {
-            const expGained = Math.floor(Math.random() * 25) + 15;
-            const goldGained = Math.floor(Math.random() * 15) + 5;
-            let scrollDrop = Math.random() < 0.15;
+            const loc = locations[player.currentLocation || 'talking_island'];
+            const expGained = Math.floor((Math.random() * 25 + 15) * loc.expMult);
+            const goldGained = Math.floor((Math.random() * 12 + 5) * loc.goldMult);
+            let scrollDrop = Math.random() < loc.dropChance;
             let potionDrop = Math.random() < 0.25;
 
             player.exp += expGained;
             player.gold += goldGained;
 
-            let logText = `⚔️ Убит моб! +${expGained} EXP, +${goldGained} Адена.`;
-            if (scrollDrop) { player.scrolls += 1; logText += ` ✨ **Свиток Заточки!**`; }
+            let logText = `⚔️ [${loc.name}] Моб повержен! +${expGained} EXP, +${goldGained} Адена.`;
+            if (scrollDrop) { player.scrolls += 1; logText += ` ✨ **Выпал Свиток Заточки!**`; }
             if (potionDrop) { player.potions += 1; logText += ` 🧪 **Зелье HP!**`; }
             addLog(logText);
 
@@ -611,7 +537,7 @@
         }
 
         function enchantWeapon() {
-            if (!player.equipment.weapon) { alert('Сначала наденьте оружие!'); return; }
+            if (!player.equipment.weapon) { alert('Нет оружия!'); return; }
             if (player.scrolls <= 0) { alert('Нет Свитков Заточки!'); return; }
             player.scrolls -= 1;
             let chance = player.weaponEnchant < 3 ? 1.0 : 0.6;
@@ -631,7 +557,7 @@
 
         function attackBoss() {
             if (player.hp <= 0) {
-                alert('Вы погибли! Авто-воскрешение в городе.');
+                alert('Вы погибли! Авто-воскрешение.');
                 player.hp = Math.floor(player.maxHp * 0.5);
                 saveGame();
                 updateUI();
@@ -687,7 +613,6 @@
             document.getElementById('crit').innerText = `${player.crit}%`;
             document.getElementById('potions').innerText = player.potions;
 
-            // Обновление всей Куклы Персонажа
             const setSlotUI = (slotId, isEquipped, activeBorderClass) => {
                 const el = document.getElementById(slotId);
                 if (el) {
